@@ -1,0 +1,49 @@
+{template 'header'}
+<div id="head-bar">
+<div class="head-bar">
+<div class="head-bar-title">我的</div>
+</div>
+<div class="head-bar-fix"></div>
+</div>
+<div class="blank-20"></div>
+<div class="user-info">
+<table cellpadding="0" cellspacing="0" width="100%">
+<tr>
+{if $_userid}
+<td style="width:100px;height:84px;"><a href="{$MODULE[2][mobile]}avatar.php"><img src="{useravatar($_username, 'large')}" style="width:64px;height:64px;margin:0 16px;"/></a></td>
+<td>{if $_truename}<a href="{$MODULE[2][mobile]}" style="width:100%;display:block;"><strong>{$_truename}</strong>{else}<a href="{$MODULE[2][mobile]}edit.php" style="width:100%;display:block;"><strong>未填写姓名</strong>{/if}<br/>
+帐号：{$_username}</a></td>
+{else}
+<td style="width:100px;height:84px;"><a href="{$MODULE[2][mobile]}{$AJ[file_login]}" data-transition="slideup"><img src="{useravatar($_username, 'large')}"  style="width:64px;height:64px;margin:0 16px;"/></a></td>
+<td><a href="{$MODULE[2][mobile]}{$AJ[file_login]}" style="width:100%;display:block;" data-transition="slideup"><strong>未登录</strong><br/>
+按此登录或注册</a></td>
+{/if}
+</tr>
+</table>
+</div>
+{if $_userid}
+<div class="blank-20"></div>
+<div class="list-set list-set-img">
+<ul>
+<li><div>{if $_message}<em>{$_message}</em>{/if}<img src="{AJ_MOB}static/img/my-message.png" width="24" height="24"/><a href="{$MODULE[2][mobile]}message.php" rel="external">站内信件</a></div></li>
+{if $AJ[im_web]}
+<li><div>{if $_chat}<em>{$_chat}</em>{/if}<img src="{AJ_MOB}static/img/my-chat.png" width="24" height="24"/><a href="{$MODULE[2][mobile]}im.php" rel="external">站内交谈</a></div></li>
+{/if}
+
+</ul>
+</div>
+{/if}
+<div class="blank-20"></div>
+<div class="list-set list-set-img">
+<ul>
+<li><div><img src="{AJ_MOB}static/img/my-member.png" width="24" height="24"/><a href="{$MODULE[2][mobile]}">会员中心</a></div></li>
+<li><div><img src="{AJ_MOB}static/img/my-info.png" width="24" height="24"/><a href="{$MODULE[2][mobile]}{$AJ[file_my]}">信息管理</a></div></li>
+{if $_userid}
+<li><div><img src="{AJ_MOB}static/img/my-biz.png" width="24" height="24"/><a href="{$MODULE[2][mobile]}biz.php">商户后台</a></div></li>
+
+<li><div><img src="{AJ_MOB}static/img/home-member.png" width="24" height="24"/><a href="{$MODULE[2][mobile]}keyuan.php" class="aui-arrow-right">我的客源</a></div></li>
+
+{/if}
+</ul>
+</div>
+{template 'footer'}

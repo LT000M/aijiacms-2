@@ -1,0 +1,350 @@
+<!DOCTYPE HTML>
+<html lang="">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" /> 
+<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, viewport-fit=cover">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">     
+       <title>{if $seo_title}{$seo_title}{else}{if $head_title}{$head_title}{$AJ[seo_delimiter]}{/if}{if $city_sitename}{$city_sitename}{else}{$site_name}{/if}{/if}</title>
+{if $head_keywords}
+<meta name="keywords" content="{$head_keywords}"/>
+{/if}
+{if $head_description}
+<meta name="description" content="{$head_description}"/>
+{/if}
+<link rel="stylesheet" href="{AJ_MOB}static2019/css/info-mb.css">
+	  <link rel="stylesheet" href="{AJ_MOB}static2019/css/info-base.css">
+		<link rel="stylesheet" href="{AJ_MOB}static2019/css/weui.css">
+    <link rel="stylesheet" href="{AJ_MOB}static2019/css/custom.css">
+	<link rel="stylesheet" href="{AJ_MOB}static2019/css/hm.css" />
+<link rel="stylesheet" href="{AJ_MOB}static2019/css/hs.css" />
+	<script>var loading = false, page = 1,scrollto =0,fxqg = '长按保存图片，分享到群或朋友圈';</script>
+    <script src="{AJ_MOB}static2019/js/jquery-2.1.4.js" type="text/javascript"></script>
+    <script src="{AJ_MOB}static2019/js/jquery-weui.js" type="text/javascript" charset="UTF-8"></script>
+	<script src="{AJ_MOB}static2019/js/jweixin-1.2.0.js"></script>
+    <style>
+.weui-dialog__btn, .weui-navbar__item.weui_bar__item_on, .color-strong, .chip-row .toutiao, .weui-cells_checkbox .weui-check:checked+.weui-icon-checked:before, .weui-vcode-btn, .weui-dialog__btn_primary, .weui-cells_radio .weui-check:checked+.weui-icon-checked:before, .weui-icon-checked:before, .weui-agree__checkbox:checked:before, .weui-icon-success-circle, .weui-icon-success-no-circle, .weui-search-bar__cancel-btn, .weui-tabbar__item.weui-bar__item_on .weui-tabbar__icon, .weui-tabbar__item.weui-bar__item_on .weui-tabbar__icon>i, .weui-tabbar__item.weui-bar__item_on .weui-tabbar__label,.main_color,.weui-tabbar__item.weui-bar__item--on .weui-tabbar__label,.picker-button,.weui-form-preview__btn_primary {color:#00c07b!important}
+.weui_bar__item_on span:after,.weui-btn_primary, .weui-btn_primary:not(.weui-btn_disabled):active,.weui-btn_mini,.x_header, .main_bg,.position li.current, .position1 li.current,.post-tags .tag-on.weui-btn_default,.is-green, .weui-slider__track,.tsbtn_m{background-color:#00c07b!important}
+.foot_link{color:#aaa; font-size:12px; margin:0 0; padding:10px 10px;}
+.foot_link .link {color:#ccc; font-size:14px;}
+.foot_link a {color:#666;}
+.bianhao{display:block; padding:0 10px; height:25px;line-height:25px;color:#fff;font-size:12px;text-align:center;border-top-right-radius:50px;border-bottom-right-radius:50px;position:absolute;top:25px;left:0;z-index:9;background-color:rgba(0,0,0,.6)}
+.swipe-wrap img{height: 280px;}
+body,td,th {
+	font-family: "Helvetica Neue", Roboto, "microsoft yahei";
+}
+    </style>
+    </head>
+    	
+   
+	
+
+<body>
+<!--aijia容器开始-->	
+<div class="page__bd">
+
+<header class="x_header bgcolor_11 cl f15">
+    <a class="z f14" href="javascript:window.history.go(-1);"><i class="iconfont icon-fanhuijiantou w15"></i>返回</a>
+    <a class="y sidectrl view_ctrl"><i class="iconfont icon-fenlei f14"></i></a>
+	<div class="navtitle" onClick="location.href='index.php'">{$title}</div>
+  </header>
+<div class="x_header_fix" ></div>
+    <div class="none view_tools_mask"></div>
+    <div class="none view_tools animated">
+        <ul>
+                        <li class="border_bottom" ><a href="{AJ_MOB}"><i class="vm iconfont icon-fenlei "></i>首页</a></li>
+            <li><!--header区域 导航栏 区域  开始-->
+						 <a href="{AJ_MOB}my.php"><i class="vm iconfont icon-xiaolian2 "></i>我的</a>
+			</li>
+        </ul>
+</div>
+
+<div class="swipe cl" data-speed="5000" style="visibility: visible; max-height:280px;">
+        <div class="swipe-wrap">
+						                 <!--{php $tags=tag("table=house_pic&condition=item=$itemid and mid=5&pagesize=10&order=itemid desc&template=null");}-->
+                                             {if $tags}
+ {loop $tags $i $t}  
+   <div class="imgloading"><a href=""><img src="{get_oldpic($t[thumb],1)}"></a></div>{/loop}{else}
+<div class="imgloading"><a href=""><img src="{get_oldpic($thumb,1)}"></a></div>
+ {if $thumb1}<div class="imgloading"><a href=""><img src="{get_oldpic($thumb1,1)}"></a></div>{/if}
+ {if $thumb2}<div class="imgloading"><a href=""><img src="{get_oldpic($thumb2,1)}"></a></div>{/if} 
+ {/if}    
+                                             
+                                             
+			
+						                        
+		</div>
+	
+        <nav class="cl bullets bullets1">
+            <ul class="position">
+              <!--{php $tags=tag("table=house_pic&condition=item=$itemid and mid=5&pagesize=10&order=itemid desc&template=null");}-->
+ {loop $tags $i $t}  <li {if $i==0}class="current"{/if} ></li>{/loop}
+                               
+          </ul>
+        </nav>
+  </div>
+
+
+<div class="m-information-qm" style="background-color:#f8f8f8;border-bottom:none;">
+        <div class="wp">
+          <div class="top istrade0">
+               <!-- <div class="g-info-qm">
+					<a href="javascript:;" id="share2015" class="more we_share"></a>
+                </div>-->
+				
+                <i class="deal"></i>
+            </div>
+			
+						
+			 <ul class="ul-txt1-qm">
+               <li ><div class="tit">{$title}</div></li>
+               <li data-href="sale.html"  class="display1590"><span>二手房<b><em id="price">	{get_sale($itemid)}  </em></b></span><em id="price" style="display:none">{$price}</em></li>
+		
+               <li data-href="rent.html" ><span>租房<b><em id="chrsize">{get_rent($itemid)}</em></b></span></li>
+               
+            </ul>
+        
+     
+			 
+		<a href="#" id="quXY" data-loupany="{$y}" data-loupanx="{$x}" class="g-addr-qm">小区<span>
+					{$housename}<em>{$address}</em></span><i></i></a>
+					
+		</strong>
+
+			    
+        </div>
+
+	
+
+<style>
+.wp img {
+	max-width:100%;
+	max-height:100%;
+	margin:0 auto;
+	display:block;
+	margin-bottom:10px;
+}</style>
+<div class="m-describe-qm">
+        <div class="g-tit1-hlg bgcf">
+            <a class="clearfix">
+                <div class="left">
+                    <h3 class="line">小区描述</h3>
+                </div>
+            </a>
+        </div>
+        <div class="wp">
+            <div class="txt"><p>{$peitao}</p>
+			<br/>
+			{$content}</div>
+    </div>
+</div>
+ 
+
+ <div class="m-position-qm">
+        <div class="g-tit1-hlg bgcf">
+            <a href="javascript:void(0);" class="clearfix">
+                <div class="left">
+                    <h3 class="line">周边配套</h3>
+                </div>
+            </a>
+        </div>
+      <div class="pic" id="default_map" style="height:150px;"></div>
+        <ul class="ul-txt3-qm" id="mapSel">
+            <li class="on" data-val="0"><a href="javascript:void(0);">商业</a></li>
+			<li data-val="1"><a href="javascript:void(0);">交通</a></li>
+            <li data-val="2"><a href="javascript:void(0);">教育</a></li>
+            <li data-val="3"><a href="javascript:void(0);">医疗</a></li>
+        </ul>
+        <div class="wp">
+            <div class="tablebox">
+                <ul class="ul-txt4-qm" id="r-result"></ul>
+            </div>
+            
+        </div>
+    </div>
+<script type="text/template" id="tp">
+<li data-x="{{point.lng}}" data-y="{{point.lat}}">
+    <span><i></i>{{distance}}</span>
+    <h3>{{title}}</h3>
+</li>
+</script>
+<div id="l-map" style="display:none;"></div>
+
+
+<div class="foot_link" id="foot_link">
+友情提醒：该信息由网友自行发布，不代表本网认可并赞同其观点及真实性，请自主甄别。如遇虚假信息可拨打客服电话{$AJ[telephone]}或在线举报，涉及交易时请仔细验证对方资质，签订规范的交易合同。
+</div>
+<div style="height:68px;background-color:#FFFFFF;"> </div>
+<div class="ft-nv ft-nv-index">
+	<a href="{AJ_MOB}"><i style="background-position: -297px -2px;"></i>首页</a>
+	<a href="{AJ_MOB}house" class=""><i style="background-position: -297px -62px;"></i>新房</a>
+	<a id="fabubtn" class="center "><i style="background-position: -54px -78px;"></i>发布</a>
+		<a href="{AJ_MOB}sale" class=""><i style="background-position: -297px -122px;"></i>二手房</a>
+		<a href="{AJ_MOB}my.php" class=""><i style="background-position: -297px -182px;"></i>我的</a>
+</div>
+ <!--tffooter结束-->  
+ 
+<div class="fabuBox">
+  <div class="fabu">
+    <ul class="clearfix">
+		   <li class="t1">
+			<a href="{AJ_MOB}member/my.php?mid=5"><img src="{AJ_MOB}static2019/images/fabu_btn_4.png" alt=""></a>
+		<p>二手房出售</p>
+	  </li>
+	   	   <li class="t2">
+			<a href="{AJ_MOB}member/my.php?mid=7"><img src="{AJ_MOB}static2019/images/fabu_btn_5.png" alt=""></a>
+		<p>有房出租</p>
+	  </li>
+	   	 
+	   	   <li class="t4">
+			<a href="{AJ_MOB}member/my.php?mid=16"><img src="{AJ_MOB}static2019/images/fabu_btn_3.png" alt=""></a>
+		<p>求购房屋</p>
+	  </li>
+	   	 
+	 
+	    
+	 </ul>
+    <div class="cancel"></div>
+  </div>
+</div>
+<div class="bg_1"></div>
+<script>
+$(function(){
+  // 发布
+  $('#fabubtn').click(function(){
+    var box = $('.fabuBox');
+    if (!box.hasClass('open')) {
+      $('body,html').bind('touchmove', function(e){e.preventDefault();})
+      box.addClass('open');
+      $('.bg_1').css({"display":"block"});
+    }else {
+      $('body,html').unbind('touchmove');
+      box.removeClass('open');
+    }
+  })
+
+  $('.fabuBox .cancel').click(function(){
+    $('.fabuBox').addClass('close');
+    setTimeout(function(){
+      $('body,html').unbind('touchmove');
+      $('.fabuBox').removeClass('open close');
+      $('.bg_1').css({"display":"none"});
+    }, 600)
+  })
+})
+</script> <!--tffooter结束-->    
+<!--aijia容器结束-->
+<script>
+	$("#nav div,#nav li").on("click",function(e){
+		$(this).toggleClass("on").siblings().filter(".on").removeClass("on");
+		e.stopPropagation()
+	});
+</script>
+<script type="text/javascript">
+$('ul li').click(function(){
+            if($(this).data('href')){
+                location.href= $(this).data('href');
+            }
+        });
+	$('.button-bar__item').click(function(){
+            if($(this).data('href')){
+                location.href= $(this).data('href');
+            }
+        });
+    $('.ui-searchbar').tap(function(){
+        $('.ui-searchbar-wrap').addClass('focus');
+        $('.ui-searchbar-input input').focus();
+    });
+    $('.ui-searchbar-cancel').tap(function(){
+        $('.ui-searchbar-wrap').removeClass('focus');
+    });
+</script>
+
+
+
+<div id="wechat-mask"><div id="wechat-guider"></div></div>
+<div class="mask none"></div>
+<script src="{AJ_MOB}static2019/js/fastclick.js" type="text/javascript"></script>
+<script src="{AJ_MOB}static2019/js/slider.js" type="text/javascript"></script>
+<script src="{AJ_MOB}static2019/js/swiper.min.js" type="text/javascript"></script>
+<script src="{AJ_MOB}static2019/js/md5.min.js" type="text/javascript"></script>
+<script src="{AJ_MOB}static2019/js/app.js" type="text/javascript"></script>
+<script language='javascript'>
+		var appid = "wxa2f8fefab665d75f";
+		var timestamp = "1551939393";
+		var nonceStr = "UvdxeSxhqtbndI8V";
+		var signature = "bc841305c578a728b3eea95a68ce6e7bc589a442";
+		var title = "{$title}";
+		var desc = "{if $room}{$room}室{/if}{if $hall}{$hall}厅{/if}{if $toilet}{$toilet}卫{/if},价格{if $price}{$price}万元{else}面议{/if}";
+		var link = "{AJ_MOB}sale/{$linkurl}";
+		var imgUrl = '{imgurl($thumb)}';
+</script>
+<script language="javascript" src="{AJ_MOB}static2019/js/fx.js"></script>
+
+
+<script>
+
+	function showjubao(){
+        $('#jubao8').popup();
+    }
+
+	function show4008(){
+        $('#4008').popup();
+    }
+	function show4006(){
+        $('#4008').popup();
+    }
+        </script>
+
+<script type="text/javascript" src="{AJ_MOB}static2019/js/7070ff3e18e64a499b68ace431a00a6c.js"></script>  
+<script src="{AJ_MOB}static2019/js/fc2019_map.js"></script>
+ <script type="text/javascript" src="{AJ_MOB}static2019/js/mustache.js"></script>
+<script src="{AJ_MOB}static2019/js/echarts.common.min.js"></script>
+<script src="{AJ_MOB}static2019/js/fangdaijisuan_s.js"></script>
+
+
+<script>
+document.addEventListener('DOMContentLoaded',function(){
+    setMap_default();
+     var price = $('#price').html();
+    var chrsize = $('#chrsize').html();
+    if(price !== '0' && chrsize !== ''){
+        price = parseFloat(price);
+        chrsize = parseFloat(chrsize);
+        if(!isNaN(price) && !isNaN(chrsize)){
+            var price_dan = parseInt(price*10000/chrsize)+'元/㎡';
+            $('#price_dan').html(price_dan);
+        }
+    }
+    if(price !== '' && price!=='0'){
+        price = parseInt(price);
+        if(!isNaN(price)){
+            $('#shoufu,#shoufu2').html(parseInt(price*0.3));
+            $('#loana_input').val(parseInt(price*0.7));
+            $('#shuifeiprice').val(price);
+            setTimeout(function(){caculate1();shuifeijisuan();},100);
+            $('#shuifeiNode_select').on('click','li',function(){
+                $('#'+$(this).attr('data-selector')).val($(this).attr('data-val'));
+                $(this).parent().find('li').removeClass('on');
+                $(this).addClass('on');
+                shuifeijisuan();
+            });
+        }
+    }else{
+		$('#daikuanNode').hide();
+		$('#shuifeiNode').hide();
+	}
+
+
+	var istrade = '0';
+
+},false);
+
+
+
+
+</script>
+
+{template 'foottj'}
+
+</body>
+</html>

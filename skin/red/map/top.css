@@ -1,0 +1,40 @@
+@charset "utf-8";
+#topnav * {
+	PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; PADDING-TOP: 0px
+}
+#topnav A {
+	TEXT-DECORATION: none
+}
+#topnav .ba {
+	COLOR: #333
+}
+#topnav .oa:link {
+	COLOR: #333
+}
+#topnav .oa:visited {
+	COLOR: #333
+}
+#topnav .oa:hover {
+	COLOR: #f60
+}
+#topnav {
+	BORDER-BOTTOM: #d2d2d2 1px solid; TEXT-ALIGN: center; LINE-HEIGHT: 25px; BACKGROUND-COLOR: #f6f6f6; HEIGHT: 25px
+}
+#topnav .content {
+	MARGIN: auto; WIDTH: 970px; COLOR: #4d4d4d
+}
+#topnav .content .welcome {
+	PADDING-LEFT: 15px; FLOAT: left
+}
+#topnav .content .ba {
+	COLOR: #333
+}
+#topnav .content .ba_s {
+	COLOR: #f60
+}
+#topnav .content .agent {
+	PADDING-RIGHT: 20px; FLOAT: right
+}
+#topnav .content .agent IMG {
+	MARGIN: 5px 2px 5px 0px; VERTICAL-ALIGN: middle
+}

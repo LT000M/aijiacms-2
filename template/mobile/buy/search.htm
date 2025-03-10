@@ -1,0 +1,590 @@
+
+<!DOCTYPE HTML>
+<html lang="">
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" /> 
+		        
+		<title>{if $seo_title}{$seo_title}{else}{if $head_title}{$head_title}{$AJ[seo_delimiter]}{/if}{if $city_sitename}{$city_sitename}{else}{$site_name}{/if}{/if}</title>
+{if $head_keywords}
+<meta name="keywords" content="{$head_keywords}"/>
+{/if}
+{if $head_description}
+<meta name="description" content="{$head_description}"/>
+{/if}
+		        <meta name="author" content="aijia" />
+        <meta name="format-detection" content="telephone=no">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0,user-scalable=no,minimal-ui">
+        <meta name="apple-mobile-web-app-capable" content="yes">
+        <meta name="apple-mobile-web-app-status-bar-style" content="black">
+	 <link rel="stylesheet" href="{AJ_MOB}static2019/css/aijia.css">
+<link rel="stylesheet" href="{AJ_MOB}static2019/css/info-mb.css">
+	  <link rel="stylesheet" href="{AJ_MOB}static2019/css/info-base.css">
+	<link rel="stylesheet" href="{AJ_MOB}static2019/css/nav.css"> 
+	<script src="{AJ_MOB}static2019/js/zepto.min.js"></script>
+     <script src="{AJ_MOB}static2019/js/aijiacom.js"></script>
+ <script src="{AJ_MOB}static2019/js/jweixin-1.2.0.js"></script>
+	<style>
+.aijia{width:100%;}
+.aijiatop{position: absolute;top:0;left:0;width:100%;}
+.tffooter{position: absolute;bottom:0;left:0;width:100%;}
+.tfmain{position:absolute;z-index:1;top:45px;left:0;bottom:50px;width:100%;}
+.tfmain{
+overflow:auto;/* winphone8和android4+ */
+-webkit-overflow-scrolling: touch; /* ios5+ */
+}
+.navigation-bar {
+  font-family: 'Helvetica Neue', Helvetica, Arial, 'Lucida Grande', sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  font-weight: 400;
+  font-size: 17px;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  -webkit-background-clip: padding-box;
+  background-clip: padding-box;
+  white-space: nowrap;
+  overflow: hidden;
+  word-spacing: 0;
+  padding: 0;
+  margin: 0;
+  font: inherit;
+  color: inherit;
+  background: transparent;
+  border: none;
+  line-height: normal;
+  cursor: default;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  z-index: 2;
+  display: block;
+  height: 44px;
+  padding-left: 0;
+  padding-right: 0;
+  background: #fff;
+  color: #333;
+  -webkit-box-shadow: none;
+  box-shadow: none;
+  border-bottom: 1px solid #ddd;
+  font-weight: 400;
+  width: 100%;
+  white-space: nowrap;
+  overflow: visible;
+}
+@media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
+  .navigation-bar {
+    border-bottom: none;
+    -webkit-background-size: 100% 1px;
+    background-size: 100% 1px;
+    background-repeat: no-repeat;
+    background-position: bottom;
+    background-image: -webkit-linear-gradient(90deg, #ddd, #ddd 50%, transparent 50%);
+    background-image: -moz-linear-gradient(90deg, #ddd, #ddd 50%, transparent 50%);
+    background-image: -o-linear-gradient(90deg, #ddd, #ddd 50%, transparent 50%);
+    background-image: linear-gradient(0deg, #ddd, #ddd 50%, transparent 50%);
+  }
+}
+.navigation-bar__line-height {
+  line-height: 44px;
+  padding-bottom: 0;
+  padding-top: 0;
+}
+.navigation-bar__bg {
+  background: #fff;
+}
+.navigation-bar__item,
+.navigation-bar__left,
+.navigation-bar__right,
+.navigation-bar__center {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  -webkit-background-clip: padding-box;
+  background-clip: padding-box;
+  padding: 0;
+  margin: 0;
+  font: inherit;
+  color: inherit;
+  background: transparent;
+  border: none;
+  line-height: normal;
+  height: 44px;
+  vertical-align: top;
+  overflow: visible;
+  display: block;
+  vertical-align: middle;
+  float: left;
+}
+.navigation-bar__left {
+  max-width: 50%;
+  width: 27%;
+  text-align: left;
+}
+.navigation-bar__right {
+  max-width: 50%;
+  width: 27%;
+  text-align: right;
+}
+.navigation-bar__center {
+  width: 46%;
+  text-align: center;
+  line-height: 44px;
+  font-size: 17px;
+  font-weight: 500;
+  color: #333;
+}
+.navigation-bar__title {
+  line-height: 44px;
+  font-size: 17px;
+  font-weight: 500;
+  color: #333;
+  margin: 0;
+  padding: 0;
+  overflow: visible;
+}
+.navigation-bar__center:first-child:last-child {
+  width: 100%;
+}
+.button-bar {
+  font-family: 'Helvetica Neue', Helvetica, Arial, 'Lucida Grande', sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  font-weight: 400;
+  font-size: 17px;
+  display: table;
+  table-layout: fixed;
+  white-space: nowrap;
+  margin: 0;
+  padding: 0;
+  position: relative;
+  margin: 0;
+  border: none;
+}
+.button-bar__item {
+  font-family: 'Helvetica Neue', Helvetica, Arial, 'Lucida Grande', sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  font-weight: 400;
+  font-size: 17px;
+  display: table-cell;
+  width: auto;
+  -webkit-border-radius: 0;
+  border-radius: 0;
+  position: relative;
+  position: relative;
+  overflow: hidden;
+  padding: 0;
+  position: relative;
+  overflow: hidden;
+}
+.button-bar__item > input {
+  position: absolute;
+  overflow: hidden;
+  right: 0px;
+  top: 0px;
+  left: 0px;
+  bottom: 0px;
+  padding: 0;
+  border: 0;
+  opacity: 0.001;
+  z-index: 1;
+  vertical-align: top;
+  outline: none;
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  -webkit-appearance: none;
+  appearance: none;
+}
+.button-bar__item:first-child > .button-bar__button {
+  border-left: 1px solid rgba(235, 94, 47, 0.84);
+  border-right: 1px solid rgba(235, 94, 47, 0.84);
+  -webkit-border-top-left-radius: 4px;
+  border-top-left-radius: 4px;
+  -webkit-border-bottom-left-radius: 4px;
+  border-bottom-left-radius: 4px;
+}
+.button-bar__item:last-child > .button-bar__button {
+  border-right: 1px solid rgba(235, 94, 47, 0.84);
+  -webkit-border-top-right-radius: 4px;
+  border-top-right-radius: 4px;
+  -webkit-border-bottom-right-radius: 4px;
+  border-bottom-right-radius: 4px;
+}
+.button-bar__button {
+  font-family: 'Helvetica Neue', Helvetica, Arial, 'Lucida Grande', sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  font-weight: 400;
+  font-size: 17px;
+  -webkit-border-radius: inherit;
+  border-radius: inherit;
+  background-color: transparent;
+  color: rgba(235, 94, 47, 0.84);
+  border: 0px solid rgba(235, 94, 47, 0.84);
+  border-top: 1px solid rgba(235, 94, 47, 0.84);
+  border-bottom: 1px solid rgba(235, 94, 47, 0.84);
+  border-right: 1px solid rgba(235, 94, 47, 0.84);
+  font-weight: 400;
+  padding: 0 8px;
+  height: 27px;
+  line-height: 27px;
+  font-size: 13px;
+  width: 100%;
+  -webkit-transition: background-color 0.2s linear, color 0.2s linear;
+  -moz-transition: background-color 0.2s linear, color 0.2s linear;
+  -o-transition: background-color 0.2s linear, color 0.2s linear;
+  transition: background-color 0.2s linear, color 0.2s linear;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+.button-bar__button:active,
+:active + .button-bar__button {
+  background-color: rgba(235, 94, 47, 0.2);
+  border: 0px solid rgba(235, 94, 47, 0.84);
+  border-top: 1px solid rgba(235, 94, 47, 0.84);
+  border-bottom: 1px solid rgba(235, 94, 47, 0.84);
+  border-right: 1px solid rgba(235, 94, 47, 0.84);
+  height: 27px;
+  line-height: 27px;
+  font-size: 13px;
+  width: 100%;
+  -webkit-transition: none;
+  -moz-transition: none;
+  -o-transition: none;
+  transition: none;
+}
+.button-bar__item.active > .button-bar__button,
+:checked + .button-bar__button {
+  background-color: rgba(235, 94, 47, 0.84);
+  color: #fff;
+  -webkit-transition: none;
+  -moz-transition: none;
+  -o-transition: none;
+  transition: none;
+}
+.button-bar__button:disabled {
+  opacity: 0.3;
+  cursor: default;
+  pointer-events: none;
+}
+.button-bar__button:hover {
+  -webkit-transition: none;
+  -moz-transition: none;
+  -o-transition: none;
+  transition: none;
+}
+.button-bar__button:focus {
+  outline: 0;
+}
+/* 分页样式 */
+.pager span {
+	-webkit-appearance: none;
+	
+	border-radius: 0;
+	box-shadow: 0 2px 0 #EFF0F1;
+	
+	display: inline-block;
+	height: 33px;
+	line-height: 33px;
+	
+	vertical-align: top;
+	text-align: center;
+	width: 33px;
+	border-color: #FF7201;
+	
+}
+.pager span.next-page {
+	position: relative;
+	text-align: left;
+	width: 70px;
+	margin-right: 0;
+	text-indent: 10px;
+}
+.pager span.pre-page {
+		position: relative;
+	text-align: left;
+	width: 70px;
+	text-indent: 20px;
+	
+}
+.next-page::after {
+	content: '';
+	border: 5px solid transparent;
+	border-left-color: #3F4358;
+	height: 0;
+	right: 4px;
+	position: absolute;
+	top: 11px;
+	width: 0;
+}
+.pre-page::before {
+	content: '';
+	border: 5px solid transparent;
+	border-right-color: #3F4358;
+	height: 0;
+	left: 5px;
+	position: absolute;
+	top: 11px;
+	width: 0;
+}
+.pager span.currents {
+		-webkit-appearance: none;
+	border: 1px solid #C8CACC;
+	border-radius: 0;
+	box-shadow: 0 2px 0 #EFF0F1;
+	color: #3F4358;
+	display: inline-block;
+	height: 33px;
+	line-height: 33px;
+	margin-right: 5px;
+	vertical-align: top;
+	text-align: center;
+	width: 33px;
+	border-color: #FF7201;
+	color: #FF7201;
+}
+</style>
+</head>
+<body>
+<!--aijia容器开始-->	
+<!--aijiatop开始-->
+<header class="ui-header ui-header-positive ui-border-b">
+<i class="ui-icon-return" onClick="history.back()"></i>
+   <div class="" style="text-align:center;">
+<div class="">
+  <div class="navigation-bar__center">
+    <div class="button-bar" style="width:50%; margin:0 auto; padding-top:7px;">
+     
+  {loop $TYPE $k $v} 
+						
+      <div class="button-bar__item" data-href="{rentser('u',($k+1))}">
+        <input type="radio" name="navi-segment-a" {if check_in('_u'.($k+1).'v',$getstr)}checked{/if}>
+        <div class="button-bar__button">{$v}</div>
+      </div>{/loop}
+
+    </div>
+  </div>
+</div>
+</div>
+
+    
+    <div class="ui-youbian"><!--header区域 导航栏 区域  开始-->
+						<span class="ui-avatar-tiled" style="margin-top:6px;" onClick="location.href= '{AJ_MOB}';"> <span style="background-image:url({AJ_MOB}static2019/images/noavatar_small.gif)"></span></span>
+			</div></header>
+<!--aijiatop结束-->
+ <!--tfmain开始-->
+		
+			
+					
+									
+						<div class="list" style="margin-bottom:90px;">
+<nav id="nav" style="position:fixed; top:45px;left:0; z-index:999">
+			<div>
+				<span class="a_down">区域</span>
+				 <ol>
+				 					<li><a href="{rentser('a','')}" class="bid-list {if returnsx("a")==-1}selected{/if} ">全部</a></li>
+										
+					 							  {php $mainareas = get_mainarea($cityid)}
+									{loop $mainareas $k $v}
+									<li><a href="{rentser('a',$v[areaid],'d')}" class="{if check_in('_a'.$v[areaid].'v',$getstr)}selected{/if} ">{$v[areaname]}</a></li> {/loop}
+			  </ol>
+			</div>
+			<i class="l"></i>
+			<div>
+				<span class="a_down">建面</span>
+				<ol>
+					
+					<li><a href="{rentser('g','','h','',$nq)}" class=" {if check_in("_gv",$getstr) || check_in("_hv",$getstr) || !check_in("_g",$getstr) || !check_in("_h",$getstr)}selected{/if}">不限</a></li>
+                                    {getsearchstr('g','h','li','平米',$AJ['buyarea'],$getstr,'"selected"')}
+
+			    </ol>
+			</div>
+			<i class="l"></i>
+			<div>
+				<span class="a_down">户型</span>
+				<ol>
+				 <li><a href="{rentser('r','','','',$nq)}" class=" {if returnsx("r")==-1}selected{/if}">不限</a></li>
+								 {php $huxing = array('一室', '二室', '三室', '四室', '五室以上');}
+{loop $huxing $k $v} 
+									<li><a href="{rentser('r',($k+1))}"  class="{if check_in('_r'.($k+1).'v',$getstr)}selected{/if} ">{$v}</a></li>{/loop} 
+			    </ol>
+			</div>
+			<i class="l"></i>
+			<div>
+				<span class="a_down">类型</span>
+				<ol>
+				<li><a href="{rentser('t','')}" class=" {if returnsx("t")==-1}selected{/if}">不限</a></li>
+                                 {php $maincat = get_maincat(0,16)}
+						 {loop $maincat $k $v}
+									<li class="type-list"><a href="{rentser('t',$v[catid])}" class="type-list {if check_in('_t'.$v[catid].'v',$getstr)}selected{/if} ">{$v[catname]}</a></li>{/loop}
+
+			    </ol>
+			</div>
+			
+
+	<i class="l"></i>
+			<div>
+				<span class="a_down">排序</span>
+				<ol>
+				<li><a href="{rentser('n','')}" class="sequence-list {if returnsx("n")==-1}selected{/if}">默认排序</a></li>
+									<li><a href="{rentser('n',1)}" class="sequence-list {if returnsx("n")==1}selected{/if}">发布时间由近到远</a></li>
+                                     <li><a href="{rentser('n',4)}" class="sequence-list {if returnsx("n")==4}selected{/if}">价格由高到低</a></li>
+                                    <li><a href="{rentser('n',5)}" class="sequence-list {if returnsx("n")==5}selected{/if}">价格由低到高</a></li>
+                                    <li><a href="{rentser('n',2)}" class="sequence-list {if returnsx("n")==2}selected{/if}">建面由高到低</a></li>
+                                    <li><a href="{rentser('n',3)}" class="sequence-list {if returnsx("n")==3}selected{/if}">建面由低到高</a></li>  
+			    </ol>
+			</div>
+			
+	</nav>
+		</div>
+						
+		
+
+<div class="demo-block">
+<div class="ui-searchbar-wrap" style=" background-color:#F4F4F4;">
+    <div class="ui-searchbar ui-border-radius">
+        <i class="ui-icon-search"></i>
+        <div class="ui-searchbar-text ui-txt-tips">输入小区名称试试</div>
+        <div class="ui-searchbar-input">
+		<form action="search.php?" method="get">
+		<input name="mod" type="hidden" value="search">
+	
+<input name="kw"  value="" type="text" placeholder="输入小区名称试试" autocapitalize="off">
+</form>
+</div>
+        <i class="ui-icon-close"></i>
+    </div>
+    <button class="ui-searchbar-cancel">取消</button>
+</div>
+</div>
+<div id="components-demo" class="wp">
+
+<ul class="ul-list1-hlg">
+{if $lists}
+ {loop $lists $t}
+<li class="istradefalse" data-href="{$t[linkurl]}">
+
+<div class="txt"><h3 class="first"><a>
+<em class="e1 displaytrue">{if $t[ishot]}顶{/if}</em>
+<font style="">{$t[title]}</font>
+</a></h3> 
+
+<p class="t1">	{if $t[room]}{$t[room]}室{/if}{if $t[hall]}{$t[hall]}厅{/if}{if $t[toilet]}{$t[toilet]}卫{/if} /  {$t[houseearm]}㎡</p> 
+
+<div class="info info0"><div class="left"><span>{if $t[typeid]==0}个人{else}中介{/if}</span><span>{timetodate($t[edittime], 3)}</span></div>
+<p class="right">{if $t[price]}{$t[price]}{if $t[typeid]}元/月{else}万{/if}{else}面议{/if}</p>
+</div></div> <i class="suc displayfalse"></i> <em class="bao displayfalse"></em>
+</li>
+{/loop}
+{else}
+{template 'empty', 'chip'}
+{/if}
+</ul>
+
+
+</div>
+
+<div class="demo-block">
+
+		
+        
+         {if $pages}<div class="pager">{$pages}</div>{/if}
+         
+
+</div>
+
+
+ <!--tfmain结束-->   
+ <!--tffooter开始-->   
+<div style="height:68px;background-color:#FFFFFF;"> </div>
+<div class="ft-nv ft-nv-index">
+	<a href="{AJ_MOB}"><i style="background-position: -297px -2px;"></i>首页</a>
+	<a href="{AJ_MOB}house" class=""><i style="background-position: -297px -62px;"></i>新房</a>
+	<a id="fabubtn" class="center "><i style="background-position: -54px -78px;"></i>发布</a>
+		<a href="{AJ_MOB}rent" class=""><i style="background-position: -297px -122px;"></i>租房</a>
+		<a href="{AJ_MOB}my.php" class=""><i style="background-position: -297px -182px;"></i>我的</a>
+</div>
+ <!--tffooter结束-->  
+ 
+<div class="fabuBox">
+  <div class="fabu">
+    <ul class="clearfix">
+		   <li class="t1">
+			<a href="{AJ_MOB}member/my.php?mid=5"><img src="{AJ_MOB}static2019/images/fabu_btn_4.png" alt=""></a>
+		<p>二手房出售</p>
+	  </li>
+	   	   <li class="t2">
+			<a href="{AJ_MOB}member/my.php?mid=7"><img src="{AJ_MOB}static2019/images/fabu_btn_5.png" alt=""></a>
+		<p>有房出租</p>
+	  </li>
+	   	 
+	   	   <li class="t4">
+			<a href="{AJ_MOB}member/my.php?mid=16"><img src="{AJ_MOB}static2019/images/fabu_btn_3.png" alt=""></a>
+		<p>求购房屋</p>
+	  </li>
+	   	 
+	 
+	    
+	 </ul>
+    <div class="cancel"></div>
+  </div>
+</div>
+<div class="bg_1"></div>
+<script>
+$(function(){
+  // 发布
+  $('#fabubtn').click(function(){
+    var box = $('.fabuBox');
+    if (!box.hasClass('open')) {
+      $('body,html').bind('touchmove', function(e){e.preventDefault();})
+      box.addClass('open');
+      $('.bg_1').css({"display":"block"});
+    }else {
+      $('body,html').unbind('touchmove');
+      box.removeClass('open');
+    }
+  })
+
+  $('.fabuBox .cancel').click(function(){
+    $('.fabuBox').addClass('close');
+    setTimeout(function(){
+      $('body,html').unbind('touchmove');
+      $('.fabuBox').removeClass('open close');
+      $('.bg_1').css({"display":"none"});
+    }, 600)
+  })
+})
+</script> <!--tffooter结束-->    
+<!--aijia容器结束-->
+<script>
+	$("#nav div,#nav li").on("click",function(e){
+		$(this).toggleClass("on").siblings().filter(".on").removeClass("on");
+		e.stopPropagation()
+	});
+</script>
+<script type="text/javascript">
+$('ul li').click(function(){
+            if($(this).data('href')){
+                location.href= $(this).data('href');
+            }
+        });
+	$('.button-bar__item').click(function(){
+            if($(this).data('href')){
+                location.href= $(this).data('href');
+            }
+        });
+    $('.ui-searchbar').tap(function(){
+        $('.ui-searchbar-wrap').addClass('focus');
+        $('.ui-searchbar-input input').focus();
+    });
+    $('.ui-searchbar-cancel').tap(function(){
+        $('.ui-searchbar-wrap').removeClass('focus');
+    });
+</script>
+{template 'foottj'}
+</body>
+</html>

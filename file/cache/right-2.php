@@ -1,0 +1,1 @@
+<?php defined('IN_AIJIACMS') or exit('Access Denied'); return array (16 => array ('index' => '',),6 => array ('index' => '',),); ?>

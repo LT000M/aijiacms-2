@@ -1,0 +1,1 @@
+var DTPath = "http://localhost/aijiacms/";var DTMob = "http://localhost/aijiacms/mobile/";var SKPath = "http://localhost/aijiacms/skin/red/";var MEPath = "http://localhost/aijiacms/member/";var DTEditor = "fckeditor";var CKDomain = "";var CKPath = "/";var CKPrex = "c4s_";

@@ -1,0 +1,386 @@
+<!DOCTYPE HTML>
+<html lang="">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" /> 
+<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, viewport-fit=cover">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">     
+       <title>{if $seo_title}{$seo_title}{else}{if $head_title}{$head_title}{$AJ[seo_delimiter]}{/if}{if $city_sitename}{$city_sitename}{else}{$site_name}{/if}{/if}</title>
+{if $head_keywords}
+<meta name="keywords" content="{$head_keywords}"/>
+{/if}
+{if $head_description}
+<meta name="description" content="{$head_description}"/>
+{/if}
+        <meta name="format-detection" content="telephone=no">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0,user-scalable=no,minimal-ui">
+        <meta name="apple-mobile-web-app-capable" content="yes">
+        <meta name="apple-mobile-web-app-status-bar-style" content="black">
+		
+		<link rel="stylesheet" href="{AJ_MOB}static2019/css/aijia.css">
+	   <link rel="stylesheet" href="{AJ_MOB}static2019/css/info-mb.css">
+	  <link rel="stylesheet" href="{AJ_MOB}static2019/css/info-base.css">
+      
+	  <script src="{AJ_MOB}static2019/js/jquery-2.1.4.js" type="text/javascript"></script>
+<script src="{AJ_MOB}static2019/js/jquery-weui.js" type="text/javascript" charset="UTF-8"></script>
+ <script>var loading = false, page = 1,scrollto =0;</script>
+		<script src="{AJ_MOB}static2019/js/jweixin-1.2.0.js"></script>
+				<style>
+.aijia{width:100%;}
+.tfmain{width:100%;margin-bottom:45px;margin-top:45px;}
+.swipe{overflow:hidden;visibility:hidden;position:relative;margin:0;height:0}
+.swipe-wrap{overflow:hidden;position:relative;max-height:216px;}
+.swipe-wrap>div{float:left;width:100%;position:relative}
+.swipe-wrap img{display:block;width:100%;}
+.swipe-wrap .i{background-repeat:no-repeat;background-size:cover;background-position:center center;width:100%}
+.bullets,.bullets1{position:absolute;right:0;bottom:0;color:#fff;font-size:12px}
+.position,.position1{text-align:center}
+.position li,.position1 li{display:inline-block;width:4px;height:4px;border-radius:10px;background:rgba(255,255,255,.5);margin:0 1px}
+.position li.current,.position1 li.current{background:#42bd56;width:12px}
+.nav-list .position1 li{background:#eee;float:none;display:inline-block;width:4px;height:4px;margin:0!important;}
+.position1 li.current{background:#42bd56;width:12px}
+.bullets1{width:100%;text-align:center}
+</style>
+
+    </head>
+<body>
+<!--aijia容器开始-->	
+  <div class="aijia">
+<!--aijiatop开始-->
+<div class="aijiatop">
+<header class="ui-header ui-header-positive ui-border-b">
+<i class="ui-icon-return" onClick="history.back()"></i>
+    <h1 onClick="location.href='index.html'">{$title}</h1><div class="ui-youbian"><!--header区域 导航栏 区域  开始-->
+						<span class="ui-avatar-tiled" style="margin-top:6px;" onClick="location.href= '{AJ_MOB}my.php'"> <span style="background-image:url({AJ_MOB}static2019/images/noavatar_small.gif)"></span></span>
+			</div>
+</header>
+</div>
+<!--aijiatop结束-->
+ <!--tfmain开始-->
+<div class="tfmain" >
+ {if $quanjing} <iframe frameborder="0" style="width:100%; height:368px; vertical-align:top;" src="{$quanjing}"></iframe> 
+{else}
+ <div class="swipe cl" data-speed="5000" >
+ 
+ 
+        <div class="swipe-wrap">
+        
+      <!--{php $tags=tag("table=newhouse_xiangce&condition=status=3 and houseid=$itemid and level=1&pagesize=10&order=addtime desc&template=null");}-->
+
+                                             {if $tags}
+ {loop $tags $i $t}  
+   <div><a href=""><img src="{get_oldpic($t[thumb],1)}"></a></div>{/loop}
+   {else}
+<div><a href=""><img src="{imgurl($thumb)}"></a></div>{/if}  
+
+		 	
+		 		</div>
+        <nav class="cl bullets bullets1">
+            <ul class="position">
+			                              <!--{php $tags=tag("table=newhouse_xiangce&condition=status=3 and houseid=$itemid and level=1&pagesize=10&order=addtime desc&template=null");}-->
+ {loop $tags $i $t}  <li {if $i==0}class="current"{/if} ></li>
+ {/loop}
+			                                </ul>
+        </nav>
+        </div>
+{/if}
+<!-- 顶部导航栏 -->
+<div class="demo-block" style="padding:10px">
+<div class="ui-tab">
+    <ul class="ui-tab-nav ui-border-b">
+        <li data-href="index.html">首页
+        </li>
+		<li style="background-color:#0099FF;color:#FFFFFF"  data-href="xinxi.html" >详情</li>
+        <li data-href="huxing.html" >户型图</li>
+        <li data-href="xiangce.html" >相册</li>
+		<li style="background-color:#FF6600; color:#FFFFFF" onclick="showyuyue();">团购</li>
+    </ul>
+</div>
+</div>
+<!-- 顶部导航栏 -->
+
+<div class="demo-block" style="background-color:#FFFFFF; margin:10px 0 10px 0;">
+<section class="ui-panel ui-panel-pure ui-border-t">
+    <h3>楼盘详情</h3>
+    <ul class="ui-list ui-list-pure ui-border-tb">
+        <li class="ui-border-t">
+            <div>{$title}		<div class="ui-badge" style="background:#FF6600">{$TYPE[$typeid-1]}</div>
+      </div>
+			<p>开 发 商： {$kfs}</p>
+			<p>售楼处地址：{$address}</p>
+        </li>
+    </ul>
+</section>
+</div>
+<div class="demo-block">
+<ul class="ui-list ui-list-text ui-border-tb">
+		 <li>
+        <div class="ui-list-info">
+         <h5 class="ui-nowrap">参考均价：{if $price}<span style="color:#FF0000; font-size:24px">{$price}</span>元/㎡{else}待定{/if} </h5>
+        </div>
+		 <button class="ui-btn ui-btn-primary" onclick="showyuyue3();">
+       订阅最新通知
+    </button>
+    </li>
+	<li style="margin-top:-15px;">
+	<div class="ui-list-info">
+        <h5 class="ui-nowrap">开盘时间：{if $selltime}{$selltime}{else}待定{/if}</h5>
+		<p><h5 class="ui-nowrap">所属区域：{area_pos($areaid, ' ')}</h5>
+        </p>
+		</div>
+    </li>
+	<li class="ui-border-t" onclick="show40082();">
+        <div class="ui-avatar">
+            <span style="background-image:url({AJ_MOB}static2019/images/phoneico.png)"></span>        </div>
+        <div class="ui-list-info">
+            <h1 class="ui-nowrap ui-txt-warning" style="font-size:24px">
+			
+		{if $telephone}{$telephone}{else}热线尚未开通{/if}			
+			</h1>
+            
+			<p class="ui-txt-tips ui-txt-muted">最新政策，更多优惠详情，请致电售楼处</p>
+        </div>
+    </li>
+    </ul>
+
+</div> 
+<div class="demo-block" style="background-color:#FFFFFF; margin:10px 0 10px 0;">
+<section class="ui-panel ui-panel-pure ui-border-t">
+    <h3>基本信息</h3>
+    <ul class="ui-list ui-list-pure ui-border-tb">
+        <li class="ui-border-t">
+            <p>建筑类型：{getbox_diaoval('buildtype','checkbox',$buildtype,'newhouse_6')}</p>
+			<p>物业类型： {search_cats($catid, '6')}</p>
+			<p>产权年限： {$lp_year}年</p>
+			<p>装修标准： {getbox_diaoval('fitment','checkbox',$fitment,'newhouse_6')}</p>
+			<p>容 积 率：{$lp_volume}<span style="margin-left:15px;">绿化率：{$lp_green}%</span></p>
+			<p>建筑建面：{$lp_area}㎡ <span style="margin-left:15px;">占地建面：{if $lp_totalarea} {$lp_totalarea}㎡{/if}</span></p>
+			<p>物业公司：{$lp_company} <span style="margin-left:15px;">物业费：{$lp_costs}元/平米/月</span></p>
+			<p>规划户数：{$lp_number}户 <span style="margin-left:15px;">车位：{$lp_car}</span></p>
+			<p>交通状况：{$lp_bus}</p>
+        </li>
+		<li class="ui-border-t">
+            <h5>周边配套<br>    <span>学校：</b>{$lp_edu}<br>	<b>医疗：</b>{$lp_hospital}<br><b style="font-weight:bold">金融：</b>{$lp_bank}</span></h5>
+        </li>
+    </ul>
+</section>
+</div>
+<div class="demo-block" style="background-color:#FFFFFF; margin:10px 0 10px 0;">
+<section class="ui-panel ui-panel-pure ui-border-t">
+    <h3>销售信息</h3>
+    <ul class="ui-list ui-list-pure ui-border-tb">
+        <li class="ui-border-t">
+           
+			<p>最新开盘时间：{if $selltime}{$selltime}{else}待定{/if}</p>
+			<p>交房时间：{if $completion}{$completion}{else}待定{/if}</p>
+			<p>楼盘地址： {$address}</p>
+        </li>
+		<li class="ui-border-t">
+            <h5>{$content}</h5>
+        </li>
+    </ul>
+</section>
+</div>
+</div>
+
+ <!--tfmain结束-->     
+ <!--tffooter开始-->   
+<div style="height:10px;background-color:#FFFFFF;"> </div>
+<div class="g-user-qm">
+	<div class="loupan">
+		<!-- <div class="pic"><a href=""><img src="" alt=""></a></div> -->
+		<div class="guanzhu">
+			<a href="{AJ_MOB}" id="fav_btn">
+				<i class="fav"></i><p>首页</p>
+			</a>
+		</div>
+		<div class="con">
+			<div class="right">
+				<a onclick="show4008();"><i></i>电话咨询</a>
+				<a onclick="showyuyue4();" class="a2"><i></i>参加团购</a>
+				  				<a href="{$EXT[comment_mob]}{rewrite('index.php?mid='.$moduleid.'&itemid='.$itemid)}" class="a1 last"><i></i>在线点评</a>
+		  </div>
+			<!-- <div class="txt"> -->
+				<!-- <h3><a href="javascript:void(0);"></a></h3> -->
+				<!-- <p>售楼处咨询电话</p> -->
+			<!-- </div> -->
+		</div>
+	</div>
+</div>
+
+   <!--tffooter结束--> 
+</div>
+<!--aijia容器结束-->
+<link rel="stylesheet" href="{AJ_MOB}static2019/css/weui.css">
+<style>
+.weui-popup__modal{overflow:hidden}
+.weui-popup__modal .fixpopuper {-webkit-overflow-scrolling: touch;position: absolute;width:100%;height: 100vh;overflow: hidden;overflow-y: auto;background:#f8f8f8}
+.fix-bottom{position:fixed;left:0;width:100%;bottom:0;z-index:9;border-radius:0;padding: 15px;background: #fff;box-sizing:border-box;box-shadow: 0 0 10px #f5f5f5}
+.footer_fix{height:46px;width:100%}
+</style>
+<script>
+    function showyuyue(){
+        $('#yuyue8').popup();
+    }
+	function showyuyue2(){
+        $('#yuyue8').popup();
+    }
+	function showyuyue3(){
+        $('#yuyue8').popup();
+    }
+	function showyuyue4(){
+        $('#yuyue8').popup();
+    }
+	function show4008(){
+        $('#4008').popup();
+    }
+	function show40081(){
+        $('#4008').popup();
+    }
+	function show40082(){
+        $('#4008').popup();
+    }
+</script>
+<div id="yuyue8" class="weui-popup__container" style="z-index:999999">
+    <div class="weui-popup__overlay"></div>
+    <div class="weui-popup__modal">
+        <div class="fixpopuper">
+		<script>
+function CheckEmptyValues2()
+{
+	var tel = document.getElementById('input_tel2').value;
+	var name = document.getElementById('input_name2').value;
+	if(tel=='')
+	{
+		alert("手机号不能为空");
+		document.getElementById('input_tel2').focus();
+		return false;
+	}
+	else if(name=='')
+	{
+		alert("联系人不能为空");
+		document.getElementById('input_name2').focus();
+		return false;
+	}
+	else  
+	{
+		var re= /^1[1-9][0-9]{9}$/;
+	    if(!re.test(tel))
+		{
+			alert("手机号输入有误，请输入正确的手机号码");
+			document.getElementById('input_tel2').focus();
+			return false;
+		}
+		else
+		{
+			return true;
+		}
+	}
+}
+</script>
+			<form action="{$MODULE[1][linkurl]}api/tuan.php" onSubmit="return CheckEmptyValues2();"> 
+		 <input type="hidden" name="itemid" value="{$itemid}">
+<input type="hidden" name="title" value="{$title}">
+          <input type="hidden" name="linkurl" value="{AJ_MOB}house/{$linkurl}/xinxi.html">  
+            <div class="weui-cells__title">{$title}团购报名</div>
+			
+            <div class="weui-cell f15">
+                <div class="weui-cell__hd"><label class="weui-label">你的姓名</label></div>
+                <div class="weui-cell__bd">
+                    <input class="weui-input" placeholder="请输入你的姓名？" id="input_name2" name="truename">
+                </div>
+            </div>
+            <div class="weui-cell f15">
+                <div class="weui-cell__hd">
+                    <label class="weui-label">手机号</label>
+                </div>
+                <div class="weui-cell__bd">
+                    <input class="weui-input" type="tel" placeholder="请输入手机号码" maxlength="11" id="input_tel2" name="telephone">
+                </div>
+            </div>      
+
+			
+		<div class="weui-btn-area">
+             <button type="submit" class="weui-btn weui-btn_primary">确定提交</button>
+        </div>
+		<article class="weui-article" style="background:none;">
+            <h1 style="text-align:center;margin-bottom:0px">已有<font color="#ff0000">{get_buynum($title)}人</font>报名</h1>
+			 <p style="text-align:center" class="weui-cells__title">
+                        您的信息将被严格保密，请准确填写
+          </p>
+             <section>
+          </section>
+        </article>
+		<article class="weui-article" style="background:none;">
+					 <p style="text-align:center" class="weui-cells__title">
+                     
+                    </p>
+             <section>
+          </section>
+        </article>
+                        <div class="footer_fix"></div>
+            <div class="bottom_fix"></div>
+        </div>
+		</form> 
+        <div class="fix-bottom">
+            <a class="weui-btn weui-btn_default close-popup" href="javascript:;">取消</a>
+        </div>
+    </div>
+</div>
+
+<div id="4008" class="weui-popup__container" style="z-index:999999">
+    <div class="weui-popup__overlay"></div>
+    <div class="weui-popup__modal">
+        <div class="fixpopuper">
+		  <div class="weui-cells__title">{$title}</div>
+			
+      		<article class="weui-article" >
+		<p style="text-align:center" class="weui-cells__title">
+            	
+              </p>
+					<h1 style="text-align:center;margin-bottom:0px"><font color="#ff0000" style="font-size:28px;"> {if $telephone}{$telephone}{else}热线尚未开通{/if}</font></h1>
+        </article>
+		<div class="weui-btn-area">
+             <a class="weui-btn weui-btn_primary" onClick="location.href= 'tel: {if $telephone}{$telephone}{else}热线尚未开通{/if}'">现在拨打</a>
+        </div>
+		
+		
+	  		<p style="text-align:center" class="weui-cells__title">
+              电话接通，请说是在{$AJ[sitename]}看到的… </p>
+		<article class="weui-article" style="background:none;">
+					
+             <section>
+          </section>
+        </article>
+         <div class="footer_fix"></div>
+            <div class="bottom_fix"></div>
+        </div>
+        <div class="fix-bottom">
+            <a class="weui-btn weui-btn_default close-popup" href="javascript:;">取消</a>
+        </div>
+    </div>
+</div>
+
+<div id="wechat-mask"><div id="wechat-guider"></div></div>
+<div class="mask none"></div><script>
+ $('ul li').click(function(){
+            if($(this).data('href')){
+                location.href= $(this).data('href');
+            }
+        });
+</script>
+
+<script src="{AJ_MOB}static2019/js/fastclick.js" type="text/javascript"></script>
+<script src="{AJ_MOB}static2019/js/slider.js" type="text/javascript"></script>
+<script src="{AJ_MOB}static2019/js/swiper.min.js" type="text/javascript"></script>
+<script src="{AJ_MOB}static2019/js/md5.min.js" type="text/javascript"></script>
+<script src="{AJ_MOB}static2019/js/app.js" type="text/javascript"></script>
+
+
+
+
+{template 'foottj'}
+
+
+
+</body>
+</html>

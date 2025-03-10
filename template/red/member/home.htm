@@ -1,0 +1,253 @@
+{template 'header', 'member'}
+<div class="menu">
+<table cellpadding="0" cellspacing="0">
+<tr>
+
+<td class="tab" id="Tab0"><a href="javascript:Tab(0);"><span>导航菜单</span></a></td>
+<td class="tab" id="Tab1"><a href="javascript:Tab(1);"><span>侧边栏</span></a></td>
+<td class="tab" id="Tab2"><a href="javascript:Tab(2);"><span>首页设置</span></a></td>
+<td class="tab" id="Tab3"><a href="javascript:Tab(3);"><span>其他设置</span></a></td>
+</tr>
+</table>
+</div>
+<form method="post" action="?" id="dform" onsubmit="return Dcheck();">
+<input type="hidden" name="tab" id="tab" value="{$tab}"/>
+
+
+<div id="Tabs0" style="display:;">
+<table cellpadding="10" cellspacing="1" class="tb">
+<tr style="display:{if $MG[home_menu]}{else}none{/if};">
+<td class="tl">菜单设置<br/><br/><br/><a href="?action=reset&item=menu" class="t" onclick="return confirm('确定要恢复菜单设置为默认吗？');">恢复默认</a></td>
+<td class="tr">
+<table cellpadding="3" cellspacing="3">
+<tr align="center">
+<td width="50">显示</td>
+<td width="50">排序</td>
+<td width="100">名称</td>
+<td width="50">分页</td>
+</tr>
+{loop $HMENU $k $v}
+{if strpos($menu_f, ','.$menu_file[$k].',') !== false}
+<tr align="center">
+<td>
+<input type="checkbox" name="menu_show_tmp" value="{$k}"{if $menu_show[$k]} checked{/if} onclick="Dd('menu_show_{$k}').value=this.checked ? 1 : 0;"/><input type="hidden" name="setting[menu_show][{$k}]" value="{$menu_show[$k]}" id="menu_show_{$k}"/>
+</td>
+<td><input type="text" name="setting[menu_order][{$k}]" size="3" value="{$menu_order[$k]}"/></td>
+<td><input type="text" name="setting[menu_name][{$k}]" size="20" value="{$menu_name[$k]}"/></td>
+<td><input type="text" name="setting[menu_num][{$k}]" size="3" value="{$menu_num[$k]}"/>
+<input type="hidden" name="setting[menu_file][{$k}]" value="{$menu_file[$k]}"/></td>
+</tr>
+{else}
+<tr style="display:none;">
+<td>
+<input type="checkbox" name="menu_show_tmp" value="{$k}"/><input type="hidden" name="setting[menu_show][{$k}]" value="0" id="menu_show_{$k}"/>
+</td>
+<td><input type="text" name="setting[menu_order][{$k}]" size="3" value="{$menu_order[$k]}"/></td>
+<td><input type="text" name="setting[menu_name][{$k}]" size="20" value="{$menu_name[$k]}"/></td>
+<td><input type="text" name="setting[menu_num][{$k}]" size="3" value="{$menu_num[$k]}"/>
+<input type="hidden" name="setting[menu_file][{$k}]" value="{$menu_file[$k]}"/></td>
+</tr>
+{/if}
+{/loop}
+</table>
+</td>
+</tr>
+</table>
+</div>
+
+<div id="Tabs1" style="display:none;">
+<table cellpadding="10" cellspacing="1" class="tb">
+<tr>
+<td class="tl">侧栏宽度</td>
+<td class="tr"><input type="text" size="5" name="setting[side_width]" value="{$side_width}"/> px</td>
+</tr>
+<tr>
+<td class="tl">侧栏位置</td>
+<td class="tr">
+<table>
+<tr align="center">
+<td width="100"><img src="image/side_l.gif" title="侧栏在左" onclick="Dd('s_p_0').checked=true;"/></td>
+<td width="100"><img src="image/side_r.gif" title="侧栏在右" onclick="Dd('s_p_1').checked=true;"/></td>
+</tr>
+<tr align="center">
+<td><input type="radio" name="setting[side_pos]" value="0" id="s_p_0"{if $side_pos==0} checked{/if}/><label for="s_p_0">侧栏在左</label></td>
+<td><input type="radio" name="setting[side_pos]" value="1" id="s_p_1"{if $side_pos==1} checked{/if}/><label for="s_p_1">侧栏在右</label></td>
+</tr>
+</table>
+</td>
+</tr>
+<tr style="display:{if $MG[home_side]}{else}none{/if};">
+<td class="tl">侧栏设置<br/><br/><br/><a href="?action=reset&item=side" class="t" onclick="return confirm('确定要恢复侧栏位置为默认吗？');">恢复默认</a></td>
+<td class="tr">
+<table cellpadding="3" cellspacing="3">
+<tr align="center">
+<td width="50">显示</td>
+<td width="50">排序</td>
+<td width="100">名称</td>
+<td width="50">数量</td>
+</tr>
+{loop $HSIDE $k $v}
+{if strpos($side_f, ','.$side_file[$k].',') !== false}
+<tr align="center">
+<td>
+<input type="checkbox" name="side_show_tmp" value="{$k}"{if $side_show[$k]} checked{/if} onclick="Dd('side_show_{$k}').value=this.checked ? 1 : 0;"/><input type="hidden" name="setting[side_show][{$k}]" value="{$side_show[$k]}" id="side_show_{$k}"/></td>
+<td><input type="text" name="setting[side_order][{$k}]" size="3" value="{$side_order[$k]}"/></td>
+<td><input type="text" name="setting[side_name][{$k}]" size="20" value="{$side_name[$k]}"/></td>
+<td><input type="text" name="setting[side_num][{$k}]" size="3" value="{$side_num[$k]}"/>
+<input type="hidden" name="setting[side_file][{$k}]" size="3" value="{$side_file[$k]}"/></td>
+</tr>
+{else}
+<tr style="display:none;">
+<td>
+<input type="checkbox" name="side_show_tmp" value="{$k}"/><input type="hidden" name="setting[side_show][{$k}]" value="0" id="side_show_{$k}"/></td>
+<td><input type="text" name="setting[side_order][{$k}]" size="3" value="{$side_order[$k]}"/></td>
+<td><input type="text" name="setting[side_name][{$k}]" size="20" value="{$side_name[$k]}"/></td>
+<td><input type="text" name="setting[side_num][{$k}]" size="3" value="{$side_num[$k]}"/>
+<input type="hidden" name="setting[side_file][{$k}]" size="3" value="{$side_file[$k]}"/></td>
+</tr>
+{/if}
+{/loop}
+</table>
+</td>
+</tr>
+</table>
+</div>
+
+<div id="Tabs2" style="display:none;">
+<table cellpadding="10" cellspacing="1" class="tb"><tr style="display:{if $MG[home_main]}{else}none{/if};">
+<td class="tl">首页主栏设置<br/><br/><br/><a href="?action=reset&item=main" class="t" onclick="return confirm('确定要恢复首页主栏为默认吗？');">恢复默认</a></td>
+<td class="tr">
+<table cellpadding="3" cellspacing="3">
+<tr align="center">
+<td width="50">显示</td>
+<td width="50">排序</td>
+<td width="100">名称</td>
+<td width="50">数量</td>
+</tr>
+{loop $HMAIN $k $v}
+{if strpos($main_f, ','.$main_file[$k].',') !== false}
+<tr align="center">
+<td>
+<input type="checkbox" name="main_show_tmp" value="{$k}"{if $main_show[$k]} checked{/if} onclick="Dd('main_show_{$k}').value=this.checked ? 1 : 0;"/><input type="hidden" name="setting[main_show][{$k}]" value="{$main_show[$k]}" id="main_show_{$k}"/></td>
+<td><input type="text" name="setting[main_order][{$k}]" size="3" value="{$main_order[$k]}"/></td>
+<td><input type="text" name="setting[main_name][{$k}]" size="20" value="{$main_name[$k]}"/></td>
+<td><input type="text" name="setting[main_num][{$k}]" size="3" value="{$main_num[$k]}"/>
+<input type="hidden" name="setting[main_file][{$k}]" size="3" value="{$main_file[$k]}"/></td>
+</tr>
+{else}
+<tr style="display:none;">
+<td>
+<input type="checkbox" name="main_show_tmp" value="{$k}"/><input type="hidden" name="setting[main_show][{$k}]" value="0" id="main_show_{$k}"/></td>
+<td><input type="text" name="setting[main_order][{$k}]" size="3" value="{$main_order[$k]}"/></td>
+<td><input type="text" name="setting[main_name][{$k}]" size="20" value="{$main_name[$k]}"/></td>
+<td><input type="text" name="setting[main_num][{$k}]" size="3" value="{$main_num[$k]}"/>
+<input type="hidden" name="setting[main_file][{$k}]" size="3" value="{$main_file[$k]}"/></td>
+</tr>
+{/if}
+{/loop}
+</table>
+</td>
+</tr>
+<tr>
+<td class="tl">公司简介显示</td>
+<td class="tr"><input type="text" size="5" name="setting[intro_length]" value="{$intro_length}"/> 字符</td>
+</tr>
+</table>
+</div>
+
+<div id="Tabs3" style="display:none;">
+<table cellpadding="10" cellspacing="1" class="tb">
+<tr>
+<td class="tl">首页SEO标题</td>
+<td class="tr f_gray"><input type="text" size="60" name="setting[seo_title]" value="{$seo_title}"/>&nbsp; 留空则显示公司名称</td>
+</tr>
+<tr>
+<td class="tl">网站关键词</td>
+<td class="tr"><input type="text" size="80" name="setting[seo_keywords]" value="{$seo_keywords}"/></td>
+</tr>
+<tr>
+<td class="tl">网站描述</td>
+<td class="tr"><input type="text" size="80" name="setting[seo_description]" value="{$seo_description}"/></td>
+</tr>
+
+</table>
+</div>
+<table cellpadding="10" cellspacing="1" class="tb">
+{if $need_captcha}
+<tr>
+<td class="tl"><span class="f_red">*</span> 验证码</td>
+<td class="tr">{template 'captcha', 'chip'} <span id="dcaptcha" class="f_red"></span></td>
+</tr>
+{/if}
+<tr>
+<td class="tl">&nbsp;</td>
+<td class="tr" height="30"><input type="submit" name="submit" value=" 保存设置 " class="btn_g"/>&nbsp;&nbsp;&nbsp;&nbsp;<input type="button" value=" 清空设置 " class="btn" onclick="if(confirm('确定要清空设置吗？商铺所有设置将被清空')){Go('?action=reset');}else{return false;}"/></td>
+</tr>
+</table>
+</form>
+{load('clear.js')}
+<script type="text/javascript">
+s('homepage');
+{if $tab}
+Tab({$tab});
+{else}
+m('Tab0');
+{/if}
+{if $api_stats && $MG[stats]}
+function stats_type(type) {
+	var stats_types = [{loop $api_stats $k $v}{if $k},{/if}'{$v}'{/loop}];
+	var stats_pass = 0;
+	for(var i = 0; i < stats_types.length; i++) {
+		if(type == stats_types[i]) {
+			stats_pass = 1;
+			break;
+		}
+	}
+	if(stats_pass == 0) type = stats_types[0];
+	for(var i = 0; i < stats_types.length; i++) {
+		if(type == stats_types[i]) {
+			Ds('stats_post_'+stats_types[i]);
+		} else {
+			Dh('stats_post_'+stats_types[i]);
+		}
+	}
+	$('#stats_type_s').val(type);
+}
+stats_type('{$stats_type}');
+{/if}
+{if $api_kf && $MG[kf]}
+function kf_type(type) {
+	var kf_types = [{loop $api_kf $k $v}{if $k},{/if}'{$v}'{/loop}];
+	var kf_pass = 0;
+	for(var i = 0; i < kf_types.length; i++) {
+		if(type == kf_types[i]) {
+			kf_pass = 1;
+			break;
+		}
+	}
+	if(kf_pass == 0) type = kf_types[0];
+	for(var i = 0; i < kf_types.length; i++) {
+		if(type == kf_types[i]) {
+			Ds('kf_post_'+kf_types[i]);
+		} else {
+			Dh('kf_post_'+kf_types[i]);
+		}
+		$('#kf_type_s').val(type);
+	}
+}
+kf_type('{$kf_type}');
+{/if}
+</script>
+<script type="text/javascript">
+function Dcheck() {
+{if $need_captcha}
+	f = 'captcha';
+	if($('#c'+f).html().indexOf('ok.png') == -1) {
+		Dmsg('请填写正确的验证码', f);
+		return false;
+	}
+{/if}
+	return true;
+}
+</script>
+{template 'footer', 'member'}

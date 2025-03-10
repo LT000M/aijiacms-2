@@ -1,0 +1,360 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, minimal-ui">
+    <title>{if $seo_title}{$seo_title}{else}{if $head_title}{$head_title}{$AJ[seo_delimiter]}{/if}{if $city_sitename}{$city_sitename}{else}{$site_name}{/if}{/if}</title>
+{if $head_keywords}
+<meta name="keywords" content="{$head_keywords}"/>
+{/if}
+{if $head_description}
+<meta name="description" content="{$head_description}"/>
+{/if}
+    <meta name="applicable-device" content="mobile">
+   
+    <script src="{AJ_MOB}static2020/js/jquery.min.js"></script>
+    <script src="{AJ_MOB}static2020/js/font-size.js"></script>
+    <link rel="stylesheet" href="{AJ_MOB}static2020/css/base.css?t=1606958269">
+    <link rel="stylesheet" href="{AJ_MOB}static2020/css/style.css?t=1606958269">
+    <style>
+        .footer-js img{width:auto;}
+    </style>
+</head>
+<body>
+
+
+<link rel="stylesheet" href="{AJ_MOB}static2020/css/swiper.min.css">
+<style>
+    .pic-show img{width:auto;}
+</style>
+<script src="{AJ_MOB}static2020/js/swiper.min.js"></script>
+
+<div class="main house-detail">
+    <!-- 返回键 S-->
+    <a href="{AJ_MOB}house" title="{$title}" class="detail-go-back"></a>
+    <!-- 返回键 E-->
+    <!-- 房子图片滚动展示 S-->
+    <div class="scroll-roomPic-box">
+        <div class="swiper-container">
+            <div class="swiper-wrapper">
+            
+            
+              <!--{php $tags=tag("table=newhouse_xiangce&condition=status=3 and houseid=$itemid&pagesize=20&order=addtime desc&template=null");}-->
+
+                                             {if $tags}
+ {loop $tags $i $t}  
+   <div class="swiper-slide"><a href="xiangce.html"><img src="{get_oldpic($t[thumb],1)}"></a></div>{/loop}
+   {else}
+<div class="swiper-slide"><a href=""><img src="{imgurl($thumb)}"></a></div>{/if} 
+                             
+                            </div>
+            <div class="swiper-pagination"></div>
+        </div>
+        <div class="photo-count">
+            <a href="xiangce.html">共{get_xiangcenum($itemid,'')}张</a>
+        </div>
+    </div>
+    <!-- 房子图片滚动展示 E-->
+    <div class="house-base">
+        <h1>{$title}</h1>
+        <div class="tags">
+            <span>{$TYPE[$typeids]}</span>
+          
+             <!--{php $ts=explode(",",$lpts);}-->
+																 
+     {loop $ts $ks $vs}
+        <span> {getbox_diaoval('lpts','checkbox',$vs,'newhouse_6')}</span>
+     {/loop}  
+                 </div>
+        <ul class="base-attr">
+            <li><label>均价</label>{if $price}<span class="price">{$price}<em>元/㎡</em></span>{else}待定{/if} <a class="calculator" href="{AJ_MOB}tool.php">房贷计算器</a></li>
+            <li><label>开盘</label>{$selltime}</li>
+            <li class="address"><label>地址</label>{$address} <a href="#map" class="iconfont">&#xe616;</a></li>
+        </ul>
+    </div>
+    <ul class="house-notice">
+        <li><span class="dialog" data-id="{$itemid}" data-model="house" data-type="3" data-hname="{$title}" data-username="{$_username}"   data-uri="{AJ_MOB}subscribe.php">变价通知</span></li>
+        <li><span class="dialog" data-id="{$itemid}" data-model="house" data-type="4" data-hname="{$title}" data-username="{$_username}"  data-uri="{AJ_MOB}subscribe.php">开盘通知</span></li>
+    </ul>
+    <div class="house-telphone">
+        <a href="tel:{if $telephone}{$telephone}{else}热线尚未开通{/if}	">
+            <div class="phone">
+                <h2>{if $telephone}{$telephone}{else}热线尚未开通{/if}	</h2>
+                <p>安全通话隐藏真实号码，致电售楼处了解优惠</p>
+            </div>
+            <div class="phone-icon"></div>
+        </a>
+    </div>
+    <div class="fix-nav">
+        <div class="swiper-container">
+            <div class="swiper-wrapper">
+                <div class="swiper-slide active">优惠</div>
+                <div class="swiper-slide">动态</div>
+                <div class="swiper-slide">详情</div>
+                <div class="swiper-slide">户型</div>
+                <div class="swiper-slide">问答</div>
+                <div class="swiper-slide">配套</div>
+                <div class="swiper-slide">点评</div>
+            </div>
+        </div>
+    </div>
+    <div class="house-content">
+     {if $ishb}
+        <div class="house-row floor">
+            <h2>楼盘优惠</h2>
+            <div class="discount">
+                <p class="desc">抢购红包最高{$hongbao}元 <small>活动截止：{timetodate($hbtime,3)}</small>&nbsp;&nbsp;<small>{$hbnum}人已领取</small></p>          </div>
+            <div class="recive">
+                <button type="button" class="dialog" data-id="{$itemid}" data-money="{$hongbao}" data-hname="{$title}" data-username="{$_username}" data-model="house" data-type="1" data-uri="{AJ_MOB}subscribe.php">领取优惠</button>
+            </div>
+        </div>
+        {/if}
+        {if $zhiye}
+                <div class="house-row">
+            <h2>置业顾问 <span class="tips">全程免费 | 专业服务 | 区域解读 | 户型分析</span></h2>
+            <div class="consult-lists">
+                               
+                              {loop $zhiyes $i $t}  
+                               
+                                <dl>
+                    <dt><img src="{useravatar($t, 'large')}" alt="{userinfos($t)}"></dt>
+                    <dd class="name">{userinfos($t)} <a href="tel:{userinfot($t,'mobile')}" class="telphone fr">电话咨询</a></dd>
+                    <dd class="looked"></dd>
+                </dl>
+                           {/loop}
+                            </div>
+        </div>
+        {/if}
+                <div class="house-row floor">
+            <h2>楼盘动态 <a href="dongtai.html" class="more">更多</a></h2>
+            <ul class="news-lists">
+             <!--{php $tags=tag("table=article_8&condition=status=3 and houseid=$itemid&pagesize=2&fields=itemid,title,thumb,linkurl,introduce,edittime&order=edittime desc&template=null");}-->
+                    {loop $tags $t}
+                                <li>
+                    <a href="{AJ_MOB}news/{$t[linkurl]}" title="{$t[title]}">
+                        <div class="title">{$t[title]}</div>
+                        <div class="description">
+                          {dsubstr($t[introduce], 40, '...')}                 </div>
+                    </a>
+                </li>
+                             {/loop}
+                           </ul>
+        </div>
+        <div class="house-row floor">
+            <h2>楼盘详细</h2>
+            <ul class="attr-lists">
+              
+                <li><label>开盘时间：</label>{if $selltime}{$selltime}{else}待定{/if}</li>
+                <li><label>楼盘类型：</label><span> {search_cats($catid, '6')}</span></li>
+                <li><label>开&nbsp;&nbsp;发&nbsp;&nbsp;商：</label>{$kfs}</li>
+                <li><label>建筑类型：</label>{getbox_diaoval('buildtype','checkbox',$buildtype,'newhouse_6')}</li>
+                <li><label>产权年限：</label>{$lp_year}年</li>
+                <li><label>交房时间：</label>{if $completion}{$completion}{else}待定{/if}</li>
+                <li><label>规划户数：</label>{$lp_number}</li>
+                <li><label>物业公司：</label>{$lp_company} </li>
+                <li><label>物&nbsp;&nbsp;业&nbsp;&nbsp;费：</label>{$lp_costs}</li>
+                <li><label>规划建面：</label>{$lp_totalarea}平米</li>
+                <li><label>建筑建面：</label>{$lp_area}平米</li>
+                <li><label>车位情况：</label>{$lp_car}</li>
+                <li><label>绿&nbsp;&nbsp;化&nbsp;&nbsp;率：</label>{$lp_green}</li>
+                <li><label>容&nbsp;&nbsp;积&nbsp;&nbsp;率：</label>{$lp_volume}</li>
+                <li><label>装修情况：</label>{getbox_diaoval('fitment','checkbox',$fitment,'newhouse_6')}</li>
+            </ul>
+        </div>
+               
+                <div class="house-row floor">
+            <h2>主力户型 <a href="huxing.html" class="more">更多</a></h2>
+            <div class="room-lists">
+              <!--{php $tag=tag("table=newhouse_huxing&condition=status=3 and houseid=$itemid&pagesize=50&order=addtime desc&template=null");}-->
+ {loop $tag $i $t}
+                                <div class="room-row">
+                    <div class="pic-box">
+                        <a href="hxinfo-{$t[itemid]}.html">
+                         <img src="{$t[thumb]}"  alt="{$t[bh]}">
+                        </a>
+                    </div>
+                    <div class="room-price">
+                        <h3> <a href="hxinfo-{$t[itemid]}.html">{$t[title]}</a></h3>
+                        <p>{$t[shi]}室{$t[ting]}厅{$t[wei]}卫	   {if $t[mj]}建面{$t[mj]}㎡{/if}</p>
+                        <p>参考单价：<span class="total_price">{$t[dj]}万</span></p>
+                      
+                        <button type="button" class="dialog" data-id="{$itemid}" data-model="house"  data-hname="{$title}" data-username="{$_username}"  data-type="2" data-uri="{AJ_MOB}subscribe.php">申请算价</button>
+                    </div>
+                </div>
+                             {/loop}
+                            </div>
+        </div>
+             {if $video}   <div class="house-row">
+            <h2>视频看房</h2>
+            <div class="video-content">
+          
+             {DC::player($video, '100%', 250, 0, 0, ' playsinline -webkit-playsinline webkit-playsinline')}
+               
+            </div>
+        </div>{/if}
+        {if $quanjing}
+          <div class="house-row">
+            <h2>全景</h2>
+            <div class="video-content">
+             <iframe frameborder="0" style="width:100%; height:308px; vertical-align:top;" src="{$quanjing}"></iframe> 
+            </div>
+            </div>
+        {/if}
+                <div class="house-row floor">
+            <h2>楼盘问答 <a href="wenfang.html" class="more">更多</a></h2>
+            <ul class="question-lists">
+            <!--{php $tags=tag("table=wenfang&condition=status=3 and item_id=$itemid&pagesize=3&order=addtime desc&template=null");}-->
+							 {loop $tags $i $t}  
+                                <li>
+                    <div class="ask">
+                        <a href="wenfang.html">
+                           {$t[content]} </a>
+                    </div>
+                                        <div class="answer">{$t[reply]}</div>
+                    <div class="num-time">
+                        <a class="num"></a>
+                        <span class="time">{timetodate($v[addtime], 3)}</span>
+                    </div>
+                                    </li>
+                               {/loop}
+                            </ul>
+        </div>
+        <div class="house-row floor">
+            <h2>周边配套</h2>
+            <div class="mapshow-per-pos">
+    <div class="mapshow-box" id="map">
+    </div>
+</div>
+<script type="text/javascript" src="https://api.map.baidu.com/api?v=2.0&ak={$AJ[map_key]}"></script>
+<script src="{AJ_MOB}static2020/js/map-detail.js"></script>
+<script>
+    var lng = "{$x}",lat = "{$y}",price = "{$price}";
+    BMapApplication.lng      = lng;
+    BMapApplication.lat      = lat;
+    BMapApplication.title    = "{$title}";
+    BMapApplication.price = price*1 > 0 ? "约{$price}元/㎡" : "待定";
+    BMapApplication.init({"lng" : lng, "lat" : lat, "mapContainerId" : "map"});
+    BMapApplication.getCurMap();
+</script>
+        </div> {if $data}
+                <div class="house-row">
+            <h2>楼栋信息</h2>
+             <div style="width:100%;overflow: auto;">
+                <div style="margin-top:1rem;position:relative;height:300px;transform: matrix(0.5, 0, 0, 0.6, -60, -70);">
+                    <div id="house-ban" class="pic-show" style="position:absolute;left:0;top:0;">
+                        <img src="{$sand_pic}" alt="楼栋信息"  height="570">
+                                            
+                                    {loop $data $i $v}   
+                            
+                        
+                                                <a href="javascript:;" data-position="{$v[point]}" data-bid="{$v[id]}" class="ban status-{if $v[sale]=="预售"}30{elseif $v[sale]=="在售"}31{else}32{/if}" title="{$v[title]} ({$v[sale]})"  {php $point=explode(",",$v[point]);}
+ style="transform: scale(1.2);position:absolute;left: {$point[0]}px; top: {$point[1]}px;"><i></i>{$v[title]} </a> {/loop}
+          
+                                            
+                                            </div>
+                </div>
+            </div>
+            <a href="build.html" class="more-house-btn">点击查看楼栋详情</a>
+        </div>
+         {/if}
+                <div class="house-row">
+            <h2>楼盘介绍</h2>
+            <div class="house-info">
+                <p class="intro">{$content}</p><ul class="news-window mt12 list-paddingleft-2" style="outline: none; margin: 10px 0px; padding: 0px; border: 1px solid rgb(230, 230, 230);"></ul><p><br/></p>            </div>
+        </div>
+        <div class="house-row floor">
+            <h2>楼盘点评 <a href="{$EXT[comment_mob]}{rewrite('index.php?mid='.$moduleid.'&itemid='.$itemid)}" class="more">更多</a></h2>
+            <div class="comment-lists">
+             <!--{php $tags=tag("table=comment&condition=status=3 and item_id=$itemid&pagesize=2&fields=itemid,quotation,reply,content,addtime,username&order=addtime desc&template=null");}-->
+                    {loop $tags $v}
+                                <div class="comment-row">
+                    <div class="comment-img">
+                        <img src="{useravatar($v[username], 'large')}" alt="{$v[username]}">
+                    </div>
+                    <div class="comment-content">
+                        <div class="comment-top">
+                            <span class="nickname">{if $v[username]}{$v[username]}{else}网友{/if}</span>
+                          {timetodate($v[addtime], 3)} </div>
+                      
+                        <div class="comment-con">{if $v[quotation]}{$v[quotation]}{else}{nl2br($v[content])}{/if} </div>
+                    </div>
+                </div>
+                {/loop}
+                                <a id="comment-btn" href="{$EXT[comment_mob]}{rewrite('index.php?mid='.$moduleid.'&itemid='.$itemid)}" class="but03">我要点评</a>
+            </div>
+        </div>
+        <!-- 热门楼盘 S-->
+        <div class="house-row mb192">
+            <h2>为您推荐 <a href="{AJ_MOB}house" class="more">更多</a></h2>
+            <div class="house-show-box">
+                <ul>
+                              <!--{php $tags=tag("moduleid=6&condition=status=3 and isnew=1&areaid=$cityid&length=42&pagesize=2&order=hits desc&template=null");}-->
+ {loop $tags $i $t}           <li>
+                        <div class="pic">
+                            <a href="{$t[linkurl]}" title="{$t[title]}">
+                                <img src="{imgurl($t[thumb])}"  alt="{$t[title]}">
+                            </a>
+                        </div>
+                        <div class="intro-text">
+                            <h4 class="saleing">
+                                <a href="{$t[linkurl]}" title="{$t[title]}">
+                                    {$t[title]}                                </a>
+                            </h4>
+                            <p class="price"><span>{area_pos($t[areaid], '')}</span><span class="price-num">{if $t[price]}<em>{$t[price]}</em>元/㎡{else}待定{/if}</span></p>
+                           
+                            <p class="good">
+                               <!--{php $ts=explode(",",$t[lpts]);}-->
+																 
+     {loop $ts $ks $vs}
+        <em> {getbox_diaoval('lpts','checkbox',$vs,'newhouse_6')}</em>
+     {/loop}  
+                                                   </p>
+                        </div>
+                    </li>
+                                {/loop}
+                                    </ul>
+            </div>
+
+        </div>
+        <!-- 热门楼盘 E-->
+    </div>
+</div>
+{if $ishb}
+<div class="redpacket">
+    <span class="dialog" data-id="{$itemid}" data-model="house" data-type="5"  data-money="{$hongbao}" data-hname="{$title}" data-username="{$_username}" data-uri="{AJ_MOB}subscribe.php">
+        <img src="{AJ_MOB}static2020/images/redpacket.png" alt="">
+    </span>
+</div>
+{/if}
+<!-- 导航行为 S-->
+<div class="nav-act">
+    <a href="/" class="homepage">首页</a>
+    <a href="{$EXT[comment_mob]}{rewrite('index.php?mid='.$moduleid.'&itemid='.$itemid)}" class="consult">点评</a>
+    <a href="tel:{$telephone}" class="call-tel">拨打电话</a>
+    <a href="javascript:;" class="order-l-house dialog" data-id="{$itemid}" data-model="house"  data-hname="{$title}" data-username="{$_username}"  data-type="0" data-uri="{AJ_MOB}subscribe.php">预约看房</a>
+</div>
+<!-- 导航行为 E-->
+<script src="{AJ_MOB}static2020/js/layer.js"></script>
+<script src="{AJ_MOB}static2020/js/subscribe.js"></script>
+<script src="{AJ_MOB}static2020/js/swiper.min.js"></script>
+<script src="{AJ_MOB}static2020/js/scroll_nav.js"></script>
+<script>
+    $(window).scroll(function(e){
+        var t = $(window).scrollTop(),
+                top = $(".fix-nav"),
+                h = $(".house-content").offset().top;
+        if(t > h) {
+            top.show();
+        }else {
+            top.hide();
+        }
+    });
+    var mySwiper = new Swiper('.swiper-container', {
+        slidesPerView:'auto'
+    });
+    $(".fix-nav").scrollFloor({"oNav":"fix-nav","floor":"floor","navLi":".swiper-slide","follow":true,"reduceHeight":-10});
+</script>
+
+{template 'foottj'}
+</body>
+</html>

@@ -1,0 +1,694 @@
+<!DOCTYPE HTML>
+<html>
+
+	<head>
+		<meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+		<meta name="renderer" content="webkit|ie-comp|ie-stand">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no"/>
+		<meta http-equiv="Cache-Control" content="no-siteapp"/>
+		<link rel="stylesheet" type="text/css" href="<?php echo $MODULE[1][linkurl];?>keyuan/static/h-ui/css/H-ui.min.css" />
+		<link rel="stylesheet" type="text/css" href="<?php echo $MODULE[1][linkurl];?>keyuan/static/h-ui.admin/css/H-ui.admin.css"/>
+		<link rel="stylesheet" type="text/css" href="<?php echo $MODULE[1][linkurl];?>keyuan/lib/Hui-iconfont/1.0.8/iconfont.css"/>
+		<link rel="stylesheet" type="text/css" href="<?php echo $MODULE[1][linkurl];?>keyuan/static/h-ui.admin/css/style.css"/>
+		<block name="css"></block>
+	</head>
+	<body>
+		<block name="content"></block>
+		<script type="text/javascript" src="<?php echo $MODULE[1][linkurl];?>keyuan/lib/jquery/1.9.1/jquery.min.js"></script> 
+		<script type="text/javascript" src="<?php echo $MODULE[1][linkurl];?>keyuan/lib/layer/2.4/layer.js"></script>
+		<script type="text/javascript" src="<?php echo $MODULE[1][linkurl];?>keyuan/static/h-ui/js/H-ui.min.js"></script>
+		<script type="text/javascript" src="<?php echo $MODULE[1][linkurl];?>keyuan/static/h-ui.admin/js/H-ui.admin.js"></script>
+		<script>
+			$(document).ready(function(){
+				$(document).bind("contextmenu",function(e){
+					return false;
+				});
+			});
+		</script>
+		<block name="js"></block>
+<block name="css">
+	<link rel="stylesheet" type="text/css" href="<?php echo $MODULE[1][linkurl];?>keyuan/lib/layui/css/layui.css">
+	<style type="text/css">
+		.kyrz{
+			height: 600px;
+			overflow-y: auto;
+			overflow-x: hidden;
+		}
+		.kyrz::-webkit-scrollbar:vertical{
+			width: 10px;
+			background-color: #F5F5F5;
+		}
+		.kyrz::-webkit-scrollbar-track:vertical{
+			-webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
+			background-color: #F5F5F5;
+			border-radius: 10px;
+		}
+		.kyrz::-webkit-scrollbar-thumb:vertical{
+			border-radius: 10px;
+			background-image: -webkit-gradient(
+				linear,
+				left bottom,
+				left top,
+				color-stop(0.44, rgb(122,153,217)),
+				color-stop(0.72, rgb(73,125,189)),
+				color-stop(0.86, rgb(28,58,148))
+			);
+		}
+		{$lscxb}
+        {$lscxfxk}
+	</style>
+</block>
+<block name="content"  id="tab_demos">
+	<div class="col-xs-12 col-sm-12 col-md-12">
+		<div class="row cl" style="margin: 10px 0px;">
+			<div>&nbsp;</div>
+			<div class="formControls col-xs-1 col-sm-1 col-md-1"></div>
+			<div class="formControls col-xs-10 col-sm-10 col-md-10">
+				<eq name="keyuan['isdel']" value="2">
+					
+					
+						<div style="width: 72px;float: left;">
+							<a href="javascript:;" onClick="layer_show('变更状态','?moduleid=<?php echo $moduleid;?>&file=keyuan&action=bgkyzt&kyid=<?php echo $id;?>&kybh=<?php echo $xqbianhao;?>','480','300')" style="text-decoration:none;">
+								<i class="Hui-iconfont" style="font-size:50px; line-height:10px;">
+									&#xe6df;
+								</i>
+								<strong><p style="color:black;">变更状态</p></strong>
+							</a>
+						</div>
+					
+					
+				
+						<div style="width: 72px;float: left;">
+							<a href="javascript:;" onClick="layer_show('写跟进','?moduleid=<?php echo $moduleid;?>&file=keyuan&action=genjin&kyid=<?php echo $id;?>&kybh=<?php echo $xqbianhao;?>','950')" style="text-decoration:none">
+								<i class="Hui-iconfont" style="font-size:50px;line-height:10px;">
+									&#xe70c;
+								</i>
+								<strong><p style="color:black;">&nbsp;写跟进</p></strong>
+							</a>
+						</div>
+					
+						<div style="width: 72px;float: left;">
+							<a href="javascript:;" onClick="layer_show('写带看','?moduleid=<?php echo $moduleid;?>&file=keyuan&action=daikan&kyid=<?php echo $id;?>&kybh=<?php echo $xqbianhao;?>','800')" style="text-decoration:none">
+								<i class="Hui-iconfont" style="font-size:50px;line-height:10px;">
+									&#xe6a9;
+								</i>
+								<strong><p style="color:black;">&nbsp;写带看</p></strong>
+							</a>
+						</div>
+					
+						<div style="width: 72px;float: left;">
+							<a href="javascript:;" onClick="layer_show('写提醒','?moduleid=<?php echo $moduleid;?>&file=keyuan&action=tixing&kyid=<?php echo $id;?>&kybh=<?php echo $xqbianhao;?>','800')" style="text-decoration:none">
+								<i class="Hui-iconfont" style="font-size:50px;line-height:10px;">
+									&#xe6c5;
+								</i>
+								<strong><p style="color:black;">写提醒</p></strong>
+							</a>
+						</div>
+				
+					
+				</eq>
+				
+				<div style="width: 72px;float: left;">
+					<a title="客源列表" href="?moduleid=<?php echo $moduleid;?>&file=keyuan"  style="text-decoration:none">
+						<i class="Hui-iconfont" style="font-size:50px;line-height:10px;">
+							&#xe68f;
+						</i>
+						<strong><p style="color:black;">&nbsp;&nbsp;客源列表</p></strong>
+					</a>
+				</div>
+			</div>
+		</div>
+  
+		<div id="tab_demo" class="HuiTab">
+			<div class="row cl">
+				<div class="formControls col-xs-1 col-sm-1 col-md-1"></div>
+				<div id="tab_demo" class="formControls col-xs-10 col-sm-10 col-md-10">
+					<div class="tabBar clearfix">
+						<span style="font-size:15px">基本信息</span>
+						<span style="font-size:15px">跟进记录</span>
+						<span style="font-size:15px">带看记录</span>
+						<span style="font-size:15px">提醒记录</span>
+						<span style="font-size:15px">预约记录</span>
+						<span style="font-size:15px">用户轨迹</span>
+						
+					</div>
+				</div>
+			</div>
+			<div class="tabCon">
+				<div>&nbsp;</div>
+				<div class="row cl">
+					<div class="formControls col-xs-1 col-sm-1 col-md-1"></div>
+					<div id="tab_demo" class="formControls col-xs-10 col-sm-10 col-md-10">
+						<div style="float: left;width:69.5%;">
+							<table border="1">
+								
+								
+								<tr>
+									<th style="color:black;font-size:15px">
+										<div style="line-height:10PX;">&nbsp;</div>
+										<div class="formControls col-xs-12 col-sm-12 col-md-12">
+											<div style="margin:0;padding:0;" class="formControls col-xs-2 col-sm-2 col-md-2">
+												<span style="float: right;color: #757575">
+													客户姓名：
+												</span>
+											</div>
+											<div style="margin:0;padding:0;" class="formControls col-xs-4 col-sm-4 col-md-4">
+												<?php echo $khxingming;?>
+											</div>
+											<div style="margin:0;padding:0;" class="formControls col-xs-2 col-sm-2 col-md-2">
+												<span style="float: right;color: #757575">
+													客户等级：
+												</span>
+											</div>
+											<div style="margin:0;padding:0;" class="formControls col-xs-4 col-sm-4 col-md-4">
+												<?php echo $kydengji;?>
+											</div>
+										</div>
+									
+									
+										<div style="line-height:5PX;">&nbsp;</div>
+										<div class="formControls col-xs-12 col-sm-12 col-md-12">
+											
+											<div style="margin:0;padding:0;" class="formControls col-xs-2 col-sm-2 col-md-2">
+												<span style="float: right;color: #757575">
+													客户来源：
+												</span>
+											</div>
+											<div style="margin:0;padding:0;" class="formControls col-xs-4 col-sm-4 col-md-4">
+												<?php echo $khlaiyuan;?>
+											</div>
+										</div>
+										<div style="line-height:5PX;">&nbsp;</div>
+										<div class="formControls col-xs-12 col-sm-12 col-md-12">
+											<div style="margin:0;padding:0;" class="formControls col-xs-2 col-sm-2 col-md-2">
+												<span style="float: right;color: #757575">
+													沟通阶段：
+												</span>
+											</div>
+											<div style="margin:0;padding:0;" class="formControls col-xs-4 col-sm-4 col-md-4">
+												<?php echo $gtjieduan;?>
+											</div>
+											<div style="margin:0;padding:0;" class="formControls col-xs-2 col-sm-2 col-md-2">
+												<span style="float: right;color: #757575">
+													消费理念：
+												</span>
+											</div>
+											<div style="margin:0;padding:0;" class="formControls col-xs-4 col-sm-4 col-md-4">
+												<?php echo $xflinian;?>
+										</div>
+										<div style="line-height:5PX;">&nbsp;</div>
+										
+										<div class="formControls col-xs-12 col-sm-12 col-md-12">
+											<div style="margin:0;padding:0;" class="formControls col-xs-2 col-sm-2 col-md-2">
+												<span style="float: right;color: #757575">
+													国籍：
+												</span>
+											</div>
+											<div style="margin:0;padding:0;" class="formControls col-xs-4 col-sm-4 col-md-4">
+												<?php echo $guoji;?>
+											</div>
+											<div style="margin:0;padding:0;" class="formControls col-xs-2 col-sm-2 col-md-2">
+												<span style="float: right;color: #757575">
+													民族：
+												</span>
+											</div>
+											<div style="margin:0;padding:0;" class="formControls col-xs-4 col-sm-4 col-md-4">
+												<?php echo $minzu;?>
+											</div>
+										</div>
+										<div style="line-height:5PX;">&nbsp;</div>
+										<div class="formControls col-xs-12 col-sm-12 col-md-12">
+											<div style="margin:0;padding:0;" class="formControls col-xs-2 col-sm-2 col-md-2">
+												<span style="float: right;color: #757575">
+													证件号码：
+												</span>
+											</div>
+											<div style="margin:0;padding:0;" class="formControls col-xs-4 col-sm-4 col-md-4">
+												<?php echo $sfzheng;?>
+											</div>
+											<div style="margin:0;padding:0;" class="formControls col-xs-2 col-sm-2 col-md-2">
+												<span style="float: right;color: #757575">
+													邮箱：
+												</span>
+											</div>
+											<div style="margin:0;padding:0;" class="formControls col-xs-4 col-sm-4 col-md-4">
+												<?php echo $youxiang;?>
+											</div>
+										</div>
+										<div style="line-height:5PX;">&nbsp;</div>
+										<div class="formControls col-xs-12 col-sm-12 col-md-12">
+											<div style="margin:0;padding:0;" class="formControls col-xs-2 col-sm-2 col-md-2">
+												<span style="float: right;color: #757575">
+													QQ：
+												</span>
+											</div>
+											<div style="margin:0;padding:0;" class="formControls col-xs-4 col-sm-4 col-md-4">
+												<?php echo $qqhao;?>
+											</div>
+											<div style="margin:0;padding:0;" class="formControls col-xs-2 col-sm-2 col-md-2">
+												<span style="float: right;color: #757575">
+													微信：
+												</span>
+											</div>
+											<div style="margin:0;padding:0;" class="formControls col-xs-4 col-sm-4 col-md-4">
+												<?php echo $weixin;?>
+											</div>
+										</div>
+										<div style="line-height:5PX;">&nbsp;</div>
+										<div class="formControls col-xs-12 col-sm-12 col-md-12">
+											<div style="margin:0;padding:0;" class="formControls col-xs-2 col-sm-2 col-md-2">
+												<span style="float: right;color: #757575">
+													交通工具：
+												</span>
+											</div>
+											<div style="margin:0;padding:0;" class="formControls col-xs-4 col-sm-4 col-md-4">
+												<?php echo $jtgongju;?>
+											</div>
+											<div style="margin:0;padding:0;" class="formControls col-xs-2 col-sm-2 col-md-2">
+												<span style="float: right;color: #757575">
+													车型：
+												</span>
+											</div>
+											<div style="margin:0;padding:0;" class="formControls col-xs-4 col-sm-4 col-md-4">
+												<?php echo $chexing;?>
+											</div>
+										</div>
+										<div style="line-height:10PX;">&nbsp;</div>
+									</th>
+								</tr>
+								<tr>
+									<th>
+										<div style="line-height:10PX;">&nbsp;</div>
+									
+										
+										<div class="formControls col-xs-12 col-sm-12 col-md-12">
+											<div style="margin:0;padding:0;" class="formControls col-xs-3 col-sm-2 col-md-1">
+												<span style="float: right;color: #757575">
+													备注：
+												</span>
+											</div>
+											<div style="margin:0;padding:0;" class="formControls col-xs-9 col-sm-10 col-md-11">
+												<?php echo $beizhu;?>
+											</div>
+										</div>
+										<div style="line-height:10PX;">&nbsp;</div>
+									</th>
+								</tr>
+							</table>
+						</div>
+						<div style="float:right;width:30%;">
+							<div>
+								<table border="1">
+									<tr>
+										<th style="font-size:14px;color: black">
+											
+		
+		
+										</th>
+									</tr>
+								</table>
+							</div>
+						
+						
+							<div style="line-height:5PX;">&nbsp;</div>
+							<div>
+								<table border="1">
+									<tr>
+										<th style="color: #757575;font-size:15px">
+											&nbsp;相关经纪人
+										</th>
+										<th style="color:black;font-size:15px">
+											&nbsp;&nbsp;&nbsp;<?php echo $dkusername;?>
+											<div style="line-height:5PX;"></div>
+											
+										</th>
+										<th></th>
+									</tr>
+									
+									<tr>
+										<th style="width:80px;color:black;font-size:15px">
+											<div align="right" style="color: #757575;">
+												经纪人：&nbsp;
+											</div>
+										</th>
+										<th style="color:black;font-size:15px">
+											&nbsp;&nbsp;&nbsp;<?php echo $weihuren;?>
+											<div style="line-height:5PX;"></div>
+											
+										</th>
+										
+									</tr>
+									
+								</table>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div>&nbsp;</div>
+			</div>
+			
+			<div class="tabCon">
+				<div>&nbsp;</div>
+				<div class="formControls col-xs-1 col-sm-1 col-md-1"></div>
+				<div class="formControls col-xs-10 col-sm-10 col-md-10 kyrz">
+					<table class="table table-border table-bordered table-hover table-bg">
+						<thead>
+							<tr>
+								<th scope="col" colspan="12" style="color:black;font-size:16px">
+									<strong>跟进记录</strong>
+								</th>
+							</tr>
+							<tr class="text-c">
+								<th style="color:black;font-size:15px">
+									<strong>跟进时间</strong>
+								</th>
+								<th style="color:black;font-size:15px">
+									<strong>跟进方式</strong>
+								</th>
+								<th style="color:black;font-size:15px">
+									<strong>跟进人</strong>
+								</th>
+								<th style="color:black;font-size:15px">
+									<strong>客源编号</strong>
+								</th>
+								<th style="color:black;font-size:15px">
+									<strong>跟进内容</strong>
+								</th>
+								<th style="color:black;font-size:15px">
+									<strong>状态</strong>
+								</th>
+							
+							</tr>
+						</thead>
+						<tbody>
+							<?php foreach($kygenjin as $k=>$v) {?>
+								<tr class="text-c">
+									<td style="font-size:12px;color:black;">
+										<strong>
+											<?php echo $v['gjshijian'];?>
+										</strong>
+									</td>
+									<td style="font-size:12px;color:black;">
+										<strong>
+										<?php echo $v['genjinfs'];?>	
+										</strong>
+									</td>
+									<td style="font-size:12px;color:black;">
+										<strong>
+											<?php echo get_truename($v['gjuid']);?>
+										</strong>
+									</td>
+									<td style="font-size:12px;color:black;">
+										<strong>
+											<?php echo $v['kybh'];?>
+										</strong>
+									</td>
+									<td style="font-size:12px;color:black;">
+										<strong><?php echo $v['gjneirong'];?></strong>
+									</td>
+									<td style="font-size:12px;color:black;">
+                                    <?php echo $v['zhuangtai'] ? '有效' : '待审核';?>
+									
+									</td>
+									
+									
+								</tr>
+							<?php } ?>
+						</tbody>
+					</table>
+				</div>
+			</div>
+			<div class="tabCon">
+				<div>&nbsp;</div>
+				<div class="formControls col-xs-1 col-sm-1 col-md-1"></div>
+				<div class="formControls col-xs-10 col-sm-10 col-md-10 kyrz">
+					<table class="table table-border table-bordered table-hover table-bg">
+						<thead>
+							<tr>
+								<th scope="col" colspan="12" style="color:black;font-size:16px">
+									<strong>带看记录</strong>
+								</th>
+							</tr>
+							<tr class="text-c">
+								<th style="color:black;font-size:15px">
+									<strong>带看时间</strong>
+								</th>
+								<th style="color:black;font-size:15px">
+									<strong>带看房源</strong>
+								</th>
+								<th style="color:black;font-size:15px">
+									<strong>带看人</strong>
+								</th>
+								
+								<th style="color:black;font-size:15px">
+									<strong>带看内容</strong>
+								</th>
+							</tr>
+						</thead>
+						<tbody>
+							<?php foreach($kydaikan as $k=>$v) {?>
+								<tr class="text-c">
+									<td style="font-size:12px;color:black;">
+										<strong>
+										<?php echo $v['dkshijian'];?>
+										</strong>
+									</td>
+									<td style="font-size:12px;color:black;">
+										<strong>	<?php echo $v['fybh'];?></strong>
+									</td>
+									<td style="font-size:12px;color:black;">
+										<strong>
+												<?php echo get_truename($v['dkuid']);?>
+										</strong>
+									</td>
+									
+									<td style="font-size:12px;color:black;">
+										<strong><?php echo $v['kehupj'];?></strong>
+									</td>
+								</tr>
+							<?php } ?>
+						</tbody>
+					</table>
+				</div>
+			</div>
+			<div class="tabCon">
+				<div>&nbsp;</div>
+				<div class="formControls col-xs-1 col-sm-1 col-md-1"></div>
+				<div class="formControls col-xs-10 col-sm-10 col-md-10 kyrz">
+					<table class="table table-border table-bordered table-hover table-bg">
+						<thead>
+							<tr>
+								<th scope="col" colspan="12" style="color:black;font-size:16px">
+									<strong>提醒记录</strong>
+								</th>
+							</tr>
+							<tr class="text-c">
+								<th style="color:black;font-size:15px">
+									<strong>提醒时间</strong>
+								</th>
+								<th style="color:black;font-size:15px">
+									<strong>提醒人</strong>
+								</th>
+								
+								<th style="color:black;font-size:15px">
+									<strong>提醒内容</strong>
+								</th>
+							</tr>
+						</thead>
+						<tbody>
+								<?php foreach($kytixing as $k=>$v) {?>
+								<tr class="text-c">
+									<td style="font-size:12px;color:black;">
+										<strong>
+											<?php echo $v['txshijian'];?>
+										</strong>
+									</td>
+									<td style="font-size:12px;color:black;">
+										<strong>
+												<?php echo get_truename($v['txuid']);?>
+										</strong>
+									</td>
+									
+									<td style="font-size:12px;color:black;">
+										<strong>	<?php echo $v['txneirong'];?></strong>
+									</td>
+								</tr>
+						<?php } ?>
+						</tbody>
+					</table>
+				</div>
+			</div>
+			
+				<div class="tabCon">
+				<div>&nbsp;</div>
+				<div class="formControls col-xs-1 col-sm-1 col-md-1"></div>
+				<div class="formControls col-xs-10 col-sm-10 col-md-10 kyrz">
+					<table class="table table-border table-bordered table-hover table-bg">
+						<thead>
+							<tr>
+								<th scope="col" colspan="12" style="color:black;font-size:16px">
+									<strong>预约订单</strong>
+								</th>
+							</tr>
+							<tr class="text-c">
+								<th style="color:black;font-size:15px">
+									<strong>房源</strong>
+								</th>
+								<th style="color:black;font-size:15px">
+									<strong>内容</strong>
+								</th>
+								
+								<th style="color:black;font-size:15px">
+									<strong>提交时间</strong>
+								</th>
+							</tr>
+						</thead>
+						<tbody>
+								<?php foreach($yyue as $k=>$v) {?>
+								<tr class="text-c">
+									<td style="font-size:12px;color:black;">
+										<strong>
+											<?php echo $v['title'];?>
+										</strong>
+									</td>
+									<td style="font-size:12px;color:black;">
+										<strong>
+												<?php echo $v['content'];?>
+										</strong>
+									</td>
+									
+									<td style="font-size:12px;color:black;">
+										<strong>	<?php echo timetodate($v['addtime'], 6);?></strong>
+									</td>
+								</tr>
+						<?php } ?>
+						</tbody>
+					</table>
+				</div>
+			</div>
+			<div class="tabCon">
+				<div>&nbsp;</div>
+				<div class="formControls col-xs-1 col-sm-1 col-md-1"></div>
+				<div class="formControls col-xs-10 col-sm-10 col-md-10 kyrz">
+					<table class="table table-border table-bordered table-hover table-bg">
+						<thead>
+							<tr>
+								<th scope="col" colspan="12" style="color:black;font-size:16px">
+									<strong>用户轨迹</strong>
+								</th>
+							</tr>
+							<tr class="text-c">
+								<th style="color:black;font-size:15px">
+									<strong>网址</strong>
+								</th>
+								<th style="color:black;font-size:15px">
+									<strong>来源</strong>
+								</th>
+								
+								<th style="color:black;font-size:15px">
+									<strong>浏览时间</strong>
+								</th>
+							</tr>
+						</thead>
+						<tbody>
+								<?php foreach($browse_record as $k=>$v) {?>
+								<tr class="text-c">
+									<td style="font-size:12px;color:black;">
+										<strong>
+											<a href="<?php echo $MODULE[$v['mid']][linkurl].$v['itemid'];?>"><?php echo $v['url'];?></a>
+										</strong>
+									</td>
+									<td style="font-size:12px;color:black;">
+										<strong>
+												 <?php echo $v['pc']==1 ? '电脑' : $v['pc'];?>
+										</strong>
+									</td>
+									
+									<td style="font-size:12px;color:black;">
+										<strong>	<?php echo timetodate($v['addtime'], 6);?></strong>
+									</td>
+								</tr>
+						<?php } ?>
+						</tbody>
+					</table>
+				</div>
+			</div>
+		
+		</div>
+	</div>
+</block>
+<block name="js">
+	<script src="<?php echo $MODULE[1][linkurl];?>keyuan/lib/layui/layui.js" charset="utf-8"></script>
+	<script type="text/javascript">
+		jQuery.Huitab =function(tabBar,tabCon,class_name,tabEvent,i){
+			var $tab_menu=$(tabBar);
+			//初始化操作
+			$tab_menu.removeClass(class_name);
+			$(tabBar).eq(i).addClass(class_name);
+			$(tabCon).hide();
+			$(tabCon).eq(i).show();
+			$tab_menu.bind(tabEvent,function(){
+				$tab_menu.removeClass(class_name);
+				$(this).addClass(class_name);
+				var index=$tab_menu.index(this);
+				$(tabCon).hide();
+				$(tabCon).eq(index).show()
+			})
+		}
+		$(function(){
+			$.Huitab("#tab_demo .tabBar span","#tab_demo .tabCon","current","click","0")
+		});
+		layui.use(['form'], function(){
+			var form = layui.form();
+			form.on('submit(demo1)', function(data){
+				$.ajax({
+					url:'',
+					type:"get",
+					data:data.field,
+					dataType:"json",
+					success:function(data){
+						if (data.status==1) {
+							$("#fypplb tr").remove();
+							layer.msg(data.info);
+							var ppfy = data.data;
+							for (var i = 0; i < ppfy.length; i++) {
+								var tzxq = ppfy[i]['bianhao'];
+								if (ppfy[i]['xqqxpb']==1) {
+									tzxq='<a title="房源详情" onclick="creatIframe(\'?id='+<?php echo $id;?>+'\',\''+ppfy[i]['bianhao']+'\')" href="javascript:;" style="text-decoration:none;color:red;">'+
+											ppfy[i]['bianhao']+
+										'</a>';
+								}
+								var tr = '<tr class="text-c" style="font-size:12px;color:black;">'+
+									'<td>'+
+										'<strong>'+tzxq+'</strong>'+
+									'</td>'+
+									'<td>'+
+										'<strong>'+ppfy[i]['ygmingcheng']+'</strong>'+
+									'</td>'+
+									'<td>'+
+										'<strong>'+ppfy[i]['dianhua']+'</strong>'+
+									'</td>'+
+									'<td>'+
+										'<strong>'+ppfy[i]['bmming']+'</strong>'+
+									'</td>'+
+									'<td>'+
+										'<strong>'+ppfy[i]['xiaoqum']+'</strong>'+
+									'</td>'+
+									'<td>'+
+										'<strong>'+ppfy[i]['fyzt']+'</strong>'+
+									'</td>'+
+								'</tr>';
+								$("#fypplb").append(tr);
+							}
+						}else{
+							layer.msg(data.info,{anim: 6});//错误提示
+						}
+					},
+				});
+				return false;
+			});
+		});
+	</script>
+	
+</block>

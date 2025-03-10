@@ -1,0 +1,249 @@
+
+<!DOCTYPE HTML>
+<html lang="">
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" /> 
+		        
+		<title>{if $seo_title}{$seo_title}{else}{if $head_title}{$head_title}{$AJ[seo_delimiter]}{/if}{if $city_sitename}{$city_sitename}{else}{$site_name}{/if}{/if}</title>
+{if $head_keywords}
+<meta name="keywords" content="{$head_keywords}"/>
+{/if}
+{if $head_description}
+<meta name="description" content="{$head_description}"/>
+{/if}
+		        <meta name="author" content="aijia" />
+        <meta name="format-detection" content="telephone=no">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0,user-scalable=no,minimal-ui">
+        <meta name="apple-mobile-web-app-capable" content="yes">
+        <meta name="apple-mobile-web-app-status-bar-style" content="black">
+	 <link rel="stylesheet" href="{AJ_MOB}static2019/css/aijia.css">
+<link rel="stylesheet" href="{AJ_MOB}static2019/css/info-mb.css">
+ <link rel="stylesheet" type="text/css" href="{AJ_MOB}static2019/css/post.css"/>
+
+	<script src="{AJ_MOB}static2019/js/zepto.min.js"></script>
+     <script src="{AJ_MOB}static2019/js/aijiacom.js"></script>
+ <script src="{AJ_MOB}static2019/js/jweixin-1.2.0.js"></script>
+	<style>
+	.aijia{width:100%;}
+.tfmain{width:100%;}
+
+#daohang{overflow:scroll;background-color:#FFFFFF;position:fixed;top:45px;left:0; z-index:999}
+.ft-nv a:visited, a:active{color:#666;}
+
+/* 分页样式 */
+.pager span {
+	-webkit-appearance: none;
+	
+	border-radius: 0;
+	box-shadow: 0 2px 0 #EFF0F1;
+	
+	display: inline-block;
+	height: 33px;
+	line-height: 33px;
+	
+	vertical-align: top;
+	text-align: center;
+	width: 33px;
+	border-color: #FF7201;
+	
+}
+.pager span.next-page {
+	position: relative;
+	text-align: left;
+	width: 70px;
+	margin-right: 0;
+	text-indent: 10px;
+}
+.pager span.pre-page {
+		position: relative;
+	text-align: left;
+	width: 70px;
+	text-indent: 20px;
+	
+}
+.next-page::after {
+	content: '';
+	border: 5px solid transparent;
+	border-left-color: #3F4358;
+	height: 0;
+	right: 4px;
+	position: absolute;
+	top: 11px;
+	width: 0;
+}
+.pre-page::before {
+	content: '';
+	border: 5px solid transparent;
+	border-right-color: #3F4358;
+	height: 0;
+	left: 5px;
+	position: absolute;
+	top: 11px;
+	width: 0;
+}
+.pager span.currents {
+		-webkit-appearance: none;
+	border: 1px solid #C8CACC;
+	border-radius: 0;
+	box-shadow: 0 2px 0 #EFF0F1;
+	color: #3F4358;
+	display: inline-block;
+	height: 33px;
+	line-height: 33px;
+	margin-right: 5px;
+	vertical-align: top;
+	text-align: center;
+	width: 33px;
+	border-color: #FF7201;
+	color: #FF7201;
+}
+</style>
+</head>
+<body>
+<!--aijia容器开始-->	
+<!--aijiatop开始-->
+<header class="ui-header ui-header-positive ui-border-b">
+<i class="ui-icon-return" onClick="history.back()"></i>
+    <h1>{if $city_sitename}{$city_sitename}{else}{$site_name}{/if}资讯</h1><div class="ui-youbian"><!--header区域 导航栏 区域  开始-->
+						<span class="ui-avatar-tiled" style="margin-top:6px;" onClick="location.href= '{AJ_MOB}';"> <span style="background-image:url({AJ_MOB}static2019/images/noavatar_small.gif)"></span></span>
+			</div></header>
+<!--aijiatop结束-->
+ <!--tfmain开始-->
+		
+			
+<div class="ui-tab" id="daohang">
+    <ul class="ui-tab-nav ui-border-b" style="background-color:#FFFFFF;">
+    
+      {php $maincat = get_maincat(0,8)}
+        {loop $maincat $k $v}
+                  
+                        
+	<li {if $catid==$v[catid]}class="current"{/if} data-href="{$v[linkurl]}">{$v[catname]}</li>{/loop}
+	      
+    </ul>
+	
+</div>
+		
+	
+<div class="demo-block" id="liebiao" style="margin-top:90px;">
+ <ul class="ui-list ui-list-text ui-border-tb" >
+ {loop $lists $t}
+ <li class="ui-border-t" data-href="{$t[linkurl]}">
+		{if $t[thumb]}<div class="ui-list-img">
+			<span style="background-image:url({imgurl($t[thumb])})"></span>
+		</div>{/if}
+		<div class="ui-list-info">{$t[title]}<span style="float:right; font-size:12px">{$t[date]}</span>
+		</div>   
+</li>  
+	
+	{/loop}
+	
+	  </ul> 
+</div>
+		
+<!--列表分页开始--> 
+<!--分页开始--> 
+
+<div class="ui-tab" id="pages">
+    {if $pages}<div class="pager">{$pages}</div>{/if}
+</div>
+   <script>
+        $('#pages ul li').click(function(){
+            location.href= $(this).data('href');
+        });		
+        </script> 
+<!--分页结束--> <!--列表分页结束--> 
+ <!--内容滚动结束-->	
+</div>
+
+
+
+ <!--tfmain结束-->   
+ <!--tffooter开始-->   
+<div style="height:68px;background-color:#FFFFFF;"> </div>
+<div class="ft-nv ft-nv-index">
+	<a href="{AJ_MOB}"><i style="background-position: -297px -2px;"></i>首页</a>
+	<a href="{AJ_MOB}house" class=""><i style="background-position: -297px -62px;"></i>新房</a>
+	<a id="fabubtn" class="center "><i style="background-position: -54px -78px;"></i>发布</a>
+		<a href="{AJ_MOB}sale" class=""><i style="background-position: -297px -122px;"></i>二手房</a>
+		<a href="{AJ_MOB}my.php" class=""><i style="background-position: -297px -182px;"></i>我的</a>
+</div>
+ <!--tffooter结束-->  
+ 
+<div class="fabuBox">
+  <div class="fabu">
+    <ul class="clearfix">
+		   <li class="t1">
+			<a href="{AJ_MOB}member/my.php?mid=5"><img src="{AJ_MOB}static2019/images/fabu_btn_4.png" alt=""></a>
+		<p>二手房出售</p>
+	  </li>
+	   	   <li class="t2">
+			<a href="{AJ_MOB}member/my.php?mid=7"><img src="{AJ_MOB}static2019/images/fabu_btn_5.png" alt=""></a>
+		<p>有房出租</p>
+	  </li>
+	   	 
+	   	   <li class="t4">
+			<a href="{AJ_MOB}member/my.php?mid=16"><img src="{AJ_MOB}static2019/images/fabu_btn_3.png" alt=""></a>
+		<p>求购房屋</p>
+	  </li>
+	   	 
+	 
+	    
+	 </ul>
+    <div class="cancel"></div>
+  </div>
+</div>
+<div class="bg_1"></div>
+<script>
+$(function(){
+  // 发布
+  $('#fabubtn').click(function(){
+    var box = $('.fabuBox');
+    if (!box.hasClass('open')) {
+      $('body,html').bind('touchmove', function(e){e.preventDefault();})
+      box.addClass('open');
+      $('.bg_1').css({"display":"block"});
+    }else {
+      $('body,html').unbind('touchmove');
+      box.removeClass('open');
+    }
+  })
+
+  $('.fabuBox .cancel').click(function(){
+    $('.fabuBox').addClass('close');
+    setTimeout(function(){
+      $('body,html').unbind('touchmove');
+      $('.fabuBox').removeClass('open close');
+      $('.bg_1').css({"display":"none"});
+    }, 600)
+  })
+})
+</script> <!--tffooter结束-->    
+<!--aijia容器结束-->
+<script>
+$('#foot ul li').click(function(){
+            location.href= $(this).data('href');
+        });
+        $('#daohang ul li').click(function(){
+            location.href= $(this).data('href');
+        });
+		$('#liebiao ul li').click(function(){
+		     if($(this).data('href')){
+                location.href= $(this).data('href');
+            }
+        });
+		$('#btlb ul li').click(function(){
+            location.href= $(this).data('href');
+        });
+		$('#inhflb ul li').click(function(){
+            location.href= $(this).data('href');
+        });
+        //$('.ui-header .ui-btn').click(function(){
+         //   location.href= 'index.html';
+       // });
+		
+        </script>
+
+{template 'foottj'}
+</body>
+</html>

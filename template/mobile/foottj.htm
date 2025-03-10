@@ -1,0 +1,55 @@
+<div style="display: none">
+{$AJ[wapcount]}
+</div>
+  <script src="https://res.wx.qq.com/open/js/jweixin-1.2.0.js"></script>
+<script>
+    document.write("<script src='{$MODULE[1][linkurl]}api/accessToken/signPackage.php?originUrl=" + window.location.href + "' type='text/javascript'><\/script>");
+</script>
+<script>
+    var wxData = {
+        "imgUrl" : '{imgurl($thumb)}',
+        "link"   : window.location.href,
+        "title"  : '{if $seo_title}{$seo_title}{else}{if $head_title}{$head_title}{$AJ[seo_delimiter]}{/if}{if $city_sitename}{$city_sitename}{else}{$site_name}{/if}{/if}{$title}',
+        "desc"   : '{$introduce}'
+    };
+    wx.config({
+        debug: false,
+        appId: signPackage.appId,
+        timestamp: parseInt(signPackage.timestamp),
+        nonceStr: signPackage.nonceStr,
+        signature: signPackage.signature,
+        jsApiList: [
+            'onMenuShareTimeline',
+            'onMenuShareAppMessage'
+        ]
+    });
+    wx.ready(function () {
+        wx.onMenuShareTimeline({
+            title: wxData.title,
+            link: wxData.link,
+            imgUrl: wxData.imgUrl,
+            success: function () {
+            }
+        });
+        wx.onMenuShareAppMessage({
+            title: wxData.title,
+            desc: wxData.desc,
+            link: wxData.link,
+            imgUrl: wxData.imgUrl,
+            type: 'link',
+            dataUrl: '',
+            success: function () {
+            }
+        });
+    });
+</script>
+<script type="text/javascript">
+{if $aijiacms_task}
+show_task('{$aijiacms_task}', {$AJ[stats]});
+
+{else}
+
+{php include AJ_ROOT.'/api/task.inc.php';}
+{/if}
+
+</script>

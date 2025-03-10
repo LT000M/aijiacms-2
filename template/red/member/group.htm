@@ -1,0 +1,78 @@
+{template 'header', $module}
+<script type="text/javascript">c(2);var errimg = '{AJ_SKIN}image/nopic60.gif';</script>
+<div class="menu">
+<table cellpadding="0" cellspacing="0">
+<tr>
+<td class="tab" id="action"><a href="?action=index"><span>收到的团购信息</span></a></td>
+<td class="tab" id="action_order"><a href="?action=order"><span>我的团购信息</span></a></td>
+
+</tr>
+</table>
+</div>
+
+{if $action == 'order'}
+<!--[团购订单，我是买家]-->
+
+
+<div class="bd">
+
+{loop $lists $k $v}
+<table cellpadding="6" cellspacing="0" class="tb">
+<tr bgcolor="#F2F2F2" align="center">
+<td height="22">订单号</td>
+<td width="60">信息</td>
+<td width="60">用户名</td>
+<td width="120">姓名</td>
+<td width="100">电话号码</td>
+<td width="120">时间</td>
+</tr>
+<tr align="center">
+<td width="70">{$v[itemid]}</td>
+<td  valign="top" class="f_gray lh18">
+<a href="{$v[linkurl]}" target="_blank" class="t">{$v[title]}</a></td>
+<td width="60">{$v[buyer]}</td>
+<td width="60">{$v[buyer_name]}</td>
+<td width="120">{$v[buyer_mobile]}</td>
+<td width="100">{$v[addtime]}</td>
+
+</tr>
+</table>
+<br/>
+{/loop}
+</div>
+<div class="pages">{$pages}</div>
+<script type="text/javascript">s('group');m('action_order');</script>
+{else}
+<!--[我收到的订单，我是卖家]-->
+
+
+<div class="bd">
+
+{loop $lists $k $v}
+<table cellpadding="6" cellspacing="0" class="tb">
+<tr bgcolor="#F2F2F2" align="center">
+<td height="22">订单号</td>
+<td width="60">信息</td>
+<td width="60">用户名</td>
+<td width="120">姓名</td>
+<td width="100">电话号码</td>
+<td width="120">时间</td>
+</tr>
+<tr align="center">
+<td width="70">{$v[itemid]}</td>
+<td  valign="top" class="f_gray lh18">
+<a href="{$v[linkurl]}" target="_blank" class="t">{$v[title]}</a></td>
+<td width="60">{$v[buyer]}</td>
+<td width="60">{$v[buyer_name]}</td>
+<td width="120">{$v[buyer_mobile]}</td>
+<td width="120">{$v[addtime]}</td>
+
+</tr>
+</table>
+<br/>
+{/loop}
+</div>
+<div class="pages">{$pages}</div>
+<script type="text/javascript">s('group');m('action');</script>
+{/if}
+{template 'footer', $module}

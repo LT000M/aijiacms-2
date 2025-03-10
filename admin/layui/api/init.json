@@ -1,0 +1,841 @@
+{
+  "clearInfo": {
+    "clearUrl": "admin/layui/api/clear.json"
+  },
+  "homeInfo": {
+    "title": "首页",
+    "icon": "fa fa-home",
+    "href": "?action=main"
+  },
+  "logoInfo": {
+    "title": "Aijiacms",
+    "image": "admin/layui/images/logo.png",
+    "href": ""
+  },
+  "menuInfo": {
+    "currency": {
+		
+      "title": "系统维护",
+      "icon": "fa fa-address-book",
+      "child": [
+        {
+              "title": "网站设置",
+              "href": "?file=setting",
+              "icon": "fa fa-tachometer",
+              "target": "_self"
+            },
+            {
+              "title": "模块管理",
+              "href": "?file=module",
+              "icon": "fa fa-window-maximize",
+              "target": "_self"
+            },
+            {
+              "title": "更新数据",
+              "href": "?file=html",
+              "icon": "fa fa-refresh",
+              "target": "_self"
+            },
+            {
+              "title": "分类管理",
+              "href": "?file=cate",
+              "icon": "fa fa-reorder",
+              "target": "_self"
+            },
+            {
+              "title": "地区管理",
+              "href": "?file=area",
+              "icon": "fa fa-file-text",
+              "target": "_self"
+            },
+            {
+              "title": "城市分站",
+              "href": "?file=city",
+              "icon": "fa fa-snowflake-o",
+              "target": "_self"
+            },
+            {
+              "title": "管理员设置",
+              "href": "?file=admin",
+              "icon": "fa fa-certificate",
+              "target": "_self"
+            },
+        
+        {
+          "title": "系统工具",
+          "href": "",
+          "icon": "fa fa-building",
+          "target": "",
+          "child": [
+            {
+              "title": "信息统计",
+              "href": "?file=count",
+              "icon": "fa fa-calendar",
+              "target": "_self"
+            },
+            {
+              "title": "数据维护",
+              "href": "?file=database",
+              "icon": "fa fa-database",
+              "target": "_self"
+            },
+            {
+              "title": "文件维护",
+              "href": "?file=patch",
+              "icon": "fa fa-file",
+              "target": "_self"
+            },
+            {
+              "title": "标签模板",
+              "href": "?file=template",
+              "icon": "fa fa-file-text-o",
+              "target": "_self"
+            },
+            {
+              "title": "计划任务",
+              "href": "?file=cron",
+              "icon": "fa fa-sun-o",
+              "target": "_self"
+            },
+            {
+              "title": "上传记录",
+              "href": "?file=upload",
+              "icon": "fa fa-file-text",
+              "target": "_self"
+            },
+            {
+              "title": "搜索记录",
+              "href": "?file=keyword",
+              "icon": "fa fa-file-text-o",
+              "target": "_self"
+            },
+            {
+              "title": "后台日志",
+              "href": "?file=log",
+              "icon": "fa fa-shield",
+              "target": "_self"
+            },
+            {
+              "title": "404日志",
+              "href": "?file=404",
+              "icon": "fa fa-ban",
+              "target": "_self"
+            },
+            {
+              "title": "问题验证",
+              "href": "?file=question",
+              "icon": "fa fa-compass",
+              "target": "_self"
+            },
+            {
+              "title": "词语过滤",
+              "href": "?file=banword",
+              "icon": "fa fa-cc",
+              "target": "_self"
+            },
+            {
+              "title": "禁止IP",
+              "href": "?file=banip",
+              "icon": "fa fa-bomb",
+              "target": "_self"
+            },
+            {
+              "title": "重名检测",
+              "href": "?file=repeat",
+              "icon": "fa fa-refresh",
+              "target": "_self"
+            },
+            {
+              "title": "编辑助手",
+              "href": "?file=word",
+              "icon": "fa fa-asterisk",
+              "target": "_self"
+            },
+            {
+              "title": "系统体检",
+              "href": "?file=doctor",
+              "icon": "fa fa-h-square",
+              "target": "_self"
+            }
+          ]
+        }
+       
+      ]
+    },
+    "xinfang": {
+      "title": "新房管理",
+      "icon": "fa fa-home",
+      "child": [
+        {
+          "title": "新房管理",
+          "href": "?moduleid=6",
+          "icon": "fa fa-meetup",
+          "target": ""
+        },
+        {
+          "title": "团购管理",
+          "href": "?moduleid=2&file=house_groupbuy",
+          "icon": "fa fa-user-secret",
+          "target": "_self"
+        },
+        {
+          "title": "红包管理",
+          "href": "?moduleid=6&file=hongbao",
+          "icon": "fa fa-bank",
+          "target": "_self"
+        },
+        {
+          "title": "分销客户管理",
+          "href": "?moduleid=2&file=house_kehu",
+          "icon": "fa fa-user",
+          "target": "_self"
+        },
+        {
+          "title": "分销佣金管理",
+          "href": "?moduleid=2&file=amount",
+          "icon": "fa fa-credit-card",
+          "target": "_self"
+        },
+        {
+          "title": "问房管理",
+          "href": "?moduleid=3&file=wenfang",
+          "icon": "fa fa-question-circle",
+          "target": "_self"
+        },
+        {
+          "title": "点评管理",
+          "href": "?moduleid=3&file=comment",
+          "icon": "fa fa-star-o",
+          "target": "_self"
+        },
+        {
+          "title": "物业类型",
+          "href": "?file=category&mid=6",
+          "icon": "fa fa-reorder",
+          "target": "_self"
+        },
+        {
+          "title": "更新数据",
+          "href": "?moduleid=6&file=html",
+          "icon": "fa fa-refresh",
+          "target": "_self"
+        },
+        {
+          "title": "模块设置",
+          "href": "?moduleid=6&file=setting",
+          "icon": "fa fa-gears",
+          "target": "_self"
+        }
+      ]
+    },
+    "sale": {
+      "title": "二手房",
+      "icon": "fa fa-credit-card",
+     "child": [
+        {
+          "title": "二手房列表",
+          "href": "?moduleid=5",
+          "icon": "fa fa-meetup",
+          "target": ""
+        },
+        {
+          "title": "审核二手房",
+          "href": "?moduleid=5&action=check",
+          "icon": "fa fa-file-o",
+          "target": "_self"
+        },
+        {
+          "title": "分类管理",
+          "href": "?file=category&mid=5",
+          "icon": "fa fa-reorder",
+          "target": "_self"
+        },
+        {
+          "title": "更新数据",
+          "href": "?moduleid=5&file=html",
+          "icon": "fa fa-refresh",
+          "target": "_self"
+        },
+        {
+          "title": "模块设置",
+          "href": "?moduleid=5&file=setting",
+          "icon": "fa fa-gears",
+          "target": "_self"
+        }
+      ]
+    }
+	,
+    "zufang": {
+      "title": "租房管理",
+      "icon": "fa fa-inbox",
+     "child": [
+        {
+          "title": "租房列表",
+          "href": "?moduleid=7",
+          "icon": "fa fa-meetup",
+          "target": ""
+        },
+        {
+          "title": "审核租房",
+          "href": "?moduleid=7&action=check",
+          "icon": "fa fa-file-o",
+          "target": "_self"
+        },
+        {
+          "title": "分类管理",
+          "href": "?file=category&mid=7",
+          "icon": "fa fa-reorder",
+          "target": "_self"
+        },
+        {
+          "title": "更新数据",
+          "href": "?moduleid=7&file=html",
+          "icon": "fa fa-refresh",
+          "target": "_self"
+        },
+        {
+          "title": "模块设置",
+          "href": "?moduleid=7&file=setting",
+          "icon": "fa fa-gears",
+          "target": "_self"
+        }
+      ]
+    },
+    "buy": {
+      "title": "求购管理",
+      "icon": "fa fa-minus-square-o",
+     "child": [
+        {
+          "title": "求购列表",
+          "href": "?moduleid=16",
+          "icon": "fa fa-meetup",
+          "target": ""
+        },
+        {
+          "title": "审核求购",
+          "href": "?moduleid=16&action=check",
+          "icon": "fa fa-file-o",
+          "target": "_self"
+        },
+        {
+          "title": "分类管理",
+          "href": "?file=category&mid=16",
+          "icon": "fa fa-reorder",
+          "target": "_self"
+        },
+        {
+          "title": "更新数据",
+          "href": "?moduleid=16&file=html",
+          "icon": "fa fa-refresh",
+          "target": "_self"
+        },
+        {
+          "title": "模块设置",
+          "href": "?moduleid=16&file=setting",
+          "icon": "fa fa-gears",
+          "target": "_self"
+        }
+      ]
+    }
+	,
+    "xiaoqu": {
+      "title": "小区管理",
+      "icon": "fa fa-columns",
+     "child": [
+        {
+          "title": "小区列表",
+          "href": "?moduleid=18",
+          "icon": "fa fa-meetup",
+          "target": ""
+        },
+        {
+          "title": "审核小区",
+          "href": "?moduleid=18&action=check",
+          "icon": "fa fa-file-o",
+          "target": "_self"
+        },
+       
+        {
+          "title": "更新数据",
+          "href": "?moduleid=18&file=html",
+          "icon": "fa fa-refresh",
+          "target": "_self"
+        },
+        {
+          "title": "模块设置",
+          "href": "?moduleid=18&file=setting",
+          "icon": "fa fa-gears",
+          "target": "_self"
+        }
+      ]
+    },
+    "news": {
+      "title": "资讯管理",
+      "icon": "fa fa-newspaper-o",
+      "child": [
+        {
+          "title": "资讯列表",
+          "href": "?moduleid=8",
+          "icon": "fa fa-meetup",
+          "target": ""
+        },
+        {
+          "title": "审核资讯",
+          "href": "?moduleid=8&action=check",
+          "icon": "fa fa-file-o",
+          "target": "_self"
+        },
+        {
+          "title": "分类管理",
+          "href": "?file=category&mid=8",
+          "icon": "fa fa-reorder",
+          "target": "_self"
+        },
+        {
+          "title": "更新数据",
+          "href": "?moduleid=8&file=html",
+          "icon": "fa fa-refresh",
+          "target": "_self"
+        },
+        {
+          "title": "模块设置",
+          "href": "?moduleid=8&file=setting",
+          "icon": "fa fa-gears",
+          "target": "_self"
+        }
+      ]
+    },
+    "video": {
+      "title": "视频管理",
+      "icon": "fa fa-video-camera",
+      "child": [
+        {
+          "title": "视频列表",
+          "href": "?moduleid=14",
+          "icon": "fa fa-meetup",
+          "target": ""
+        },
+        {
+          "title": "审核视频",
+          "href": "?moduleid=8&action=check",
+          "icon": "fa fa-file-o",
+          "target": "_self"
+        },
+        {
+          "title": "分类管理",
+          "href": "?file=category&mid=14",
+          "icon": "fa fa-reorder",
+          "target": "_self"
+        },
+        {
+          "title": "更新数据",
+          "href": "?moduleid=14&file=html",
+          "icon": "fa fa-refresh",
+          "target": "_self"
+        },
+        {
+          "title": "模块设置",
+          "href": "?moduleid=14&file=setting",
+          "icon": "fa fa-gears",
+          "target": "_self"
+        }
+      ]
+    }
+	,
+    "home": {
+      "title": "家装管理",
+      "icon": "fa fa-shield",
+      "child": [
+        {
+          "title": "家装列表",
+          "href": "?moduleid=13",
+          "icon": "fa fa-meetup",
+          "target": ""
+        },
+        {
+          "title": "审核家装",
+          "href": "?moduleid=13&action=check",
+          "icon": "fa fa-file-o",
+          "target": "_self"
+        },
+        {
+          "title": "分类管理",
+          "href": "?file=category&mid=13",
+          "icon": "fa fa-reorder",
+          "target": "_self"
+        },
+        {
+          "title": "更新数据",
+          "href": "?moduleid=13&file=html",
+          "icon": "fa fa-refresh",
+          "target": "_self"
+        },
+        {
+          "title": "模块设置",
+          "href": "?moduleid=13&file=setting",
+          "icon": "fa fa-gears",
+          "target": "_self"
+        }
+      ]
+    },
+    "member": {
+      "title": "会员管理",
+      "icon": "fa fa-user",
+      "child": [
+        {
+          "title": "会员管理",
+          "href": "",
+          "icon": "fa fa-user",
+          "target": "",
+          "child": [
+            {
+              "title": "会员列表",
+              "href": "?moduleid=2",
+              "icon": "fa fa-user",
+              "target": "_self"
+            
+            },
+            {
+             "title": "VIP管理",
+             "href": "?moduleid=4&file=vip",
+             "icon": "fa fa-diamond",
+             "target": "_self"
+            },
+            {
+             "title": "会员升级",
+             "href": "?moduleid=2&file=grade&action=check",
+             "icon": "fa fa-superpowers",
+             "target": "_self"
+            },
+            {
+             "title": "资料审核",
+             "href": "?moduleid=2&file=validate",
+             "icon": "fa fa-file-o",
+             "target": "_self"
+            },
+            {
+             "title": "微信管理",
+             "href": "?moduleid=2&file=weixin",
+             "icon": "fa fa-weixin",
+             "target": "_self"
+            },
+            {
+             "title": "一键登录",
+             "href": "?moduleid=2&file=oauth",
+             "icon": "fa fa-qq",
+             "target": "_self"
+            },
+            {
+             "title": "会员组管理",
+             "href": "?moduleid=2&file=group",
+             "icon": "fa fa-wrench",
+             "target": "_self"
+            },
+            {
+             "title": "模块设置",
+             "href": "?moduleid=2&file=setting",
+             "icon": "fa fa-gears",
+             "target": "_self"
+            }
+          ]
+        },
+		{
+          "title": "财务管理",
+          "href": "",
+          "icon": "fa fa-money",
+          "target": "",
+          "child": [
+            {
+              "title": "积分管理",
+              "href": "?moduleid=2&file=record",
+              "icon": "fa fa-area-chart",
+              "target": "_self"
+            
+            },
+            {
+             "title": "资金管理",
+             "href": "?moduleid=2&file=credit",
+             "icon": "fa fa-bookmark-o",
+             "target": "_self"
+            },
+            {
+             "title": "支付记录",
+             "href": "?moduleid=2&file=charge",
+             "icon": "fa fa-calendar-o",
+             "target": "_self"
+            },
+            {
+             "title": "提现记录",
+             "href": "?moduleid=2&file=cash",
+             "icon": "fa fa-calendar",
+             "target": "_self"
+            },
+            {
+             "title": "信息支付",
+             "href": "?moduleid=2&file=pay",
+             "icon": "fa fa-ticket",
+             "target": "_self"
+            },
+            {
+             "title": "信息打赏",
+             "href": "?moduleid=2&file=award",
+             "icon": "fa fa-thumbs-o-up",
+             "target": "_self"
+            },
+            {
+             "title": "保证金管理",
+             "href": "?moduleid=2&file=deposit",
+             "icon": "fa fa-money",
+             "target": "_self"
+            },
+            {
+             "title": "充值卡管理",
+             "href": "?moduleid=2&file=card",
+             "icon": "fa fa-credit-card",
+             "target": "_self"
+            }
+          ]
+        },
+		{
+          "title": "会员相关",
+          "href": "",
+          "icon": "fa fa-meetup",
+          "target": "",
+          "child": [
+            {
+              "title": "在线交谈",
+              "href": "?moduleid=2&file=chat",
+              "icon": "fa fa-comments",
+              "target": "_self"
+            
+            },
+            {
+             "title": "站内信件",
+             "href": "?moduleid=2&file=message",
+             "icon": "fa fa-envelope",
+             "target": "_self"
+            },
+            {
+             "title": "电子邮件",
+             "href": "?moduleid=2&file=sendmail&action=record",
+             "icon": "fa fa-envelope-o",
+             "target": "_self"
+            },
+            {
+             "title": "手机短信",
+             "href": "?moduleid=2&file=sendsms&action=record",
+             "icon": "fa fa-mobile",
+             "target": "_self"
+            },
+            {
+             "title": "客服中心",
+             "href": "?moduleid=2&file=ask",
+             "icon": "fa fa-comment-o",
+             "target": "_self"
+            },
+            {
+             "title": "房源提醒",
+             "href": "?moduleid=2&file=alert",
+             "icon": "fa fa-send-o",
+             "target": "_self"
+            },
+            {
+             "title": "邮件订阅",
+             "href": "?moduleid=2&file=mail",
+             "icon": "fa fa-plus-square-o",
+             "target": "_self"
+            },
+            {
+             "title": "房源收藏",
+             "href": "?moduleid=2&file=favorite",
+             "icon": "fa fa-tag",
+             "target": "_self"
+            },
+            {
+             "title": "会员商友",
+             "href": "?moduleid=2&file=friend",
+             "icon": "fa fa-user-plus",
+             "target": "_self"
+            },
+            {
+             "title": "在线会员",
+             "href": "?moduleid=2&file=online",
+             "icon": "fa fa-circle-thin",
+             "target": "_self"
+            },
+            {
+             "title": "登录日志",
+             "href": "?moduleid=2&file=loginlog",
+             "icon": "fa fa-eraser",
+             "target": "_self"
+            }
+          ]
+        }
+      ]
+    },
+    "other": {
+      "title": "其他管理",
+      "icon": "fa fa-slideshare",
+      "child": [
+        {
+          "title": "专题管理",
+          "href": "",
+          "icon": "fa fa-server",
+          "target": "",
+          "child": [
+            {
+          "title": "专题列表",
+          "href": "?moduleid=11",
+          "icon": "fa fa-meetup",
+          "target": ""
+        },
+        {
+          "title": "审核专题",
+          "href": "?moduleid=11&action=check",
+          "icon": "fa fa-file-o",
+          "target": "_self"
+        },
+        {
+          "title": "分类管理",
+          "href": "?file=category&mid=11",
+          "icon": "fa fa-reorder",
+          "target": "_self"
+        },
+        {
+          "title": "更新数据",
+          "href": "?moduleid=11&file=html",
+          "icon": "fa fa-refresh",
+          "target": "_self"
+        },
+        {
+          "title": "模块设置",
+          "href": "?moduleid=11&file=setting",
+          "icon": "fa fa-gears",
+          "target": "_self"
+        }
+          ]
+        },
+		{
+          "title": "图库管理",
+          "href": "",
+          "icon": "fa fa-photo",
+          "target": "",
+          "child": [
+            {
+          "title": "图库列表",
+          "href": "?moduleid=14",
+          "icon": "fa fa-picture-o",
+          "target": ""
+        },
+        {
+          "title": "审核图库",
+          "href": "?moduleid=8&action=check",
+          "icon": "fa fa-file-o",
+          "target": "_self"
+        },
+        {
+          "title": "分类管理",
+          "href": "?file=category&mid=14",
+          "icon": "fa fa-reorder",
+          "target": "_self"
+        },
+        {
+          "title": "更新数据",
+          "href": "?moduleid=14&file=html",
+          "icon": "fa fa-refresh",
+          "target": "_self"
+        },
+        {
+          "title": "模块设置",
+          "href": "?moduleid=14&file=setting",
+          "icon": "fa fa-gears",
+          "target": "_self"
+        }
+          ]
+        },
+		{
+          "title": "扩展管理",
+          "href": "",
+          "icon": "fa fa-sliders",
+          "target": "",
+          "child": [
+            {
+              "title": "排名推广",
+              "href": "?moduleid=3&file=spread",
+              "icon": "fa fa-rocket",
+              "target": "_self"
+            
+            },
+            {
+             "title": "广告管理",
+             "href": "?moduleid=3&file=ad",
+             "icon": "fa fa-flag-o",
+             "target": "_self"
+            },
+            {
+             "title": "公告管理",
+             "href": "?moduleid=3&file=announce",
+             "icon": "fa fa-bell-o",
+             "target": "_self"
+            },
+            {
+             "title": "单页管理",
+             "href": "?moduleid=3&file=webpage",
+             "icon": "fa fa-file-archive-o",
+             "target": "_self"
+            },
+            {
+             "title": "友情链接",
+             "href": "?moduleid=3&file=link",
+             "icon": "fa fa-external-link",
+             "target": "_self"
+            },
+            {
+             "title": "评论管理",
+             "href": "?moduleid=3&file=comment",
+             "icon": "fa fa-comment-o",
+             "target": "_self"
+            },
+            {
+             "title": "留言管理",
+             "href": "?moduleid=3&file=guestbook",
+             "icon": "fa fa-envelope-o",
+             "target": "_self"
+            },
+            {
+             "title": "积分换礼",
+             "href": "?moduleid=3&file=gift",
+             "icon": "fa fa-gift",
+             "target": "_self"
+            },
+            {
+             "title": "投票管理",
+             "href": "?moduleid=3&file=vote",
+             "icon": "fa fa-check-square",
+             "target": "_self"
+            },
+            {
+             "title": "票选管理",
+             "href": "?moduleid=3&file=poll",
+             "icon": "fa fa-check-square-o",
+             "target": "_self"
+            },
+            {
+             "title": "表单管理",
+             "href": "?moduleid=3&file=form",
+             "icon": "fa fa-minus-square-o",
+             "target": "_self"
+            },
+            {
+             "title": "模块设置",
+             "href": "?moduleid=3&file=setting",
+             "icon": "fa fa-gears",
+             "target": "_self"
+            }
+          ]
+        }
+      ]
+    }
+	
+  }
+}

@@ -1,0 +1,862 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no,  maximum-scale=1.0, viewport-fit=cover" />
+    <meta name="format-detection" content="telephone=no" />
+    <meta http-equiv="Cache-Control" content="no-siteapp" />
+    <meta name="msapplication-tap-highlight" content="no" />
+	       <title>{if $seo_title}{$seo_title}{else}{if $head_title}{$head_title}{$AJ[seo_delimiter]}{/if}{if $city_sitename}{$city_sitename}{else}{$site_name}{/if}{/if}</title>
+{if $head_keywords}
+<meta name="keywords" content="{$head_keywords}"/>
+{/if}
+{if $head_description}
+<meta name="description" content="{$head_description}"/>
+{/if}
+    <link href="static2020/css/default.css" rel="stylesheet"/>
+
+</head>
+<body>
+<!--end download-appbox-->
+
+<div class="warperbox new-mould-title" style="padding-top: 0;">
+      <div class="swiper-banner gfj-swiper-banner" id="t_div">
+            <div class="default-search" id="defaultSearch">
+                <!--suspend-->
+                <div class="d-search">
+                 {if $AJ[city]} <a class="location" href="api/city.php">{$city_name}</a>{/if}
+                    <div class="subd-search">
+                        <input id="search_kw" onFocus="this.blur();" type="text" placeholder="请输入关键字" />
+                    </div>
+                </div>
+                    <a class="search-user" href="{AJ_MOB}my.php"><i class="i-user"></i></a>
+            </div>
+            <!--end default-search-->
+			
+            <div class="swiper-container">
+                <div class="swiper-wrapper">
+ {loop $ads $t}
+                             <div class="swiper-slide" onMouseUp="HitAdNew(22837)">
+                            <div class="sw_ad_flag">广告</div>
+                             
+				<a href="{$t[url]}"><img src="{$t[image_src]}"></a>
+				 
+                          
+                        </div>   {/loop}               
+                          
+                </div>
+            </div>
+            <div class="swiper-pagination"></div>
+        </div>
+        <!--swiper-banner end-->     <div>
+        
+        
+        <div class="swiper-entrance">
+            <div class="swiper-container">
+                <div class="swiper-wrapper">
+                    <div class="swiper-slide">
+                        <div class="entrance-item clearfix">
+                            <ul> 
+                                <!--这里的li最多循环10个，超过十个就换一个swiper-slide  div-->
+                               <li>
+				<a href="{AJ_MOB}house">
+				<div class="entrance-img"> <img src="static2020/images/4.png"></div>
+                                        <p>新楼盘</p>
+				</a>
+			</li>
+			<li>
+<a href="{AJ_MOB}sale">
+				<div class="entrance-img"> <img src="static2020/images/1.png"></div>
+                                        <p>二手房</p>
+				</a>
+			</li>
+			<li>
+
+			<a href="{AJ_MOB}rent">
+				<div class="entrance-img"><img src="static2020/images/2.png"></div>
+                                        <p>租房</p>
+				</a>
+			</li>
+			<li>
+				<a href="{AJ_MOB}home">
+				<div class="entrance-img"><img src="static2020/images/3.png"></div>
+                                        <p>家装</p>
+				</a>
+			</li>
+			<li>
+				<a href="{AJ_MOB}news">
+				<div class="entrance-img"> <img src="static2020/images/7.png"></div>
+                                        <p>资讯</p>
+				</a>
+			</li>
+			<li>
+				
+			
+<a href="{AJ_MOB}map">
+					<div class="entrance-img"> <img src="static2020/images/10.png"></div>
+                                        <p>地图找房</p>
+				</a>
+			</li>
+			<li>
+				<a href="{AJ_MOB}company">
+				<div class="entrance-img"><img src="static2020/images/6.png"></div>
+                                        <p>中介</p>
+				</a>
+			</li>
+		
+			<li>
+				<a href="{AJ_MOB}tool.php">
+					<div class="entrance-img"> <img src="static2020/images/9.png"></div>
+                                        <p>房贷计算</p>
+				</a>
+			</li> 
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="swiper-slide">
+                        <div class="entrance-item clearfix">
+                            <ul>
+                           	<li>
+					<a href="{AJ_MOB}community">
+				<div class="entrance-img"> <img src="static2020/images/5.png"> </div>
+                                        <p>小区</p>
+				</a>
+			</li>
+			
+			<li>
+
+		
+				<a href="{AJ_MOB}buy">
+					<div class="entrance-img"> <img src="static2020/images/8.png"></div>
+                                        <p>求租求购</p>
+				</a>
+			</li>
+                            </ul>
+                        </div>
+                    </div>
+           </div>
+            </div>
+            <div class="swiper-pagination"></div>
+        </div>
+        <!--swiper-entrance end-->
+    </div>
+        
+        <!--头条-->
+        <div class="new-headlinesbox">
+            <div class="headlinesbox swiper-no-swiping">
+                <div class="swiper-headlines">
+                    <div class="swiper-container">
+                        <div class="swiper-wrapper">	
+                        
+                          <!--{php $tags=tag("table=article_8&condition=status=3&areaid=$cityid&pagesize=5&fields=itemid,title,thumb,username,hits,edittime,linkurl&order=edittime desc&template=null");}-->
+                    {loop $tags $t}
+                        
+                        <div class="swiper-slide"> <a  class="link" href="{AJ_MOB}news/{$t[linkurl]}">{$t[title]}</a></div>
+                	{/loop}  
+                                      </div>
+                    </div>
+                    <div class="swiper-pagination"></div>
+                </div>
+            </div>
+        </div>
+        <!--头条 end-->            <!--热门-->
+        <div class="discountbox">
+            <div class="mould-title">
+                <!-- <a class="link" href="#"> -->
+                <h2><i class="ico i-discount"></i>推荐新房</h2>
+                
+                <!-- </a> -->
+            </div>
+
+            <div class="discount" id="div_hot">
+<ul>         <!--{php $tags=tag("table=newhouse_6&condition=status=3 and thumb<>'' and isnew=1&areaid=$cityid&pagesize=5&fields=itemid,title,thumb,price,hits,edittime,areaid,catid,typeid,lpts,isfx,hongbao,linkurl&order=edittime desc&template=null");}-->
+{loop $tags $t}                     
+      <li class="clearfix">
+                                        <div class="discount-fix" style="display:none;">
+                                            <a href="{AJ_MOB}house/{$t[linkurl]}">
+                                                <div class="redbackets"> <span class="ico-redbackets"> <i>{$t[hongbao]}元</i> </span> </div>
+                                            </a>
+                                        </div>
+                                    <a class="list-a clearfix" href="{AJ_MOB}house/{$t[linkurl]}">
+                                        <div class="discount-img">
+                                            
+                                            <div class="img lazyload" data-src="{imgurl($t[thumb])}" style="background-image:url(static2020/images/lazy.jpg)"></div>
+                                        </div>
+                                        <div class="discount-info">
+                                            <div class="discount-min">
+                                                <h2>{$t[title]}	<span class="state now">{if $t[typeid]==1}待售{elseif $t[typeid]==2}在售{elseif $t[typeid]==3}尾盘{else}售完{/if}</span></h2>
+
+                                            </div>
+                                            <p class="address">{area_pos($t[areaid], '')}</p>
+                                                    <div class="discount-label">
+                                                    
+                                                      <!--{php $ts=explode(",",$t[lpts]);}-->
+																 
+     {loop $ts $ks $vs}
+       <span class="label"> {getbox_diaoval('lpts','checkbox',$vs,'newhouse_6')}</span>
+     {/loop}  
+                                                    
+                                                    </div>
+                                            <div class="discount-price">
+																		<span class="now-price">{if $t[price]}{$t[price]}<em>元/㎡</em>{else}待定{/if}
+                                                                                                 </span>                                                
+                                            </div>
+                                        </div>
+                                    </a>
+                                </li>
+                                 {/loop}
+			     
+			
+  
+                             
+</ul>
+         
+            </div>
+
+            <div class="mould-title-more">
+                <a class="more" href="{AJ_MOB}house">
+                    更多楼盘
+                </a>
+            </div>
+        </div>
+        <!--热门 end-->       <!--二手好房-->
+        <div class="discountbox">
+            <div class="mould-title">
+                <h2><i class="ico i-discount"></i>推荐二手房</h2>
+            </div>
+            <div class="discount" id="div_second">
+<ul>              
+
+    <!--{php $tags=tag("table=sale_5&condition=status=3 and thumb<>''&areaid=$cityid&pagesize=3&fields=itemid,title,thumb,housename,areaid,hits,edittime,room,hall,houseearm,housename,price,linkurl,fyts&order=addtime desc&template=null");}-->
+{loop $tags $t}               
+      <li class="clearfix">
+                                    <a class="list-a clearfix" href="{AJ_MOB}sale/{$t[linkurl]}">
+                                        <div class="discount-img">
+                                            <div class="img lazyload" data-src="{imgurl($t[thumb])}" ></div>
+                                        </div>
+                                        <div class="discount-info">
+                                            <div class="discount-min">
+                                                <h2>{$t[housename]} </h2>
+                                                <p class="attr"><span>{$t[houseearm]}㎡</span><span>{if $t[room]}{$t[room]}室{/if}{if $t[hall]}{$t[hall]}厅{/if}</span><span>{area_pos($t[areaid], '')}</span></p>
+                                            </div>
+                                                    <div class="discount-label discount-label-color">
+                                                     <!--{php $fyts=explode(",",$t[fyts]);}-->
+																 
+     {loop $fyts $ks $vs}
+       <span class="label label1"> {$vs}</span>
+     {/loop}  
+																				
+									                                                          
+                                                    </div>
+                                            <div class="discount-price">
+                                                    <span class="now-price">{if $t[price]}{$t[price]}万元{else}面议{/if}</span>
+                                                    
+                                            </div>
+                                        </div>
+                                    </a>
+                                </li>
+			      {/loop}
+						
+								</ul>
+             
+            </div>
+            <div class="mould-title-more"> <a class="more" href="{AJ_MOB}sale"> 更多二手房房源 </a> </div>
+        </div>
+        <!--二手好房 end-->      <!--租房推荐-->
+        <div class="discountbox">
+            <div class="mould-title">
+                <h2><i class="ico i-discount"></i>推荐租房</h2>
+            </div>
+            <div class="discount" id="div_renting">
+			<ul>                         
+
+      <!--{php $tags=tag("table=rent_7&condition=status=3 and thumb<>''&areaid=$cityid&pagesize=3&fields=itemid,title,thumb,housename,areaid,hits,edittime,room,hall,houseearm,housename,price,linkurl,fytsr&order=addtime desc&template=null");}-->
+{loop $tags $t}               
+      <li class="clearfix">
+                                    <a class="list-a clearfix" href="{AJ_MOB}rent/{$t[linkurl]}">
+                                        <div class="discount-img">
+                                            <div class="img lazyload" data-src="{imgurl($t[thumb])}" ></div>
+                                        </div>
+                                        <div class="discount-info">
+                                            <div class="discount-min">
+                                                <h2>{$t[housename]} </h2>
+                                                <p class="attr"><span>{$t[houseearm]}㎡</span><span>{if $t[room]}{$t[room]}室{/if}{if $t[hall]}{$t[hall]}厅{/if}</span><span>{area_pos($t[areaid], '')}</span></p>
+                                            </div>
+                                                    <div class="discount-label discount-label-color">
+                                                     <!--{php $fytsr=explode(",",$t[fytsr]);}-->
+																 
+     {loop $fytsr $ks $vs}
+       <span class="label label1"> {$vs}</span>
+     {/loop}  
+																				
+									                                                          
+                                                    </div>
+                                            <div class="discount-price">
+                                                    <span class="now-price">{if $t[price]}{$t[price]}元/月{else}面议{/if}</span>
+                                                    
+                                            </div>
+                                        </div>
+                                    </a>
+                                </li>
+			      {/loop}
+						
+								</ul>
+            
+            </div>
+            <div class="mould-title-more"> <a class="more" href="{AJ_MOB}rent"> 更多租房房源 </a> </div>
+        </div>
+        <!--租房推荐 end-->         
+    <!--likebox end-->
+    <div class="newsbox">
+        <div class="mould-title">
+            <a class="link" href="{AJ_MOB}news">
+                <h2><i class="ico i-news"></i>最新资讯</h2>
+                <span class="more">查看更多</span>
+            </a>
+        </div>
+        <div class="news-listbox">
+
+           
+            <div class="swiper-newsbox">
+                <div class="swiper-container swiper-news-container">
+                    <div class="swiper-wrapper">
+                        <div class="swiper-slide">
+                            <div class="subnews">
+                                <ul>
+                                  <!--{php $tags=tag("table=article_8&condition=status=3&areaid=$cityid&pagesize=5&fields=itemid,title,thumb,username,hits,edittime,linkurl&order=edittime desc&template=null");}-->
+                    {loop $tags $t}
+                                             <li class="clearfix">
+                                                        <a href="{AJ_MOB}news/{$t[linkurl]}">
+                                                            <div class="subnews-img">
+                                                                <div class="img lazyload" data-src="{imgurl($t[thumb])}" ></div>
+                                                            </div>
+                                                            <div class="subnews-info">
+                                                                <h2>{$t[title]}</h2>
+                                                                <div class="subnews-order">  <span class="time">{timetodate($t[edittime], 3)}</span> </div>
+                                                            </div>
+                                                        </a>
+                                                    </li>	 {/loop}  	       
+                                </ul>
+                            </div>
+                        </div>
+                      
+                      
+                       
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="mould-title-more"style="margin-bottom:50px;">
+            <a class="more" href="{AJ_MOB}news">
+                更多资讯
+            </a>
+        </div>
+    </div>
+    <!--newsbox end-->      
+
+<style>
+.foot_link{background-color:#fff;color:#aaa; font-size:12px; text-align:center; margin:0 0; padding:10px 0;}
+.foot_link .link { color:#ccc; font-size:14px;}
+.foot_link .link li {padding:0 10px;display:inline-block; line-height:16px; vertical-align:middle; border-right:1px solid #ccc;}
+.foot_link .link li:last-child { border-right:0 none;}
+.foot_link a {color:#666;}
+.foot_link .link .po_re { z-index:2;}
+.foot_link .link .po { display:none; position:absolute; top:-158px; left:50%; width:100px; margin-left:-50px; background-color:#fff; border:1px solid #ddd;}
+.foot_link .link .po p { border-bottom:1px solid #ddd;}
+.foot_link .link .po p:last-child { border-bottom:0 none;}
+.foot_link .link .po a { display:block; padding:10px 0;}
+.foot_link .link .po:after { display:block; position:absolute; left:50%; bottom:-4px; margin-left:-3px; width:6px; height:6px; overflow:hidden; background-color:#fff; border-bottom:1px solid #ddd; border-right:1px solid #ddd;transform:rotate(45deg); content:' ';}
+</style> 
+        
+<div class="foot_link" id="foot_link">
+<ul class="link" style="margin-top:10px;margin-bottom:5px">
+ <li class="ui-border-l"><a href="my.php">登录</a></li>
+                <li class="ui-border-l"><a href="{AJ_PATH}api/mobile.php?action=pc" rel="external">电脑版</a></li>
+                <li class="ui-border-l"><a href="{AJ_MOB}/guestbook/" class="no-borderR">意见反馈</a></li>
+<!--<li class="po_re"><a href="#">中介平台</a></li>-->
+</ul>
+Copyright &copy; 2021 {$AJ[sitename]}版权所有<br/> 客服热线：{$AJ[telephone]}  </div>
+</div>
+<div style="height:68px;background-color:#FFFFFF;"> </div>
+
+<style>
+  .footer_job{height:50px;position:fixed;left:0;bottom:0;width:100%;box-shadow:0 -5px 10px 0 rgba(137,148,143,.1);padding-top:4px;background-color:#fff !important;z-index:3;box-sizing:content-box;}
+  .footer_job ul { display:flex;}
+  .footer_job ul li{text-align:center; position:relative; flex: 1;}
+  .footer_job ul li a{font-size:12px;color:#b2b2b2; display:block; line-height:18px; padding-top:3px;}
+  .footer_job ul li.on a { color:#333;}
+  .footer_job.transparent li i { opacity:.3;}
+  .footer_job.transparent li.on i { opacity:1;}
+  .footer_job ul li i{display:block;margin:0 auto;width:23px;height:23px;}
+  .footer_job ul li .i1{background-position:-354px -5px}
+  .footer_job ul li .i2{background-position:-354px -104px}
+  .footer_job ul li .i3{width:71px;height:61px;background-position:-5px -10px}
+  .footer_job ul li.hh{position:relative;top:-10px;z-index:3}
+  .footer_job ul li .i4{background-position:-214px -280px}
+  .footer_job ul li .i5{background-position:-71px -315px}
+  .footer_job ul li .i6{background-position:-237px -342px}
+  .footer_job ul li.on .i1{background-position:-354px -38px}
+  .footer_job ul li.on .i2{background-position:-354px -71px}
+  .footer_job ul li.on .i4{background-position:-247px -280px}
+  .footer_job ul li.on .i5{background-position:-280px -280px}
+  .footer_job ul li.on .i6{background-position:-203px -342px}
+  
+  .footer_job ul li.on .i_video{background-position:0 -23px;}
+  .footer_job ul li.on .i_zhuanti{background-position:0 -23px;}
+  .footer_job ul li.on .i_qianggou{background-position:0 -23px;}
+ 
+  .footer_job ul li .mall_zuanqian { background-position:-205.5px -294.5px;}
+  .footer_job ul li.on .mall_zuanqian { background-position:-86px -352px;}
+  .footer_job ul li .mall_user { background-position:-172.5px -294.5px;}
+  .footer_job ul li.on .mall_user { background-position:-111px -352px;}
+  .footer_job ul li .mall_order { background-position:-336px -42.5px;}
+  .footer_job ul li.on .mall_order { background-position:-336px -75.5px;}
+  .footer_job ul li .mall_qianggou { background-position:-336px -108.5px;}
+  .footer_job ul li.on .mall_qianggou { background-position:-336px -141.5px;}
+  .footer_job ul li .mall_hezuo { background-position:-336px -174.5px;}
+  .footer_job ul li.on .mall_hezuo { background-position:-336px -207.5px;}
+
+  .footer_job ul li .i_huodong_1 {background-position:-205.5px -5px}
+  .footer_job ul li .i_huodong_2 {background-position:-205.5px -71px}
+  .footer_job ul li .i_huodong_3 {background-position:-172.5px -72px}
+  .footer_job ul li.on .i_huodong_1 {background-position:-170px -166px}
+  .footer_job ul li.on .i_huodong_2 {background-position:-172.5px -105px}
+  .footer_job ul li.on .i_huodong_3 {background-position:-205.5px -38px}
+  .footer_job ul li .i_love_select {background-position:-5px -132.5px}
+  .footer_job ul li.on .i_love_select {background-position:-137px -166px}
+  .footer_job ul li .i_love_hn { background-position:-38px -132.5px;}
+  .footer_job ul li.on .i_love_hn { background-position:-71px -166px;}
+  .footer_job ul li .i_love_my { background-position:-172.5px -5px;}
+  .footer_job ul li.on .i_love_my { background-position:-104px -166px;}
+  .footer_job ul li .i_love_hnadd { background-position:-275px -277px;}
+  .footer_job ul li.on .i_love_hnadd { background-position:-300px -277px;}
+  .footer_job ul li .i_love_hnline { background-position:-222px -276px;}
+  .footer_job ul li.on .i_love_hnline { background-position:-249px -276px;}
+  .footer_job ul li .i_love_add{margin-top:-3px;width:51px;height:41px;background:linear-gradient(180deg,rgba(248,189,172,1) 0,rgba(245,148,133,1) 100%);box-shadow:0 5px 10px 0 rgba(248,184,172,.3);border-radius:21px;position:relative}
+  .footer_job ul li .i_love_add::after{content:"";display:block;width:4px;height:16px;border-radius:4px;background-color:#fff;position:absolute;top:50%;left:50%;margin-top:-8px;margin-left:-2px}
+  .footer_job ul li .i_love_add::before{content:"";display:block;width:16px;height:4px;border-radius:4px;background-color:#fff;position:absolute;top:50%;left:50%;margin-top:-2px;margin-left:-8px}
+  .footer_job ul li .autoData { opacity: 1;background-size:23px auto; background-position: 0 0; background-repeat:no-repeat;}
+  .footer_job ul li .newkey_42 i,.footer_job ul li .newkey_191 i,.footer_job ul li .newkey_172 i,.footer_job ul li .newkey_167 i,.footer_job ul li .newkey_157 i,.footer_job ul li .newkey_144 i,.footer_job ul li .newkey_162 i,.footer_job ul li .newkey_197 i { width: 71px; height: 61px; background-size: 71px auto; opacity:1;}
+  .mask {
+    display: none;
+    position: fixed;
+    z-index: 1007;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: #000;
+    opacity: .8;
+  }
+  .footer_job ul li .newkey_162 i {
+    background-size: 100px auto;
+    background-position: -13px -11px;
+  }
+  .footer_job ul li .newkey_162 {
+    margin: -38px 0 0 0;
+  }
+   .mask {
+    display: none;
+    position: fixed;
+    z-index: 1007;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: #000;
+    opacity: .8;
+  }
+  .footer_job ul li .newkey_162 i {
+    background-size: 100px auto;
+    background-position: -13px -11px;
+  }
+  .footer_job ul li .newkey_162 {
+    margin: -38px 0 0 0;
+  }
+  .popBox{ position: fixed; left: 0; right: 0; bottom: 0; z-index: 1008; display: none; background: #fff;}
+  .popCon{ padding: 25px;}
+  .popCon .hd{color: #333;font-size:18px;font-weight: normal;line-height:25px;text-align: center;margin-bottom: 25px;}
+  .popCon .popClose{width: 44px;height: 44px; background: url(static2020/images/icon_x.png) center center no-repeat;-webkit-background-size: 44px auto;background-size: 44px auto;display: block;margin: 0 auto;}
+  @keyframes fabu_animate_in{0%{transform:scale(1);}20%{transform:scale(1.4);}50%{transform:scale(1.2);}60%{transform:scale(1.4);}100%{transform:scale(1);}}
+  .ani_fabu_in {animation:fabu_animate_in .5s 0s ease-in-out;animation-fill-mode:both;animation-iteration-count:1}
+  .g-pubList{line-height: 20px;text-align: center;}
+  .g-pubList ul{overflow: hidden;}
+  .g-pubList li{float: left;width: 33.333%;margin-bottom: 30px; font-size: 14px;}
+  .g-pubList .icon{height: 55px;margin-bottom: 5px;}
+  .g-pubList .icon img{width: 55px;height: 55px;margin: 0 auto;}
+
+</style>  
+  <script type="text/javascript" src="{AJ_SKIN}js/jquery-3.5.1.min.js"></script>
+  <!-- <script type="text/javascript" src="{AJ_MOB}/static2019/js/jquery-2.1.4.js"></script>-->
+<footer class="footer_job transparent">
+  <ul>
+    <li id="newkey_160"><a href="{AJ_MOB}" class="newkey_160"><i style="background-image:url('static2020/images/home_active9.png');"
+     class="autoData"></i>首页</a></li>
+     <li id="newkey_161"><a href="{AJ_MOB}house" class="newkey_161"><i style="background-image:url('static2020/images/findhouse9.png');"
+       class="autoData"></i>新房</a></li>
+       <li id="newkey_162"><a href="#" class="newkey_162"><i style="background-image:url('static2020/images/add.png');" class="autoData"></i>发布</a></li>
+       <li id="newkey_163"><a href="{AJ_MOB}sale" class="newkey_163"><i style="background-image:url('static2020/images/message9.png');"
+         class="autoData"></i>二手房</a></li>
+         <li id="newkey_164"><a href="{AJ_MOB}/my.php" class="newkey_164"><i style="background-image:url('static2020/images/my9.png');"
+           class="autoData"></i>我的</a></li>
+         </ul>
+       </footer>
+      
+<div class="mask" id="PublishBox_mask" style="display: none;"></div>
+       <div class="popBox" id="PublishBox" style="display: none;">
+        <div class="popCon">
+          <h1 class="hd">选择发布类型</h1>
+          <div class="g-pubList">
+            <ul>
+              <li>
+                <a href="{AJ_MOB}/member/my.php?mid=5" class="item" style="color: #2d374b;">
+                  <div class="icon"><img src="static2020/images/icon_c1.png" alt=""></div>二手房
+                </a>
+              </li>
+              <li>
+                <a href="{AJ_MOB}/member/my.php?mid=7" class="item" style="color: #2d374b;">
+                  <div class="icon"><img src="static2020/images/icon_c2.png" alt=""></div>出租房
+                </a>
+              </li>
+       <!--      <li>
+              <a href="#" class="item">
+                <div class="icon"><img src="static2020/images/icon_c3.png" alt=""></div>商铺
+              </a>
+            </li>
+            <li>
+              <a href="#" class="item">
+                <div class="icon"><img src="static2020/images/icon_c4.png" alt=""></div>委托中介
+              </a>
+            </li> -->
+            <li>
+              <a href="{AJ_MOB}member/my.php?mid=16" class="item" style="color: #2d374b;">
+                <div class="icon"><img src="static2020/images/icon_c5.png" alt=""></div>求租求购
+              </a>
+            </li>
+          </ul>
+        </div>
+        <a href="javascript:;" class="popClose"></a>
+      </div>
+    </div>
+  
+     <script>
+      // $('#retop').fixedBar();
+      var closes = $('#PublishBox').find('.popClose');
+      $('#newkey_160').addClass('on');
+      $('#newkey_162').find('a').click(function(e) {
+        e.preventDefault();
+        $('#PublishBox').slideDown();
+        $('#PublishBox').addClass('ani_fabu_in');
+        $('#PublishBox_mask').fadeIn();
+      });
+      closes.click(function(e) {
+        e.preventDefault();
+        $('#PublishBox').slideUp();
+        $('#PublishBox_mask').fadeOut();
+      });
+      // $('#PublishBox').animationEnd(function() {
+      //   $('#PublishBox').removeClass('ani_fabu_in');
+      // });
+    </script>
+
+
+ 
+
+    <!--页脚 end-->
+
+
+    <script>
+    if (parseInt('0') == 1) {
+            webView.addJavascriptInterface(new JSHook(), "android");
+        }
+    </script>
+    
+    <script src="static2020/js/defaultJs.js"></script>
+
+    <script src="static2020/js/cookie.js"></script>
+    <script src="static2020/js/swiper4.1.6.min.js"></script>
+    <script src="static2020/js/lazyload.min.js"></script>
+    <!--layer-->
+
+    <script>
+        $(function () {
+
+            //大图轮播
+            var swiper = new Swiper('.swiper-banner .swiper-container', {
+                //pagination: '.swiper-banner .swiper-pagination',
+                pagination: {
+                    el: '.swiper-banner .swiper-pagination',
+                },
+                loop: true,
+                autoplay: { stopOnLastSlide: true, }
+                //paginationClickable: true,
+                //autoplay: 2000
+            });
+
+            //通栏 滑动
+            var swiperindexbanner = new Swiper('.indexbanner-swiper .swiper-container', {
+                pagination: { el: '.indexbanner-swiper .swiper-pagination', },
+                loop: true,
+                autoplay: { stopOnLastSlide: true, }
+            });
+
+            //便捷入口轮播
+            var swiper1 = new Swiper('.swiper-entrance .swiper-container', {
+                //pagination: '.swiper-entrance .swiper-pagination',
+                pagination: {
+                    el: '.swiper-entrance .swiper-pagination',
+                },
+                paginationClickable: true
+            });
+
+            //住朋头条
+            var swiper2 = new Swiper('.headlinesbox .swiper-container', {
+                pagination: 'null',
+                //paginationClickable: true,
+                direction: 'vertical',
+                //autoplay: 2000
+                loop: true,
+                autoplay: { stopOnLastSlide: true, }
+            });
+
+            var swiper3 = new Swiper('.swiper-live .swiper-container', {
+                slidesPerView: 2.5,
+                pagination: 'null',
+                spaceBetween: 12
+            });
+
+            $("#swiper-newbox_kft").on("click", ".kft-more", function () {
+                var _this = $(this);
+                if (_this.hasClass("close")) {
+                    _this.removeClass("close").html("展开更多");
+                    _this.parents(".kftbox").find("dl").hide();
+                    _this.parents(".kftbox").find("dl.kft0").show();
+                } else {
+                    _this.parents(".kftbox").find("dl").show();
+                    _this.addClass("close").html("收起");
+                }
+                var activeHeight = $('#swiper-newbox_kft .swiper-slide-active').height();
+                $('#swiper-newbox_kft .swiper-wrapper').height(activeHeight);
+            });
+
+            if (parseInt("0") == 1 && parseInt(getCookie("wapnotoip")) != 1) {
+                $("#ipMask").show();
+                $(".mask-bg").show();
+            }
+            $("#no_toip").click(function () {
+                SetCookie("wapnotoip", 1);
+                $("#ipMask").hide();
+                $(".mask-bg").hide();
+            });
+
+            var scrollTop;
+            var searchTop = $("#t_div").height();
+            $(window).scroll(function () {
+                scrollTop = $(this).scrollTop();
+                if (scrollTop > searchTop) {
+                    $("#defaultSearch").addClass("suspend");
+                } else {
+                    $("#defaultSearch").removeClass("suspend");
+                }
+            });
+            $(".news-list .subnews").eq(0).show().siblings().hide();
+            $(".news-item li").click(function () {
+                var _index = $(this).index();
+                $(this).addClass("curr").siblings().removeClass("curr");
+                $(".news-list .subnews").eq(_index).show().siblings().hide();
+            });
+
+            $("#div_fcds ul").eq(0).show().siblings().hide();
+            $("#div_like ul").eq(0).show().siblings().hide();
+
+        });
+
+        $(function () {
+            $("#closeTJBtn").click(function () {
+                $("#fixTjBox").hide();
+            });
+        });
+
+        //$("#change_fcds").click(function () {
+        //    var size = $("#div_fcds ul").size();
+        //    var index = $('#div_fcds ul:visible').index();
+        //    index += 1;
+        //    if (index >= size) {
+        //        index = 0;
+        //    }
+        //    $("#div_fcds ul").eq(index).show().siblings().hide();
+        //});
+        //$("#change_like").click(function () {
+        //    var size = $("#div_like ul").size();
+        //    var index = $('#div_like ul:visible').index();
+        //    index += 1;
+        //    if (index >= size) {
+        //        index = 0;
+        //    }
+        //    $("#div_like ul").eq(index).show().siblings().hide();
+        //});
+        $("#search_kw").click(function () {
+            location.href = '{AJ_MOB}house/search.php'
+        });
+    </script>
+
+    <script>
+        var swiperNewbox = new Swiper('#swiper-newbox .swiper-container', {
+            paginationClickable: true,
+            pagination: {
+                el: '#swiper-newbox .swiper-pagination',
+            },
+            autoHeight: true //高度随内容变化
+        });
+        var swiperNewbox_kft = new Swiper('#swiper-newbox_kft .swiper-container', {
+            paginationClickable: true,
+            pagination: {
+                el: '#swiper-newbox_kft .swiper-pagination',
+            },
+            autoHeight: true //高度随内容变化
+        });
+        var swiperNewbox_fcds = new Swiper('#swiper-newbox-fcds .swiper-container', {
+            paginationClickable: true,
+            pagination: {
+                el: '#swiper-newbox-fcds .swiper-pagination',
+            },
+            autoHeight: true //高度随内容变化
+        });
+        var swiperNewbox_like = new Swiper('#swiper-newbox-like .swiper-container', {
+            paginationClickable: true,
+            pagination: {
+                el: '#swiper-newbox-like .swiper-pagination',
+            },
+            autoHeight: true //高度随内容变化
+        });
+        var swiperNewbox_second = new Swiper('#swiper-newbox-second .swiper-container', {
+            paginationClickable: true,
+            pagination: {
+                el: '#swiper-newbox-second .swiper-pagination',
+            },
+            autoHeight: true //高度随内容变化
+        });
+        var swiperNewbox_renting = new Swiper('#swiper-newbox-renting .swiper-container', {
+            paginationClickable: true,
+            pagination: {
+                el: '#swiper-newbox-renting .swiper-pagination',
+            },
+            autoHeight: true //高度随内容变化
+        });
+
+        var swiperONews = new Swiper('.o-news-swiper', {
+            slidesPerView: 3.2,
+            pagination: 'null',
+            spaceBetween: 10
+
+        });
+
+        //暂时设计每个slide大小需要一致
+        //barwidth = 5000 //导航粉色条的长度px
+        tSpeed = 300 //切换速度300ms
+        var navSwiper = new Swiper('#newsNav .swiper-container', {
+            slidesPerView: 4,
+            freeMode: true,
+            on: {
+                init: function () {
+                    navSlideWidth = this.slides.eq(0).css('width'); //导航字数需要统一,每个导航宽度一致
+                    bar = this.$el.find('.bar')
+                    bar.css('width', navSlideWidth)
+                    bar.transition(tSpeed)
+                    navSum = this.slides[this.slides.length - 1].offsetLeft //最后一个slide的位置
+
+                    clientWidth = parseInt(this.$wrapperEl.css('width')) //Nav的可视宽度
+                    navWidth = 0
+                    for (i = 0; i < this.slides.length; i++) {
+                        navWidth += parseInt(this.slides.eq(i).css('width'))
+                    }
+
+                },
+            },
+        });
+
+        var pageSwiper = new Swiper('.swiper-news-container', {
+            watchSlidesProgress: true,
+            resistanceRatio: 0,
+            on: {
+                touchMove: function () {
+                    progress = this.progress
+                    bar.transition(0)
+                    bar.transform('translateX(' + navSum * progress + 'px)')
+                    //红色234,67,53灰色51,51,51
+                    for (i = 0; i < this.slides.length; i++) {
+                        slideProgress = this.slides[i].progress
+                        if (Math.abs(slideProgress) < 1) {
+                            r = Math.floor((255 - 51) * (1 - Math.pow(Math.abs(slideProgress), 2)) + 51)
+                            g = Math.floor((72 - 51) * (1 - Math.pow(Math.abs(slideProgress), 2)) + 51)
+                            b = Math.floor((145 - 51) * (1 - Math.pow(Math.abs(slideProgress), 2)) + 51)
+                            navSwiper.slides.eq(i).find('span').css('color', 'rgba(' + r + ',' + g + ',' + b + ',1)')
+                        }
+                    }
+                },
+                transitionStart: function () {
+                    activeIndex = this.activeIndex
+                    activeSlidePosition = navSwiper.slides[activeIndex].offsetLeft
+                    //释放时导航粉色条移动过渡
+                    bar.transition(tSpeed)
+                    bar.transform('translateX(' + activeSlidePosition + 'px)')
+                    //释放时文字变色过渡
+                    navSwiper.slides.eq(activeIndex).find('span').transition(tSpeed)
+                    navSwiper.slides.eq(activeIndex).find('span').css('color', 'rgba(234,67,53,1)')
+                    if (activeIndex > 0) {
+                        navSwiper.slides.eq(activeIndex - 1).find('span').transition(tSpeed)
+                        navSwiper.slides.eq(activeIndex - 1).find('span').css('color', 'rgba(51,51,51,1)')
+                    }
+                    if (activeIndex < this.slides.length) {
+                        navSwiper.slides.eq(activeIndex + 1).find('span').transition(tSpeed)
+                        navSwiper.slides.eq(activeIndex + 1).find('span').css('color', 'rgba(51,51,51,1)')
+                    }
+                    //导航居中
+                    navActiveSlideLeft = navSwiper.slides[activeIndex].offsetLeft //activeSlide距左边的距离
+
+                    navSwiper.setTransition(tSpeed)
+                    if (navActiveSlideLeft < (clientWidth - parseInt(navSlideWidth)) / 2) {
+                        navSwiper.setTranslate(0)
+                    } else if (navActiveSlideLeft > navWidth - (parseInt(navSlideWidth) + clientWidth) / 2) {
+                        navSwiper.setTranslate(clientWidth - navWidth)
+                    } else {
+                        navSwiper.setTranslate((clientWidth - parseInt(navSlideWidth)) / 2 - navActiveSlideLeft)
+                    }
+
+                },
+                endFun: function (i, c) {
+                    var thisobj = $(".headlines").eq(i);
+                    var getlen = thisobj.find("dl").length;
+                    var geth = 120;
+                    if (getlen != 0) {
+                        geth = (getlen * 75) + 54;
+                    } else {
+
+                    }
+                    thisobj.css("height", geth + 'px');
+                    $("#headlinesBox").css({ 'height': geth + 'px' });
+                },
+                autoheight: true
+            }
+        });
+
+        navSwiper.$el.on('touchstart', function (e) {
+            e.preventDefault() //去掉按压阴影
+        })
+        navSwiper.on('tap', function (e) {
+            clickIndex = this.clickedIndex
+            clickSlide = this.slides.eq(clickIndex)
+            pageSwiper.slideTo(clickIndex, 0);
+            this.slides.find('span').css('color', 'rgba(51,51,51,1)');
+            clickSlide.find('span').css('color', 'rgba(234,67,53,1)');
+        })
+    </script>
+
+
+ 
+
+</body>
+</html>

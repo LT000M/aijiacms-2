@@ -1,0 +1,227 @@
+{template 'header'}
+
+	<div id="main">
+		<div class="bread">您当前的位置：<a href="{$MODULE[1][linkurl]}" title="{$AJ[sitename]}">{$AJ[sitename]}</a>&gt;<a href="{$MOD[linkurl]}">{$MOD[name]}</a>&gt;<span>小区找房</span></div>
+		<div class="hslist" id="hslist">
+			<h2 class="modTab">
+				<a href="{$MODULE[5][linkurl]}" >区域找房</a>
+				<a href="{$MODULE[1][linkurl]}map">地图找房</a>
+				<a href="{$MODULE[18][linkurl]}" class="on">小区找房</a>
+			</h2>
+						<div class="hs_b">
+                <div class="cf">
+                   <span>区域：</span>
+                   <p id="hs_area" class="hs_hidep on">
+                        <a href="javascript:" class="hs_hide" style="display: inline-none;"><u class="hs_mo">更多</u><u class="hs_le">收起</u></a>
+						<em><a {if returnsx("a")==-1}class="c"{/if} href="{$MOD[linkurl]}{rentser('a','')}">全部</a></em>
+						{loop $mainarea $k $v}<em><a {if check_in('_a'.$v[areaid].'v',$getstr)}class="c"{/if} href="{$MOD[linkurl]}{rentser('a',$v[areaid],'d')}">{$v[areaname]}</a></em>{/loop}	
+						 {if returnsx("a")!=-1}
+						<span class="i">
+								<em><a {if returnsx("d")==-1}class="c"{/if} href="{$MOD[linkurl]}{rentser('d','')}">全部</a></em>
+								{php $mainareas = get_mainarea(returnsx("a"))}
+						{loop $mainareas $k $v}
+								<em><a {if check_in('_d'.$v[areaid].'v',$getstr)}class="c"{/if} href="{$MOD[linkurl]}{rentser('d',$v[areaid])}">{$v[areaname]}</a></em>{/loop}	</span>{/if}
+						
+                       
+                                                </p>
+                </div>
+              
+				<div class="cf">
+				<span>类型：</span>
+				<p>
+					<em><a {if returnsx("t")==-1}class="c"{/if} href="{rentser('t','','','',$nq)}">全部</a></em>
+					 {php $maincat = get_maincat(0,6)}
+{loop $maincat $k $v} <em><a  {if check_in('_t'.$v[catid].'v',$getstr)}class="c"{/if} href="{$MOD[linkurl]}{rentser('t',$v[catid])}">{$v[catname]}</a></em>{/loop}	
+										</p>
+			</div>
+				
+			<div class="cf letter">
+				<span>字母：</span>
+				<p>
+                   <a {if returnsx("e")==-1}class="c"{/if} href="{rentser('e','','','',$nq)}" >全部</a>
+			  {php $l = array('A','B','C','D','E','F','G','H','I','J','K','L','M','N','O','P','Q','R','S','T','U','V','W','X','Y','Z');}
+               {loop $l $k $v}
+					<a {if check_in('_e'.$v.'v',$getstr)}class="c"{/if} href="{$MOD[linkurl]}{rentser('e',$v)}">{$v}</a>{/loop}
+                        				</p>
+			</div>
+             
+				
+				{if !empty($lstaddr)}
+				
+				<div class="hs_sltd">
+                        您已选择： {$lstaddr}  <a href="list.html" class="clear">重置筛选条件</a>
+                    </div>
+					{/if}
+                			</div>		</div>
+		<div class="cf">
+			<div class="hlist_fl">
+				<h2>
+					<span class="hl_page">
+						共为您找到 <b class="red">{$items}</b> 个小区<a href=" {if $page==1} javascript:void(0);{else}{$MOD[linkurl]}{rentser('p',($page-1))}{/if}" class="fl"></a>
+					<a href="{$MOD[linkurl]}{if $page==$total}{rentser('p',$total)}{else}{rentser('p',($page+1))}{/if}" class="fr"></a>				</span>
+					<span class="modTab">
+					<a {if empty($hot)} class="on"{/if} href="list.html" >全部小区</a>
+	                	
+					
+					</span>
+				</h2>
+				<div class="hlist_sort">
+					<div class="cf">
+						<form id="hls_search" action="{$MODULE[18][linkurl]}search.php" class="cf fl">
+				
+							<input type="search" id="hname" name="kw" placeholder="请输入小区名字" x-webkit-speech value="">
+                
+							<button  id="kwsearch" type="submit">搜索</button>
+					</form>
+					
+						<div class="fr_1">
+							<div class="hs_mlist" id="h_s1">默认排序								<ul>
+                                    <li>
+                                        <a href="{rentser('n','','','',$nq)}">默认排序</a> 
+                                    </li>
+                                     <li><a  href="{$MOD[linkurl]}{rentser('n',1)}">人气从高到低</a></li>
+                                <li><a  href="{$MOD[linkurl]}{rentser('n',2)}">人气从低到高</a></li>
+                                                                           
+                                    								</ul>
+							</div>
+                           
+								<a href="{if returnsx("n")==1}{rentser('n',2)}{else}{rentser('n',1)}{/if}"  class="A1 {if returnsx("n")==1}down{/if}{if $ord==2}up{/if}">人气</a>
+							
+						</div>
+					</div>
+				</div>
+                				
+   {if $page==1 && $kw}
+		{ad($moduleid,$catid,$kw,6)}
+		{load('m'.$moduleid.'_k'.urlencode($kw).'.htm')}
+		{/if}
+								{if $tags}
+
+{if $page == 1}{load('ad_m'.$moduleid.'_c'.$catid.'.htm')}{/if}
+		{if $tags}{template 'list-'.$module, 'tag'}{/if}
+            {else}
+	
+		{template 'noresult', 'message'}
+	
+		{/if}
+				
+									  
+				
+			</div>
+			<div class="hlist_fr">
+				<div class="hlist_btn cf">
+					<a href="{$MODULE[2][linkurl]}my.php?mid=5&action=add" class="obtn fl" target="_blank"><i class="edit"></i>发布出售</a>
+					<a href="{$MODULE[2][linkurl]}" class="obtn fr" target="_blank"><i class="bag"></i>管理房源</a>
+				</div>
+                				<div class="lista">
+					<h4>您最近浏览过的房源</h4>
+					      <table>
+                                                                    <tbody>
+																	{loop $browseHouse $k $t} <tr>
+                                        <td><a target="_blank" href="{$t[linkurl]}" title="{$t[title]}">{$t[housename]}</a></td>
+                                        <td>&nbsp;{if $t[room]}{$t[room]}室{/if}{if $t[hall]}{$t[hall]}厅{/if}</td>
+                                        <td>{$t[houseearm]}㎡</td>
+                                        <td>&nbsp;{if $t[price]}{$t[price]}万{else}面议{/if}	</td>
+                                    </tr>
+                                            {/loop}
+                                                            </tbody></table>
+                        				</div>				<div class="lista">
+					<h4><a href="{$MODULE[4][linkurl]}list-u1.html" target="_blank" class="more">更多&gt;&gt;</a>经纪人排行</h4>
+                     
+                        <ul class="jjrl">
+						<!--{tag("table=member&condition=groupid=6&areaid=$cityid&order=userid desc&pagesize=10&template=sale-jjr")}-->
+                                           
+                                                    </ul>
+                    				</div>                
+			</div>
+		</div>
+	
+		
+                  
+        	</div>
+	
+
+
+<script>
+seajs.use(["autofh","autoc","autab","cookie"],function(pk){
+	
+	$("#hname").autoC("{$MODULE[6][linkurl]}house.php?action=xiaoqu");
+	$("#hota").autab("h2 span a","ul")
+	$("#hs_more div").add("#h_s1,#h_s2").on({
+		mouseenter:function(){
+			$(this).find("ul").show()
+		},
+		mouseleave:function(){
+			$(this).find("ul").hide()
+		}
+	})
+	$("#hslist em.autoF").autofh()
+	//$("#hslist").find("form").autofh()
+	$("#hlist").on("mouseenter","li",function(){
+		$(this).addClass('on')
+	}).on("mouseleave","li",function(){
+		$(this).removeClass('on')
+	}).on("click","li",function(){
+		$(this).find("h3 a")[0].click();
+	}).on("click","a",function(e){
+		e.stopPropagation();
+	}).find("li").each(function(i){
+		if(i%3==2)
+			$(this).css("border-right","0")
+	}).last().css("border-right","0")
+	var $hotarea=$("#hotarea")
+	$hotarea.on("mouseover","dt",function(){
+		$hotarea.find("dd").hide().end().find("dt").removeClass("s");
+		$(this).addClass("s").next().show();
+	})
+	var $hs_area=$("#hs_area").on("click",".hs_hide",function(){
+		if($.cookie("hs_hide")){
+			$hs_area.removeClass("on")
+			$.cookie("hs_hide","")
+		}else{
+			$hs_area.addClass("on")
+			$.cookie("hs_hide",1)
+		}
+	})
+	if($hs_area.height()>32){
+		$hs_area.addClass("hs_hidep").find(".hs_hide").css("display","inline-block")
+	}
+	if($.cookie("hs_hide")){
+		$hs_area.addClass("on")
+	}
+	$("#pics_result").on("change",function(){
+		var h=window.location.href;
+		if($(this).prop("checked")&&h.indexOf("v4")<0){
+			h=h.split(".htm")
+			setTimeout(function() {
+			window.location.href = h[0]+"-v4.html";
+			}, 99)
+		}else if(!$(this).prop("checked")&&h.indexOf("v4")>0){
+			h=h.split("-v4")
+			setTimeout(function() {
+			window.location.href = h[0]+h[1];
+			}, 99)
+		}
+	})
+	$("#B1").click(function(){
+		$.cookie("esf_list","3");
+		window.location.reload();
+	})
+	$("#B2").click(function(){
+		$.cookie("esf_list","1");
+		window.location.reload();
+	})
+	$("#B3").click(function(){
+		$.cookie("esf_list","2");
+		window.location.reload();
+	})
+});
+</script>
+<script type="text/javascript">
+	$("#esfindex").attr("class","on");
+</script>
+	
+<script type="text/javascript">
+	$("#esfindex").attr("class","on");
+</script>
+{template 'footer'}	

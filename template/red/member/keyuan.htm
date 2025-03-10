@@ -1,0 +1,82 @@
+{template 'header', $module}
+<div class="menu">
+<table cellpadding="0" cellspacing="0">
+<tr>
+<td class="tab" id="add"><a href="javascript:;" onclick="layer_show('添加客源','?action=add','950')" style="text-decoration:none;">添加客源</a></a></td>
+<td class="tab" id="home"><a href="keyuan.php"><span>客源列表</span></a></td>
+
+</tr>
+</table>
+</div>
+<div class="sbox">
+<form action="?">
+
+{$fields_select}&nbsp;
+<input type="text" size="50" name="kw" value="{$kw}" placeholder="请输入关键词" title="请输入关键词"/>&nbsp;
+
+<input type="text" name="psize" value="20" size="2" class="t_c" title="条/页"/>&nbsp;
+<input type="submit" value="搜 索" class="btn"/>&nbsp;
+<input type="button" value=" 重 置 " class="btn" onclick="Go('?');"/>
+</form>
+</div>
+<form method="post">
+<table cellspacing="0" class="tb ls">
+<tr>
+
+<th lay-data="{type:'numbers',align: 'center'}">序号</th>
+				<th lay-data="{field:'xqbianhao',align: 'center',minWidth: 120, templet: '#kybh',sort: 'true'}">编号</th>
+				<th lay-data="{field:'kyzt',align: 'center'}">状态</th>
+				<th lay-data="{field:'xqyt',align: 'center'}">需求用途</th>
+				<th lay-data="{field:'khxm',align: 'center'}">客户姓名</th>
+				<th lay-data="{field:'khly',align: 'center'}">客户来源</th>
+				<th lay-data="{field:'xqquyu',align: 'center'}">需求区域</th>
+				<th lay-data="{field:'xqzy',align: 'center',minWidth: 150}">需求小区/新楼盘</th>
+				<th lay-data="{field:'xqmj',align: 'center',minWidth: 180}">需求建面</th>
+				<th lay-data="{field:'xqjg',align: 'center',minWidth: 180}">需求价格</th>
+				<th lay-data="{field:'xqhx',align: 'center',minWidth: 180}">需求户型</th>
+				<th lay-data="{field:'gtjd',align: 'center'}">沟通阶段</th>
+				<th lay-data="{field:'whr',align: 'center'}">维护人</th>
+				<th lay-data="{field:'whrdh',align: 'center'}">咨询电话</th>
+				<th lay-data="{field:'lurusj',align: 'center,sort: 'true''}">录入时间</th>
+				<th lay-data="{field:'',align: 'center',fixed: 'right',width: 210,templet: '#btn',unresize: true}">操作</th>
+</tr>
+{loop $lists $k $v}
+<tr align="center" >
+
+<td align="left">&nbsp;{$v[id]}</td>
+<td align="left">&nbsp;{$v[xqbianhao]}</td>
+<td align="left">&nbsp;<?php echo $NAME[$v['zhuangtai']-1];?></td>
+<td align="left">&nbsp;{$v[xqyongtu]}</td>
+<td align="left">&nbsp;{$v[khxingming]}</td>
+<td align="left">&nbsp;{$v[khlaiyuan]}</td>
+<td align="left">&nbsp;{$v[xqquyu]}</td>
+<td align="left">&nbsp;{$v[xqxiaoqu]}</td>
+<td align="left">{$v[xqmianji1]}m²~{$v[xqmianji2]}m²</td>
+<td align="left">&nbsp;{$v[xqjiage1]}万~{$v[xqjiage2]}万</td>
+<td align="left">{$v[xqhuxing1]}室~{$v[xqhuxing2]}室</td>
+<td align="left">&nbsp;{$v[gtjieduan]}</td>
+<td align="left">&nbsp;{$v[weihuren]}</td>
+<td align="left">&nbsp;{$v[dianhua]}</td>
+<td align="left">&nbsp;{timetodate($v[lurusj],5)}</td>
+
+
+
+<td><a href="?action=show&id={$v[id]}">详情</a>
+<a href="javascript:;" onclick="layer_show('客源编辑','?action=edit&id={$v[id]}','950')" style="text-decoration:none;">编辑</a>
+
+<a href="?action=delete&id={$v[id]}" onclick="return _delete();">删除</a>
+</td>
+</tr>
+{/loop}
+</table>
+<link rel="stylesheet" type="text/css" href="<?php echo $MODULE[1][linkurl];?>keyuan/static/h-ui/css/H-ui.min.css" />
+		<link rel="stylesheet" type="text/css" href="<?php echo $MODULE[1][linkurl];?>keyuan/static/h-ui.admin/css/H-ui.admin.css"/>
+	
+		<script type="text/javascript" src="<?php echo $MODULE[1][linkurl];?>keyuan/lib/jquery/1.9.1/jquery.min.js"></script> 
+		<script type="text/javascript" src="<?php echo $MODULE[1][linkurl];?>keyuan/lib/layer/2.4/layer.js"></script>
+		<script type="text/javascript" src="<?php echo $MODULE[1][linkurl];?>keyuan/static/h-ui/js/H-ui.min.js"></script>
+		<script type="text/javascript" src="<?php echo $MODULE[1][linkurl];?>keyuan/static/h-ui.admin/js/H-ui.admin.js"></script>
+</form>
+<div class="pages">{$pages}</div>
+<script type="text/javascript">s('keyuan');m('{$typeid}');</script>
+{template 'footer',$module}

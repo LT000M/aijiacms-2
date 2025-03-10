@@ -1,0 +1,806 @@
+
+{template 'header'}
+
+<link rel="stylesheet" media="all" href="{AJ_SKIN}/jisuanqi.css?v={if AJ_DEBUG}{AJ_TIME}{else}{AJ_REFRESH}{/if}" />
+
+<!--焦点-->
+
+	<link href="{AJ_SKIN}tool.css" rel="stylesheet" type="text/css" />
+<body class="calc">
+	<div id="main">
+<!--计算器-->
+		<div class="bread">
+			<a href="{$MODULE[1][linkurl]}">{$AJ[sitename]}</a>&gt;<a href="{$MODULE[6][linkurl]}">新房</a>&gt;<span>贷款计算器</span>
+		</div>
+		<div class="calc_nav" id="calc_nav">
+			<ul class="cf fr">
+				<!-- 选中效果是给当前样式加"_h",例如：当前样式c_gf;选中样式c_gf_h -->
+				<li class="c_gf"><a href="{$MODULE[1][linkurl]}tool/">购房能力评估</a></li>
+				<li class="c_dc_h"><a href="{$MODULE[1][linkurl]}tool/benjin.php">贷款计算器</a></li>
+				<li class="c_gj"><a href="{$MODULE[1][linkurl]}tool/gjj.php">公积金贷款</a></li>
+				<li class="c_tq"><a href="{$MODULE[1][linkurl]}tool/tqhd.php">提前还贷</a></li>
+				<li class="c_sf"><a href="{$MODULE[1][linkurl]}tool/sf.php">税费计算器</a></li>
+			</ul>
+		</div>
+	<div class="calc_main_wrap">
+			<div class="calc_main cf">
+        <div id="jisuanqi">
+         
+            <div class="jisuanqi-wrapper clearfixed">
+                <div id="fangdai">
+                    <ul class="fl fangdai-ul">
+                        <li class="cur"><i class="shangye"></i>
+                            <p>商业贷款</p></li>
+                        <li><i class="gongjijin"></i>
+                            <p>公积金贷款</p></li>
+                        <li><i class="zuhexing"></i>
+                            <p>组合贷款</p></li>
+                    </ul>
+                    <form name="calc1" id="calc1">
+                        <input type="hidden" name="type" value="1"/>
+                        <div class="fangdai-wrapper-box fr" style="display:block;">
+                            <div class="jisuan-type fl">
+                                <div id="jisuan-tab-box">
+                                    <p>计算方式</p>
+                                    <ul class="jisuan-tab-box-ul countBtm">
+                                        <li class="cur"><label><input id="calc1_radio2" onClick="changeCounts(this,1);" checked="checked" value="2" name="jisuan_radio" type="radio"/><span class="icon"></span>按房屋总价计算</label></li>
+                                        <li><label><input id="calc1_radio1" onClick="changeCounts(this,2);" value="1" name="jisuan_radio" type="radio"/><span class="icon"></span>按单价与建面计算</label></li>
+                                    </ul>
+                                    <div class="fwzjBox ">
+                                        <div style="display:block;" class="jisuan-tab-box-div">
+                                            <dl>
+                                                <dt>房屋总价</dt>
+                                                <dd><input type="text" class="input_fwzj clearVal1" data-index="1" style="width:340px;" id="housePrice1" name="daikuan_total000" /></dd>
+                                                <dd class="dw">万元</dd>
+                                            </dl>
+                                        </div>
+                                        
+                                        <dl>
+                                            <dt>贷款成数</dt>
+                                            <dd>
+                                                <select id="percentage" name="anjie" class="text">
+                                                    <option value="0.9">9成</option>
+                                                    <option value="0.8">8成</option>
+                                                    <option value='0.7' selected>7成</option>
+                                                    <option value='0.6'>6成</option>
+                                                    <option value='0.5'>5成</option>
+                                                    <option value='0.4'>4成</option>
+                                                    <option value='0.3'>3成</option>
+                                                    <option value='0.2'>2成</option>
+                                                </select>
+                                            </dd>
+                                        </dl>
+                                      
+                                        <dl>
+                                            <dt>贷款金额</dt>
+                                            <dd><input readonly type="text" style="width:340px;" id="loanAmount1" name="daikuan_total000" /></dd>
+                                            <dd class="dw">万元</dd>
+                                        </dl>
+                                        
+                                        <dl>
+                                            <dt>贷款年限</dt>
+                                            <dd>
+                                                <select name="years" id="years">
+                                                    <option value="1">1年</option>
+                                                    <option value="2">2年</option>
+                                                    <option value="3">3年</option>
+                                                    <option value="4">4年</option>
+                                                    <option value="5">5年</option>
+                                                    <option value="6">6年</option>
+                                                    <option value="7">7年</option>
+                                                    <option value="8">8年</option>
+                                                    <option value="9">9年</option>
+                                                    <option value="10">10年</option>
+                                                    <option value="11">11年</option>
+                                                    <option value="12">12年</option>
+                                                    <option value="13">13年</option>
+                                                    <option value="14">14年</option>
+                                                    <option value="15">15年</option>
+                                                    <option value="16">16年</option>
+                                                    <option value="17">17年</option>
+                                                    <option value="18">18年</option>
+                                                    <option value="19">19年</option>
+                                                    <option value="20" selected="selected">20年</option>
+                                                    <option value="21">21年</option>
+                                                    <option value="22">22年</option>
+                                                    <option value="23">23年</option>
+                                                    <option value="24">24年</option>
+                                                    <option value="25">25年</option>
+                                                    <option value="25">26年</option>
+                                                    <option value="25">27年</option>
+                                                    <option value="25">28年</option>
+                                                    <option value="25">29年</option>
+                                                    <option value="30">30年</option>
+                                                </select>
+                                            </dd>
+                                        </dl>
+                                        <p style="margin-top: 20px;margin-bottom: 20px;">商贷利率方式</p>
+                                        <ul class="jisuan-tab-box-ul LprBtm" style="margin-top: 20px;">
+                                            <li class="cur"><label><input id="calc1_radio2" onClick="changeBase(this,2);" checked="checked" value="2" name="jisuan_radio" type="radio"/><span class="icon"></span>基准利率</label></li>
+                                            <li><label><input id="calc1_radio1" onClick="changeBase(this,1);" value="1" name="jisuan_radio" type="radio"/><span class="icon"></span>LPR基础利率</label></li>
+                                        </ul>
+                                        <dl class="sdBox">
+                                            <dt>商贷利率</dt>
+                                            <dd>
+                                                <select id="val_sd1" class="wt_w" name="lilv" ></select>
+                                            </dd>
+                                            <dd>&nbsp;=<span id="sdlv"  class="font02 val_ll">4.9</span>%</dd>
+                                        </dl>
+                                        
+                                            
+                                        <dl class="baseBox">
+                                            <dt></dt>
+                                            <dd>
+                                                <div class="lprBox">
+                                                    <div class="item">
+                                                        <span class="tit">LPR</span>
+                                                            <input type="text" data-index="1"  id="lrp1" class="lpr_val lrp">
+                                                        <span class="dw">%</span>
+                                                    </div>
+                                                    <div class="item">
+                                                        <span class="tit">基点</span> <input type="text" data-index="1" class="lrp" id="val_jd1" value="0" ><span class="dw">%oo</span>
+                                                    </div>
+                                                </div>
+                                            </dd>
+                                        </dl>
+                                        <dl class="baseBox">
+                                            <dt>商贷利率</dt>
+                                            <dd><input type="text" id="val_ll1" readonly class="input_fwzj" data-index="1" style="width:340px;" id="housePrice1" name="daikuan_total000" /></dd>
+                                            <dd class="dw">%</dd>
+                                        </dl>
+                                        <p class="remark">注：此计算结果仅供参考，实际缴费应以当地为准</p>
+                                        <dl class="wt">
+                                            <input type="button" value="重置" id="reset1" class="againBtn" />
+                                            <input type="button" id="count1" value="计算" class="suanBtn" />
+                                        </dl>
+                                    </div>
+
+                                    
+                                    <div class="mjdjBox ">
+                                        <dl>    
+                                            <dt>单价</dt>
+                                            <dd><input type="text" style="width:340px;" class="regRule" data-index="1" id="price_val1" name="daikuan_total000" /></dd>
+                                            <dd class="dw">元 / ㎡</dd>
+                                        </dl>
+                                        <dl>
+                                            <dt>建面</dt>
+                                            <dd><input type="text" style="width:340px;"  class="regRule" data-index="2" id="area_val1" name="daikuan_total000" /></dd>
+                                            <dd class="dw">㎡</dd>
+                                        </dl>
+                                        
+                                        <dl>
+                                            <dt>房屋总价</dt>
+                                            <dd><input type="text" readOnly style="width:340px;" id="housePrice2" name="daikuan_total000" /></dd>
+                                            <dd class="dw">万元</dd>
+                                        </dl>
+                                        <dl>
+                                            <dt>贷款成数</dt>
+                                            <dd>
+                                                <select name="years" id="percentage1" >
+                                                    <option value="0.9" >九成</option>
+                                                    <option value="0.8">八成</option>
+                                                    <option value="0.7" selected="selected">七成</option>
+                                                    <option value="0.6">六成</option>
+                                                    <option value="0.5">五成</option>
+                                                    <option value="0.4">四成</option>
+                                                    <option value="0.3">三成</option>
+                                                    <option value="0.2">二成</option>
+                                                </select>
+                                            </dd>
+                                        </dl>
+
+                                        <dl>
+                                            <dt>贷款金额</dt>
+                                            <dd><input type="text" style="width:340px;" readOnly id="loanAmount2" name="daikuan_total000" onChange="ShowLilvsd(document.calc1.years.value,document.calc1.lilv.value);"/></dd>
+                                            <dd class="dw">万元</dd>
+                                        </dl>
+                                        <dl>
+                                            <dt>贷款年限</dt>
+                                            <dd>
+                                            <select name="years" id="years1">
+                                                    <option value="1">1年</option>
+                                                    <option value="2">2年</option>
+                                                    <option value="3">3年</option>
+                                                    <option value="4">4年</option>
+                                                    <option value="5">5年</option>
+                                                    <option value="6">6年</option>
+                                                    <option value="7">7年</option>
+                                                    <option value="8">8年</option>
+                                                    <option value="9">9年</option>
+                                                    <option value="10">10年</option>
+                                                    <option value="11">11年</option>
+                                                    <option value="12">12年</option>
+                                                    <option value="13">13年</option>
+                                                    <option value="14">14年</option>
+                                                    <option value="15">15年</option>
+                                                    <option value="16">16年</option>
+                                                    <option value="17">17年</option>
+                                                    <option value="18">18年</option>
+                                                    <option value="19">19年</option>
+                                                    <option value="20" selected="selected">20年</option>
+                                                    <option value="21">21年</option>
+                                                    <option value="22">22年</option>
+                                                    <option value="23">23年</option>
+                                                    <option value="24">24年</option>
+                                                    <option value="25">25年</option>
+                                                    <option value="25">26年</option>
+                                                    <option value="25">27年</option>
+                                                    <option value="25">28年</option>
+                                                    <option value="25">29年</option>
+                                                    <option value="30">30年</option>
+                                                </select>
+                                            </dd>
+                                        </dl>
+                                        <p style="margin-top: 20px;margin-bottom: 20px;">商贷利率方式</p>
+                                        <ul class="jisuan-tab-box-ul LprBtm1" style="margin-top: 20px;">
+                                            <li class="cur"><label><input id="calc1_radio2" onClick="changeBase1(this,2);" checked="checked" value="2" name="jisuan_radio" type="radio"/><span class="icon"></span>基准利率</label></li>
+                                            <li><label><input id="calc1_radio1" onClick="changeBase1(this,1);" value="1" name="jisuan_radio" type="radio"/><span class="icon"></span>LPR基础利率</label></li>
+                                        </ul>
+                                        <dl class="sdBox">
+                                            <dt>商贷利率</dt>
+                                            <dd>
+                                                <select id="val_sd2" class="wt_w" name="lilv"></select>
+                                            </dd>
+                                            <dd>&nbsp;=<span id="sdlv2"  class="font02 val_ll"></span>%</dd>
+                                        </dl>
+                                        <dl class="baseBox">
+                                            <dt></dt>
+                                            <dd>
+                                                <div class="lprBox">
+                                                    <div class="item">
+                                                        <span class="tit">LPR</span> <input type="text" data-index="2"  id="lrp2" class="lpr_val lrp"><span class="dw">%</span>
+                                                    </div>
+                                                    <div class="item">
+                                                        <span class="tit">基点</span> <input type="text" data-index="2" class="lrp" id="val_jd2" value="0" ><span class="dw">%oo</span>
+                                                    </div>
+                                                </div>
+                                            </dd>
+                                        </dl>
+                                        <dl class="baseBox">
+                                            <dt>商贷利率</dt>
+                                            <dd><input type="text" id="val_ll2" readonly class="input_fwzj" data-index="1" style="width:340px;" id="housePrice1" name="daikuan_total000" /></dd>
+                                            <dd class="dw">%</dd>
+                                        </dl>
+                                        
+                                        <p class="remark">注：此计算结果仅供参考，实际缴费应以当地为准</p>
+                                        <dl class="wt">
+                                            <input type="button"  value="重置" id="reset2" class="againBtn"/>
+                                            <input type="button" id="count2" value="计算" class="suanBtn"/>
+                                        </dl>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="jisuan-result fr">
+                                <div class="dataBox">
+                                    <div class="hasResult">
+                                        <p class="tit">计算结果</p>
+                                        <div class="sf">首付：<span id="sf">27</span>万元</div>
+                                        <div class="ll_box">
+                                            <span class="syll">商业贷款利率：<span id="sydkll">4.9</span> %</span>
+                                            <span class="syll">公积金贷款利率：<span id="gjjdkll">4.9</span> %</span>
+                                        </div>
+                                    </div>
+                                    <div class="content">
+                                        <div class="title">
+                                            等额本息<span>每期等额还款</span>
+                                        </div>
+                                        <div class="body">
+                                            <div class="item">
+                                                <div class="t">每期还款</div>
+                                                <div class="t center">支付利息</div>
+                                                <div class="t right">还款总额</div>
+                                            </div>
+                                            <div class="item">
+                                                <div class="d"><span id="fqhk">62245.33</span>元</div>
+                                                <div class="d center" id="zfll">33万</div>
+                                                <div class="d right" id="hkze">666.23万</div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="content">
+                                        <div class="title">
+                                            等额本金<span>逐期递减还款</span>
+                                        </div>
+                                        <div class="body">
+                                            <div class="item clearPad_r">
+                                                <div class="leftbox">
+                                                    <p class="">首期还款 <span class="ts" id="sf1">62245.33元</span></p>
+                                                    <p class="clearPad ps" id="dj">(* 每期递减38.99元)</p>
+                                                    <p>支付利息 <span id="zfll1">33万</span></p>
+                                                    <p>还款总额 <span id="hkze1">666.23万</span></p>
+                                                </div>
+                                                <div class="rightbox" id="fqBox1">
+                                                    <div class="item clearPad">
+                                                        <div>第一期还款</div>
+                                                        <div>62345.33元</div>
+                                                    </div>
+                                                    <div class="item clearPad">
+                                                        <div>第一期还款</div>
+                                                        <div>62345.33元</div>
+                                                    </div>
+                                                    <div class="item clearPad">
+                                                        <div>第一期还款</div>
+                                                        <div>62345.33元</div>
+                                                    </div>
+                                                    <div class="item clearPad">
+                                                        <div>第一期还款</div>
+                                                        <div>62345.33元</div>
+                                                    </div>
+                                                    <div class="item clearPad">
+                                                        <div>第一期还款</div>
+                                                        <div>62345.33元</div>
+                                                    </div>
+                                                    <div class="item clearPad">
+                                                        <div>第一期还款</div>
+                                                        <div>62345.33元</div>
+                                                    </div>
+                                                    <div class="item clearPad">
+                                                        <div>第一期还款</div>
+                                                        <div>62345.33元</div>
+                                                    </div>
+                                                </div>
+                                                
+                                            </div>
+                                            
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="nodata1"></div>
+                            </div>
+                        </div>
+                    </form>
+                    <form name="calc2" id="calc2">
+                        <input type="hidden" name="type" value="2"/>
+                        <div class="fangdai-wrapper-box fr">
+                            <div class="jisuan-type fl">
+                                <div id="jisuan-tab-box2">
+                                    <p>计算方式</p>
+                                    <ul class="jisuan-tab-box-ul jisuan-tab-box-ul2 countBtm1">
+                                        <li class="active cur"><label><input id="calc1_radio2" onClick="changeCounts1(this,1);" checked="checked" value="2" name="jisuan_radio" type="radio"/><span class="icon"></span>按房屋总价计算</label></li>
+                                        <li><label><input id="calc1_radio1" onClick="changeCounts1(this,2);" value="1" name="jisuan_radio" type="radio"/><span class="icon"></span>按单价与建面计算</label></li>
+                                    </ul>
+                                    <div class="fwzjBox1">
+                                        <dl>
+                                            <dt>房屋总价</dt>
+                                            <dd><input type="text" style="width:340px;" class="input_fwzj" id="housePrice3" data-index="2" name="daikuan_total000" /></dd>
+                                            <dd class="dw">万元</dd>
+                                        </dl>
+                                        <dl>
+                                            <dt>贷款成数</dt>
+                                            <dd>
+                                                <select name="years" id="percentage2" >
+                                                    <option value="0.9" >九成</option>
+                                                    <option value="0.8">八成</option>
+                                                    <option value="0.7" selected="selected">七成</option>
+                                                    <option value="0.6">六成</option>
+                                                    <option value="0.5">五成</option>
+                                                    <option value="0.4">四成</option>
+                                                    <option value="0.3">三成</option>
+                                                    <option value="0.2">二成</option>
+                                                </select>
+                                            </dd>
+                                        </dl>
+                                        <dl>
+                                            <dt>贷款金额</dt>
+                                            <dd><input type="text" style="width:340px;" readOnly id="loanAmount3" name="daikuan_total000" onChange="ShowLilvsd(document.calc2.years.value,document.calc2.lilv.value);"/></dd>
+                                            <dd class="dw">万元</dd>
+                                        </dl>
+                                        <dl>
+                                            <dt>贷款年限</dt>
+                                            <dd>
+                                                <select name="years" id="years2">
+                                                    <option value="1">1年（12期）</option>
+                                                    <option value="2">2年（24期）</option>
+                                                    <option value="3">3年（36期）</option>
+                                                    <option value="4">4年（48期）</option>
+                                                    <option value="5">5年（60期）</option>
+                                                    <option value="6">6年（72期）</option>
+                                                    <option value="7">7年（84期）</option>
+                                                    <option value="8">8年（96期）</option>
+                                                    <option value="9">9年（108期）</option>
+                                                    <option value="10">10年（120期）</option>
+                                                    <option value="11">11年（132期）</option>
+                                                    <option value="12">12年（144期）</option>
+                                                    <option value="13">13年（156期）</option>
+                                                    <option value="14">14年（168期）</option>
+                                                    <option value="15">15年（180期）</option>
+                                                    <option value="16">16年（192期）</option>
+                                                    <option value="17">17年（204期）</option>
+                                                    <option value="18">18年（216期）</option>
+                                                    <option value="19">19年（228期）</option>
+                                                    <option value="20" selected="selected">20年（240期）</option>
+                                                    <option value="25">25年（300期）</option>
+                                                    <option value="30">30年（360期）</option>
+                                                </select>
+                                            </dd>
+                                        </dl>
+                                        <dl>
+                                            <dt>公积金利率</dt>
+                                            <dd>
+                                                <select id="val_sd3" name="lilv" class="wt_w" ></select>
+                                            </dd>
+                                            <dd>&nbsp;=<span id="sdlv3" class="font02 val_ll">1</span>%</dd>
+                                        </dl>
+                                        <p class="remark">注：此计算结果仅供参考，实际缴费应以当地为准</p>
+                                        <dl class="wt">
+                                        <input type="button" value="重置" id="reset3"  class="againBtn" />
+                                        <input type="button" value="计算" id="count3" class="suanBtn"/>
+                                           
+                                        </dl>
+                                    </div>
+                                    <div class="mjdjBox1">
+                                        <dl>
+                                            <dt>单价</dt>
+                                            <dd><input type="text" style="width:340px;" id="price_val2" class="regRule" data-index="3" name="daikuan_total000"/></dd>
+                                            <dd class="dw">元 / ㎡</dd>
+                                        </dl>
+                                        <dl>
+                                            <dt>建面</dt>
+                                            <dd><input type="text" style="width:340px;" id="area_val2" class="regRule" data-index="4" name="daikuan_total000" /></dd>
+                                            <dd class="dw">㎡</dd>
+                                        </dl>
+                                        <dl>
+                                            <dt>房屋总价</dt>
+                                            <dd><input type="text" style="width:340px;" readOnly id="housePrice4" name="daikuan_total000"/></dd>
+                                            <dd class="dw">万元</dd>
+                                        </dl>
+                                        <dl>
+                                            <dt>贷款成数</dt>
+                                            <dd>
+                                                <select name="years" id="percentage3" >
+                                                    <option value="0.9" >九成</option>
+                                                    <option value="0.8">八成</option>
+                                                    <option value="0.7" selected="selected">七成</option>
+                                                    <option value="0.6">六成</option>
+                                                    <option value="0.5">五成</option>
+                                                    <option value="0.4">四成</option>
+                                                    <option value="0.3">三成</option>
+                                                    <option value="0.2">二成</option>
+                                                </select>
+                                            </dd>
+                                        </dl>
+                                        <dl>
+                                            <dt>贷款金额</dt>
+                                            <dd><input type="text" style="width:340px;" readonly id="loanAmount4" name="daikuan_total000"/></dd>
+                                            <dd class="dw">万元</dd>
+                                        </dl>
+                                        <dl>
+                                            <dt>贷款年限</dt>
+                                            <dd>
+                                                <select name="years" id="years3">
+                                                    <option value="1">1年</option>
+                                                    <option value="2">2年</option>
+                                                    <option value="3">3年</option>
+                                                    <option value="4">4年</option>
+                                                    <option value="5">5年</option>
+                                                    <option value="6">6年</option>
+                                                    <option value="7">7年</option>
+                                                    <option value="8">8年</option>
+                                                    <option value="9">9年</option>
+                                                    <option value="10">10年</option>
+                                                    <option value="11">11年</option>
+                                                    <option value="12">12年</option>
+                                                    <option value="13">13年</option>
+                                                    <option value="14">14年</option>
+                                                    <option value="15">15年</option>
+                                                    <option value="16">16年</option>
+                                                    <option value="17">17年</option>
+                                                    <option value="18">18年</option>
+                                                    <option value="19">19年</option>
+                                                    <option value="20" selected="selected">20年</option>
+                                                    <option value="21">21年</option>
+                                                    <option value="22">22年</option>
+                                                    <option value="23">23年</option>
+                                                    <option value="24">24年</option>
+                                                    <option value="25">25年</option>
+                                                    <option value="25">26年</option>
+                                                    <option value="25">27年</option>
+                                                    <option value="25">28年</option>
+                                                    <option value="25">29年</option>
+                                                    <option value="30">30年</option>
+                                                </select>
+                                            </dd>
+                                        </dl>
+                                        <dl>
+                                            <dt>公积金利率</dt>
+                                            <dd>
+                                                <select id="val_sd4" name="lilv" class="wt_w" ></select>
+                                            </dd>
+                                            <dd>&nbsp;=<span id="sdlv4" class="font02 val_ll">1</span>%</dd>
+                                        </dl>
+                                        <p class="remark">注：此计算结果仅供参考，实际缴费应以当地为准</p>
+                                        <dl class="wt">
+                                        <input type="button" value="重置" id="reset4" class="againBtn" />
+                                        <input type="button" value="计算" id="count4" class="suanBtn"/>
+                                           
+                                        </dl>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="jisuan-result fr">
+                                <div class="dataBox">
+                                        <div class="hasResult">
+                                            <p class="tit">计算结果</p>
+                                            <div class="sf">首付：<span id="sf2">27</span>万元</div>
+                                            <div class="ll_box">
+                                                <span class="syll">商业贷款利率：<span id="sydkll1">4.9</span> %</span>
+                                                <span class="syll">公积金贷款利率：<span id="gjjdkll1">4.9</span> %</span>
+                                            </div>
+                                        </div>
+                                        <div class="content">
+                                            <div class="title">
+                                                等额本息<span>每期等额还款</span>
+                                            </div>
+                                            <div class="body">
+                                                <div class="item">
+                                                    <div class="t">每期还款</div>
+                                                    <div class="t center">支付利息</div>
+                                                    <div class="t right">还款总额</div>
+                                                </div>
+                                                <div class="item">
+                                                    <div class="d"><span id="fqhk1">62245.33</span>元</div>
+                                                    <div class="d center" id="zfll2">33万</div>
+                                                    <div class="d right" id="hkze2">666.23万</div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="content">
+                                            <div class="title">
+                                                等额本金<span>逐期递减还款</span>
+                                            </div>
+                                            <div class="body">
+                                                <div class="item clearPad_r">
+                                                    <div class="leftbox">
+                                                        <p class="">首期还款 <span class="ts" id="sf3">62245.33元</span></p>
+                                                        <p class="clearPad ps" id="dj1">(* 每期递减38.99元)</p>
+                                                        <p>支付利息 <span id="zfll3">33万</span></p>
+                                                        <p>还款总额 <span id="hkze3">666.23万</span></p>
+                                                    </div>
+                                                    <div class="rightbox" id="fqBox2">
+                                                        <div class="item clearPad">
+                                                            <div>第一期还款</div>
+                                                            <div>62345.33元</div>
+                                                        </div>
+                                                        <div class="item clearPad">
+                                                            <div>第一期还款</div>
+                                                            <div>62345.33元</div>
+                                                        </div>
+                                                        <div class="item clearPad">
+                                                            <div>第一期还款</div>
+                                                            <div>62345.33元</div>
+                                                        </div>
+                                                        <div class="item clearPad">
+                                                            <div>第一期还款</div>
+                                                            <div>62345.33元</div>
+                                                        </div>
+                                                        <div class="item clearPad">
+                                                            <div>第一期还款</div>
+                                                            <div>62345.33元</div>
+                                                        </div>
+                                                        <div class="item clearPad">
+                                                            <div>第一期还款</div>
+                                                            <div>62345.33元</div>
+                                                        </div>
+                                                        <div class="item clearPad">
+                                                            <div>第一期还款</div>
+                                                            <div>62345.33元</div>
+                                                        </div>
+                                                    </div>
+                                                    
+                                                </div>
+                                                
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="nodata1"></div>
+                                    
+
+                            </div>
+                        </div>
+                    </form>
+                    <form name="calc3" class="mBox1" id="calc3">
+                        <input type="hidden" name="type" value="3"/>
+                        <div class="fangdai-wrapper-box fr " id="jisuan-tab-box3">
+                            <div class="jisuan-type fl" >
+                                <dl style="margin-top: 0px;">
+                                    <dt>公积金贷款金额</dt>
+                                    <dd><input type="text" name="total_sy" id="loanAmount5" class="input_fwzj" style="width:340px;" /></dd>
+                                    <dd class="dw">万元</dd>
+                                </dl>
+                                <dl>
+                                    <dt>商业贷款金额</dt>
+                                    <dd><input type="text" name="total_gjj" id="loanAmount6" class="input_fwzj" style="width:340px;" /></dd>
+                                    <dd class="dw">万元</dd>
+                                </dl>
+                                <dl>
+                                    <dt>贷款年限</dt>
+                                    <dd>
+                                        <select name="years" id="years4">
+                                            <option value="1">1年</option>
+                                            <option value="2">2年</option>
+                                            <option value="3">3年</option>
+                                            <option value="4">4年</option>
+                                            <option value="5">5年</option>
+                                            <option value="6">6年</option>
+                                            <option value="7">7年</option>
+                                            <option value="8">8年</option>
+                                            <option value="9">9年</option>
+                                            <option value="10">10年</option>
+                                            <option value="11">11年</option>
+                                            <option value="12">12年</option>
+                                            <option value="13">13年</option>
+                                            <option value="14">14年</option>
+                                            <option value="15">15年</option>
+                                            <option value="16">16年</option>
+                                            <option value="17">17年</option>
+                                            <option value="18">18年</option>
+                                            <option value="19">19年</option>
+                                            <option value="20" selected="selected">20年</option>
+                                            <option value="21">21年</option>
+                                            <option value="22">22年</option>
+                                            <option value="23">23年</option>
+                                            <option value="24">24年</option>
+                                            <option value="25">25年</option>
+                                            <option value="25">26年</option>
+                                            <option value="25">27年</option>
+                                            <option value="25">28年</option>
+                                            <option value="25">29年</option>
+                                            <option value="30">30年</option>
+                                        </select>
+                                    </dd>
+                                </dl>
+                                <dl>
+                                    <dt>公积金利率</dt>
+                                    <dd>
+                                                <select id="val_sd5" name="lilv" class="wt_w" ></select>
+                                            </dd>
+                                            <dd>&nbsp;=<span id="sdlv5" class="font02 val_ll">1</span>%</dd>
+                                </dl>
+                                <p style="margin-top: 20px;">商贷利率方式</p>
+                                <ul class="jisuan-tab-box-ul LprBtm2" style="margin-top: 20px;">
+                                    <li class="cur"><label><input id="calc1_radio2" onClick="changeBase2(this,2);" checked="checked" value="2" name="jisuan_radio" type="radio"/><span class="icon"></span>基准利率</label></li>
+                                    <li><label><input id="calc1_radio1" onClick="changeBase2(this,1);" value="1" name="jisuan_radio" type="radio"/><span class="icon"></span>LPR基础利率</label></li>
+                                </ul>
+                                <dl class="sdBox">
+                                    <dt>商贷利率</dt>
+                                    <dd>
+                                                <select id="val_sd6" name="lilv" class="wt_w" ></select>
+                                            </dd>
+                                            <dd>&nbsp;=<span id="sdlv6" class="font02 val_ll">1</span>%</dd>
+                                </dl>
+                                
+                                    
+                                <dl class="baseBox">
+                                    <dt></dt>
+                                    <dd>
+                                        <div class="lprBox">
+                                            <div class="item">
+                                                <span class="tit">LPR</span> <input type="text" data-index="3"  id="lrp3" class="lpr_val lrp"><span class="dw">%</span>
+                                            </div>
+                                            <div class="item">
+                                                <span class="tit">基点</span> <input type="text" data-index="3" class="lrp" id="val_jd3" value="0"><span class="dw">%oo</span>
+                                            </div>
+                                        </div>
+                                    </dd>
+                                </dl>
+                                <dl class="baseBox">
+                                    <dt>商贷利率</dt>
+                                            <dd><input type="text" id="val_ll3" readonly class="input_fwzj" data-index="3" style="width:340px;" id="housePrice1" name="daikuan_total000" /></dd>
+                                            <dd class="dw">%</dd>
+                                </dl>
+                                <p class="remark">注：此计算结果仅供参考，实际缴费应以当地为准</p>
+                                <dl style="margin-top:5px;" class="wt">
+                                    <input type="button" value="重置" id="reset5" class="againBtn" />
+                                    <input type="button" value="计算" class="suanBtn" id="count5" />
+                                    
+                                </dl>
+                            </div>
+                            <div class="jisuan-result fr">
+                               <div class="dataBox">
+                               <div class="hasResult">
+                                            <p class="tit">计算结果</p>
+                                            <div class="sf">首付：<span id="">--</span></div>
+                                            <div class="ll_box">
+                                                <span class="syll">商业贷款利率：<span id="sydkll2">4.9</span> %</span>
+                                                <span class="syll">公积金贷款利率：<span id="gjjdkll2">4.9</span> %</span>
+                                            </div>
+                                        </div>
+                                        <div class="content">
+                                            <div class="title">
+                                                等额本息<span>每期等额还款</span>
+                                            </div>
+                                            <div class="body">
+                                                <div class="item">
+                                                    <div class="t">每期还款</div>
+                                                    <div class="t center">支付利息</div>
+                                                    <div class="t right">还款总额</div>
+                                                </div>
+                                                <div class="item">
+                                                    <div class="d"><span id="fqhk2">62245.33</span>元</div>
+                                                    <div class="d center" id="zfll4">33万</div>
+                                                    <div class="d right" id="hkze4">666.23万</div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="content">
+                                            <div class="title">
+                                                等额本金<span>逐期递减还款</span>
+                                            </div>
+                                            <div class="body">
+                                                <div class="item clearPad_r">
+                                                    <div class="leftbox">
+                                                        <p class="">首期还款 <span class="ts" id="sf5">--</span></p>
+                                                        <p class="clearPad ps" id="dj2">(* 每期递减38.99元)</p>
+                                                        <p>支付利息 <span id="zfll5">33万</span></p>
+                                                        <p>还款总额 <span id="hkze5">666.23万</span></p>
+                                                    </div>
+                                                    <div class="rightbox" id="fqBox3">
+                                                        <div class="item clearPad">
+                                                            <div>第一期还款</div>
+                                                            <div>62345.33元</div>
+                                                        </div>
+                                                        <div class="item clearPad">
+                                                            <div>第一期还款</div>
+                                                            <div>62345.33元</div>
+                                                        </div>
+                                                        <div class="item clearPad">
+                                                            <div>第一期还款</div>
+                                                            <div>62345.33元</div>
+                                                        </div>
+                                                        <div class="item clearPad">
+                                                            <div>第一期还款</div>
+                                                            <div>62345.33元</div>
+                                                        </div>
+                                                        <div class="item clearPad">
+                                                            <div>第一期还款</div>
+                                                            <div>62345.33元</div>
+                                                        </div>
+                                                        <div class="item clearPad">
+                                                            <div>第一期还款</div>
+                                                            <div>62345.33元</div>
+                                                        </div>
+                                                        <div class="item clearPad">
+                                                            <div>第一期还款</div>
+                                                            <div>62345.33元</div>
+                                                        </div>
+                                                    </div>
+                                                    
+                                                </div>
+                                                
+                                            </div>
+                                        </div>
+                               </div>
+                                <div class="nodata1">
+
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+<!--焦点-->
+<!--推荐-->
+{template 'footer'}
+
+<script type="text/javascript">
+	var loupan_service_root_uri = '{$MODULE[1][linkurl]}api/';
+
+</script>
+<script src="{AJ_SKIN}js/jisuanqi/jquery.min.js?v={if AJ_DEBUG}{AJ_TIME}{else}{AJ_REFRESH}{/if}"></script>
+<script src="{AJ_SKIN}js/jisuanqi/jisuanqi.js?v={if AJ_DEBUG}{AJ_TIME}{else}{AJ_REFRESH}{/if}"></script>
+<script src="{AJ_SKIN}js/jisuanqi/jsq_new.js?v={if AJ_DEBUG}{AJ_TIME}{else}{AJ_REFRESH}{/if}"></script>
+<script src="{AJ_SKIN}js/jisuanqi/gjjdkjsq_new.js?v={if AJ_DEBUG}{AJ_TIME}{else}{AJ_REFRESH}{/if}"></script>
+<script src="{AJ_SKIN}js/jisuanqi/arithmetic.js?v={if AJ_DEBUG}{AJ_TIME}{else}{AJ_REFRESH}{/if}"></script>
+<script src="{AJ_SKIN}js/jisuanqi/inputCheck.js?v={if AJ_DEBUG}{AJ_TIME}{else}{AJ_REFRESH}{/if}"></script>
+
+<script>
+	FnTabSwitch('fangdai', 'fangdai-ul', 'li', 'fangdai-wrapper-box');
+</script>
+
+
+
+

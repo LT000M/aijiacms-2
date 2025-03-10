@@ -1,0 +1,555 @@
+{if $action=='add' || $action=='edit'}
+{template 'header_member', 'member'}
+{template 'cssjs', 'member'}
+
+<header class="aui-bar aui-bar-nav aui-bar-info" id="aui-header">
+        <a class="aui-btn aui-bar-info aui-pull-left" href="{if $action == ''}{$MYURL}?action=info{else}javascript:history.go(-1);{/if}">
+            <span class="aui-iconfont aui-icon-left"></span>
+        </a>
+    <div class="aui-title">{$head_name}</div>
+    {if $action=='add'}
+{else}
+    <a href="{$MUSER}?mid={$mid}&action=add" class="aui-pull-right">
+        <span class="aui-iconfont aui-icon-add fz14">添加</span>
+    </a>
+    {/if}
+</header>
+<div class="aui-bar-fix"></div>
+{if $action=='add' || $action == 'edit'}
+{else}
+<div class="aui-content">
+<div class="aui-tab" id="aui-tab">
+        <ul class="aui-tab-nav" id="sell_info">
+            <li id="tabbar3"><a href="{$MUSER}?mid={$mid}status=3">已发布<span class="aui-badge aui-badge-info">{$nums[3]}</span></a></li>
+            <li id="tabbar2"><a href="{$MUSER}?mid={$mid}&status=2">审核中<span class="aui-badge aui-badge-info">{$nums[2]}</span></a></li>
+            <li id="tabbar1"><a href="{$MUSER}?mid={$mid}&status=1">未通过<span class="aui-badge aui-badge-info">{$nums[1]}</span></a></li>
+        </ul>
+</div>
+</div>
+{/if}
+<span id="msg"></span>
+<div class="aui-content">
+<iframe src="" name="send" id="send" style="display:none;"></iframe>
+<script type="text/javascript" src="{AJ_MOB}static/lib/webuploader.min.js?v={if AJ_DEBUG}{AJ_TIME}{else}{AJ_REFRESH}{/if}"></script>
+<form method="post" action="?" id="dform" target="send" data-ajax="false" onsubmit="return check();">
+<input type="hidden" name="action" value="{$action}"/>
+<input type="hidden" name="mid" value="{$mid}"/>
+<input type="hidden" name="itemid" value="{$itemid}"/>
+<input type="hidden" name="forward" value="{$forward}"/>
+<input type="hidden" name="post[linkurl]" value="{$linkurl}"/>
+<input type="hidden" name="post[typeid]" value="{if $_groupid<=5}0{else}1{/if}"  />
+ <p class="aui-padded-10 aui-text-center">基本信息</p>
+        <div class="aui-form">
+        <div class="aui-input-row">
+                <span class="aui-input-addon ">小区名称</span>
+                <input type="text" name="post[housename]" id="housename" class="aui-input" value="{$housename}" placeholder="小区名称"/>
+            </div>
+           <div class="aui-input-row">
+                <span class="aui-input-addon ">户型</span>
+                 <select name="post[room]" id="typeid">
+                 {php $huxing = array('1室', '2室', '3室', '4室', '5室');}
+              {loop $huxing $k $v}
+              <option value="{$k+1}" {if ($k+1)==$room}selected = "selected"{/if}>{$v}</option>
+              {/loop}
+              </select>
+                               &nbsp;  <select name="post[hall]" title="厅">
+										<option value="0">0厅</option>
+<option value="1">1厅</option>
+<option value="2">2厅</option>
+<option value="3">3厅</option>
+<option value="4">4厅</option>
+<option value="5">5厅</option>
+									</select>
+                                   &nbsp; <select name="post[toilet]" title="卫">
+										<option value="1">1卫</option>
+<option value="2">2卫</option>
+<option value="3">3卫</option>
+<option value="4">4卫</option>
+<option value="5">5卫</option>
+<option value="0">0卫</option>
+									</select> &nbsp;<select name="post[balcony]" title="阳">
+										<option value="1">1阳</option>
+<option value="2">2阳</option>
+<option value="3">3阳</option>
+<option value="4">4阳</option>
+<option value="5">5阳</option>
+
+									</select>
+              </div>
+
+           
+             <div class="aui-input-row">
+                <span class="aui-input-addon ">总价</span>
+                <input type="number" name="post[price]" id="price" class="aui-input" value="{$price}" placeholder="总价(万元)"/>
+            </div>
+            <div class="aui-input-row">
+                <span class="aui-input-addon ">建面</span>
+                <input type="text" name="post[houseearm]" id="houseearm" class="aui-input" value="{$houseearm}" placeholder="建面(平方米)"/>
+            </div>
+            
+            
+               <p class="aui-padded-10 aui-text-center aui-bg-default" >详情信息</p>
+            <div class="aui-content " id="otherinfo">
+            <div class="aui-input-row">
+                <label class="aui-input-addon ">标题</label>
+                <input type="text" name="post[title]" id="title" class="aui-input" value="{$title}" placeholder="标题"/>
+            </div>
+
+            <div class="aui-input-row">
+                <span class="aui-input-addon ">物业类型</span>
+              {ajax_category_select('post[catid]', '选择分类', $catid, $moduleid)}
+            </div>
+             <div class="aui-input-row"><span class="aui-input-addon">地区</span>
+           {php $mareaid = ($areaid=='') ? ($m_user['areaid']) : ($areaid); }
+{ajax_area_select('post[areaid]', '请选择', $mareaid, '', 2)}</div>
+ <div class="aui-input-row">
+                <span class="aui-input-addon">地址</span>
+                <input type="text" name="post[address]" id="address" class="aui-input" value="{$address}" placeholder="地址"/>
+            </div>
+            
+            
+            <div class="aui-input-row">
+                <span class="aui-input-addon">朝向</span>&nbsp;
+             
+
+									</select>
+                                    &nbsp;<select name="post[toward]" title="朝向">
+										<option value="">朝向</option>
+										<option value="1" {if $toward == 1}selected{/if}>东</option>
+<option value="2" {if $toward == 2}selected{/if}>南</option>
+<option value="3" {if $toward == 3}selected{/if}>西</option>
+<option value="4" {if $toward == 4}selected{/if}>北</option>
+<option value="5" {if $toward == 5}selected{/if}>东南</option>
+<option value="6" {if $toward == 6}selected{/if}>西南</option>
+<option value="7" {if $toward == 7}selected{/if}>南北</option>
+<option value="8" {if $toward == 8}selected{/if}>东北</option>
+<option value="9" {if $toward == 9}selected{/if}>西北</option>
+<option value="10" {if $toward == 10}selected{/if}>东西</option>
+									</select>
+                                    &nbsp;<select name="post[houseyear]" title="房龄">
+										<option value="">房龄</option>
+										<option value="-1">不详</option>
+                                          <option value="2020" {if $houseyear == 2018}selected{/if}>2020 年</option>
+                                            <option value="2019" {if $houseyear == 2019}selected{/if}>2019 年</option>
+                                        <option value="2018" {if $houseyear == 2018}selected{/if}>2018 年</option>
+<option value="2017" {if $houseyear == 2017}selected{/if}>2017 年</option>
+<option value="2016" {if $houseyear == 2016}selected{/if}>2016 年</option>
+<option value="2015" {if $houseyear == 2015}selected{/if}>2015 年</option>
+<option value="2014" {if $houseyear == 2014}selected{/if}>2014 年</option>
+<option value="2013" {if $houseyear == 2013}selected{/if}>2013 年</option>
+<option value="2012" {if $houseyear == 2012}selected{/if}>2012 年</option>
+<option value="2011" {if $houseyear == 2011}selected{/if}>2011 年</option>
+<option value="2010" {if $houseyear == 2010}selected{/if}>2010 年</option>
+<option value="2009" {if $houseyear == 2009}selected{/if}>2009 年</option>
+<option value="2008" {if $houseyear == 2008}selected{/if}>2008 年</option>
+<option value="2007" {if $houseyear == 2007}selected{/if}>2007 年</option>
+<option value="2006" {if $houseyear == 2006}selected{/if}>2006 年</option>
+<option value="2005" {if $houseyear == 2005}selected{/if}>2005 年</option>
+<option value="2004" {if $houseyear == 2004}selected{/if}>2004 年</option>
+<option value="2003" {if $houseyear == 2003}selected{/if}>2003 年</option>
+<option value="2002" {if $houseyear == 2002}selected{/if}>2002 年</option>
+<option value="2001" {if $houseyear == 2001}selected{/if}>2001 年</option>
+<option value="2000" {if $houseyear == 2000}selected{/if}>2000 年</option>
+<option value="1999" {if $houseyear == 1999}selected{/if}>1999 年</option>
+<option value="1998" {if $houseyear == 1998}selected{/if}>1998 年</option>
+<option value="1997" {if $houseyear == 1997}selected{/if}>1997 年</option>
+<option value="1996" {if $houseyear == 1996}selected{/if}>1996 年</option>
+<option value="1995" {if $houseyear == 1995}selected{/if}>1995 年</option>
+<option value="1994" {if $houseyear == 1994}selected{/if}>1994 年</option>
+<option value="1993" {if $houseyear == 1993}selected{/if}>1993 年</option>
+<option value="1992" {if $houseyear == 1992}selected{/if}>1992 年</option>
+<option value="1991" {if $houseyear == 1991}selected{/if}>1991 年</option>
+<option value="1990" {if $houseyear == 1990}selected{/if}>1990 年</option>
+<option value="1989" {if $houseyear == 1989}selected{/if}>1989 年</option>
+<option value="1988" {if $houseyear == 1988}selected{/if}>1988 年</option>
+<option value="1987" {if $houseyear == 1987}selected{/if}>1987 年</option>
+<option value="1986" {if $houseyear == 1986}selected{/if}>1986 年</option>
+<option value="1985" {if $houseyear == 1985}selected{/if}>1985 年</option>
+<option value="1984" {if $houseyear == 1984}selected{/if}>1984 年</option>
+<option value="1983" {if $houseyear == 1983}selected{/if}>1983 年</option>
+<option value="1982" {if $houseyear == 1982}selected{/if}>1982 年</option>
+<option value="1981" {if $houseyear == 1981}selected{/if}>1981 年</option>
+<option value="1980" {if $houseyear == 1980}selected{/if}>1980 年</option>
+<option value="1979" {if $houseyear == 1979}selected{/if}>1979 年</option>
+<option value="1978" {if $houseyear == 1978}selected{/if}>1978 年</option>
+<option value="1977" {if $houseyear == 1977}selected{/if}>1977 年</option>
+<option value="1976" {if $houseyear == 1976}selected{/if}>1976 年</option>
+<option value="1975" {if $houseyear == 1975}selected{/if}>1975 年</option>
+<option value="1974" {if $houseyear == 1974}selected{/if}>1974 年</option>
+<option value="1973" {if $houseyear == 1973}selected{/if}>1973 年</option>
+<option value="1972" {if $houseyear == 1972}selected{/if}>1972 年</option>
+<option value="1971" {if $houseyear == 1971}selected{/if}>1971 年</option>
+<option value="1970" {if $houseyear == 1970}selected{/if}>1970 年</option>
+<option value="1969" {if $houseyear == 1969}selected{/if}>1969 年</option>
+<option value="1968" {if $houseyear == 1968}selected{/if}>1968 年</option>
+<option value="1967" {if $houseyear == 1967}selected{/if}>1967 年</option>
+<option value="1966" {if $houseyear == 1966}selected{/if}>1966 年</option>
+<option value="1965" {if $houseyear == 1965}selected{/if}>1965 年</option>
+<option value="1964" {if $houseyear == 1964}selected{/if}>1964 年</option>
+<option value="1963" {if $houseyear == 1963}selected{/if}>1963 年</option>
+<option value="1962" {if $houseyear == 1962}selected{/if}>1962 年</option>
+<option value="1961" {if $houseyear == 1961}selected{/if}>1961 年</option>
+<option value="1960" {if $houseyear == 1960}selected{/if}>1960 年</option>
+<option value="1959" {if $houseyear == 1959}selected{/if}>1959 年</option>
+<option value="1958" {if $houseyear == 1958}selected{/if}>1958 年</option>
+<option value="1957" {if $houseyear == 1957}selected{/if}>1957 年</option>
+<option value="1956" {if $houseyear == 1956}selected{/if}>1956 年</option>
+<option value="1955" {if $houseyear == 1955}selected{/if}>1955 年</option>
+<option value="1954" {if $houseyear == 1954}selected{/if}>1954 年</option>
+<option value="1953" {if $houseyear == 1953}selected{/if}>1953 年</option>
+<option value="1952" {if $houseyear == 1952}selected{/if}>1952 年</option>
+<option value="1951" {if $houseyear == 1951}selected{/if}>1951 年</option>
+									</select>
+                                   
+                                   
+            </div>
+             
+           
+            <div class="aui-input-row">
+                <span class="aui-input-addon">所在楼层</span>
+                <input type="text" name="post[floor1]" id="floor1" class="aui-inputfloor" maxlength="10" value="{$floor1}" placeholder="所在楼层"/> <span class="aui-input-addon">总楼层</span>
+                <input type="text" name="post[floor2]" id="floor2" class="aui-input" value="{$floor2}" placeholder="总楼层"/>
+            </div>
+          <div >
+              
+              <div class="ui-editor-content" ><input type="hidden" name="post[content]" id="content"/>
+<ul class="ui-editor-toolbar">
+<li class="ui-editor-img"><div id="editor-picker"></div></li>
+<li class="ui-editor-bold" id="editor-bold" editor-action="bold">B</li>
+<li class="ui-editor-italic" id="editor-italic" editor-action="italic">I</li>
+<li class="ui-editor-underline" id="editor-underline" editor-action="underline">U</li>
+</ul>
+<div class="ui-editor-content" id="editor">{$content}</div>
+<script type="text/javascript" src="{AJ_MOB}static/js/editor.js?v={if AJ_DEBUG}{AJ_TIME}{else}{AJ_REFRESH}{/if}"></script>
+<script type="text/javascript">
+$(function(){
+    $('#editor').DEditor({
+        editorid: 'editor',
+        textareaid: 'content',
+        server:'{AJ_MOB}upload.php?moduleid={$moduleid}&action=webuploader&from=editor'
+    });
+});
+</script></div>
+            </div>  
+    <br />   <br />     
+  <div >
+  <div class="ui-form">
+
+<div class="ui-form">
+<p>相册图片</p>
+<div>
+<script type="text/javascript">
+var album_max = parseInt({$AJ[thumb_max]});
+if(album_max < 5 || album_max > 99) album_max = 9;
+for(var i = 0;i < album_max; i++) {
+	document.write('<input type="hidden" name="post[thumbs][]" id="thumb'+i+'"/>');
+	document.write('<div class="ui-form-album-show" id="album'+i+'" onclick="album_action('+i+');"></div>');
+}
+</script>
+<div class="ui-form-album-upload"><div id="album-picker"></div></div>
+<script type="text/javascript">
+function album_action(id) {
+	Dsheet('{$js_pageid}','<a href="javascript:album_delete('+id+');void(0);"><span style="color:red;">删除图片</span></a>', '取消', '确定要删除图片吗？');
+}
+function album_delete(id) {
+	$('#thumb'+id).val('');
+	$('#album'+id).html('');
+	$('#album'+id).hide();
+	$('.ui-form-album-upload').show();	
+}
+function album_show(id, url) {
+	if($('#thumb'+id).length == 0) return false;
+	$('#thumb'+id).val(url);
+	$('#album'+id).html('<img src="'+url+'"/>');
+	$('#album'+id).show();
+}
+function album_hide() {
+	var j = 1;
+	for(var i = 0; i < album_max; i++) {
+		if($('#thumb'+i).val() == '') {
+			j = 0;
+			break;
+		}
+	}
+	if(j) $('.ui-form-album-upload').hide();
+}
+var albumu = WebUploader.create({
+	auto: true,
+    server: '{AJ_MOB}upload.php?moduleid={$moduleid}&action=webuploader&from=album&width={$MOD[thumb_width]}&height={$MOD[thumb_height]}',
+    pick: '#album-picker',
+    accept: {
+        title: 'Images',
+        extensions: 'gif,jpg,jpeg,bmp,png',
+        mimeTypes: 'image/*'
+    },
+    resize: false
+});
+albumu.on('fileQueued', function(file) {
+    Dtoast('{$js_pageid}','上传中..', '', 30);
+});
+albumu.on('uploadProgress', function(file, percentage) {
+	var p = parseInt(percentage * 100);
+	$('#toast-{$js_pageid}').html(p > 99 ? '处理中...' : '上传中...'+p+'%');
+});
+albumu.on( 'uploadSuccess', function(file, data) {
+	if(data.error) {
+		Dtoast('{$js_pageid}',data.message, '', 5);
+	} else {
+		for(var i = 0; i < album_max; i++) {
+			if($('#thumb'+i).val() == '') {
+				album_show(i, data.url);
+				break;
+			}
+		}
+		album_hide();
+	}
+});
+albumu.on( 'uploadError', function(file, data) {
+    Dtoast('{$js_pageid}',data.message, '', 5);
+});
+albumu.on('uploadComplete', function(file) {
+    $('#toast-{$js_pageid}').hide();
+});
+{if $thumbs}
+$(function(){
+	{loop $thumbs $k $v}
+	{if $v}album_show({$k}, '{$v}');{/if}
+	{/loop}
+	album_hide();
+});
+{/if}
+</script>
+</div>
+
+<p>宣传视频</p>
+<div>
+<input type="text" name="post[video]" value="{$video}" id="video"/>
+<div class="ui-form-file-upload"><div id="video-picker"></div></div>
+<script type="text/javascript">
+var fileu = WebUploader.create({
+	auto: true,
+    server: '{AJ_MOB}upload.php?moduleid={$moduleid}&action=webuploader&from=file',
+    pick: '#video-picker',
+    accept: {
+		title: 'video',
+		extensions: 'mp4', 
+		mimeTypes: 'video/*'
+    },
+    resize: false
+});
+fileu.on('fileQueued', function(file) {
+    Dtoast('{$js_pageid}','上传中..', '', 30);
+});
+fileu.on('uploadProgress', function(file, percentage) {
+	var p = parseInt(percentage * 100);
+	$('#toast-{$js_pageid}').html(p > 99 ? '处理中...' : '上传中...'+p+'%');
+});
+fileu.on( 'uploadSuccess', function(file, data) {
+	if(data.error) {
+		Dtoast('{$js_pageid}',data.message, '', 5);
+	} else {
+		$('#video').val(data.url);
+	}
+});
+fileu.on( 'uploadError', function(file, data) {
+    Dtoast('{$js_pageid}',data.message, '', 5);
+});
+fileu.on('uploadComplete', function(file) {
+    $('#toast-{$js_pageid}').hide();
+});
+</script>
+</div>	
+			</div>
+         </div> </div>
+        <p>
+          <p class="aui-padded-10 aui-text-center aui-bg-default">联系方式</p>
+<div class="aui-input-row">
+                <span class="aui-input-addon">联系人</span>
+                <input type="text" name="post[truename]" id="truename" class="aui-input" value=" {if $action=='edit'}{$truename}{else}{$_truename}{/if}" placeholder="联系人"/>
+            </div>
+            <div class="aui-input-row">
+                <span class="aui-input-addon">联系电话</span>
+                <input type="text" name="post[mobile]" id="mobile" class="aui-input" value="{if $action=='edit'}{$mobile}{else}{$user['mobile']}{/if}" placeholder="联系电话"/>
+            </div>
+            
+            {if $need_question}
+            
+             <div class="aui-input-row">
+<p ><b id="danswer"></b></p>
+<div >{template 'question', 'chip'}</div>
+</div>
+               {/if}
+
+{if $need_captcha}
+ <div class="aui-input-row">
+<p><b id="dcaptcha"></b></p>
+<div>{template 'captcha', 'chip'}</div>
+</div>
+{/if}
+            <div class="aui-btn-row" >
+            <input type="submit" name="submit" value="{if $action == 'edit'}修改{else}发布{/if}" class="aui-btn aui-btn-info fz16" style="width:90%;"/>
+               
+            </div>
+
+        </div>
+
+
+
+{if $fee_add}
+<p>发布此信息需消费</p>
+<div><span class="f_b f_red">{$fee_add}</span> {$fee_unit}</td>
+</tr>
+{if $fee_currency == 'money'}
+<p>{$AJ[money_name]}余额</p>
+<div><span class="f_blue f_b">{$_money}{$fee_unit}</span> <a href="charge.php?action=pay" class="b">[充值]</a></div>
+{else}
+<p>{$AJ[credit_name]}余额</p>
+<div><span class="f_blue f_b">{$_credit}{$fee_unit}</span> <a href="credit.php?action=buy" class="b">[购买]</a></div>
+{/if}
+{/if}
+
+{if $need_password}
+<p>支付密码<em>*</em><b id="dpassword"></b></p>
+<div><input type="password" name="password" value="" id="password" autocomplete="off"/></div>
+{/if}
+
+
+</div>
+
+{load('clear.js')}
+{else}
+{template 'header', 'member'}
+<div id="head-bar">
+<div class="head-bar">
+<div class="head-bar-back">
+<a href="{if $action == ''}{$MYURL}?action=info{else}javascript:history.go(-1);{/if}" data-direction="reverse"><img src="{AJ_MOB}static/img/icon-back.png" width="24" height="24"/><span>返回</span></a>
+</div>
+<div class="head-bar-title">{$MOD[name]}{if $action=='add'}发布{elseif $action=='edit'}修改{else}管理{/if}</div>
+<div class="head-bar-right">
+{if $action=='add' || $action=='edit'}
+<a href="?mid={$mid}"><span>取消</span></a>
+{else}
+
+<a href="?mid={$mid}&action=add"><span>发布</span></a>
+{/if}
+</div>
+</div>
+<div class="head-bar-fix"></div>
+</div>
+<div class="ui-form sch">
+<form action="?">
+<input type="hidden" name="mid" value="{$mid}"/>
+<input type="hidden" name="status" value="{$status}"/>
+<div><input type="search" name="kw" value="{$kw}" placeholder="输入关键词搜索"/></div>
+</form>
+</div>
+{if $_userid}
+<div class="list-menu">
+	<ul>
+	<a href="?mid={$mid}&status=3"><li{if $status==3} class="on"{/if} id="s3">已发布{if !$kw} {$nums[3]}{/if}</li></a>
+	<a href="?mid={$mid}&status=2"><li{if $status==2} class="on"{/if} id="s2">审核中{if !$kw} {$nums[2]}{/if}</li></a>
+	<a href="?mid={$mid}&status=1"><li{if $status==1} class="on"{/if} id="s1">未通过{if !$kw} {$nums[1]}{/if}</li></a>
+	<a href="?mid={$mid}&status=4"><li{if $status==4} class="on"{/if} id="s4">已过期{if !$kw} {$nums[4]}{/if}</li></a>
+	</ul>
+</div>
+{/if}
+<form method="post">
+{if $lists}
+{loop $lists $v}
+<div class="list-img">
+<input type="checkbox" name="itemid[]" value="{$v[itemid]}" class="dsn" id="checkbox-{$v[itemid]}"/>
+<a href="{$v[linkurl]}"><img src="{if $v[thumb]}{$v[thumb]}{else}{AJ_MOB}static/img/80x60.png{/if}" width="80" height="60" alt="" onerror="this.src='{AJ_MOB}static/img/80x60.png';"/></a>
+<ul>
+<li><em class="check" id="check-{$v[itemid]}"></em><a href="?mid={$mid}&action=edit&itemid={$v[itemid]}" rel="external"><strong>{$v[title]}</strong></a></li>
+<li><em class="sheet" id="sheet-{$v[itemid]}"></em><span>{$v[date]}</span></li>
+</ul>
+</div>
+{/loop}
+{/if}
+{if $pages}<div class="pages">{$pages}</div>{/if}
+<div id="foot-bar" class="dsn">
+<div class="foot-bar-fix"></div>
+<div class="foot-bar btns">
+{if $timetype!='add'}<input type="submit" value="刷新选中" class="btn-green" onClick="this.form.action='?mid={$mid}&status={$status}&action=refresh';"/>{/if}
+{if $MG[delete]}<input type="submit" name="submit" value="删除选中" class="btn-red" onClick="if(confirm('确定要删除选中{$MOD[name]}吗？')){this.form.action='?mid={$mid}&status={$status}&action=delete'}else{return false;}"/>{/if}
+</div>
+</div>
+</form>
+<script type="text/javascript">
+$(function(){
+	if($('#foot-bar input').length == 0) $('.check').hide();
+	$('.list-img em').click(function() {
+		if($(this).attr('class') == 'sheet') {
+			var id = $(this).attr('id').replace('sheet-', '');
+			Dsheet('<a href="?mid={$mid}&action=edit&itemid='+id+'"><span>修改</span></a>{if $MG[copy]}|<a href="?mid={$mid}&action=add&itemid='+id+'"><span>复制</span></a>{/if}{if $MG[delete]}|<a href="?mid={$mid}&action=delete&itemid='+id+'" onclick="return _delete();"><span style="color:red;">删除</span></a>{/if}', '取消');
+		} else {
+			var id = $(this).attr('id').replace('check-', '');
+			if($('#checkbox-'+id).attr('checked')) {
+				$('#checkbox-'+id).attr('checked', false);
+				$(this).attr('class', 'check');
+			} else {
+				$('#checkbox-'+id).attr('checked', true);
+				$(this).attr('class', 'checked');
+			}
+			if($('.checked').length > 0) {
+				$('#foot-bar').fadeIn(300);
+			} else {
+				$('#foot-bar').fadeOut(300);
+			}
+		}
+	});
+});
+</script>
+{/if}
+{if $action == 'add' || $action == 'edit'}
+<script type="text/javascript">
+function _p() {
+	if(Dd('tag').value) {
+		Ds('reccate');
+	}
+}
+function check() {
+	var l;
+	var f;
+	f = 'catid_1';
+	if(Dd(f).value == 0) {
+		Dmsg('请选择所属分类', 'catid', 1);
+		return false;
+	}
+	f = 'title';
+	l = Dd(f).value.length;
+	if(l < 2 || l > 80) {
+		Dmsg('信息标题应为2-80字，当前已输入'+l+'字', f);
+		return false;
+	}
+
+	{if $FD}{fields_js()}{/if}
+	{if $CP}{property_js()}{/if}
+{if $need_password}
+	f = 'password';
+	l = Dd(f).value.length;
+	if(l < 6) {
+		Dmsg('请填写支付密码', f);
+		return false;
+	}
+{/if}
+{if $need_question}
+	f = 'answer';
+	if($('#c'+f).html().indexOf('ok.png') == -1) {
+		Dmsg('请填写正确的验证问题', f);
+		return false;
+	}
+{/if}
+{if $need_captcha}
+	f = 'captcha';
+	if($('#c'+f).html().indexOf('ok.png') == -1) {
+		Dmsg('请填写正确的验证码', f);
+		return false;
+	}
+{/if}
+	return true;
+}
+var aijiacms_oauth = '{$EXT[oauth]}';
+</script>
+{/if}
+{template 'footer', 'member'}

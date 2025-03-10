@@ -1,0 +1,109 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, minimal-ui">
+    <title>{if $seo_title}{$seo_title}{else}{if $head_title}{$head_title}{$AJ[seo_delimiter]}{/if}{if $city_sitename}{$city_sitename}{else}{$site_name}{/if}{/if}</title>
+{if $head_keywords}
+<meta name="keywords" content="{$head_keywords}"/>
+{/if}
+{if $head_description}
+<meta name="description" content="{$head_description}"/>
+{/if}
+    <meta name="applicable-device" content="mobile">
+   
+    <script src="{AJ_MOB}static2020/js/jquery.min.js"></script>
+    <script src="{AJ_MOB}static2020/js/font-size.js"></script>
+    <link rel="stylesheet" href="{AJ_MOB}static2020/css/base.css?t=1606958269">
+    <link rel="stylesheet" href="{AJ_MOB}static2020/css/style.css?t=1606958269">
+    <style>
+        .footer-js img{width:auto;}
+    </style>
+</head>
+<body>
+
+<!-- 头部 S-->
+<div class="mc-header">
+    <a href="index.html" class="go-back"></a>
+    <h3>楼盘问答</h3>
+</div>
+<!-- 头部 E-->
+
+<div class="main" style="background: none;padding-bottom:3rem;">
+    <!-- 提问列表 S-->
+    <div class="question-lists">
+        <ul>
+                      <!--{php $tags=tag("table=wenfang&condition=status=3 and item_id=$itemid&pagesize=50&order=addtime desc&template=null");}-->
+							 {loop $tags $i $t}      <li>
+                <div class="ask">
+                    <a href="#">{$t[content]}</a>
+                </div>
+                                <div class="answer">
+                 {$t[reply]}  </div>
+                                <div class="num-time">
+                    <a class="num">答</a>
+                    <span class="time">{timetodate($v[addtime], 3)}</span>
+                </div>
+            </li>
+                      {/loop}
+                    </ul>
+        <div class="page_list">
+                    </div>
+    </div>
+    <!-- 提问列表 E-->
+    <div class="answer-textarea">
+        <form action="#">
+            <div class="form-box">
+                <div class="ipt-area">
+                    <input type="text" class="text-ipt" id="question" placeholder="请填写您的问题" minlength="5" maxlength="40" name="textIpt">
+                </div>
+                <div class="btn-area">
+                    <input type="hidden" id="hname" value="{$title}">
+          <input type="hidden" id="linkurl" value="{AJ_MOB}house/{$house_id}">   
+           <input type="hidden" id="house_id" value="{$itemid}">
+                    <input type="button" class="submit sub-question"  data-uri="{$MODULE[1][linkurl]}api/subquestion.php" value="提交">
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+<script src="{AJ_MOB}static2020/js/layer.js"></script>
+<script>
+    $(function(){
+        $(".sub-question").on('click',function(){
+            var question = $("#question").val(),house_id = $("#house_id").val(),hname = $("#hname").val(),linkurl = $("#linkurl").val(),url = $(this).data('uri') ;
+            if(!question){
+                layer.msg('请填写您的问题',{icon:2});
+            }else{
+                $.post(url,{content:question,house_id:house_id,hname:hname,linkurl:linkurl},function(result){
+                    if(result.code == 1)
+                    {
+                        $("#question").val('');
+                        layer.msg('问题提交成功',{icon:1},function(){
+                            window.location.reload();
+                        });
+                    }else{
+                        layer.msg(result.msg,{icon:2});
+                    }
+                });
+            }
+        });
+    });
+
+</script>
+<script src="{AJ_MOB}static2020/js/subscribe.js"></script>
+    <!-- 导航行为 S-->
+<div class="nav-act">
+    <a href="/" class="homepage">首页</a>
+    <a href="{$EXT[comment_mob]}{rewrite('index.php?mid='.$moduleid.'&itemid='.$itemid)}" class="consult">点评</a>
+    <a href="tel:{$telephone}" class="call-tel">拨打电话</a>
+   <a href="javascript:;" class="order-l-house dialog" data-id="{$itemid}" data-model="house"  data-hname="{$title}" data-username="{$_username}"  data-type="0" data-uri="{AJ_MOB}subscribe.php">预约看房</a>
+</div>
+<!-- 导航行为 E-->
+
+
+</div>
+
+{template 'foottj'}
+</body>
+</html>

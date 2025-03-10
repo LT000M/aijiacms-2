@@ -1,0 +1,43 @@
+var _aijiacms_message = {$_message};
+var _aijiacms_chat = {$_chat};
+var _aijiacms_cart = get_cart();
+if(typeof aijiacms_member == 'undefined') {
+	$('#aijiacms_message em').remove();
+	$('#message em').remove();
+	if(_aijiacms_message) {
+		$('#aijiacms_message').append('<em>'+_aijiacms_message+'</em>');
+		$('#message').append('<em>'+_aijiacms_message+'</em>');
+	}
+	if(_aijiacms_message > aijiacms_message && {$_sound}) {
+		$('#aijiacms_space').html(sound('message_{$_sound}'));
+		aijiacms_message = _aijiacms_message;
+	}
+	{if $AJ[im_web]}
+	$('#aijiacms_chat em').remove();
+	$('#chats em').remove();
+	if(_aijiacms_chat) {
+		$('#aijiacms_chat').append('<em>'+_aijiacms_chat+'</em>');
+		$('#chats').append('<em>'+_aijiacms_chat+'</em>');
+	}
+	if(_aijiacms_chat > aijiacms_chat) {
+		$('#aijiacms_space').html(sound('chat_new'));
+		aijiacms_chat = _aijiacms_chat;
+	}
+	{/if}
+} else {
+	$('#aijiacms_message').html(_aijiacms_message ? '<strong>'+_aijiacms_message+'</strong>' : 0);
+	if(_aijiacms_message > aijiacms_message && {$_sound}) {
+		$('#aijiacms_space').html(sound('message_{$_sound}'));
+		aijiacms_message = _aijiacms_message;
+	}
+	{if $AJ[im_web]}
+	$('#aijiacms_chat').html(_aijiacms_chat ? '<strong>'+_aijiacms_chat+'</strong>' : 0);
+	if(_aijiacms_chat > aijiacms_chat) {
+		$('#aijiacms_space').html(sound('chat_new'));
+		aijiacms_chat = _aijiacms_chat;
+	}
+	{/if}
+	{if $AJ[max_cart]}
+	$('#aijiacms_cart').html(_aijiacms_cart > 0 ? '<strong>'+_aijiacms_cart+'</strong>' : 0);
+	{/if}
+}

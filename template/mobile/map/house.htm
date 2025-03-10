@@ -1,0 +1,187 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, minimal-ui">
+   <title>新房地图找房-{if $seo_title}{$seo_title}{else}{if $head_title}{$head_title}{$AJ[seo_delimiter]}{/if}{if $city_sitename}{$city_sitename}{else}{$AJ[sitename]}{/if}{/if}</title>
+	{if $head_keywords}
+<meta name="keywords" content="{$head_keywords}"/>
+{/if}
+{if $head_description}
+<meta name="description" content="{$head_description}"/>
+{/if}
+    <script src="{AJ_MOB}staticmap/js/jquery.min.js"></script>
+    <script src="{AJ_MOB}staticmap/js/font-size.js"></script>
+    <link rel="stylesheet" href="{AJ_MOB}staticmap/css/base.css">
+    <link rel="stylesheet" href="{AJ_MOB}staticmap/css/style.css">
+
+</head>
+<body>
+
+<div class="lookRoom-head">
+    <div class="top">
+    <a href="javascript:history.go(-1)" class="go-back"></a>
+    <div class="lr-tab">
+       <a href="newhouse.php" class="active">新房</a>
+        <a href="index.php" >二手房</a>
+        <a href="rent.php" >出租房</a>
+       
+       
+    </div>
+    <a href="javascript:;" class="search-room" style="background: none;"></a>
+</div>
+</div>
+
+
+
+<div class="main">
+    <div class="lookRoom-head">
+        <!-- 筛选 S -->
+        <div class="lr-select-box">
+            <div class="select_head" id="select_head">
+                <div class="item" id="city" data-id="0">
+                    <span class="tit">区域</span>
+                    <span class="iconfont icon-xialajiantouxiangxia"></span>
+                </div>
+                <div class="item" id="price" data-id="0">
+                    <span class="tit">价格</span>
+                    <span class="iconfont icon-xialajiantouxiangxia"></span>
+                </div>
+                <div class="item" id="type" data-id="0">
+                    <span class="tit">类型</span>
+                    <span class="iconfont icon-xialajiantouxiangxia"></span>
+                </div>
+                <div class="item">
+                    <span class="tit">更多</span>
+                    <span class="iconfont icon-xialajiantouxiangxia"></span>
+                </div>
+            </div>
+            <div class="select_body" id="select_body">
+                <div class="item common">
+                    <div class="item_box">
+                        <ul class="one-level" data-uri="{$MODULE[1][linkurl]}api/map/getcitychild.php">
+                            <li data-id="0" class="active"><a href="javascript:;">不限</a></li>
+                            {loop $mainarea $k $v}
+                                                        <li data-id="{$v[areaid]}"><a href="javascript:;">{$v[areaname]}</a></li>{/loop}
+                                                      
+                                                    </ul>
+                        <ul class="two-level">
+                        </ul>
+                    </div>
+                </div>
+                <div class="item common">
+                    <div class="item_box attr">
+                        <ul>
+                            <li data-id="0" class="active"><a href="javascript:;">不限</a></li>
+                                                      	{php $range_arr = getbox_name('range','newhouse_6')}
+					    {loop $range_arr $key $v}
+						  <li data-id="{$key}"><a href="javascript:;">{$v}</a></li>
+                        {/loop} 
+                                                    </ul>
+                    </div>
+
+                </div>
+                <div class="item common">
+                    <div class="item_box attr">
+                        <ul>
+                            <li data-id="0" class="active"><a href="javascript:;">不限</a></li>
+                             {php $maincat = get_maincat(0,6)}
+{loop $maincat $k $v}
+						
+                                                        <li data-id="{$v[catid]}"><a href="javascript:;">{$v[catname]}</a></li>
+                                                      {/loop}
+                                                    </ul>
+                    </div>
+                </div>
+                <div class="item more"  id="more">
+                    <form action="">
+                        <article class="select_area">
+
+                            <section class="section" id="special">
+                                <div class="tit">特色</div>
+                                <ul class="clearfix">
+                                    <li class="active" data-id="0">全部</li>
+                                      {php $lpts_arr = getbox_name('lpts','newhouse_6')}
+					    {loop $lpts_arr $key $v}
+				
+									
+                                        
+                                                                        <li data-id="{$key}">{$v}</li>
+                                                                      {/loop}
+                                                                    </ul>
+                            </section>
+                            <section class="section" id="status">
+                                <div class="tit">状态</div>
+                                <ul class="clearfix">
+                                    <li class="active" data-id="0">全部</li>
+                                    {php $TYPE = array('待售楼盘', '在售楼盘', '尾盘楼盘', '售完楼盘');}
+                                     {loop $TYPE $k $v} 
+							
+                                                                        <li data-id="{$k+1}">{$v}</li>
+                                                                       {/loop}
+                                                                    </ul>
+                            </section>
+
+                        </article>
+                        <article class="submit_area">
+                            <input type="reset" id="more_reset" class="reset" value="清空条件">
+                            <input type="button" id="search-btn" class="submit" value="确定">
+                        </article>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <!-- 筛选 E -->
+    </div>
+    <div id="select_bg"></div>
+    <div class="map-show-box">
+        <div id="map"></div>
+    </div>
+</div>
+<!-- 筛选 -->
+<script src="{AJ_MOB}staticmap/js/map-search.js"></script>
+<script type="text/javascript" src="{AJ_MOB}staticmap/js/d708bc4fd8c1401987d389f2b08c226a.js"></script>
+<script type="text/javascript" src="{AJ_MOB}staticmap/js/map.js"></script>
+<script type="text/javascript" src="{AJ_MOB}staticmap/js/baiduevent.js"></script>
+<script type="text/javascript">
+    $(function(){
+
+        var lng = '{$lan}';
+        var lat = '{$lat}';
+        BMapApplication.init({'lng' : lng, 'lat' : lat, 'mapContainerId' : 'map'});
+        BMapApplication.requestUrl = "{$MODULE[1][linkurl]}api/map/gethouselists.php";
+        BMapApplication.requestParam = getParam();
+        BMapApplication.getMap();
+    });
+    function getParam()
+    {
+        var city = $('#city').attr('data-id'),price = $('#price').attr('data-id'),
+                type = $('#type').attr('data-id'),
+                special = $('#special li.active').attr('data-id'),status = $('#status li.active').attr('data-id');
+        return {
+            city : city,
+            price : price,
+            type  : type,
+            special : special,
+            status  : status
+        };
+    }
+</script>
+
+<div style="max-width: 750px;margin:0 auto;position: relative;">
+    <div class="footer-bar">
+        <ul>
+      
+        
+            <li ><a href="{AJ_MOB}"><i class="icon iconfont icon-daohangshouye"></i><div>首页</div></a></li>
+            <li ><a href="{AJ_MOB}house"><i class="icon iconfont icon-ziyuan"></i><div>新房</div></a></li>
+            <li ><a href="{AJ_MOB}sale"><i class="icon iconfont icon-second"></i><div>二手</div></a></li>
+            <li ><a href="{AJ_MOB}rent"><i class="icon iconfont icon-rental"></i><div>出租</div></a></li>
+            <li ><a href="{AJ_MOB}my.php"><i class="icon iconfont icon-yonghu"></i><div>我的</div></a></li>
+        </ul>
+    </div>
+</div>
+
+
+</body>
+</html>

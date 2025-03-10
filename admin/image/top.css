@@ -1,0 +1,20 @@
+@charset "utf-8";
+/*
+
+*/
+
+/*top*/
+.admin_top{background: #0E0E0E;color:#ffffff;height:45px;line-height:45px;overflow:hidden;}
+.admin_top img{vertical-align:middle;margin-top: -4px;}
+.admin_top a{color:#ffffff;}
+.admin_top_fl{float:left;}
+
+.admin_top_fl img {width: 30px;height: 30px;}
+.topbar-logo{padding: 15px 7px;width: 45px;height: 45px;background: #0E0E0E;}
+.topbar-home-link{padding:0 10px;}
+.topbar-home-link .ltxt{margin-right:15px;font-size:17px}
+.topbar-home-link .ltxt-2{font-size:14px}
+
+.admin_top_fr{float:right;/* margin-right:15px */}
+.admin_top_fr span{padding:0 10px}
+.admin_top_fr span b{font-style: normal;background: #FF6600;border-radius: 20px;color: #FFFFFF;font-size: 10px;z-index: 3;_display: inline-block;margin: -20px 0 0 2px;padding: 0 5px 0 5px;height: 15px;font-weight: normal;}

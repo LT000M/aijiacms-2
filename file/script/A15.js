@@ -1,0 +1,1 @@
+document.write('<img src="https://www.ncfc365.com/file/upload/201802/27/180305611.gif" width="1200" height="60" alt=""/><div class="ad-guanggao" style="margin:0px;">广告</div>');

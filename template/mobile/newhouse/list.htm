@@ -1,0 +1,352 @@
+<!DOCTYPE HTML>
+<html lang="">
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" /> 
+		        
+<title>{if $seo_title}{$seo_title}{else}{if $head_title}{$head_title}{$AJ[seo_delimiter]}{/if}{if $city_sitename}{$city_sitename}{else}{$site_name}{/if}{/if}</title>
+{if $head_keywords}
+<meta name="keywords" content="{$head_keywords}"/>
+{/if}
+{if $head_description}
+<meta name="description" content="{$head_description}"/>
+{/if}
+		        <meta name="author" content="aijia" />
+        <meta name="format-detection" content="telephone=no">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0,user-scalable=no,minimal-ui">
+        <meta name="apple-mobile-web-app-capable" content="yes">
+        <meta name="apple-mobile-web-app-status-bar-style" content="black">
+	 <link rel="stylesheet" href="{AJ_MOB}static2019/css/aijia.css">
+<link rel="stylesheet" href="{AJ_MOB}static2019/css/info-mb.css">
+	  <link rel="stylesheet" href="{AJ_MOB}static2019/css/info-base.css">
+	<link rel="stylesheet" href="{AJ_MOB}static2019/css/nav.css"> 
+	<script src="{AJ_MOB}static2019/js/zepto.min.js"></script>
+     <script src="{AJ_MOB}static2019/js/aijiacom.js"></script>
+ <script src="{AJ_MOB}static2019/js/jweixin-1.2.0.js"></script>
+<style>
+.aijia{width:100%;}
+.tfmain{width:100%;margin-top:45px;}
+/* 分页样式 */
+.pager span {
+	-webkit-appearance: none;
+	
+	border-radius: 0;
+	box-shadow: 0 2px 0 #EFF0F1;
+	
+	display: inline-block;
+	height: 33px;
+	line-height: 33px;
+	
+	vertical-align: top;
+	text-align: center;
+	width: 33px;
+	border-color: #FF7201;
+	
+}
+.pager span.next-page {
+	position: relative;
+	text-align: left;
+	width: 70px;
+	margin-right: 0;
+	text-indent: 10px;
+}
+.pager span.pre-page {
+		position: relative;
+	text-align: left;
+	width: 70px;
+	text-indent: 20px;
+	
+}
+.next-page::after {
+	content: '';
+	border: 5px solid transparent;
+	border-left-color: #3F4358;
+	height: 0;
+	right: 4px;
+	position: absolute;
+	top: 11px;
+	width: 0;
+}
+.pre-page::before {
+	content: '';
+	border: 5px solid transparent;
+	border-right-color: #3F4358;
+	height: 0;
+	left: 5px;
+	position: absolute;
+	top: 11px;
+	width: 0;
+}
+.pager span.currents {
+		-webkit-appearance: none;
+	border: 1px solid #C8CACC;
+	border-radius: 0;
+	box-shadow: 0 2px 0 #EFF0F1;
+	color: #3F4358;
+	display: inline-block;
+	height: 33px;
+	line-height: 33px;
+	margin-right: 5px;
+	vertical-align: top;
+	text-align: center;
+	width: 33px;
+	border-color: #FF7201;
+	color: #FF7201;
+}
+</style>
+    </head>
+<body>
+<!--aijia容器开始-->	
+<div class="aijia">
+<!--aijiatop开始-->
+<div class="aijiatop">
+<header class="ui-header ui-header-positive ui-border-b">
+<i class="ui-icon-return" onClick="history.back()"></i>
+    <h1 onClick="location.href='{AJ_MOB}'">{if $city_sitename}{$city_sitename}{else}{$site_name}{/if}</h1><div class="ui-youbian"><!--header区域 导航栏 区域  开始-->
+						<span class="ui-avatar-tiled" style="margin-top:6px;" onClick="location.href= '{AJ_MOB}my.php';"> <span style="background-image:url({AJ_MOB}static2019/images/noavatar_small.gif)"></span></span>
+			</div>
+</header>
+ </div>
+<!--aijiatop结束-->
+ <!--tfmain开始-->
+<div class="tfmain" >
+<!--<div class="ui-slider">
+    <ul class="ui-slider-content" style="width: 300%">
+        <li><span style="background-image:url(#)"></span></li>
+       
+    </ul>
+</div>-->
+<div class="list" >
+<nav id="nav" style="position:fixed; top:45px;left:0; z-index:999">
+			<div>
+				<span class="a_down">{if returnsx("a")==-1}区域{else}{area_pos(returnsx("a"), '')}{/if}</span>
+				 <ol>
+				  				 	<li><a href="{rentser('a','')}" class="bid-list {if returnsx("a")==-1}selected{/if} ">全部</a></li>
+										
+					 							  {php $mainareas = get_mainarea($cityid)}
+									{loop $mainareas $k $v}
+									<li><a href="{rentser('a',$v[areaid],'d')}" class="{if check_in('_a'.$v[areaid].'v',$getstr)}selected{/if} ">{$v[areaname]}</a></li> {/loop}
+                                    
+                                    			
+										  										
+									 </ol>
+			</div><i class="l"></i>
+			 {if returnsx("a")!=-1} 
+            <div>
+				<span class="a_down">{if returnsx("d")==-1}商圈{else}{area_poss(returnsx("d"), '')}{/if}</span>
+				 <ol>
+				 					<li><a href="{rentser('d','')}" class="bid-list {if returnsx("d")==-1}selected{/if} ">全部</a></li>
+										
+					 							{php $mainareas = get_mainarea(returnsx("a"))}
+						{loop $mainareas $k $v}
+									<li><a href="{rentser('d',$v[areaid],'')}" class="{if check_in('_d'.$v[areaid].'v',$getstr)}selected{/if} ">{$v[areaname]}</a></li> {/loop}
+			  </ol>
+			</div>
+			<i class="l"></i>
+            {/if}
+            <div>
+				<span class="a_down">{if returnsx("t")==-1}类型{else}{get_cats(returnsx("t"), '6')}{/if}</span>
+				 <ol>
+				  				 	<li><a href="{rentser('t','')}" class="bid-list {if returnsx("t")==-1}selected{/if} ">全部</a></li>
+										
+					 									 {php $maincat = get_maincat(0,6)}
+						 {loop $maincat $k $v}
+									<li><a href="{rentser('t',$v[catid])}" class=" {if check_in('_t'.$v[catid].'v',$getstr)}selected{/if} ">{$v[catname]}</a></li>{/loop}
+										  										
+									 </ol>
+			</div><i class="l"></i>
+			<div>
+            
+				<span class="a_down">{if returnsx("b")==-1}价格{elseif returnsx("b")!=0 && returnsx("c")!=0 && returnsx("c")!=999999}{returnsx("b")}-{returnsx("c")}元{elseif returnsx("c")==999999}{returnsx("b")}元以上{elseif returnsx("b")==0}{returnsx("c")}元以下{/if}	</span>
+				<ol>
+				 <li><a href="{rentser('b','','c','',$nq)}" class=" {if check_in("_bv",$getstr) || check_in("_cv",$getstr) || !check_in("_b",$getstr) || !check_in("_c",$getstr)}selected{/if}">全部</a></li>
+									 {getsearchstr('b','c','li','元',$AJ['houseprice'],$getstr,'"selected"')}
+									</ol>
+			</div><i class="l"></i>
+
+			<div>
+				<span class="a_down">更多</span>
+				<ol>
+					<li><a href="javascript:">特色</a>
+						<ul>
+                      <li><a href="{rentser('j','','','',$nq)}" class="house-list {if returnsx("j")==-1}selected{/if}">不限</a></li>
+									{php $lpts_arr = getbox_name('lpts','newhouse_6')}
+					    {loop $lpts_arr $key $v}<li><a href="{rentser('j',$key)}" class="house-list {if returnsx("j")==$key}selected{/if} ">{$v}</a></li>{/loop}
+													</ul>
+					</li>
+				
+
+					<li><a href="javascript:">排序</a>
+						<ul>
+					  <li><a href="{rentser('n','')}" class="sequence-list {if returnsx("n")==-1}selected{/if}">默认排序</a></li>
+									<li><a href="{rentser('n',1)}" class=" {if returnsx("n")==1}selected{/if}">发布时间由近到远</a></li>
+                                     <li><a href="{rentser('n',4)}" class="{if returnsx("n")==4}selected{/if}">价格由高到低</a></li>
+                                    <li><a href="{rentser('n',5)}" class="{if returnsx("n")==5}selected{/if}">价格由低到高</a></li>
+                                    <li><a href="{rentser('n',2)}" class="{if returnsx("n")==2}selected{/if}">人气由高到低</a></li>
+                                    <li><a href="{rentser('n',3)}" class="{if returnsx("n")==3}selected{/if}">人气由低到高</a></li>   
+							
+                        </ul>
+					</li>
+				</ol>
+			</div>
+		</nav></div>
+<div style="height:45px;background-color:#FFFFFF;"> </div>
+<div class="demo-block">
+<div class="ui-searchbar-wrap" style="background-color:#FFFFFF">
+    <div class="ui-searchbar ui-border-radius">
+        <i class="ui-icon-search"></i>
+        <div class="ui-searchbar-text ui-txt-tips">新楼盘名称</div>
+        <div class="ui-searchbar-input">
+		<form class="search-form" method="GET" action="search.php">
+		<input value="" type="text"  name="kw" placeholder="新楼盘名称" autocapitalize="off">
+		</form>
+		</div>
+        <i class="ui-icon-close"></i>
+    </div>
+    <button class="ui-searchbar-cancel">取消</button>
+</div>
+<!--广告位开始-->
+<!--<style>
+.ad{padding:10px; background:#FFFFFF;}
+.ad img {max-width:98%;height:auto;}
+</style>
+<div class="demo-block">
+<div class="ad" onClick="location.href='#'">
+<img src="#" border="0"/>
+</div>
+</div>--><!--广告位结束-->
+ <div id="components-demo" class="wp">
+<ul class="ul-list1-hlg">
+   {loop $tags $t}
+<li data-href="{$t[linkurl]}">
+<div class="pic"><a>
+<img src="{imgurl($t[thumb])}" alt="{$t[alt]}">
+<!--<em class="start displaytrue"></em>-->
+		<span class="st{$t[typeid]}">{if $t[typeid]==1}待售{elseif $t[typeid]==2}在售{elseif $t[typeid]==3}尾盘{else}售完{/if}</span>
+     
+</a></div>
+<div class="txt"><h3 class="first"><a class="a1">{$t[title]}</a> </h3>
+<p class="t2"><em></em>类型：{search_cats($t[catid], '6')} {getbox_diaoval('buildtype','checkbox',$t[buildtype],'newhouse_6')}<span></span></p>
+<div class="info info2"><div class="left"><span>{area_pos($t[areaid], '')}</span> </div>
+<p class="right">{if $t[price]}{$t[price]}<em>元/㎡</em>{else}待定{/if}</p> <!----></div></div> <i class="bao displayfalse"></i>
+</li>
+{/loop}
+</ul>
+<!--分页开始--> 
+
+ {if $pages}<div class="demo-block"><div class="pager">{$pages}</div></div>{/if}
+
+		
+<!--分页结束-->         
+</div>
+
+</div>
+</div>
+ <!--tfmain结束-->   
+ <!--tffooter开始-->   
+<div style="height:68px;background-color:#FFFFFF;"> </div>
+<div class="ft-nv ft-nv-index">
+	<a href="{AJ_MOB}"><i style="background-position: -297px -2px;"></i>首页</a>
+	<a href="{AJ_MOB}house" class=""><i style="background-position: -297px -62px;"></i>新房</a>
+	<a id="fabubtn" class="center "><i style="background-position: -54px -78px;"></i>发布</a>
+		<a href="{AJ_MOB}sale" class=""><i style="background-position: -297px -122px;"></i>二手房</a>
+		<a href="{AJ_MOB}my.php" class=""><i style="background-position: -297px -182px;"></i>我的</a>
+</div>
+ <!--tffooter结束-->  
+ 
+<div class="fabuBox">
+  <div class="fabu">
+    <ul class="clearfix">
+		   <li class="t1">
+			<a href="{AJ_MOB}member/my.php?mid=5"><img src="{AJ_MOB}static2019/images/fabu_btn_4.png" alt=""></a>
+		<p>二手房出售</p>
+	  </li>
+	   	   <li class="t2">
+			<a href="{AJ_MOB}member/my.php?mid=7"><img src="{AJ_MOB}static2019/images/fabu_btn_5.png" alt=""></a>
+		<p>有房出租</p>
+	  </li>
+	   	 
+	   	   <li class="t4">
+			<a href="{AJ_MOB}member/my.php?mid=16"><img src="{AJ_MOB}static2019/images/fabu_btn_3.png" alt=""></a>
+		<p>求购房屋</p>
+	  </li>
+	   	 
+	 
+	    
+	 </ul>
+    <div class="cancel"></div>
+  </div>
+</div>
+<div class="bg_1"></div>
+<script>
+$(function(){
+  // 发布
+  $('#fabubtn').click(function(){
+    var box = $('.fabuBox');
+    if (!box.hasClass('open')) {
+      $('body,html').bind('touchmove', function(e){e.preventDefault();})
+      box.addClass('open');
+      $('.bg_1').css({"display":"block"});
+    }else {
+      $('body,html').unbind('touchmove');
+      box.removeClass('open');
+    }
+  })
+
+  $('.fabuBox .cancel').click(function(){
+    $('.fabuBox').addClass('close');
+    setTimeout(function(){
+      $('body,html').unbind('touchmove');
+      $('.fabuBox').removeClass('open close');
+      $('.bg_1').css({"display":"none"});
+    }, 600)
+  })
+})
+</script> <!--tffooter结束--> 
+</div>
+<!--aijia容器结束-->
+ 
+<script>
+ $('ul li').click(function(){
+            if($(this).data('href')){
+                location.href= $(this).data('href');
+            }
+        });
+</script>
+<script>
+	$("#nav div,#nav li").on("click",function(e){
+		$(this).toggleClass("on").siblings().filter(".on").removeClass("on");
+		e.stopPropagation()
+	});
+</script>
+<script type="text/javascript">
+    $('.ui-searchbar').tap(function(){
+        $('.ui-searchbar-wrap').addClass('focus');
+        $('.ui-searchbar-input input').focus();
+    });
+    $('.ui-searchbar-cancel').tap(function(){
+        $('.ui-searchbar-wrap').removeClass('focus');
+    });
+</script>
+<script>
+(function(){
+
+    var slider = new fz.Scroll('.ui-slider', {
+        role: 'slider',
+        indicator: true,
+        autoplay: true,
+        interval: 3000
+    });
+
+    slider.on('beforeScrollStart', function(from, to) {
+        console.log(from, to);
+    });
+
+    slider.on('scrollEnd', function(cruPage) {
+        console.log(curPage);
+    });
+
+})();
+</script>
+{template 'foottj'}
+</body>
+</html>

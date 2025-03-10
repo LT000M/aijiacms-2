@@ -1,0 +1,92 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, minimal-ui">
+    <title>{if $seo_title}{$seo_title}{else}{if $head_title}{$head_title}{$AJ[seo_delimiter]}{/if}{if $city_sitename}{$city_sitename}{else}{$site_name}{/if}{/if}</title>
+{if $head_keywords}
+<meta name="keywords" content="{$head_keywords}"/>
+{/if}
+{if $head_description}
+<meta name="description" content="{$head_description}"/>
+{/if}
+    <meta name="applicable-device" content="mobile">
+   
+    <script src="{AJ_MOB}static2020/js/jquery.min.js"></script>
+    <script src="{AJ_MOB}static2020/js/font-size.js"></script>
+    <link rel="stylesheet" href="{AJ_MOB}static2020/css/base.css?t=1606958269">
+    <link rel="stylesheet" href="{AJ_MOB}static2020/css/style.css?t=1606958269">
+    <style>
+        .footer-js img{width:auto;}
+    </style>
+</head>
+<body>
+
+<!-- 头部 S-->
+<div class="mc-header">
+    <a href="index.html" class="go-back"></a>
+    <h3>户型</h3>
+</div>
+<!-- 头部 E-->
+
+
+<div class="main" style="background: none;">
+    <!-- 新闻资讯 S-->
+    <div class="house-type">
+        <div class="tab_hd clearfix">
+        <a href="huxing.html" {if $_GET[shi]==''}class="on"{/if}>全部</a>
+                                           <a href="huxing-s1.html" {if $_GET[shi]==1}class="on"{/if} >1室</a>
+												<a href="huxing-s2.html"{if $_GET[shi]==2}class="on"{/if} >2室</a>
+                                                	<a href="huxing-s3.html" {if $_GET[shi]==3}class="on"{/if}>3室</a>
+													<a href="huxing-s4.html" {if $_GET[shi]==4}class="on"{/if}>4室</a>
+                                                    <a href="huxing-s5.html" {if $_GET[shi]==5}class="on"{/if}>其他</a>
+        
+         
+                    </div>
+        <div class="house-type-list">
+            <ul>
+            
+             {if $_GET[shi]}
+										  <!--{php $tags=tag("table=newhouse_huxing&condition=status=3 and houseid=$itemid and shi=".$_GET[shi]."&pagesize=20&order=addtime desc&template=null");}-->
+                                          {else}
+                                            <!--{php $tags=tag("table=newhouse_huxing&condition=status=3 and houseid=$itemid&pagesize=20&order=addtime desc&template=null");}-->
+                                          {/if}
+                                          <!--{loop $tags $i $value}--> 
+                                          
+                               
+                                <li>
+                    <a href="hxinfo-{$value[itemid]}.html" title="{$value[title]}">
+                        <div class="l_img">
+                            <img src="{$value[thumb]}"  alt="{$value[title]}">
+                        </div>
+                        <div class="r_con">
+                            <div class="t">
+                                <span>{$value[shi]}室{$value[ting]}厅{$value[wei]}卫 </span>
+                                <span>{if $value[mj]}{$value[mj]}㎡{/if}</span>
+                            </div>
+                            <div class="c"><span>{$value[title]}</span><span class="sale-status on">{if $value[xszt]}在售{else}已售{/if}</span></div> <!--on在售，for待售，off售罄-->
+                            <div class="b"><span>{$value[bh]}</span></div>                            <div class="price"><b>{$value[dj]}</b>元/㎡</div>
+                        </div>
+                    </a>
+                </li>
+                              {/loop}
+                            </ul>
+            <div class="page_list">
+                            </div>
+        </div>
+    </div>
+    <!-- 新闻资讯 E-->
+</div>
+<script type="text/javascript">
+    var total = 0;
+    $(function(){
+        $(".room-cate").each(function(){
+            total += parseInt($(this).text());
+        });
+        $("#total").text(total);
+    });
+</script>
+
+{template 'foottj'}
+</body>
+</html>

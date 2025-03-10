@@ -1,0 +1,157 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, minimal-ui">
+   <title>出租房地图找房-{if $seo_title}{$seo_title}{else}{if $head_title}{$head_title}{$AJ[seo_delimiter]}{/if}{if $city_sitename}{$city_sitename}{else}{$AJ[sitename]}{/if}{/if}</title>
+	{if $head_keywords}
+<meta name="keywords" content="{$head_keywords}"/>
+{/if}
+{if $head_description}
+<meta name="description" content="{$head_description}"/>
+{/if}
+ <script src="{AJ_MOB}staticmap/js/jquery.3.3.1.min.js"></script>
+    <script src="{AJ_MOB}staticmap/js/font-size.js"></script>
+    <link rel="stylesheet" href="{AJ_MOB}staticmap/css/base.css">
+    <link rel="stylesheet" href="{AJ_MOB}staticmap/css/style.css">
+
+</head>
+<body>
+
+<div class="lookRoom-head">
+    <div class="top">
+    
+    <div class="lr-tab">
+     <a href="newhouse.php" >新房</a>
+        <a href="index.php" >二手房</a>
+        <a href="rent.php" class="active">出租房</a>
+
+      
+       
+       
+    </div>
+    <a href="javascript:;" class="search-room" style="background: none;"></a>
+</div>
+</div>
+
+
+
+<div class="main">
+    <div class="lookRoom-head">
+        <!-- 筛选 S -->
+        <div class="lr-select-box">
+            <div class="select_head" id="select_head">
+                <div class="item" id="city" data-id="0">
+                    <span class="tit">区域</span>
+                    <span class="iconfont icon-xialajiantouxiangxia"></span>
+                </div>
+                <div class="item" id="price" data-id="0">
+                    <span class="tit">价格</span>
+                    <span class="iconfont icon-xialajiantouxiangxia"></span>
+                </div>
+                <div class="item" id="type" data-id="0">
+                    <span class="tit">类型</span>
+                    <span class="iconfont icon-xialajiantouxiangxia"></span>
+                </div>
+                 <div class="item" id="room" data-id="0">
+                    <span class="tit">户型</span>
+                    <span class="iconfont icon-xialajiantouxiangxia"></span>
+                </div>
+            </div>
+            <div class="select_body" id="select_body">
+                <div class="item common">
+                    <div class="item_box">
+                        <ul class="one-level" data-uri="/api/map/getcitychild.php">
+                            <li data-id="0" class="active"><a href="javascript:;">不限</a></li>
+                            {loop $mainarea $k $v}
+                                                        <li data-id="{$v[areaid]}"><a href="javascript:;">{$v[areaname]}</a></li>{/loop}
+                                                      
+                                                    </ul>
+                        <ul class="two-level">
+                        </ul>
+                    </div>
+                </div>
+                <div class="item common">
+                    <div class="item_box attr">
+                        <ul>
+                            <li data-id="0" class="active"><a href="javascript:;">不限</a></li>
+                                                      	{php $range_arr = getbox_name('range','rent_7')}
+					    {loop $range_arr $key $v}
+						  <li data-id="{$key}"><a href="javascript:;">{$v}</a></li>
+                        {/loop} 
+                                                    </ul>
+                    </div>
+
+                </div>
+                <div class="item common">
+                    <div class="item_box attr">
+                        <ul>
+                            <li data-id="0" class="active"><a href="javascript:;">不限</a></li>
+                             {php $maincat = get_maincat(0,7)}
+{loop $maincat $k $v}
+						
+                                                        <li data-id="{$v[catid]}"><a href="javascript:;">{$v[catname]}</a></li>
+                                                      {/loop}
+                                                    </ul>
+                    </div>
+                </div>
+                 <div class="item common">
+                    <div class="item_box attr">
+                        <ul>
+                            <li data-id="0" class="active"><a href="javascript:;">不限</a></li>
+                            
+                            	 <li data-id="1"><a href="javascript:;">一室</a></li>
+                                  <li data-id="2"><a href="javascript:;">二室</a></li>
+                                  <li data-id="3"><a href="javascript:;">三室</a></li>
+                                   <li data-id="4"><a href="javascript:;">四室</a></li>
+                                   <li data-id="5"><a href="javascript:;">其它</a></li> 
+                                                      
+                                                    </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- 筛选 E -->
+    </div>
+    <div id="select_bg"></div>
+    <div class="map-show-box">
+        <div id="map"></div>
+    </div>
+</div>
+<!-- 筛选 -->
+
+<script src="{AJ_MOB}staticmap/js/map-search.js"></script>
+<script type="text/javascript" src="{AJ_MOB}staticmap/js/d708bc4fd8c1401987d389f2b08c226a.js"></script>
+<script type="text/javascript" src="{AJ_MOB}staticmap/js/map.js"></script>
+<script type="text/javascript" src="{AJ_MOB}staticmap/js/baiduevent.js"></script>
+<script type="text/javascript">
+    $(function(){
+
+        var lng = '{$lan}';
+        var lat = '{$lat}';
+        BMapApplication.init({'lng' : lng, 'lat' : lat, 'mapContainerId' : 'map'});
+        BMapApplication.requestUrl = "/api/map/getrentlists.php";
+        BMapApplication.requestParam = getParam();
+        BMapApplication.getMap();
+    });
+   function getParam()
+    {
+        var city = $('#city').attr('data-id'),price = $('#price').attr('data-id'),
+              room = $('#room ').attr('data-id'),
+              type = $('#type').attr('data-id');
+        return {
+            city : city,
+            price : price,
+            type  : type,
+        
+         
+            room : room
+        };
+    }
+
+</script>
+
+
+
+</body>
+</html>

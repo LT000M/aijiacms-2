@@ -1,0 +1,153 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, minimal-ui">
+    <title>{if $seo_title}{$seo_title}{else}{if $head_title}{$head_title}{$AJ[seo_delimiter]}{/if}{if $city_sitename}{$city_sitename}{else}{$site_name}{/if}{/if}</title>
+{if $head_keywords}
+<meta name="keywords" content="{$head_keywords}"/>
+{/if}
+{if $head_description}
+<meta name="description" content="{$head_description}"/>
+{/if}
+    <meta name="applicable-device" content="mobile">
+   
+    <script src="{AJ_MOB}static2020/js/jquery.min.js"></script>
+    <script src="{AJ_MOB}static2020/js/font-size.js"></script>
+    <link rel="stylesheet" href="{AJ_MOB}static2020/css/base.css?t=1606958269">
+    <link rel="stylesheet" href="{AJ_MOB}static2020/css/style.css?t=1606958269">
+    <style>
+        .footer-js img{width:auto;}
+    </style>
+</head>
+<body>
+
+<!-- 头部 S-->
+<div class="mc-header">
+    <a href="index.html" class="go-back"></a>
+    <h3>楼栋信息</h3>
+</div>
+<!-- 头部 E-->
+
+
+<style>
+    .house-type-list{background-color: #fff;}
+</style>
+<div class="main" style="padding-bottom:2rem;">
+    <div class="build-info">
+        <div class="build-img">
+            <div style="width:100%;overflow: auto;">
+                <div style="margin-top:1rem;position:relative;height:300px;transform: matrix(0.5, 0, 0, 0.6, -60, -70);">
+                    <div id="house-ban" class="pic-show" style="position:absolute;left:0;top:0;width:379px;">
+                        <img src="{$sand_pic}" alt="楼栋信息" height="570" >
+                        
+                         {loop $data $i $v}   
+                            
+                        
+                                                <a href="javascript:;" data-position="{$v[point]}" data-bid="{$v[id]}" class="ban status-{if $v[sale]=="预售"}30{elseif $v[sale]=="在售"}31{else}32{/if}" title="{$v[title]} ({$v[sale]})"  {php $point=explode(",",$v[point]);}
+ style="transform: scale(1.2);position:absolute;left: {$point[0]}px; top: {$point[1]}px;"><i></i>{$v[title]} </a> {/loop}
+                                            
+                                            </div>
+                </div>
+            </div>
+        </div>
+        <div id="lists" data-uri="{$MODULE[1][linkurl]}api/shapan/getbaninfobyid.php">
+
+        </div>
+    </div>
+</div>
+<!-- 导航行为 S-->
+<div class="nav-act">
+    <a href="/" class="homepage">首页</a>
+    <a href="{$EXT[comment_mob]}{rewrite('index.php?mid='.$moduleid.'&itemid='.$itemid)}" class="consult">点评</a>
+    <a href="tel:{$telephone}" class="call-tel">拨打电话</a>
+    <a href="javascript:;" class="order-l-house dialog" data-id="{$itemid}" data-model="house"  data-hname="{$title}" data-username="{$_username}"  data-type="0" data-uri="{AJ_MOB}subscribe.php">预约看房</a>
+</div>
+
+<!-- 导航行为 E-->
+<script type="text/javascript" src="{AJ_MOB}static2020/js/layer.js"></script>
+<script src="{AJ_MOB}static2020/js/subscribe.js"></script>
+<script type="text/javascript" src="{AJ_MOB}static2020/js/laytpl.js"></script>
+<script id="template" type="text/html">
+    <div class="build-info-desc">
+        <header class="head clearfix">
+            <span class="name">{{d['ban_info']['title']}}</span>
+           
+        </header>
+        <div class="date clearfix">
+            <div class="fl">
+                <span class="tit">开盘时间：</span><span class="time">{{# if(d['ban_info']['open_time']){ }}{{d.ban_info.open_time}}{{# } }}</span>
+            </div>
+            <div class="fr">
+                <span class="tit">预计交房：</span><span class="time">{{# if(d['ban_info']['complate_time']){ }}{{d.ban_info.complate_time}}{{# } }}</span>
+            </div>
+        </div>
+        <ul class="build-word clearfix">
+            <li><span class="tit">单元：</span><span class="txt">{{# if(d['ban_info']['unit']){ }}{{d.ban_info.unit}}{{# } }}</span></li>
+            <li><span class="tit">层数：</span><span class="txt">{{# if(d['ban_info']['floor_num']){ }}{{d.ban_info.floor_num}}{{# } }}</span></li>
+            <li><span class="tit">户数：</span><span class="txt">{{# if(d['ban_info']['room_num']){ }}{{d.ban_info.room_num}}{{# } }}</span></li>
+            <li><span class="tit">电梯数：</span><span class="txt">{{# if(d['ban_info']['elevator']){ }}{{d.ban_info.elevator}}{{# } }}</span></li>
+        </ul>
+    </div>
+    {{# if(d.type_lists.length>0){ }}
+    <div class="house-type-list">
+        <ul>
+            {{# for(var i = 0, len = d.type_lists.length; i < len; i++){ }}
+            <li>
+                <a href="huxing.html">
+                    <div class="l_img">
+                        <img src="{{d.type_lists[i].thumb}}"  alt="">
+                    </div>
+                    <div class="r_con">
+                        <div class="t">
+                            <span>{{d.type_lists[i].shi}}室{{d.type_lists[i].ting}}厅 </span>
+                            <span>{{d.type_lists[i].mj}}㎡</span>
+                        </div>
+                        <div class="c"><span>{{d.type_lists[i].title}}</span><span class="sale-status on">{{d.type_lists[i].sale_status}}</span></div> <!--on在售，for待售，off售罄-->
+                     
+                        <div class="price"><b>{{d.type_lists[i].dj}}</b>万</div>
+                    </div>
+                </a>
+            </li>
+            {{# } }}
+        </ul>
+    </div>
+    {{# } }}
+</script>
+
+<script type="text/javascript">
+    $(function(){
+        getBanInfo($(".ban:first").data('bid'));
+        $(".ban").on('click',function(){
+            var id = $(this).data('bid');
+            getBanInfo(id);
+        });
+    });
+    function getBanInfo(id)
+    {
+        var url   = $("#lists").data('uri');
+        var param = {id:id};
+        $.get(url,param,function(result){
+            if(result.code == 1)
+            {
+                if(result.data){
+                    var gettpl = document.getElementById('template').innerHTML;
+                    laytpl(gettpl).render(result.data, function(html){
+                        document.getElementById('lists').innerHTML = html;
+                    });
+                }
+            }else{
+                console.log('get data error');
+            }
+        });
+    }
+</script>
+
+<!-- 导航行为 E-->
+
+
+</div>
+
+{template 'foottj'}
+</body>
+</html>

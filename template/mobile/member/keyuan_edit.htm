@@ -1,0 +1,735 @@
+
+{template 'header-widget', $module}
+
+        <style type="text/css">
+            #greetings{
+                position: absolute;
+                height: auto;
+                border-left: 1px solid rgba(0, 0, 0, 0.11);
+                border-right: 1px solid rgba(0, 0, 0, 0.11);
+                left: 0px;
+                z-index:5555; 
+                display: none;
+            }
+            #greetings ul{
+                list-style: none;
+                box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.44);
+                -webkit-margin-before: 0em;
+                -webkit-margin-after: 0em;
+                -webkit-margin-start: 0px;
+                -webkit-margin-end: 0px;
+                -webkit-padding-start: 0px;
+            }
+            #greetings li{
+                text-align: left;
+                padding: 5px;
+                font-family: inherit;
+                border-bottom: 1px solid rgba(0, 0, 0, 0.16);
+                height: 25px;
+                width: 180px;
+                line-height: 25px;
+                background-color: rgba(255, 255, 255, 0.8);
+                cursor: pointer;
+            }
+            #greetings li:hover{
+                background-color: rgba(175, 42, 0, 0.52);
+                color: white;
+            }
+            #greetings2{
+                position: absolute;
+                height: auto;
+                border-left: 1px solid rgba(0, 0, 0, 0.11);
+                border-right: 1px solid rgba(0, 0, 0, 0.11);
+                left: 0px;
+                z-index:5555; 
+                display: none;
+            }
+            #greetings2 ul{
+                list-style: none;
+                box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.44);
+                -webkit-margin-before: 0em;
+                -webkit-margin-after: 0em;
+                -webkit-margin-start: 0px;
+                -webkit-margin-end: 0px;
+                -webkit-padding-start: 0px;
+            }
+            #greetings2 li{
+                text-align: left;
+                padding: 5px;
+                font-family: inherit;
+                border-bottom: 1px solid rgba(0, 0, 0, 0.16);
+                height: 25px;
+                width: 600px;
+                line-height: 25px;
+                background-color: rgba(255, 255, 255, 0.8);
+                cursor: pointer;
+            }
+            #greetings2 li:hover{
+                background-color: rgba(175, 42, 0, 0.52);
+                color: white;
+            }
+            .lscxan:hover,.lscxalj a:hover{
+                {$lscxanbk}
+            }
+            {$lscxb}
+            {$lscxdiv}
+        </style>
+        <link rel="stylesheet" type="text/css" href="{$MODULE[1][linkurl]}keyuan/lib/layui/css/layui.css">
+        <link rel="stylesheet" type="text/css" href="{$MODULE[1][linkurl]}keyuan/lib/Hui-iconfont/1.0.8/iconfont.css"/>
+    </head>
+    <body>
+        <div style="position:fixed;top:0;width: 100%; border-top-style: solid;border-top-width: 2px;border-top-color: {$lscx};z-index: 999;"></div>
+        <form class="layui-form" action="?" method="post">
+<input type="hidden" name="action" value="{$action}"/>
+<input type="hidden" name="from" value="{$from}"/>
+<input type="hidden" name="id" value="{$id}"/>
+<input type="hidden" name="forward" value="{$forward}"/>
+            <div class="layui-form-item">
+                &nbsp;
+            </div>
+         
+            <div class="layui-form-item">
+                <div class="layui-inline">
+                    <label class="layui-form-label" style="color:#f00;">
+                        客户姓名
+                    </label>
+                    <div class="layui-input-inline" style="width:150px;">
+                        <input type="text" name="khxingming" lay-verify="required" value="{$khxingming}"  autocomplete="off" class="layui-input">
+                    </div>
+                    <div class="layui-input-inline" style="width:120px;">
+                        <select name="kehulx" lay-filter="aihao" lay-verify="required">
+                             <option value="先生"  {if $kehulx == '先生'}selected=""{/if}>先生</option><option value="女士" {if $kehulx == '女士'}selected=""{/if}>女士</option><option value="公司"  {if $kehulx == '公司'}selected=""{/if}>公司</option>    
+                        </select>
+                    </div>
+                </div>
+                <div class="layui-inline lscxdiv">
+                    <label class="layui-form-label" style="color:#f00;">
+                        手机
+                    </label>
+                    <div class="layui-input-inline">
+                        <input type="tel" name="dianhua"  value="{$dianhua}" lay-verify="shouji1" autocomplete="off" class="layui-input">
+                    </div>
+                   
+                </div>
+            </div>
+            <div class="layui-form-item">
+                <div class="layui-inline">
+                    <label class="layui-form-label" style="color:#f00;">
+                        需求户型
+                    </label>
+                    <div class="layui-input-inline" style="width: 100px;">
+                        <input type="text" name="xqhuxing1" placeholder="" autocomplete="off" value="{$xqhuxing1}" class="layui-input" lay-verify="shuzi1" id="xqhuxing1">
+                    </div>
+                    <div class="layui-form-mid layui-word-aux">室</div>
+                    <div class="layui-form-mid">-</div>
+                    <div class="layui-input-inline" style="width: 100px;">
+                        <input type="text" name="xqhuxing2" placeholder="" autocomplete="off" class="layui-input" lay-verify="shuzi1" id="xqhuxing2" value="{$xqhuxing2}">
+                    </div>
+                    <div class="layui-form-mid layui-word-aux">室</div>
+                </div>
+                <div class="layui-inline">
+                    <label class="layui-form-label" style="color:#f00;">
+                        价格范围
+                    </label>
+                    <div class="layui-input-inline" style="width: 100px;">
+                        <input type="text" name="xqjiage1" placeholder="￥" autocomplete="off" class="layui-input" id="xqjiage1"value="{$xqjiage1}" >
+                    </div>
+                    <div class="layui-form-mid layui-word-aux">
+                      
+                            万
+                          
+                        </if>
+                    </div>
+                    <div class="layui-form-mid">-</div>
+                    <div class="layui-input-inline" style="width: 100px;">
+                        <input type="text" name="xqjiage2" placeholder="￥" autocomplete="off" class="layui-input" id="xqjiage2" value="{$xqjiage2}" >
+                    </div>
+                    <div class="layui-form-mid layui-word-aux">
+                       
+                            万
+                          
+                        </if>
+                    </div>
+                </div>
+            </div>
+            <div class="layui-form-item">
+                <div class="layui-inline">
+                    <label class="layui-form-label" style="color:#f00;">
+                        需求建面
+                    </label>
+                    <div class="layui-input-inline" style="width: 100px;">
+                        <input type="text" name="xqmianji1" placeholder="" autocomplete="off" class="layui-input" lay-verify="shuzi4" id="xqmianji1" value="{$xqmianji1}">
+                    </div>
+                    <div class="layui-form-mid layui-word-aux">m²</div>
+                    <div class="layui-form-mid">-</div>
+                    <div class="layui-input-inline" style="width: 100px;">
+                        <input type="text" name="xqmianji2" placeholder="" autocomplete="off" class="layui-input" lay-verify="shuzi4" id="xqmianji2" value="{$xqmianji2}">
+                    </div>
+                    <div class="layui-form-mid layui-word-aux">m²</div>
+                </div>
+                <div class="layui-inline">
+                    <label class="layui-form-label" style="color:#f00;">
+                        用途
+                    </label>
+                    <div class="layui-input-block">
+                        <select name="xqyongtu" lay-filter="aihao" lay-verify="required">
+                        
+                         <option value="住宅" {if $xqyongtu == '住宅'}selected=""{/if}>住宅</option>
+                            <option value="别墅" {if $xqyongtu == '别墅'}selected=""{/if}>别墅</option>
+                            <option value="商铺" {if $xqyongtu == '商铺'}selected=""{/if}>商铺</option>
+                            <option value="仓库" {if $xqyongtu == '仓库'}selected=""{/if}>仓库</option>
+                            <option value="厂房" {if $xqyongtu == '厂房'}selected=""{/if}>厂房</option>
+                            <option value="土地" {if $xqyongtu == '土地'}selected=""{/if}>土地</option>
+                            <option value="车库" {if $xqyongtu == '车库'}selected=""{/if}>车库</option>
+                            <option value="写字楼" {if $xqyongtu == '写字楼'}selected=""{/if}>写字楼</option>
+                            <option value="公寓" {if $xqyongtu == '公寓'}selected=""{/if}>公寓</option>
+                            <option value="商住两用" {if $xqyongtu == '商住两用'}selected=""{/if}>商住两用</option>
+                            <option value="车位" {if $xqyongtu == '车位'}selected=""{/if}>车位</option>
+                             <option value="工业" {if $xqyongtu == '工业'}selected=""{/if}>工业</option>
+                        
+                    
+                        </select>
+                    </div>
+                </div>
+            </div>
+            <div class="layui-form-item">
+                <div class="layui-inline">
+                    <label class="layui-form-label" style="color:#f00;">
+                        客户来源
+                    </label>
+                    <div class="layui-input-block">
+                        <select name="khlaiyuan" lay-filter="aihao" lay-verify="required">
+                            <option style="display:none"></option>
+                            <option value="58" {if $khlaiyuan == '58'}selected=""{/if}>58</option>
+                            <option value="赶集" {if $khlaiyuan == '赶集'}selected=""{/if}>赶集</option>
+                            <option value="上门" {if $khlaiyuan == '上门'}selected=""{/if}>上门</option>
+                            <option value="电话" {if $khlaiyuan == '电话'}selected=""{/if}>电话</option>
+                            <option value="陌拜" {if $khlaiyuan == '陌拜'}selected=""{/if}>陌拜</option>
+                            <option value="驻守" {if $khlaiyuan == '驻守'}selected=""{/if}>驻守</option>
+                            <option value="搜房" {if $khlaiyuan == '搜房'}selected=""{/if}>搜房</option>
+                            <option value="派单" {if $khlaiyuan == '派单'}selected=""{/if}>派单</option>
+                            <option value="微博" {if $khlaiyuan == '微博'}selected=""{/if}>微博</option>
+                            <option value="微店" {if $khlaiyuan == '微店'}selected=""{/if}>微店</option>
+                            <option value="微店" {if $khlaiyuan == '微店'}selected=""{/if}>微店</option>
+                            <option value="老客户" {if $khlaiyuan == '老客户'}selected=""{/if}>老客户</option>
+                            <option value="窗体广告" {if $khlaiyuan == '窗体广告'}selected=""{/if}>窗体广告</option>
+                            <option value="新浪乐居" {if $khlaiyuan == '新浪乐居'}selected=""{/if}>新浪乐居</option>
+                            <option value="公司网站" {if $khlaiyuan == '公司网站'}selected=""{/if}>公司网站</option>
+                            <option value="朋友介绍" {if $khlaiyuan == '朋友介绍'}selected=""{/if}>朋友介绍</option>
+                            <option value="微信公众号" {if $khlaiyuan == '微信公众号'}selected=""{/if}>微信公众号</option>
+                            <option value="已成交客户推荐" {if $khlaiyuan == '已成交客户推荐'}selected=""{/if}>已成交客户推荐</option>
+                            <option value="未成交客户推荐" {if $khlaiyuan == '未成交客户推荐'}selected=""{/if}>未成交客户推荐</option>
+                            <option value="其它" {if $khlaiyuan == '其它'}selected=""{/if}>其它</option>   
+                                </select>
+                    </div>
+                </div>
+               
+            </div>
+            <div class="layui-form-item">
+                <div class="layui-inline">
+                    <label class="layui-form-label" style="color:#f00;">
+                        需求区域
+                    </label>
+                    <div class="layui-input-inline">
+                        <input type="text" name="xqquyu" placeholder="" autocomplete="off" class="layui-input" id="xqquyu" style="width: 333px;" lay-verify="required" value="{$xqquyu}">
+                </div>
+            </div>
+            <div class="layui-form-item">
+                <div class="layui-inline">
+                    <label class="layui-form-label" style="color:#f00;">
+                        需求小区
+                    </label>
+                    <div class="layui-input-inline lscxalj">
+                       
+                        
+                          <input type="text" name="xqxiaoqu" placeholder="" autocomplete="off" class="layui-input" id="xqquyu" style="width: 333px;" lay-verify="required" value="{$xqxiaoqu}">
+                      
+                    </div>
+                </div>
+            </div>
+            
+            <div class="layui-form-item" pane="">
+                <label class="layui-form-label" style="color:#f00;">
+                    朝向
+                </label>
+               <div class="layui-input-block">
+               
+                    <input type="checkbox" name="chaoxiang[1]"  {if strpos($chaoxiang,'东')!==false}checked{/if}  value="东" lay-skin="primary" title="东" lay-verify="required">
+                    <input type="checkbox" name="chaoxiang[2]"  {if strpos($chaoxiang,'南')!==false}checked{/if}  value="南" lay-skin="primary" title="南" lay-verify="required">
+                    <input type="checkbox" name="chaoxiang[3]"  {if strpos($chaoxiang,'西')!==false}checked{/if}  value="西" lay-skin="primary" title="西" lay-verify="required">
+                    <input type="checkbox" name="chaoxiang[4]"  {if strpos($chaoxiang,'北')!==false}checked{/if} value="北"  lay-skin="primary" title="北" lay-verify="required">
+                <input type="checkbox" name="chaoxiang[5]"  {if strpos($chaoxiang,'金角')!==false}checked{/if} value="金角"  lay-skin="primary" title="金角" lay-verify="required">
+                <input type="checkbox" name="chaoxiang[6]"  {if strpos($chaoxiang,'银角')!==false}checked{/if} value="银角"  lay-skin="primary" title="银角" lay-verify="required">
+                 <input type="checkbox" name="chaoxiang[7]"  {if strpos($chaoxiang,'铜脚')!==false}checked{/if} value="铜脚"  lay-skin="primary" title="铜脚" lay-verify="required">
+                 <input type="checkbox" name="chaoxiang[8]"  {if strpos($chaoxiang,'铁角')!==false}checked{/if} value="铁角"  lay-skin="primary" title="铁角" lay-verify="required">
+                 <input type="checkbox" name="chaoxiang[9]"  {if strpos($chaoxiang,'东西')!==false}checked{/if} value="东西"  lay-skin="primary" title="东西" lay-verify="required">
+                 <input type="checkbox" name="chaoxiang[10]"  {if strpos($chaoxiang,'南北')!==false}checked{/if} value="南北"  lay-skin="primary" title="南北" lay-verify="required">                </div>
+            </div>
+            </div>
+            <div class="layui-form-item" pane="">
+                <label class="layui-form-label" style="color:#f00;">
+                    装修
+                </label>
+                <div class="layui-input-block">
+                 <input type="checkbox" name="zhuangxiu[1]"  {if strpos($zhuangxiu,'毛坯') !==false}checked{/if} value="毛坯" lay-skin="primary" title="毛坯" lay-verify="required">
+                 <input type="checkbox" name="zhuangxiu[2]"  {if strpos($zhuangxiu,'格房') !==false}checked{/if} value="格房" lay-skin="primary" title="格房" lay-verify="required">
+                 <input type="checkbox" name="zhuangxiu[3]"  {if strpos($zhuangxiu,'简装') !==false}checked{/if}  value="简装" lay-skin="primary" title="简装" lay-verify="required">
+                 <input type="checkbox" name="zhuangxiu[4]"  {if strpos($zhuangxiu,'中装') !==false}checked{/if} value="中装" lay-skin="primary" title="中装" lay-verify="required">
+                 <input type="checkbox" name="zhuangxiu[5]"  {if strpos($zhuangxiu,'精装') !==false}checked{/if} value="精装" lay-skin="primary" title="精装" lay-verify="required">
+                 <input type="checkbox" name="zhuangxiu[6]"  {if strpos($zhuangxiu,'豪装') !==false}checked{/if}  value="豪装" lay-skin="primary" title="豪装" lay-verify="required">
+                    </div>
+            </div>
+            </div>
+            <div class="layui-form-item" pane="">
+                <label class="layui-form-label" style="color:#f00;">
+                    配套
+                </label>
+               
+                 <div class="layui-input-block">
+                  
+                    
+                 <input type="checkbox" name="peitao[1]"  {if strpos($peitao,'无') !==false}checked{/if} value="无" lay-skin="primary" title="无" lay-verify="required">
+                 <input type="checkbox" name="peitao[2]"  {if strpos($peitao,'床') !==false}checked{/if} value="床" lay-skin="primary" title="床" lay-verify="required">
+                 <input type="checkbox" name="peitao[3]"  {if strpos($peitao,'衣柜') !==false}checked{/if}  value="衣柜" lay-skin="primary" title="衣柜" lay-verify="required">
+                 <input type="checkbox" name="peitao[4]"  {if strpos($peitao,'书桌') !==false}checked{/if} value="书桌" lay-skin="primary" title="书桌" lay-verify="required">
+                 <input type="checkbox" name="peitao[5]"  {if strpos($peitao,'空调') !==false}checked{/if} value="空调" lay-skin="primary" title="空调" lay-verify="required">
+                 <input type="checkbox" name="peitao[6]"  {if strpos($peitao,'冰箱') !==false}checked{/if}  value="冰箱" lay-skin="primary" title="冰箱" lay-verify="required">
+                 <input type="checkbox" name="peitao[7]"  {if strpos($peitao,'电视') !==false}checked{/if} value="电视" lay-skin="primary" title="电视" lay-verify="required">
+                 <input type="checkbox" name="peitao[8]"  {if strpos($peitao,'宽带') !==false}checked{/if} value="宽带" lay-skin="primary" title="宽带" lay-verify="required">
+                 <input type="checkbox" name="peitao[9]"  {if strpos($peitao,'WIFI') !==false}checked{/if}  value="WIFI" lay-skin="primary" title="WIFI" lay-verify="required">
+                 <input type="checkbox" name="peitao[10]"  {if strpos($peitao,'有线') !==false}checked{/if} value="有线" lay-skin="primary" title="有线" lay-verify="required">
+                 <input type="checkbox" name="peitao[11]"  {if strpos($peitao,'电话') !==false}checked{/if} value="电话" lay-skin="primary" title="电话" lay-verify="required">
+                 <input type="checkbox" name="peitao[12]"  {if strpos($peitao,'橱柜') !==false}checked{/if}  value="橱柜" lay-skin="primary" title="橱柜" lay-verify="required">
+                 <input type="checkbox" name="peitao[13]"  {if strpos($peitao,'沙发') !==false}checked{/if} value="沙发" lay-skin="primary" title="沙发" lay-verify="required">
+                 <input type="checkbox" name="peitao[14]"  {if strpos($peitao,'挂空') !==false}checked{/if} value="挂空" lay-skin="primary" title="挂空" lay-verify="required">
+                 <input type="checkbox" name="peitao[15]"  {if strpos($peitao,'柜空') !==false}checked{/if}  value="柜空" lay-skin="primary" title="柜空" lay-verify="required">
+                 <input type="checkbox" name="peitao[16]"  {if strpos($peitao,'窗空') !==false}checked{/if} value="窗空" lay-skin="primary" title="窗空" lay-verify="required">
+                 <input type="checkbox" name="peitao[17]"  {if strpos($peitao,'封阳') !==false}checked{/if} value="封阳" lay-skin="primary" title="封阳" lay-verify="required">
+                 <input type="checkbox" name="peitao[18]"  {if strpos($peitao,'电梯') !==false}checked{/if}  value="电梯" lay-skin="primary" title="电梯" lay-verify="required">
+                 
+                   <input type="checkbox" name="peitao[19]"  {if strpos($peitao,'洗衣机') !==false}checked{/if}  value="洗衣机" lay-skin="primary" title="洗衣机" lay-verify="required">
+                 <input type="checkbox" name="peitao[20]"  {if strpos($peitao,'油烟机') !==false}checked{/if} value="油烟机" lay-skin="primary" title="油烟机" lay-verify="required">
+                 <input type="checkbox" name="peitao[21]"  {if strpos($peitao,'热水器') !==false}checked{/if} value="热水器" lay-skin="primary" title="热水器" lay-verify="required">
+                 <input type="checkbox" name="peitao[22]"  {if strpos($peitao,'管道气') !==false}checked{/if}  value="管道气" lay-skin="primary" title="管道气" lay-verify="required">
+                 <input type="checkbox" name="peitao[23]"  {if strpos($peitao,'煤气罐') !==false}checked{/if} value="煤气罐" lay-skin="primary" title="煤气罐" lay-verify="required">
+                 <input type="checkbox" name="peitao[24]"  {if strpos($peitao,'电淋浴') !==false}checked{/if} value="电淋浴" lay-skin="primary" title="电淋浴" lay-verify="required">
+                 <input type="checkbox" name="peitao[25]"  {if strpos($peitao,'燃气淋浴') !==false}checked{/if}  value="燃气淋浴" lay-skin="primary" title="燃气淋浴" lay-verify="required">
+                 <input type="checkbox" name="peitao[26]"  {if strpos($peitao,'太阳能淋浴') !==false}checked{/if} value="太阳能淋浴" lay-skin="primary" title="太阳能淋浴" lay-verify="required">           </div>
+            </div>
+            </div>
+            <div class="layui-form-item">
+                <label class="layui-form-label">需求原因</label>
+                <div class="layui-input-block" style="width: 666px;">
+                    <input type="text" name="xqyuanyin" lay-verify="beizhu" autocomplete="off" placeholder="" class="layui-input" value="{$xqyuanyin}">
+                </div>
+            </div>
+            <div class="layui-form-item">
+                <div class="layui-inline">
+                    <label class="layui-form-label">
+                        需求楼层
+                    </label>
+                    <div class="layui-input-inline" style="width: 100px;">
+                        <input type="text" name="louceng1" lay-verify="shuzi5" placeholder="" autocomplete="off" class="layui-input" id="louceng1" value="{$louceng1}">
+                    </div>
+                    <div class="layui-form-mid layui-word-aux">楼</div>
+                    <div class="layui-form-mid">-</div>
+                    <div class="layui-input-inline" style="width: 100px;">
+                        <input type="text" name="louceng2" lay-verify="shuzi5" placeholder="" autocomplete="off" class="layui-input" id="louceng2" value="{$louceng2}">
+                    </div>
+                    <div class="layui-form-mid layui-word-aux">楼</div>
+                </div>
+                <div class="layui-inline">
+                    <label class="layui-form-label">
+                        需求房龄
+                    </label>
+                    <div class="layui-input-inline" style="width: 100px;">
+                        <input type="text" name="fangling1" lay-verify="shuzi6" placeholder="" autocomplete="off" class="layui-input" id="fangling1" value="{$fangling1}">
+                    </div>
+                    <div class="layui-form-mid layui-word-aux">年</div>
+                    <div class="layui-form-mid">-</div>
+                    <div class="layui-input-inline" style="width: 100px;">
+                        <input type="text" name="fangling2" lay-verify="shuzi6" placeholder="" autocomplete="off" class="layui-input" id="fangling2" value="{$fangling2}">
+                    </div>
+                    <div class="layui-form-mid layui-word-aux">年</div>
+                </div>
+            </div>
+            <div class="layui-form-item">
+                <div class="layui-inline">
+                    <label class="layui-form-label">
+                        需求付款
+                    </label>
+                    <div class="layui-input-block">
+                        <select name="fukuan" lay-filter="aihao">
+                        
+                          <option value="贷款" {if $khlaiyuan == '贷款'}selected=""{/if}>贷款</option>
+                            <option value="全款" {if $khlaiyuan == '全款'}selected=""{/if}>全款</option>
+                           
+                        </select>
+                    </div>
+                </div>
+                <div class="layui-inline">
+                    <label class="layui-form-label">沟通阶段</label>
+                    <div class="layui-input-block">
+                        <select name="gtjieduan" lay-filter="aihao">
+                          <option value="客户接待" {if $gtjieduan == '客户接待'}selected=""{/if}>客户接待</option>
+                            <option value="信息匹配" {if $gtjieduan == '信息匹配'}selected=""{/if}>信息匹配</option>
+                            <option value="首次带看" {if $gtjieduan == '首次带看'}selected=""{/if}>首次带看</option>
+                            <option value="二次带看" {if $gtjieduan == '二次带看'}selected=""{/if}>二次带看</option>
+                            <option value="守价阶段" {if $gtjieduan == '守价阶段'}selected=""{/if}>守价阶段</option>
+                            <option value="杀价阶段" {if $gtjieduan == '杀价阶段'}selected=""{/if}>杀价阶段</option>
+                            <option value="逼定阶段" {if $gtjieduan == '逼定阶段'}selected=""{/if}>逼定阶段</option>
+                            <option value="签订合同" {if $gtjieduan == '签订合同'}selected=""{/if}>签订合同</option>
+                             
+                        </select>
+                    </div>
+                </div>
+            </div>
+            <div class="layui-form-item">
+                <div class="layui-inline">
+                    <label class="layui-form-label">国籍</label>
+                    <div class="layui-input-block">
+                        <select name="guoji" lay-filter="aihao">
+                            <option style="display:none"></option>
+                              <option value="中国" {if $guoji == '中国'}selected=""{/if}>中国</option>
+                            <option value="美国" {if $guoji == '美国'}selected=""{/if}>美国</option>
+                          
+                        </select>
+                    </div>
+                </div>
+                <div class="layui-inline">
+                    <label class="layui-form-label">民族</label>
+                    <div class="layui-input-block">
+                        <select name="minzu" lay-filter="aihao">
+                            <option style="display:none"></option>
+                            <option value="汉族" {if $minzu == '汉族'}selected=""{/if}>汉族</option>
+                            <option value="壮族" {if $minzu == '壮族'}selected=""{/if}>壮族</option>
+                            <option value="满族" {if $minzu == '满族'}selected=""{/if}>满族</option>
+                            <option value="回族" {if $minzu == '回族'}selected=""{/if}>回族</option>
+                            <option value="苗族" {if $minzu == '苗族'}selected=""{/if}>苗族</option>
+                             <option value="维吾尔族" {if $minzu == '维吾尔族'}selected=""{/if}>维吾尔族</option>
+                            <option value="土家族" {if $minzu == '土家族'}selected=""{/if}>土家族</option>
+                            <option value="彝族" {if $minzu == '彝族'}selected=""{/if}>彝族</option>
+                            <option value="蒙古族" {if $minzu == '蒙古族'}selected=""{/if}>蒙古族</option>
+                            <option value="藏族" {if $minzu == '藏族'}selected=""{/if}>藏族</option>
+                             <option value="布依族" {if $minzu == '布依族'}selected=""{/if}>布依族</option>
+                            <option value="侗族" {if $minzu == '侗族'}selected=""{/if}>侗族</option>
+                            <option value="瑶族" {if $minzu == '瑶族'}selected=""{/if}>瑶族</option>
+                            <option value="朝鲜族" {if $minzu == '朝鲜族'}selected=""{/if}>朝鲜族</option>
+                            <option value="白族" {if $minzu == '白族'}selected=""{/if}>白族</option>
+                             <option value="哈尼族" {if $minzu == '哈尼族'}selected=""{/if}>哈尼族</option>
+                            <option value="哈萨克族" {if $minzu == '哈萨克族'}selected=""{/if}>哈萨克族</option>
+                            <option value="黎族" {if $minzu == '黎族'}selected=""{/if}>黎族</option>
+                            <option value="傣族" {if $minzu == '傣族'}selected=""{/if}>傣族</option>
+                            <option value="畲族" {if $minzu == '畲族'}selected=""{/if}>畲族</option>
+                             <option value="傈僳族" {if $minzu == '傈僳族'}selected=""{/if}>傈僳族</option>
+                            <option value="仡佬族" {if $minzu == '仡佬族'}selected=""{/if}>仡佬族</option>
+                            <option value="东乡族" {if $minzu == '东乡族'}selected=""{/if}>东乡族</option>
+                            <option value="高山族" {if $minzu == '高山族'}selected=""{/if}>高山族</option>
+                            <option value="拉祜族" {if $minzu == '拉祜族'}selected=""{/if}>拉祜族</option>
+                             <option value="水族" {if $minzu == '水族'}selected=""{/if}>水族</option>
+                            <option value="佤族" {if $minzu == '佤族'}selected=""{/if}>佤族</option>
+                            <option value="纳西族" {if $minzu == '纳西族'}selected=""{/if}>纳西族</option>
+                            <option value="羌族" {if $minzu == '羌族'}selected=""{/if}>羌族</option>
+                            <option value="土族" {if $minzu == '土族'}selected=""{/if}>土族</option>
+                             <option value="仫佬族" {if $minzu == '仫佬族'}selected=""{/if}>仫佬族</option>
+                            <option value="锡伯族" {if $minzu == '锡伯族'}selected=""{/if}>锡伯族</option>
+                            <option value="柯尔克孜族" {if $minzu == '柯尔克孜族'}selected=""{/if}>柯尔克孜族</option>
+                            <option value="达斡尔族" {if $minzu == '达斡尔族'}selected=""{/if}>达斡尔族</option>
+                            <option value="景颇族" {if $minzu == '景颇族'}selected=""{/if}>景颇族</option>
+                             <option value="毛南族" {if $minzu == '毛南族'}selected=""{/if}>毛南族</option>
+                            <option value="撒拉族" {if $minzu == '撒拉族'}selected=""{/if}>撒拉族</option>
+                            <option value="塔吉克族" {if $minzu == '塔吉克族'}selected=""{/if}>塔吉克族</option>
+                            <option value="阿昌族" {if $minzu == '阿昌族'}selected=""{/if}>阿昌族</option>
+                            <option value="普米族" {if $minzu == '普米族'}selected=""{/if}>普米族</option>
+                             <option value="鄂温克族" {if $minzu == '鄂温克族'}selected=""{/if}>鄂温克族</option>
+                            <option value="怒族" {if $minzu == '怒族'}selected=""{/if}>怒族</option>
+                            <option value="京族" {if $minzu == '京族'}selected=""{/if}>京族</option>
+                            <option value="基诺族" {if $minzu == '基诺族'}selected=""{/if}>基诺族</option>
+                            <option value="德昂族" {if $minzu == '德昂族'}selected=""{/if}>德昂族</option>
+                             <option value="保安族" {if $minzu == '保安族'}selected=""{/if}>保安族</option>
+                            <option value="俄罗斯族" {if $minzu == '俄罗斯族'}selected=""{/if}>俄罗斯族</option>
+                            <option value="裕固族" {if $minzu == '裕固族'}selected=""{/if}>裕固族</option>
+                            <option value="乌兹别克族" {if $minzu == '乌兹别克族'}selected=""{/if}>乌兹别克族</option>
+                            <option value="门巴族" {if $minzu == '门巴族'}selected=""{/if}>门巴族</option>
+                             <option value="鄂伦春族" {if $minzu == '鄂伦春族'}selected=""{/if}>鄂伦春族</option>
+                            <option value="独龙族" {if $minzu == '独龙族'}selected=""{/if}>独龙族</option>
+                            <option value="塔塔尔族" {if $minzu == '塔塔尔族'}selected=""{/if}>塔塔尔族</option>
+                            <option value="赫哲族" {if $minzu == '赫哲族'}selected=""{/if}>赫哲族</option>
+                            <option value="珞巴族" {if $minzu == '珞巴族'}selected=""{/if}>珞巴族</option>
+                            <option value="布朗族" {if $minzu == '布朗族'}selected=""{/if}>布朗族</option>
+                            
+                         </select>
+                    </div>
+                </div>
+            </div>
+            <div class="layui-form-item">
+                <div class="layui-inline">
+                    <label class="layui-form-label">消费理念</label>
+                    <div class="layui-input-block">
+                        <select name="xflinian" lay-filter="aihao">
+                            <option style="display:none"></option>
+                              <option value="生存型消费" {if $xflinian == '生存型消费'}selected=""{/if}>生存型消费</option>
+                            <option value="发展型消费" {if $xflinian == '发展型消费'}selected=""{/if}>发展型消费</option>
+                            <option value="享受型消费" {if $xflinian == '享受型消费'}selected=""{/if}>享受型消费</option>
+                                       
+                        </select>
+                    </div>
+                </div>
+                <div class="layui-inline">
+                    <label class="layui-form-label">客源等级</label>
+                    <div class="layui-input-block">
+                        <select name="kydengji" lay-filter="aihao">
+                          <option value="A类客源" {if $kydengji == 'A类客源'}selected=""{/if}>A类客源</option>
+                            <option value="B类客源" {if $kydengji == 'B类客源'}selected=""{/if}>B类客源</option>
+                            <option value="C类客源" {if $kydengji == 'C类客源'}selected=""{/if}>C类客源</option>
+                            <option value="D类客源" {if $kydengji == 'D类客源'}selected=""{/if}>D类客源</option>
+                           
+                        </select>
+                    </div>
+                </div>
+            </div>
+            <div class="layui-form-item">
+                <label class="layui-form-label">身份证</label>
+                <div class="layui-input-block" style="width: 666px;">
+                    <input type="text" name="sfzheng" lay-verify="sfzheng1" placeholder="" autocomplete="off" class="layui-input" value="{$sfzheng}">
+                </div>
+            </div>
+            <div class="layui-form-item">
+                <div class="layui-inline">
+                    <label class="layui-form-label">QQ</label>
+                    <div class="layui-input-inline">
+                        <input type="tel" name="qqhao" lay-verify="qqhao1" autocomplete="off" class="layui-input" value="{$qqhao}">
+                    </div>
+                </div>
+                <div class="layui-inline">
+                    <label class="layui-form-label">邮箱</label>
+                    <div class="layui-input-inline">
+                        <input type="text" name="youxiang" lay-verify="youxiang1" autocomplete="off" class="layui-input" value="{$youxiang}">
+                    </div>
+                </div>
+            </div>
+            <div class="layui-form-item">
+                <div class="layui-inline">
+                    <label class="layui-form-label">微信</label>
+                    <div class="layui-input-inline">
+                        <input type="tel" name="weixin" autocomplete="off" class="layui-input" value="{$weixin}">
+                    </div>
+                </div>
+                <div class="layui-inline">
+                    <label class="layui-form-label">交通工具</label>
+                    <div class="layui-input-block">
+                      <select name="jtgongju" lay-filter="aihao">
+                            <option style="display:none"></option>
+                              <option value="电动车" {if $jtgongju == '电动车'}selected=""{/if}>电动车</option>
+                            <option value="汽车" {if $jtgongju == '汽车'}selected=""{/if}>汽车</option>
+                            <option value="步行" {if $jtgongju == '步行'}selected=""{/if}>步行</option>
+                           
+                      </select>
+                   </div>
+                </div>
+            </div>
+            <div class="layui-form-item">
+                <div class="layui-inline">
+                    <label class="layui-form-label">车型</label>
+                    <div class="layui-input-inline">
+                        <input type="tel" name="chexing" autocomplete="off" class="layui-input" value="{$chexing}">
+                    </div>
+                </div>
+            </div>
+            <div class="layui-form-item layui-form-text">
+                <label class="layui-form-label">备注</label>
+                <div class="layui-input-block" style="width: 666px;">
+                    <textarea placeholder="请输入内容" class="layui-textarea" name="beizhu" lay-verify="beizhu" value="{$beizhu}"></textarea>
+                </div>
+            </div>
+            <div style="line-height:50PX;">&nbsp;</div>
+            <div class="layui-form-item" style="width:100%;height:45px;margin:0 auto;background:#fff;position:fixed;bottom:0;text-align:center;border-top-style: solid;border-top-width: 1px;border-top-color: {$lscx};padding-top: 5px;" id="submit">
+				<div class="layui-input-block" style="margin-left: -15px;">
+                    <button class="layui-btn layui-btn-radius layui-btn-tijiao" name="" lay-submit="" lay-filter="demo1">
+						<i class="Hui-iconfont">&#xe603;</i> 立即提交
+					</button>
+					<button type="reset" class="layui-btn layui-btn-radius layui-btn-primary lscxan">
+						<i class="Hui-iconfont">&#xe72a;</i> 重置
+					</button>
+				
+                </div>
+            </div>
+        </form>
+     
+        <script type="text/javascript" src="{$MODULE[1][linkurl]}keyuan/lib/jquery/1.9.1/jquery.min.js"></script> 
+        <script src="{$MODULE[1][linkurl]}keyuan/lib/layui/layui.js" charset="utf-8"></script>
+        <script>
+            //Demo
+            layui.use('form', function(){
+                var form = layui.form();
+                 //监听提交
+                form.on('submit(demo1)', function(data){
+                    $.ajax({
+                        url:'{$MODULE[1][linkurl]}api/keyuan/edit_keyuan.php',
+                        type:"post",
+                        data:data.field,
+                        dataType:"json",
+                        success: function(data){
+                            if (data.status==1) {
+                                var index = parent.layer.getFrameIndex(window.name); //获取窗口索引
+                                parent.layer.msg(data.info);//父级页面提示成功信息
+                                //parent.location.reload();//刷新父级页面
+                                parent.layer.close(index);//关闭弹出的子页面窗口
+                            }else{
+                                layer.msg(data.info,function(){});//错误提示
+                            }
+                        },
+                        error:function(data) {
+                            console.log(data.msg);
+                        },
+                    });
+                    return false;
+                });
+               
+                form.verify({
+                    title: function(value){
+                        if(value.length < 5){
+                            return '标题至少得5个字符啊';
+                        }
+                    }
+                    ,shuzi1: [/^([1-9]{1})$|^(1[0]{1})$/, '请输入＞0≤10的整数！']
+                    ,shuzi2: [/^([1-9][0-9]{0,4})$|^(1[0]{5})$/, '请输入＞0≤十亿的整数！']
+                    ,shuzi3: [/^([1-9][0-9]{0,4})$|^(1[0]{5})$/, '请输入＞0≤十万的整数！']
+                    ,shuzi4: [/^([1-9][0-9]{0,3})$|^(1[0]{4})$/, '请输入＞0≤一万的整数！']
+                    ,shuzi5: [/^$|^([1-9]{1})$|^([1-9][0-9]{1})$|^(1[0-9]{2})$|^(2[0]{2})$/, '请输入＞0≤200的整数！']
+                    ,shuzi6: [/^$|^([1-9][0-9]{0,2})$|^(1[0]{3})$/, '请输入＞0≤1000的整数！']
+                    ,beizhu: [/^$|^[\s\S]{0,300}$/, '只能输入300个字符！']
+                    ,qqhao1: [/^$|^[1-9][0-9]{4,}$/, '请输入正确的QQ号！']
+                    ,youxiang1: [/^$|^[A-Za-z\d]+([-_.][A-Za-z\d]+)*@([A-Za-z\d]+[-.])+[A-Za-z\d]{2,4}$/, '请输入正确的邮箱！']
+                    ,shouji1: [/^(13[0-9]|14[579]|15[0-3,5-9]|16[6]|17[0135678]|18[0-9]|19[189])\d{8}$|^0\d{2,3}-?\d{7,8}$/, '请输入正确的手机号码或电话号码！']
+                    ,sfzheng1: [/^$|^[1-9]\d{5}\d{2}((0[1-9])|(10|11|12))(([0-2][1-9])|10|20|30|31)\d{2}$|^[1-9]\d{5}(18|19|([23]\d))\d{2}((0[1-9])|(10|11|12))(([0-2][1-9])|10|20|30|31)\d{3}[0-9Xx]$/, '请输入正确的身份证号！']
+                    ,content: function(value){
+                        layedit.sync(editIndex);
+                    }
+                });
+                form.on('checkbox(quanxuan)', function(data){
+                    if(data.elem.checked){
+                        $(".peitao").prop("checked",true);
+                        form.render('checkbox');
+                    } else {
+                        $(".peitao").prop("checked",false);
+                        form.render('checkbox');
+                    }
+                });
+                $("#xqhuxing1,#xqhuxing2").blur(function(){
+                    var xqhuxing1=$("#xqhuxing1").val();
+                    var xqhuxing2=$("#xqhuxing2").val();
+                    if(xqhuxing1.length!=0 && xqhuxing2.length!=0){
+                        if (parseInt(xqhuxing1) >parseInt(xqhuxing2) ) {
+                            layer.alert('需求户型2小于需求户型1！！！', {icon: 5});
+                            $("#submit").hide();
+                        }else{
+                            $("#submit").show();
+                        }
+                    }
+                });
+                $("#xqjiage1,#xqjiage2").blur(function(){
+                    var xqjiage1=$("#xqjiage1").val();
+                    var xqjiage2=$("#xqjiage2").val();
+                    if(xqjiage1.length!=0 && xqjiage2.length!=0){
+                        if (parseInt(xqjiage1) >parseInt(xqjiage2) ) {
+                            layer.alert('价格范围2小于价格范围1！！！', {icon: 5});
+                            $("#submit").hide();
+                        }else{
+                            $("#submit").show();
+                        }
+                    }
+                });
+                $("#xqmianji1,#xqmianji2").blur(function(){
+                    var xqmianji1=$("#xqmianji1").val();
+                    var xqmianji2=$("#xqmianji2").val();
+                    if(xqmianji1.length!=0 && xqmianji2.length!=0){
+                        if (parseInt(xqmianji1) >parseInt(xqmianji2) ) {
+                            layer.alert('需求建面2小于需求建面1！！！', {icon: 5});
+                            $("#submit").hide();
+                        }else{
+                            $("#submit").show();
+                        }
+                    }
+                });
+                $("#louceng1,#louceng2").blur(function(){
+                    var louceng1=$("#louceng1").val();
+                    var louceng2=$("#louceng2").val();
+                    if(louceng1.length!=0 && louceng2.length!=0){
+                        if (parseInt(louceng1) >parseInt(louceng2) ) {
+                            layer.alert('需求楼层2小于需求楼层1！！！', {icon: 5});
+                            $("#submit").hide();
+                        }else{
+                            $("#submit").show();
+                        }
+                    }
+                });
+                $("#fangling1,#fangling2").blur(function(){
+                    var fangling1=$("#fangling1").val();
+                    var fangling2=$("#fangling2").val();
+                    if(fangling1.length!=0 && fangling2.length!=0){
+                        if (parseInt(fangling1) >parseInt(fangling2) ) {
+                            layer.alert('需求房龄2小于需求房龄1！！！', {icon: 5});
+                            $("#submit").hide();
+                        }else{
+                            $("#submit").show();
+                        }
+                    }
+                });
+                $("#sousuo1").click(function(){
+                    var display =$('#greetings').css('display');
+                    if(display == 'none'){
+                        $("#greetings").show();
+                    }else{
+                        $("#greetings").hide(); 
+                    }
+                });
+                $("#sousuo").keyup(function(){
+                    $("#greetings").show();
+                    var txt=$("#sousuo").val();
+                    if (txt!="") {
+                        $.ajax({
+                            url:'xiaoqu',
+                            type:"get",
+                            data:"txt="+txt,
+                            dataType:"json",
+                            success:function(data){
+                                var district = data.lists;
+                                $("#tcontent li").remove();
+                                for(var i in district){
+                                    var li=$("<li></li>");
+                                    $(li).attr('dataid',district[i]['id']);
+                                    $(li).html(district[i]['xiaoqum']);
+                                    $("#tcontent").append(li);
+                                }
+                            }
+                        });
+                    }
+                });
+                $("#tcontent").on("click","li", function() {  
+                    $("#greetings").show();
+                    var Uarry=$("#tcontent li");
+                    var count=$(this).index();
+                    var Tresult=Uarry.eq(count).text();
+                    var xiaoquid=Uarry.eq(count).attr('dataid');
+                    var bb=$("#sousuo1").val();
+                    bb+=Tresult+'；';
+                    $("#xiaoqu").val(xiaoquid);
+                    $("#sousuo1").val(bb);
+                    $("#sousuo").val("");
+                    $("#greetings").hide();
+                });
+                $("#cz1").click(function(){
+                    $("#sousuo1").val("");
+                });
+                $("#sousuo3").click(function(){
+                    var display =$('#greetings2').css('display');
+                    if(display == 'none'){
+                        $("#greetings2").show();
+                    }else{
+                        $("#greetings2").hide();
+                    }
+                });
+            });
+        </script>
+<script type="text/javascript">Menuon(0);</script>

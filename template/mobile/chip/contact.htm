@@ -1,0 +1,25 @@
+ <link rel="stylesheet" href="{AJ_MOB}static/css/frozen.css" />
+    <link rel="stylesheet" href="{AJ_MOB}static/css/public.css" />
+{if $user_status == 3}
+{if $member}
+<li class="ui-col-2 ui-flex ui-flex-align-center" style="height:50px"><div class="hf-">&nbsp;&nbsp;{$truename}：{$mobile}</div></li>
+        <li class="hf-oldinfo-btn ui-whitespace-right">
+		<button class="ui-btn ui-btn-green" onClick="window.location.href='tel:{$mobile}'"><i class="hf-icon-fixtel"></i><br />电话</button>
+{/if}
+{elseif $user_status == 2}
+需支付 <strong>{$fee}</strong> {$fee_unit}
+{$fee_name}余额:{if $currency == 'money'}{$_money}{else}{$_credit}{/if}{$fee_unit} <a href="{$MODULE[2][mobile]}" class="b">我的账户</a> 
+<a href="{$MODULE[2][mobile]}pay.php?mid={$mid}&itemid={$itemid}" rel="external"><div class="btn-green">立即支付</div></a>
+{elseif $user_status == 1}
+无权查看，请升级会员级别<br/>
+{if $AJ[telephone]}咨询电话:<a href="tel:{$AJ[telephone]}">{$AJ[telephone]}</a><br/>{/if}
+{elseif $user_status == 0}
+<a href="{$MODULE[2][mobile]}{$AJ[file_login]}" class="b" data-transition="slideup">请登录查看</a><br/>
+{else}
+<div id="contact"><div style="height:100px;background:#FFFFFF url('{AJ_MOB}static/img/spinner.gif') no-repeat center center;background-size:16px 16px;" onclick="$.getScript('{AJ_MOB}api/task.js.php?{$aijiacms_task}');"></div></div>
+<script type="text/javascript">
+$(function(){
+	$.getScript('{AJ_MOB}api/task.js.php?{$aijiacms_task}');
+});
+</script>
+{/if}

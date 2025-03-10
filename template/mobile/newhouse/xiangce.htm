@@ -1,0 +1,67 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, minimal-ui">
+    <title>{if $seo_title}{$seo_title}{else}{if $head_title}{$head_title}{$AJ[seo_delimiter]}{/if}{if $city_sitename}{$city_sitename}{else}{$site_name}{/if}{/if}</title>
+{if $head_keywords}
+<meta name="keywords" content="{$head_keywords}"/>
+{/if}
+{if $head_description}
+<meta name="description" content="{$head_description}"/>
+{/if}
+    <meta name="applicable-device" content="mobile">
+   
+    <script src="{AJ_MOB}static2020/js/jquery.min.js"></script>
+    <script src="{AJ_MOB}static2020/js/font-size.js"></script>
+    <link rel="stylesheet" href="{AJ_MOB}static2020/css/base.css?t=1606958269">
+    <link rel="stylesheet" href="{AJ_MOB}static2020/css/style.css?t=1606958269">
+    <style>
+        .footer-js img{width:auto;}
+    </style>
+</head>
+
+<!-- 头部 S-->
+<div class="mc-header">
+    <a href="index.html" class="go-back"></a>
+    <h3>楼盘相册</h3>
+</div>
+<!-- 头部 E-->
+
+
+<link rel="stylesheet" href="{AJ_MOB}static2020/css/pic-preview.css">
+<link rel="stylesheet" href="{AJ_MOB}static2020/css/swiper.min.css">
+<style>
+    .swiper-container{border-bottom:1px solid #eee;}
+    .swiper-slide{width:auto;}
+    .swiper-slide a{padding-right:10px;}
+    .house-type .tab_hd{border-bottom:none;}
+</style>
+<div class="main" style="background: none;padding-bottom:2rem;">
+    
+
+    <div class="build-picture" style="padding-top:.5rem;">
+        <div class="picture-item">
+            <ul class="list clearfix" data-am-widget="gallery" data-am-gallery="{ pureview: true }">
+              <!--{php $tag=tag("table=newhouse_xiangce&condition=status=3 and houseid=$itemid&pagesize=50&order=addtime desc&template=null");}-->
+ {loop $tag $i $t}
+                                    <li><a href="{imgurl($t[thumb])}"><img src="{imgurl($t[thumb])}"  alt="{$t[alt]}"></a></li>
+                                   {/loop}
+                            </ul>
+        </div>
+       
+    </div>
+   
+</div>
+<script src="{AJ_MOB}static2020/js/swiper.min.js"></script>
+<script src="{AJ_MOB}static2020/js/amazeui.min.js"></script>
+<script type="text/javascript">
+    $(function(){
+        var mySwiper = new Swiper('.swiper-container', {
+            slidesPerView : 'auto'
+        });
+    });
+</script>
+{template 'foottj'}
+</body>
+</html>

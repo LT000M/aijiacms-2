@@ -1,0 +1,366 @@
+<!DOCTYPE HTML>
+<html lang="">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" /> 
+<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, viewport-fit=cover">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">     
+       <title>{if $seo_title}{$seo_title}{else}{if $head_title}{$head_title}{$AJ[seo_delimiter]}{/if}{if $city_sitename}{$city_sitename}{else}{$site_name}{/if}{/if}</title>
+{if $head_keywords}
+<meta name="keywords" content="{$head_keywords}"/>
+{/if}
+{if $head_description}
+<meta name="description" content="{$head_description}"/>
+{/if}
+<link rel="stylesheet" href="{AJ_MOB}static2019/css/info-mb.css">
+	  <link rel="stylesheet" href="{AJ_MOB}static2019/css/info-base.css">
+		<link rel="stylesheet" href="{AJ_MOB}static2019/css/weui.css">
+    <link rel="stylesheet" href="{AJ_MOB}static2019/css/custom.css">
+	<link rel="stylesheet" href="{AJ_MOB}static2019/css/hm.css" />
+<link rel="stylesheet" href="{AJ_MOB}static2019/css/hs.css" />
+	<script>var loading = false, page = 1,scrollto =0,fxqg = '长按保存图片，分享到群或朋友圈';</script>
+    <script src="{AJ_MOB}static2019/js/jquery-2.1.4.js" type="text/javascript"></script>
+    <script src="{AJ_MOB}static2019/js/jquery-weui.js" type="text/javascript" charset="UTF-8"></script>
+	<script src="{AJ_MOB}static2019/js/jweixin-1.2.0.js"></script>
+    <style>
+.weui-dialog__btn, .weui-navbar__item.weui_bar__item_on, .color-strong, .chip-row .toutiao, .weui-cells_checkbox .weui-check:checked+.weui-icon-checked:before, .weui-vcode-btn, .weui-dialog__btn_primary, .weui-cells_radio .weui-check:checked+.weui-icon-checked:before, .weui-icon-checked:before, .weui-agree__checkbox:checked:before, .weui-icon-success-circle, .weui-icon-success-no-circle, .weui-search-bar__cancel-btn, .weui-tabbar__item.weui-bar__item_on .weui-tabbar__icon, .weui-tabbar__item.weui-bar__item_on .weui-tabbar__icon>i, .weui-tabbar__item.weui-bar__item_on .weui-tabbar__label,.main_color,.weui-tabbar__item.weui-bar__item--on .weui-tabbar__label,.picker-button,.weui-form-preview__btn_primary {color:#00c07b!important}
+.weui_bar__item_on span:after,.weui-btn_primary, .weui-btn_primary:not(.weui-btn_disabled):active,.weui-btn_mini,.x_header, .main_bg,.position li.current, .position1 li.current,.post-tags .tag-on.weui-btn_default,.is-green, .weui-slider__track,.tsbtn_m{background-color:#00c07b!important}
+.foot_link{color:#aaa; font-size:12px; margin:0 0; padding:10px 10px;}
+.foot_link .link {color:#ccc; font-size:14px;}
+.foot_link a {color:#666;}
+.bianhao{display:block; padding:0 10px; height:25px;line-height:25px;color:#fff;font-size:12px;text-align:center;border-top-right-radius:50px;border-bottom-right-radius:50px;position:absolute;top:25px;left:0;z-index:9;background-color:rgba(0,0,0,.6)}
+.swipe-wrap img{height: 280px;}
+body,td,th {
+	font-family: "Helvetica Neue", Roboto, "microsoft yahei";
+}
+    </style>
+    </head>
+    	
+   
+	
+
+<body>
+<!--aijia容器开始-->	
+<div class="page__bd">
+<div class="hm_view_nav">
+   <a href="javascript:;" class="sec_newewm hbzd">海报<em class="iconfont icon-jinrujiantou f12"></em></a>
+</div>
+<header class="x_header bgcolor_11 cl f15">
+    <a class="z f14" href="javascript:window.history.go(-1);"><i class="iconfont icon-fanhuijiantou w15"></i>返回</a>
+    <a class="y sidectrl view_ctrl"><i class="iconfont icon-fenlei f14"></i></a>
+	<div class="navtitle" onClick="location.href='index.php'">{if $city_sitename}{$city_sitename}{else}{$site_name}{/if}</div>
+  </header>
+<div class="x_header_fix" ></div>
+    <div class="none view_tools_mask"></div>
+    <div class="none view_tools animated">
+        <ul>
+                        <li class="border_bottom" ><a href="{AJ_MOB}"><i class="vm iconfont icon-fenlei "></i>首页</a></li>
+            <li><!--header区域 导航栏 区域  开始-->
+						 <a href="{AJ_MOB}my.php"><i class="vm iconfont icon-xiaolian2 "></i>我的</a>
+			</li>
+        </ul>
+</div>
+
+	
+
+
+<div class="m-information-qm" style="background-color:#f8f8f8;border-bottom:none;">
+        <div class="wp">
+          <div class="top istrade0">
+               <!-- <div class="g-info-qm">
+					<a href="javascript:;" id="share2015" class="more we_share"></a>
+                </div>-->
+				<div class="tit">{$title}</div>
+                <i class="deal"></i>
+            </div>
+			
+						
+			 <ul class="ul-txt1-qm">
+               <li class="display1590"><span>价格<b><em id="price">	{if $price}{$price}{if $typeid}元/月{else}万{/if}{else}面议{/if} </em></b></span><em id="price" style="display:none">{$price}</em></li>
+			   <li><span>户型<b><em>{if $room}{$room}室{/if}{if $hall}{$hall}厅{/if}{if $toilet}{$toilet}卫{/if}</em></b></span></li>
+               <li><span>建面<b><em id="chrsize">{$houseearm}㎡</em></b></span></li>
+            </ul>
+            <div class="m-label1-qm">
+                <span class="s1" style="background-color:#ff6565;color:#fff;">{if $typeid==0}求购{else}求租{/if}</span><span class="s1">{cat_pos($CAT, ' &raquo; ')}</span>
+            </div>
+            <div class="m-txt1-qm txt2">
+            	
+                <p><span>浏览：</span>{$hits}次</p>
+				 <p><span>更新：</span>{$editdate}</p>
+            </div>
+			<em>{$address}</em></span><i></i></a>
+					
+		
+
+			    
+        </div>
+
+	
+<div class="m-report-qm" style="margin-top:10px;">
+        <!--<a onclick="showjubao();" class="clearfix"><i></i>举报</a>-->
+        <div class="txt">
+            <h3>如遇无效、虚假、诈骗信息，点击举报</h3>
+            <p>涉及交易请仔细验证对方资质，签订规范合同</p>
+        </div>
+</div>
+
+<div class="m-describe-qm">
+        <div class="g-tit1-hlg bgcf">
+            <a class="clearfix">
+                <div class="left">
+                    <h3 class="line">信息描述</h3>
+                </div>
+            </a>
+        </div>
+        <div class="wp">
+         
+			{$content}</div>
+    </div>
+</div>
+ 
+
+
+<div class="foot_link" id="foot_link">
+友情提醒：该信息由网友自行发布，不代表本网认可并赞同其观点及真实性，请自主甄别。如遇虚假信息可拨打客服电话{$AJ[telephone]}或在线举报，涉及交易时请仔细验证对方资质，签订规范的交易合同。
+</div>
+<div class="swiper-container global-lightbox animated" id="globalLightbox">
+    <div class="swiper-wrapper" id="globalWrapper">
+
+    </div>
+    <div class="swiper-pagination lightbox-pagination"></div>
+    <a class="iconfont icon-guanbijiantou closeLightbox"> </a>
+</div>
+<div id="backtotop" class="backtotop"> <span class="icon-vertical-align-top"><i class="iconfont icon-iconfontarrowup"></i></span></div>
+<div class="footer_fix"></div>
+<div class="view_bottom weui-flex border_top">
+		<div class="view_bottom_z">
+				  <a href="{AJ_MOB}" class="weui-tabbar__item ">
+		                      <span style="display: inline-block;position: relative;">
+                        <i class="iconfont icon-index weui-tabbar__icon"></i>
+                    </span>
+                <p class="weui-tabbar__label">首页</p>
+            </a>
+        </div>
+        <div class="view_bottom_z">
+						<a href="{AJ_MOB}member/favorite.php" class="weui-tabbar__item">
+			            
+                    <span style="display: inline-block;position: relative;">
+                        <i class="iconfont icon-jinlingyingcaiwangtubiao44 weui-tabbar__icon"></i>
+                    </span>
+                <p class="weui-tabbar__label">收藏</p>
+            </a>
+        </div>
+          
+		<div class="weui-flex__item view_bottom_y">
+            <a onclick="show4006();" ><i class="iconfont icon-unie607"></i>拨打电话：{$mobile}</a>
+        </div>
+</div>
+
+
+</div>
+<!-- 主页面结束-->
+
+<div id="4008" class="weui-popup__container" style="z-index:999999">
+    <div class="weui-popup__overlay"></div>
+    <div class="weui-popup__modal">
+        <div class="fixpopuper">
+		  <div class="weui-cells__title">{$title}</div>
+			
+  
+		
+ 
+		<article class="weui-article" >
+		<p style="text-align:center" class="weui-cells__title">
+               
+          </p>
+			 <p style="text-align:center" class="weui-cells__title">
+                 联系人：{$truename}                    </p>
+					<h1 style="text-align:center;margin-bottom:0px"><font color="#ff0000" style="font-size:18px;">{$mobile}</font></h1>
+        </article>
+		 <div class="weui-btn-area">
+             <a class="weui-btn weui-btn_primary" onClick="location.href= 'tel:{$mobile}'">现在拨打</a>
+		</div>	  
+
+	
+	
+	 
+	<!-- 是否中介信息判断结束 -->
+			
+ 
+
+<!-- 是否过期信息判断结束 -->
+
+<p style="text-align:center" class="weui-cells__title">
+				联系我时，请说是在{$AJ[sitename]}看到的…
+		
+        
+		</p>
+
+         <div class="footer_fix"></div>
+            <div class="bottom_fix"></div>
+        </div>
+        <div class="fix-bottom">
+            <a class="weui-btn weui-btn_default close-popup" href="javascript:;">取消</a>
+        </div>
+    </div>
+</div>
+		
+<div id="jubao8" class="weui-popup__container" style="z-index:999999">
+    <div class="weui-popup__overlay"></div>
+    <div class="weui-popup__modal">
+        <div class="fixpopuper">  
+		<form action="{AJ_MOB}guestbook/index.php?action=add" name="formReport" method="post" onSubmit="return submitForm();">
+<input type="hidden" name="part" value="do_report">
+<input type="hidden" name="infoid" value="{$itemid}">
+<input type="hidden" name="infotitle" value="{$title}">
+            <div class="weui-cells__title">请选择举报类型</div>
+			<div class="weui-cells weui-cells_radio">
+            <label class="weui-cell weui-check__label" for="content1">
+                <div class="weui-cell__bd">
+                    <p>违法信息</p>
+                </div>
+                <div class="weui-cell__ft">
+                    <input type="radio" class="weui-check" value="1" name="content" id="content1" checked="checked">
+                    <span class="weui-icon-checked"></span>
+                </div>
+            </label>
+			
+			<label class="weui-cell weui-check__label" for="content3">
+                <div class="weui-cell__bd">
+                    <p>虚假信息</p>
+                </div>
+                <div class="weui-cell__ft">
+                    <input type="radio" class="weui-check" value="3" name="content" id="content3">
+                    <span class="weui-icon-checked"></span>
+                </div>
+            </label>
+			<label class="weui-cell weui-check__label" for="content4">
+                <div class="weui-cell__bd">
+                    <p>中介冒充个人</p>
+                </div>
+                <div class="weui-cell__ft">
+                    <input type="radio" class="weui-check" value="4" name="content" id="content4">
+                    <span class="weui-icon-checked"></span>
+                </div>
+            </label>
+			<label class="weui-cell weui-check__label" for="content5">
+                <div class="weui-cell__bd">
+                    <p>无效号码</p>
+                </div>
+                <div class="weui-cell__ft">
+                    <input type="radio" class="weui-check" value="5" name="content" id="content5">
+                    <span class="weui-icon-checked"></span>
+                </div>
+            </label>
+			<label class="weui-cell weui-check__label" for="content6">
+
+                <div class="weui-cell__bd">
+                    <p>信息已过期</p>
+                </div>
+                <div class="weui-cell__ft">
+                    <input type="radio" class="weui-check" value="6" name="content" id="content6">
+                    <span class="weui-icon-checked"></span>
+                </div>
+            </label>
+        </div>
+ 		
+		<div class="weui-btn-area">
+             <button type="submit" class="weui-btn weui-btn_primary">确认提交</button>
+        </div>
+                        <div class="footer_fix"></div>
+            <div class="bottom_fix"></div>
+        </div> 
+</form>
+        <div class="fix-bottom">
+            <a class="weui-btn weui-btn_default close-popup" href="javascript:;">取消</a>
+        </div>
+    </div>
+</div>
+
+<script src="{AJ_MOB}static2019/js/html2canvas.min.js" type="text/javascript"></script>
+<div id="shot" style="position:absolute;top:-100000px">
+    <div class="shot_in">
+    <div class="qr_pr">
+        <img src="{imgurl($thumb)}" crossorigin="anonymous" class="qr_img_src">
+		        <div class="qr_time">{$title}</div>
+		 
+    </div>
+    <div class="qr_outer cl">
+        <div class="cl y qrfield">
+            <div class="wide_border"></div>
+   <img src="{AJ_PATH}api/qrcode.png.php?auth={urlencode({AJ_MOB}buy/$linkurl)}">
+            <div class="qrfield_c qrfield_c1">长按识别二维码</div>
+            <div class="qrfield_c qrfield_c2"></div>
+            <div class="qrfield_c qrfield_c3"></div>
+            <div class="qrfield_c qrfield_c4"></div>
+        </div>
+        <div class="info_field cl tl">
+                    <p class="ca2 mb10 f20">{$address}</p>
+                        <p class="c9 f16">{if $room}{$room}室{/if}{if $hall}{$hall}厅{/if}{if $toilet}{$toilet}卫{/if}  {$houseearm}㎡</p>
+            <p class="seckill_price">{if $price}{$price}{if $typeid}元/月{else}万{/if}{else}面议{/if}</p>
+            <p class="c9 f14">         
+                <span>本信息由 {$truename}</span> </p>
+				 <p class="c9 f14">  <span>通过 {$AJ[sitename]} 发布</span>
+          </p>
+
+      </div>
+    </div>
+    </div>
+</div>
+<script>
+    $(function () {
+        var isPageHide = false;
+        window.addEventListener('pageshow', function () {
+            if (isPageHide) {
+                window.location.reload();
+            }
+        });
+        window.addEventListener('pagehide', function () {
+            isPageHide = true;
+        });
+    });
+    $(document).on('click','.sec_newewm', function () {
+        $.showLoading();
+        html2canvas(document.querySelector(".shot_in")).then(canvas => {
+            var dataURL = canvas.toDataURL();
+            COMCLAS = 'shot_outer';
+        $.hideLoading();
+            $.alert("<img src='"+dataURL+"' /> ",fxqg);
+            $('.weui-dialog__title').css('font-size', '14px');
+            COMCLAS = '';
+        });
+        return false;
+    });
+</script>
+
+<div id="wechat-mask"><div id="wechat-guider"></div></div>
+<div class="mask none"></div>
+<script src="{AJ_MOB}static2019/js/fastclick.js" type="text/javascript"></script>
+<script src="{AJ_MOB}static2019/js/slider.js" type="text/javascript"></script>
+<script src="{AJ_MOB}static2019/js/swiper.min.js" type="text/javascript"></script>
+<script src="{AJ_MOB}static2019/js/md5.min.js" type="text/javascript"></script>
+<script src="{AJ_MOB}static2019/js/app.js" type="text/javascript"></script>
+
+
+
+<script>
+
+	function showjubao(){
+        $('#jubao8').popup();
+    }
+
+	function show4008(){
+        $('#4008').popup();
+    }
+	function show4006(){
+        $('#4008').popup();
+    }
+        </script>
+
+
+
+
+
+
+{template 'foottj'}
+</body>
+</html>

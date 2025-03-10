@@ -1,0 +1,187 @@
+{template 'header'}
+<div id="head-bar">
+<div class="head-bar">
+<div class="head-bar-back">
+<a href="{$back_link}" data-direction="reverse"><img src="{AJ_MOB}static/img/icon-back.png" width="24" height="24"/><span>返回</span></a>
+</div>
+<div class="head-bar-title">{$head_name}</div>
+<div class="head-bar-right">
+<a href="javascript:Dsheet('{if $purchase}<a href=&#34;{$MOD[mobile]}{rewrite('buy.php?itemid='.$itemid)}&#34;><span>立即购买</span></a>|{/if}<a href=&#34;{AJ_MOB}api/share.php?mid={$moduleid}&itemid={$itemid}&#34; data-transition=&#34;slideup&#34;><span>分享好友</span></a>|<a href=&#34;{$MOD[mobile]}&#34; data-direction=&#34;reverse&#34;><span>{$MOD[name]}首页</span></a>|<a href=&#34;{AJ_MOB}channel.php&#34; data-direction=&#34;reverse&#34;><span>频道列表</span></a>', '取消');"><img src="{AJ_MOB}static/img/icon-action.png" width="24" height="24"/></a>
+</div>
+</div>
+<div class="head-bar-fix"></div>
+</div>
+	<link rel="stylesheet" href="{AJ_MOB}static2019/css/aijia.css">
+	   <link rel="stylesheet" href="{AJ_MOB}static2019/css/info-mb.css">
+	  <link rel="stylesheet" href="{AJ_MOB}static2019/css/info-base.css">
+      
+	  <script src="{AJ_MOB}static2019/js/jquery-2.1.4.js" type="text/javascript"></script>
+<script src="{AJ_MOB}static2019/js/jquery-weui.js" type="text/javascript" charset="UTF-8"></script>
+ <script>var loading = false, page = 1,scrollto =0;</script>
+		<script src="{AJ_MOB}static2019/js/jweixin-1.2.0.js"></script>
+				<style>
+.aijia{width:100%;}
+.tfmain{width:100%;margin-bottom:45px;margin-top:45px;}
+.swipe{overflow:hidden;visibility:hidden;position:relative;margin:0;height:0}
+.swipe-wrap{overflow:hidden;position:relative;max-height:216px;}
+.swipe-wrap>div{float:left;width:100%;position:relative}
+.swipe-wrap img{display:block;width:100%;}
+.swipe-wrap .i{background-repeat:no-repeat;background-size:cover;background-position:center center;width:100%}
+.bullets,.bullets1{position:absolute;right:0;bottom:0;color:#fff;font-size:12px}
+.position,.position1{text-align:center}
+.position li,.position1 li{display:inline-block;width:4px;height:4px;border-radius:10px;background:rgba(255,255,255,.5);margin:0 1px}
+.position li.current,.position1 li.current{background:#42bd56;width:12px}
+.nav-list .position1 li{background:#eee;float:none;display:inline-block;width:4px;height:4px;margin:0!important;}
+.position1 li.current{background:#42bd56;width:12px}
+.bullets1{width:100%;text-align:center}
+</style>
+<div class="main">
+	<div class="title"><strong>{$title}</strong></div>
+	<div class="info">{$editdate}{if $MOD[hits]}&nbsp;&nbsp;浏览:<span id="hits">{$hits}</span>{/if}</div>
+	<div class="content">
+	{if $thumb}<center><img src="{$thumb}" alt="{$title}"/></center>{/if}
+	价格:<span class="f_red">{$AJ[money_sign]}{$price}</span><br/>
+	原价:{$AJ[money_sign]}{$marketprice}<br/>
+	折扣:{$discount}折<br/>
+	节省:{$AJ[money_sign]}{$savemoney}<br/>
+	购买:{$orders}人<br/>
+	状态:<span class="f_red">{if $process == 0}正在成团，距离团购人数还差{$left}人{elseif $process == 1}团购已成功，还可以继续购买...{else}团购已结束{/if}</span><br/>
+  
+	{if $purchase}<a onclick="showyuyue4();"><div class="btn-green" style="margin:10px 0;">参加团购</div></a>{/if}
+	{$content}
+    <a onclick="showyuyue4();" class="a2"><i></i>参加团购</a>
+	</div>
+	
+</div>
+<link rel="stylesheet" href="{AJ_MOB}static2019/css/weui.css">
+<style>
+.weui-popup__modal{overflow:hidden}
+.weui-popup__modal .fixpopuper {-webkit-overflow-scrolling: touch;position: absolute;width:100%;height: 100vh;overflow: hidden;overflow-y: auto;background:#f8f8f8}
+.fix-bottom{position:fixed;left:0;width:100%;bottom:0;z-index:9;border-radius:0;padding: 15px;background: #fff;box-sizing:border-box;box-shadow: 0 0 10px #f5f5f5}
+.footer_fix{height:46px;width:100%}
+</style>
+<script>
+    function showyuyue(){
+        $('#yuyue8').popup();
+    }
+	function showyuyue2(){
+        $('#yuyue8').popup();
+    }
+	function showyuyue3(){
+        $('#yuyue8').popup();
+    }
+	
+	function hongbao(){
+        $('#hongbao8').popup();
+    }
+	function showyuyue4(){
+        $('#yuyue8').popup();
+    }
+	function show4008(){
+        $('#4008').popup();
+    }
+	function show40081(){
+        $('#4008').popup();
+    }
+	function show40082(){
+        $('#4008').popup();
+    }
+</script>
+<div id="yuyue8" class="weui-popup__container" style="z-index:999999">
+    <div class="weui-popup__overlay"></div>
+    <div class="weui-popup__modal">
+        <div class="fixpopuper">
+		<script>
+function CheckEmptyValues2()
+{
+	var tel = document.getElementById('input_tel2').value;
+	var name = document.getElementById('input_name2').value;
+	if(tel=='')
+	{
+		alert("手机号不能为空");
+		document.getElementById('input_tel2').focus();
+		return false;
+	}
+	else if(name=='')
+	{
+		alert("联系人不能为空");
+		document.getElementById('input_name2').focus();
+		return false;
+	}
+	else  
+	{
+		var re= /^1[1-9][0-9]{9}$/;
+	    if(!re.test(tel))
+		{
+			alert("手机号输入有误，请输入正确的手机号码");
+			document.getElementById('input_tel2').focus();
+			return false;
+		}
+		else
+		{
+			return true;
+		}
+	}
+}
+</script>
+			<form action="{$MODULE[1][linkurl]}api/tuan.php" onSubmit="return CheckEmptyValues2();"> 
+		 <input type="hidden" name="itemid" value="{$itemid}">
+<input type="hidden" name="title" value="{$title}">
+          <input type="hidden" name="linkurl" value="{AJ_MOB}house/{$linkurl}">  
+            <div class="weui-cells__title">{$title}团购报名</div>
+			
+            <div class="weui-cell f15">
+                <div class="weui-cell__hd"><label class="weui-label">你的姓名</label></div>
+                <div class="weui-cell__bd">
+                    <input class="weui-input" placeholder="请输入你的姓名？" id="input_name2" name="truename">
+                </div>
+            </div>
+            <div class="weui-cell f15">
+                <div class="weui-cell__hd">
+                    <label class="weui-label">手机号</label>
+                </div>
+                <div class="weui-cell__bd">
+                    <input class="weui-input" type="tel" placeholder="请输入手机号码" maxlength="11" id="input_tel2" name="telephone">
+                </div>
+            </div>      
+
+			
+		<div class="weui-btn-area">
+             <button type="submit" class="weui-btn weui-btn_primary">确定提交</button>
+        </div>
+		<article class="weui-article" style="background:none;">
+            <h1 style="text-align:center;margin-bottom:0px">已有<font color="#ff0000">{get_buynum($title)}人</font>报名</h1>
+			 <p style="text-align:center" class="weui-cells__title">
+                        您的信息将被严格保密，请准确填写
+          </p>
+             <section>
+          </section>
+        </article>
+		<article class="weui-article" style="background:none;">
+					 <p style="text-align:center" class="weui-cells__title">
+                     
+                    </p>
+             <section>
+          </section>
+        </article>
+                        <div class="footer_fix"></div>
+            <div class="bottom_fix"></div>
+        </div>
+		</form> 
+        <div class="fix-bottom">
+            <a class="weui-btn weui-btn_default close-popup" href="javascript:;">取消</a>
+        </div>
+    </div>
+</div>
+<script src="{AJ_MOB}static2019/js/fastclick.js" type="text/javascript"></script>
+<script src="{AJ_MOB}static2019/js/slider.js" type="text/javascript"></script>
+<script src="{AJ_MOB}static2019/js/swiper.min.js" type="text/javascript"></script>
+<script src="{AJ_MOB}static2019/js/md5.min.js" type="text/javascript"></script>
+<script src="{AJ_MOB}static2019/js/app.js" type="text/javascript"></script>
+
+
+<script type="text/javascript" src="{AJ_MOB}static2019/js/7070ff3e18e64a499b68ace431a00a6c.js"></script>  
+<script src="{AJ_MOB}static2019/js/fc2019_map.js"></script>
+ <script type="text/javascript" src="{AJ_MOB}static2019/js/mustache.js"></script>
+{template 'comment', 'chip'}
+{template 'footer'}

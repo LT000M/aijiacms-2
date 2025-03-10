@@ -1,0 +1,92 @@
+
+{template 'header', 'member'}
+<div id="head-bar">
+<div class="head-bar">
+<div class="head-bar-back">
+<a href="?action=index" data-direction="reverse"><img src="{AJ_MOB}static/img/icon-back.png" width="24" height="24"/><span>返回</span></a>
+</div>
+<div class="head-bar-title">客源{if $action=='add'}添加{elseif $action=='edit'}修改{else}管理{/if}</div>
+<div class="head-bar-right">
+{if $action=='add' || $action=='edit'}
+<a href="?action=index"><span>取消</span></a>
+{else}
+<a href="javascript:;" onclick="layer_show('添加客源','?action=add','400')" style="text-decoration:none;"><span>添加客源</span></a>
+{/if}
+</div>
+</div>
+<div class="head-bar-fix"></div>
+</div>
+
+
+<div class="ui-form sch">
+<form action="?">
+{$fields_select}
+<input type="search" size="50" name="kw" value="{$kw}" placeholder="输入关键词" style="max-width:140px""/>
+<input type="submit" value="搜 索" class="btn"/>&nbsp;
+<input type="button" value=" 重 置 " class="btn" onclick="Go('?');"/>
+</form>
+</div>
+
+
+
+<form method="post">
+<table class=" table-border table-bordered table-hover table-bg">
+<thead>
+<tr>
+
+				<th align="center" lay-data="{field:'xqbianhao',align: 'center',minWidth: 120, templet: '#kybh',sort: 'true'}">编号</th>
+				<th align="center" lay-data="{field:'kyzt',align: 'center'}">状态</th>
+				
+				<th align="center" lay-data="{field:'khxm',align: 'center'}">姓名</th>
+				
+		<th align="center" lay-data="{field:'xqzy',align: 'center',minWidth: 150}">小区</th>
+			
+		<th align="center" lay-data="{field:'xqjg',align: 'center',minWidth: 180}">价格</th>
+				
+			
+				
+		<th align="center" lay-data="{field:'whrdh',align: 'center'}">电话</th>
+				
+		<th align="center" lay-data="{field:'',align: 'center',fixed: 'right',width: 210,templet: '#btn',unresize: true}">操作</th>
+</tr>
+</thead>
+<tbody>
+{loop $lists $k $v}
+<tr align="center" >
+
+
+<td align="center">&nbsp;{$v[xqbianhao]}</td>
+<td align="center">&nbsp;<?php echo $NAME[$v['zhuangtai']-1];?></td>
+
+<td align="center">&nbsp;{$v[khxingming]}</td>
+
+
+<td align="center">&nbsp;{$v[xqxiaoqu]}</td>
+
+<td align="center">&nbsp;{$v[xqjiage1]}万~{$v[xqjiage2]}万</td>
+
+<td align="center">&nbsp;{$v[dianhua]}</td>
+
+
+
+
+<td align="center"><a href="?action=show&id={$v[id]}">详情</a>
+<a href="javascript:;" onclick="layer_show('客源编辑','?action=edit&id={$v[id]}','400')" style="text-decoration:none;">编辑</a>
+
+<a href="?action=delete&id={$v[id]}" onclick="return _delete();">删除</a>
+</td>
+</tr>
+{/loop}
+</tbody>
+</table>
+<link rel="stylesheet" type="text/css" href="<?php echo $MODULE[1][linkurl];?>keyuan/static/h-ui/css/H-ui.min.css" />
+		<link rel="stylesheet" type="text/css" href="<?php echo $MODULE[1][linkurl];?>keyuan/static/h-ui.admin/css/H-ui.admin.css"/>
+	
+		<script type="text/javascript" src="<?php echo $MODULE[1][linkurl];?>keyuan/lib/jquery/1.9.1/jquery.min.js"></script> 
+		<script type="text/javascript" src="<?php echo $MODULE[1][linkurl];?>keyuan/lib/layer/2.4/layer.js"></script>
+		<script type="text/javascript" src="<?php echo $MODULE[1][linkurl];?>keyuan/static/h-ui/js/H-ui.min.js"></script>
+		<script type="text/javascript" src="<?php echo $MODULE[1][linkurl];?>keyuan/static/h-ui.admin/js/H-ui.admin.js"></script>
+</form>
+<div class="pages">{$pages}</div>
+<script type="text/javascript">s('keyuan');m('{$typeid}');</script>
+{template 'footer',$module}

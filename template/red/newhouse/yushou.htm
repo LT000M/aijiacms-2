@@ -1,0 +1,46 @@
+{template 'header'}
+ <link rel="stylesheet" type="text/css" href="{AJ_SKIN}yushou.css?t=1634871256" />
+   <script src="http://haikou.panfangw.com//static/js/jquery.3.3.1.min.js"></script>
+<!--背景 -->
+<div class="presale_bg">
+    <div class="presale_text">
+    
+        <h3>截止到{timetodate($today_endtime, 3)}{if $AJ[city]}{$city_name}{else}{$AJ[city_sitename]}{/if}批准新房预售许可项目批次{php echo $db->count($AJ_PRE.'newhouse_yushou', 'status=3', 1800);}个</h3>
+        <form action="?">
+            <div class="search">
+                <p class="current" data-type="1">许可证号<span></span></p>
+                <p  data-type="2">项目名称<span></span></p>
+                <p  data-type="3">开发商<span></span></p>
+                <div class="input">
+                    <input type="hidden" name="type" value="1" />
+                    <input type="text" autocomplete="off" name="kw" value="" placeholder="请输入许可证号" />
+                    <a href="javascript:;" rel="nofollow" id="submit"><i class="icon iconfont icon-sousuo">搜索</i></a>
+                </div>
+            </div>
+        </form>
+
+        <h4>本系统收录{$AJ[sitename]}新房获批的预售许可证备案数据。仅供查询参考，最终以住建部门公告为准，最新数据更新至{timetodate($today_endtime, 3)}</h4>
+    </div>
+</div>
+
+<!-- 列表 -->
+<div class="warp">
+ 
+    <!-- 分页 -->
+  
+
+{template 'list-yushou', 'tag'}
+       
+</div>
+<script>
+        // 搜索选项卡
+    $('.search p').click(function() {
+        $(this).addClass('current').siblings().removeClass('current');
+        var type = $(this).data('type');
+        $("input[name='type']").val(type);
+    });
+    $("#submit").on('click',function(){
+        $(this).parents('form').submit();
+    })
+</script>
+{template 'footer'}

@@ -1,0 +1,70 @@
+.help-center{
+	margin: 0px auto;
+	width: 1190px;
+	border-radius: 6px;
+	position: relative;
+        overflow:hidden
+		width: 1200px;
+	
+	padding:20px 0;
+	margin:36px auto 0 auto;
+	line-height:26px;
+	
+}
+.help-center .left{
+	float: left;
+	width: 200px;
+	position: relative;
+	background: white;
+	border:#efefef 1px solid;
+	margin-right:15px
+}
+.help-center .left h2{
+	position: absolute;
+	left: 41px;
+	top: -1px;
+	background: url("images/centerbg.png") no-repeat 0 0;
+	width: 93px;
+	height: 41px;
+	font: 16px/41px "Microsoft YaHei";
+	color: #fff;
+	text-align: center
+}
+.help-center .left .list {
+	margin: 60px 20px 0;
+	border-top: 1px solid #e5e5e5
+}
+.help-center .left .list li{
+	border-bottom: 1px solid #e5e5e5;
+	line-height:59px;overflow:hidden;
+	height: 59px
+}
+.help-center .left .list li a{
+	color: #666;
+	font: normal 16px/60px "Microsoft YaHei";
+	display: block;
+	padding-left: 40px;
+	background: url("images/subject_ico.png") no-repeat 20px -960px
+}
+.help-center .left .list li a.active{
+	color: #ff5837
+}
+.help-center .right{
+	width: 810px;
+	padding: 20px 37px 80px;
+	background: #fff;
+	font-size:16px;
+	line-height:30px;
+	border:1px solid #efefef;
+	overflow:hidden;
+}
+.help-center .right h2{
+	font: normal 24px "Microsoft YaHei";
+	color: #333;
+	border-bottom: 1px solid #e5e5e5;
+	padding-bottom: 15px;
+	margin-bottom: 20px
+}
+.help-center .right .text p {
+	padding-bottom: 20px;
+}

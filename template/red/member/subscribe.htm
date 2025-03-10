@@ -1,0 +1,108 @@
+{template 'header', 'member'}
+
+<div class="menu">
+<table cellpadding="0" cellspacing="0">
+<tr>
+<td class="tab" id="1"><a href="?typeid=1"><span>新房预约</span></a></td>
+<td class="tab" id="3"><a href="?typeid=3"><span>二手房预约</span></a></td>
+<td class="tab" id="2"><a href="?typeid=2"><span>租房预约</span></a></td>
+
+</tr>
+</table>
+</div>
+{if $action == 'addbefollow'}
+
+ <div class="subnav">
+    </div>
+<div class="layui-fluid">
+
+ <style>
+        .subnav{padding:5px 15px;}
+        .layui-form-item label em{display:none;}
+    </style>
+<div class="dialog-form">
+   <form method="post" action="?" id="dform" onsubmit="return check();">
+<input type="hidden" name="moduleid" value="2"/>
+<input type="hidden" name="forward" value="{$forward}"/>
+<input type="hidden" name="action" value="{$action}"/> 
+        <div class="layui-form-item">
+            <label class="layui-form-label">跟进内容</label>
+            <div class="layui-input-inline">
+                <textarea name="content" class="layui-textarea"></textarea>
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label">跟进人</label>
+            <div class="layui-input-inline">
+                <input type="text" name="username" autocomplete="off" class="layui-input" value="{$_username}">
+            </div>
+        </div>
+        <input type="hidden" name="subid" value="{$itemid}" />
+        <div class="sbt"><input type="submit" name="submit" value="确 定" class="layui-btn layui-btn-xs layui-btn-normal btn-g"/>&nbsp;&nbsp;&nbsp;&nbsp;</div>
+    </form>
+</div>
+
+{elseif $action == 'show'}
+
+   
+<div class="subnav">
+    </div>
+<div class="layui-fluid">
+
+<!--跟进列表-->
+<div class="layui-tab-content">
+    <ul class="layui-timeline">
+ {if $followlist}
+   {loop $followlist $v}
+                <li class="layui-timeline-item">
+            <i class="layui-icon layui-timeline-axis">&#xe63f;</i>
+            <div class="layui-timeline-content layui-text">
+                <h3 class="layui-timeline-title">{$v[content]} <span style="font-size: 14px;color: red">{$v[username]}</span> &nbsp;{timetodate($v[addtime])}</h3>
+                <p>
+                    {$v[title]}               </p>
+            </div>
+        </li>
+       {/loop}
+{else}
+  <li class="layui-timeline-item">暂无记录  </li>
+{/if}
+       
+    </ul>
+</div>
+</div>
+</div>
+{else}
+<div class="ls">
+<table cellspacing="0" cellpadding="10" class="tb">
+<tr>
+<th width="20">ID</th>
+<th>联系人</th>
+<th >联系电话</th>
+<th  align="center">楼盘/房源</th>
+<th  align="center">内容</th>
+<th  align="center">提交时间</th>
+<th  align="center">状态</th>
+<th width="150" align="center">操作</th>
+</tr>
+
+{loop $lists $v}
+<tr align="center">
+<td>{$v[itemid]}</td>
+<td>{$v[truename]}</td>
+<td>{$v[telephone]}</td>
+<td>{$v[title]}</td>
+<td>{$v[content]}</td>
+<td>{$v[adddate]}</td>
+<td> <a href="?action=show&itemid={$v[itemid]}" javascript:Dwidget('?action=show&itemid={$v[itemid]}', '[添加报价]', 600, 300); class="layui-btn layui-btn-xs J_record" >看跟进</a> </td>
+<td> <a href="?action=addbefollow&itemid={$v[itemid]}" class="layui-btn layui-btn-xs layui-btn-normal J_record_save" >写跟进</a></td>
+
+</tr>
+{/loop}
+</table>
+<!-- 列表 E-->
+
+
+<div class="pages">{$pages}</div>
+{/if}
+<script type="text/javascript">s('subscribe');m('{$typeid}');</script>
+{template 'footer',$module}

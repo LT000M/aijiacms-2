@@ -1,0 +1,263 @@
+ 
+<!DOCTYPE HTML>
+<html lang="en-US">
+<head>
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width; initial-scale=1">
+
+     <title>{if $seo_title}{$seo_title}{else}{if $head_title}{$head_title}{$AJ[seo_delimiter]}{/if}{if $city_sitename}{$city_sitename}{else}{$site_name}{/if}{/if}</title>
+
+    <link type="text/css" rel="stylesheet" href="{AJ_MOB}static/shop.css">
+
+    <link type="text/css" rel="stylesheet" href="{AJ_MOB}static/slider.css">
+        <script type="text/javascript" src="{AJ_MOB}static/js/jquery-1.9.1.min.js"></script>
+<style>
+
+.slider li img{ width:100%; height:180px;}
+.slider li video{ width:100%; height:180px;}
+
+@media screen and (min-width: 640px) {.slider li img{ width:640px; height:250px;}.slider {height:250px;}} /*兼容平板*/
+
+</style>  
+
+
+    <!-- html5.js for IE less than 9 and css3-mediaqueries.js for IE8 or older-->
+
+    <!--[if lt IE 9]>
+
+    <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+
+    <script src="http://css3-mediaqueries-js.googlecode.com/svn/trunk/css3-mediaqueries.js"></script>
+
+<![endif]-->
+
+</head>
+
+<body>
+<div class="warp">
+        <header >
+
+                <a class="return" href="javascript:history.go(-1);">
+
+                    <img src="{AJ_MOB}static/images/return.png" alt="返回" /></a>
+
+                <h1 class="title" style="width: 80%;margin-left: 35px;">{$title}</h1>
+
+
+
+                <a href="/" class="home">
+
+      <img src="{AJ_MOB}static/images/home.png" alt="首页" /></a>      </header>
+ 
+           <img src="{AJ_MOB}static/images/tjxx.png" alt="推荐商铺" style="position:absolute; top:45px; right:5px;">
+
+		   		   
+<div class="banner_box">
+
+             <div class="slider">
+
+                <ul class="slides">
+                
+ {if $video}
+                
+                    <li class="slide"><div class="box"> 
+                        
+                                                    <video controls poster="{get_oldpic($thumb,1)}" name="media"><source src="{$video}" type="video/mp4"></video>
+                                                  
+                        
+                    </div></li>
+{else}
+     {loop $albums $k $v}
+                    <li class="slide"><div class="box"> 
+                        
+                                                  
+                            <img src="{get_oldpic($v,1)}" alt="">
+                           
+                                                  
+                        
+                    </div></li>
+
+     {/loop}
+{/if}
+              	
+
+                </ul>
+
+            </div>             
+
+        </div>
+		   
+<div class="main shop">
+
+
+         <div class="ishopabout" style="position:relative">
+
+          		<!-- <a href="#" style="position:absolute;top:100px;right:10px;background-color: #ef3121;color:white;width:60px;height:60px;line-height: 32px;text-align: center;border-radius: 100%;line-height: 60px;">免费找店</a>-->
+         <li><span>点击量:</span><font color="#dd0808"> {if $MOD[hits]}{$hits}{/if}</font>次</li>
+
+         <li><span>地&nbsp;&nbsp;址:</span>{area_pos($areaid, ' ')}-{$address}</li>
+         <li><span>面&nbsp;&nbsp;积:</span><font color="#dd0808">{$houseearm}</font>㎡</li>
+			<li><span>
+                    月&nbsp;&nbsp;租:          </span><font color="#dd0808">{if $price}{$price}{if $leibie==2}万元{else}{if $paytype==1}元/平米·天{elseif $paytype==2}元/平米·月{else}元/月{/if}{/if}{elseif $zongjia}{$zongjia}万{else}面议{/if} </font></li>
+          <li><span>
+                    转 让 费:          </span><font color="#dd0808"> {if $leibie==2}转让费{$transferfee}{/if}  </font></li>
+        
+           <li><span>目前经营:</span> {if $shopstate==1}营业中{elseif $shopstate==2}闲置中{else}新铺{/if}</li>
+           <li style="width: 304px;height: 16px;overflow: hidden;"><span>适合行业:</span>{$yetai}</li>
+           <li><span>更新日期:</span>{$editdate}</li>
+          <li><span>联系人:</span>{$truename}</li>
+
+    </div>
+
+            <div class="i_tel">
+            <ul>
+            <a href="tel:{$telephone}" style="float:left; margin-top:5px;"> <img src="{AJ_MOB}static/images/djth.gif" alt="点击通话" style="padding-left:30px;"></a>
+            <span style=" float:left;padding-left:3px;"> <a href="tel:{$telephone}" style="color:#fff">{$telephone}</a></span></ul></div>
+    
+    <div class="clear"></div>
+    <div><p class="fontl5"><font color="#0000FF">本站商铺信息纯是个人,无中介,欢迎举报。</font></p></div>
+    <section class="picture">
+        <dl class="promotions">
+
+        </dl>
+
+        <dl class="profile" style="margin-bottom:20px;">
+
+            <dt>商铺详细介绍</dt>
+
+            <dd class="padding10">{$content}       </dd>
+            <script type="text/javascript">
+                $(".i_border").css('width','100%');
+                $(".photo_detail_qt").css('width','100%');
+                $(".photo_detail_qt").css('padding','0');
+            </script>
+        </dl>
+    </section>
+  </div>
+<HR align=center width=340 color=#987cb9 SIZE=1>
+<script type="text/javascript" src="https://api.map.baidu.com/api?v=2.0&ak=RiWmrsKRLnCG7Ud6YS8R1qPMDayQExRQ"></script>
+<div class="h20"></div>
+<script type="text/javascript">
+    function changeTab1() {
+    	document.getElementById("allmap").style.display="block";
+    	document.getElementById("allmap2").style.display="none";
+    }
+    function changeTab2() {
+    	document.getElementById("allmap").style.display="none";
+    	document.getElementById("allmap2").style.display="block";
+    }
+</script>
+<div class="w i_border">
+<div class="sptj4">
+<div id="allmap" style="width: 330px;height: 200px;margin-left: 15px; "></div>
+<script type="text/javascript">
+	// 百度地图API功能
+	var sContent ="{$title}";
+	var map = new BMap.Map("allmap");
+	var point = new BMap.Point({$map});
+	map.centerAndZoom(point, 19);
+	var infoWindow = new BMap.InfoWindow(sContent);  // 创建信息窗口对象
+	map.openInfoWindow(infoWindow,point); //开启信息窗口
+	map.enableScrollWheelZoom(true);     //开启鼠标滚轮缩放
+	map.addControl(new BMap.MapTypeControl());   //添加地图类型控件
+</script>
+</div>
+</div>
+    </div>
+    <br>
+ <div align="center"><img src="{AJ_MOB}static/images/sjwx.bmp" /></div> 
+  <footer>
+                    <p class="about_eehu"><a href="{AJ_MOB}api/about.php">关于我们</a><a href="{AJ_MOB}api/about.php">联系我们</a><a href="{AJ_PATH}api/mobile.php?action=pc">电脑版</a></p>
+      </footer> <footer class="footer_box">
+        	<ul>
+            	<li class="foot_i1"><a href="{AJ_MOB}"></a><h3>首页</h3></li>
+                <li class="foot_i2"><a href="{AJ_MOB}channel.php"></a><h3>导航</h3></li>
+                <li class="foot_i6"><a href="{AJ_MOB}my.php" title="发布信息"></a></li>
+                <li class="foot_i3"><a href="{$EXT[announce_mob]}"></a><h3>公告</h3></li>
+                <li class="foot_i4"><a target="_blank" href="{$EXT[guestbook_mob]}"></a><h3>客服</h3></li>
+            </ul>
+        	
+        </footer>
+
+</div>
+    <div id="bgdiv"></div>
+
+<script type="text/javascript" src="{AJ_MOB}static/js/common.js"></script>
+
+<script src="{AJ_MOB}static/js/flipsnap.min.js"></script>
+     <script type="text/javascript">
+
+        var $pointer = $('.pointer span');
+
+        if ($("#flipsnap_c").size()>0) {
+            var mp = $("#flipsnap_c a").size()-2;
+            if (mp>0) {
+
+                Flipsnap('#flipsnap_c', { distance: 140, maxPoint: mp });
+            }
+        }
+        if ($("#flipsnap_g").size() > 0) {
+            var mp = $("#flipsnap_g a").size()-2;
+            if (mp >0) {
+
+                Flipsnap('#flipsnap_g', { distance: 140, maxPoint: mp});
+            }
+        }
+    </script>
+
+
+<script type="text/javascript" src="{AJ_MOB}static/js/jquery.glide.min.js"></script>
+
+        <script type="text/javascript">
+
+			var glide = $('.slider').glide({
+
+
+
+					autoplay:false,//是否自动播放 默认值 true如果不需要就设置此值
+
+
+
+					animationTime:500, //动画过度效果，只有当浏览器支持CSS3的时候生效
+
+
+
+					arrows:false, //是否显示左右导航器
+
+					arrowsWrapperClass: "arrowsWrapper",//滑块箭头导航器外部DIV类名
+
+					arrowMainClass: "slider-arrow",//滑块箭头公共类名
+
+					arrowRightClass:"slider-arrow--right",//滑块右箭头类名
+
+					arrowLeftClass:"slider-arrow--left",//滑块左箭头类名
+
+					arrowRightText:">",//定义左右导航器文字或者符号也可以是类
+
+					arrowLeftText:"<",
+
+					nav:true, //主导航器也就是本例中显示的小方块
+
+					navCenter:true, //主导航器位置是否居中
+
+					navClass:"slider-nav",//主导航器外部div类名
+
+					navItemClass:"slider-nav__item", //本例中小方块的样式
+
+					navCurrentItemClass:"slider-nav__item--current" //被选中后的样式
+
+				});
+
+
+
+				
+
+		</script>
+
+</body>
+
+</html>
+
+
+

@@ -1,0 +1,439 @@
+{template 'header'}	
+
+<script type="text/javascript">var module_id= {$moduleid},item_id={$itemid},content_id='content',img_max_width={$MOD[max_width]};</script>
+<div id="main">
+        <div class="bread"> <div class="fr">发布：{$editdate}&nbsp;&nbsp;&nbsp;{if $MOD[hits]}浏览：<span id="hits">{$hits}</span>&nbsp;{/if}
+        <i class="favorite" onclick="Dfavor({$moduleid}, {$itemid});">收藏 <b>{$favorites}</b></i> </div>
+        您当前的位置：<a href="{$MODULE[1][linkurl]}" title="{$AJ[sitename]}">{$AJ[sitename]}</a>&gt;<a href="{$MOD[linkurl]}">{$MOD[name]}</a>&gt;<span><a class="red" href="{$linkurl}">{$title}</a></span></div>
+        
+        
+
+
+
+		<div class="detal cf">
+			<div class="dtl_fl">
+				<h1>{$title}</h1>
+                                
+				<div class="cf">
+                <div class="dtl_flpic">
+                      
+
+                
+                <div id="mid_div"><img src="{str_replace('.thumb.', '.middle.', $albums[0])}" id="bigp"></div>
+                
+					
+                       {if $video}<div class="ab_play" onClick="APlay('{$video}');"></div><div id="ab-video" class="ab_video"></div><div class="ab_hide" onClick="AHide();"></div>{/if}
+						
+                     
+						<a href="javascript:" id="gol"></a>
+						<a href="javascript:" id="gor"></a>
+						<div class="dtl_pl">
+							<ul id="dtl_pul">
+                    
+						   {loop $albums $k $v}
+						  <li><img data-bigurl="{$v}" class="on" src="{$v}" alt="{$alt}"></li>{/loop}
+                      
+		         
+                       
+                                                                        	
+                                    							</ul>
+						</div>
+					
+					</div>
+					<div class="dtl_frinfo">
+						<table>
+							<tr>
+									<td colspan="2">价格：<span class="red">{if $price}<b>{$price}</b>{if $leibie==2}万元{else}{if $paytype==1}元/平米·天{elseif $paytype==2}元/平米·月{else}元/月{/if}{/if}</span>{elseif $zongjia}<b>{$zongjia}</b>万元/套{else}<b>面议</b></span>   {/if}             {if $leibie==2}转让费{$transferfee}{/if}              {if $leibie!=3}（{$payinfo}）{/if} 
+                                                                </td>
+							</tr>
+							
+							<tr>
+								<td>当前状态：{if $shopstate==1}营业中{elseif $shopstate==2}闲置中{else}新铺{/if}</td>
+									<td>楼层：第{$floor2}层(共{$floor2}层)</td>
+							</tr>
+							<tr>
+								<td>类型：{cat_pos($CAT, ' &raquo; ')}</td>
+								<td>装修：{$fitment}</td>
+							</tr>
+							<tr>
+								<td>信息类型：{if $leibie==1}出租{elseif $leibie==2}转让{else}出售{/if}</td>
+								<td>是否可分割：{$fenge}&nbsp;</td>
+
+							</tr>
+                            <tr>
+								<td colspan="2">建筑建面：{$houseearm}平米 </td>
+								
+							</tr>
+							<tr>
+								<td colspan="2">  {if $wuyefei}物业费{$wuyefei}元/平米/月 {/if}</td>
+							</tr>
+							<tr>
+								<td colspan="2">地址：{area_pos($areaid, ' ')} <font title="{$address}">{$address}</font>&nbsp;<a href="javascript:" class="bal" id="dtl_t_map" data-href="#dtl_map">(地图)</a> </td>
+							</tr>
+							<tr>
+								<td colspan="2">交通： <font title="{$address}">{$bus}</font></td>
+							</tr>
+							<tr>
+								<td colspan="2">目标业态：<font title="{$address}">{$yetai}</font></td>
+							</tr>
+						</table>
+						<div class="dtl_mobile">
+							<b> {if $user_status == 3}{$telephone}{else}没有查看电话的权限{/if}</b>
+							来电咨询时，请说明是在{$AJ[sitename]}看到的。
+                                                        {if $username}    <a data-housetype="3" data-touser="{$username}" data-info="{area_pos($areaid, ' ')},{$address},{if $room}{$room}室{/if}{if $hall}{$hall}厅{/if}{if $toilet}{$toilet}卫{/if},{$price}万元" data-val="{$itemid}" data-url="{$linkurl}"  data-mid="{$moduleid}" class="obtn" href="javascript:void(0)" id="alm1">预约看房</a>{/if}
+                            						</div>
+						   <script type="text/javascript" charset="utf-8" src="{AJ_SKIN}/js/webshare.js"></script>	
+        
+        
+           <div class="sharebar">
+                <span>
+                  <ul>
+                      <li class="share" data-bd-bind="1562390708921">
+                          <div class="bdsharebuttonbox bshare-custom">
+							  <a class="bds_qzone bshare-qzone" title="分享到QQ空间"></a>
+							  <a title="分享到QQ好友" class="bshare-qqim" style="display:none;"></a>
+							  <a class="bds_tsina bshare-sinaminiblog" title="分享到新浪微博"></a>
+							  <a class="bds_weixin bshare-weixin" title="分享到微信"></a>					  
+						  </div> 
+                      </li>
+                  </ul>
+              </span> 
+            </div>
+                            
+						
+							
+						</div>
+				
+				</div>
+				<h3 id="dtl_info">
+					<a href="javascript:" data-href="#dtl_info" class="on">写字楼描述</a>
+					{if $thumb}<a href="javascript:" data-href="#dtl_pic">写字楼图片</a> {/if}                       <a href="javascript:" data-href="#dtl_map">地图交通</a>
+                        
+                    				</h3>
+                                    <div class="dtl_tip">
+                        <div class="dtl_fu">
+                            <b>写字楼配套：</b>
+		   <!--{php $ts=explode(",",$peitao);}-->
+     {loop $ts $ks $vs}
+      <span>{$vs}</span>
+	  
+     {/loop}   </div>
+           <div class="dtl_fu"> <b>目标业态：</b>
+		   <!--{php $yetai=explode(",",$yetai);}-->
+     {loop $yetai $ks $vs}
+      <span>{$vs}</span>
+	  
+     {/loop}
+     
+     
+     </div> 
+       <div class="dtl_fu"> <b>商铺特色：</b>
+		   <!--{php $fyts=explode(",",$fyts);}-->
+     {loop $fyts $ks $vs}
+      <span>{getbox_diaoval('fyts','checkbox',$vs,'office_20')}</span>
+	  
+     {/loop}
+     
+     
+     </div> 
+	  
+                    </div>
+                				<div class="dtl_content">
+					{$content}		</div>
+                    
+                     {if $shipin}
+                        <h3 id="dtl_video">
+                        <a href="javascript:" data-href="#dtl_info">写字楼描述</a>
+                        <a href="javascript:" data-href="#dtl_video" class="on">写字楼视频</a>
+                          <a href="javascript:" data-href="#dtl_pic" >写字楼图片</a>
+                                                    <a href="javascript:" data-href="#dtl_map">地图交通</a>
+                          
+                                            </h3>
+                 
+                                                
+										<div id="a1"></div>
+			
+                                              {/if}
+					{if $thumb}
+                                    <h3 id="dtl_pic">
+                        <a href="javascript:" data-href="#dtl_info">写字楼描述</a>
+                         {if $shipin}<a href="javascript:" data-href="#dtl_video" >写字楼视频</a>{/if}
+                        <a href="javascript:" data-href="#dtl_pic" class="on">写字楼图片</a>
+                                                    <a href="javascript:" data-href="#dtl_map">地图交通</a>
+                            
+                                            </h3>
+            
+                    <div class="dtl_pics" container> 
+                          <div class="detailImg">   
+                          
+                           {loop $albums $k $v}
+                          
+                           <div class="detailImg-item">  <img  src="{get_oldpic($v,2)}" alt="{$alt}" class="blockImg" style="max-width: 100%;"></div>{/loop}
+                                              
+						
+				
+                 </div>
+			<style>
+			.detailImg{overflow:hidden;margin-right:-10px;padding-top:45px}.detailImg-item{margin-bottom:25px;float:left;margin-right:10px;width:455px;height:328px}
+			.blockImg{display:block;width:100%;height:100%}
+			</style>
+                                                </div>{/if}
+                                                   {if $quanjing} 
+                                                   <style>.row-a1{overflow:hidden}
+.row-a1.marb1{margin-bottom:20px}
+.row-a1 .cont{margin-left:0px}
+.g-tit3{padding:20px 0;position:relative;font-size:18px;color:#666;font-weight:700}
+.g-tit3:after{position:absolute;content:'';width:850px;height:1px;top:50%;right:0;background-color:#eee}
+.m-txt1{font-size:16px;color:#666;line-height:1.9em}
+.m-video1{height:660px;margin-bottom:30px}</style>     <div class="row-a1 " id="vr_video">
+                <div class="g-tit3 mb-35">
+                    <span>VR全景</span>
+                </div>
+                <div class="cont">
+                    <iframe frameborder="0" style="width:100%; height:568px;" src="{$quanjing}"></iframe>
+                </div>
+            </div> {/if}         
+                                    <h3 id="dtl_map">
+                        <a href="javascript:" data-href="#dtl_info" >写字楼描述</a>
+                       	{if $thumb}<a href="javascript:" data-href="#dtl_pic">写字楼图片</a> {/if}                            <a href="javascript:" data-href="#dtl_map" class="on">地图交通</a>
+                        
+                    </h3>
+                    <div class="dtl_tip">
+                        <p>小区地址：{$address}</p>
+                        <p>公&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;交：{$bus}</p>
+                    </div>
+                                            <div class="dtl_maps cf">
+                           
+                             {if $AJ[map]==google} 
+                             <div>
+                              {php $map_height = 230; }
+	{php @include AJ_ROOT.'/api/map/google/show.inc.php';}
+     </div>
+                             {else} 
+                              <ul id="map_control">
+                              
+                                <li><a data-key="公交" href="javascript:"><i class="map_i2"></i>周边公交</a></li>
+                                <li><a data-key="餐饮" href="javascript:"><i class="map_i3"></i>周边餐饮</a></li>
+                                <li><a data-key="银行" href="javascript:"><i class="map_i4"></i>周边银行</a></li>
+                                <li><a data-key="学校" href="javascript:"><i class="map_i5"></i>周边学校</a></li>
+                                <li><a data-key="医院" href="javascript:"><i class="map_i6"></i>周边医院</a></li>
+                                <li><a data-key="加油站" href="javascript:"><i class="map_i7"></i>周边加油站</a></li>
+                            </ul>
+                            <div id="map">  </div> {/if}
+                        </div>
+                                <link href="{AJ_SKIN}comment.css" rel="stylesheet" type="text/css" />
+
+                    <div class="m">
+                      <!--{php $tags=tag("table=comment&condition=status=3 and item_id=$itemid&pagesize=6&order=addtime desc&template=null");}-->
+                    	{loop $tags $k $v}
+		<div class="comment{if $k%2==0} comment_sp{/if}">
+	<table>
+	<tr>
+	<td class="comment_l" valign="top">
+	<div>
+	{if $v[username]}<a href="{userurl($v[username])}" target="_blank">{/if}<img src="{useravatar($v[username])}"  width="48" height="48" alt="" align="absmiddle"/>{if $v[username]}</a>{/if}
+	</div>
+	</td>
+	<td valign="top">
+		<div class="comment_title">
+			
+			<span id="i_{$v[itemid]}">{$v[passport]} 于 <span class="comment_time"> {timetodate($v[addtime], 3)} </span> 评论道：</span>
+		</div>
+		<div class="comment_content" id="c_{$v[itemid]}">{if $v[quotation]}{$v[quotation]}{else}{$v[content]}{/if}</div>
+		{if $v[reply]}
+		<div class="comment_reply">
+		{if $v[editor]}<span style="color:red;">管理员</span>{else}<span style="color:blue;">{$v[replyer]}</span>{/if} <span style="font-size:11px;"> {timetodate($v[replytime], 3)} </span> 回复： {nl2br($v[reply])}
+		</div>
+		{/if}
+		
+	</td>
+	</tr>
+	</table>
+	</div>
+	{/loop}
+	<a name="last"></a>
+	{if $pages}<div class="pages">{$pages}</div>{/if}
+    </div>  
+                           {template 'comment', 'chip'}          
+                      
+                                        <h4 class="dtl_bh">
+                        <a class="more" href="{$MODULE[19][linkurl]}" target="_blank">更多</a>
+                        <span>推荐写字楼</span>
+                    </h4>
+                    <ul class="cf dtl_pilist">
+						<!--{php $tags=tag("moduleid=20&condition=status=3&areaid=$cityid&length=22&pagesize=5&order=hits desc&target=_blank&template=null");}-->
+ {loop $tags $i $t}
+                    	                            <li>
+                              <a href="{$t[linkurl]}" target="_blank" title="{$t[alt]}"><img class="scrollLoading" src="{imgurl($t[thumb])}" title="{$t[alt]}" alt="{$t[alt]}" width="160" height="120"></a>
+                                <span><a href="{$t[linkurl]}"   class="blue" target="_blank" title="{$t[alt]}">{$t[title]}</a></span>
+                              第{$t[floor1]}层(共{$t[floor2]}层){$t[houseearm]}平米<br>
+                                <span class="red">{if $t[price]}{$t[price]}{if $t[paytype]==2}元/平米·月{else} {if $t[paytype]==1}元/平米·天{elseif $t[paytype]==3}元/月{/if}{/if}{elseif $t[zongjia]}{$t[zongjia]}万{else}面议{/if}</span>
+                            </li>{/loop}
+                                            </ul>
+                			</div>
+			<div class="dtl_fr">
+				<DIV  id="contact">{template 'contactfs', 'chip'}</DIV>
+            	       {if $username}
+                                            <h3 class="dtl_rt">
+                            该经纪人其他写字楼：
+                        </h3>
+                        <table class="h_rlist">
+						   <!--{php $tags=tag("moduleid=$moduleid&length=20&condition=status=3  and username='$username'&pagesize=8&order=edittime desc&width=80&height=80&cols=8&template=null");}-->  
+						      {loop $tags $k $t}           <tr>
+                                        <td><span><a target="_blank" href="{$t[linkurl]}" title="{$t[title]}">{$t[housename]}</a></span></td>
+                                        <td>&nbsp; </td>
+                                        <td>{$t[houseearm]}㎡</td>
+                                        <td>&nbsp;<b class="red">{if $t[price]}{$t[price]}{if $t[paytype]==2}元/平米·月{else} {if $t[paytype]==1}元/平米·天{elseif $t[paytype]==3}元/月{/if}{/if}{elseif $t[zongjia]}{$t[zongjia]}万{else}面议{/if}</td>
+                                    </tr>
+                                            {/loop}
+                                                
+                                                    </table>
+													{/if}
+                                        <h3 class="dtl_rt">
+                        可能感兴趣的写字楼：
+                    </h3>
+                    <ul class="dtl_pilist">  <!--{php $tags=tag("moduleid=$moduleid&condition=status=3  and level>0 and thumb!='' &areaid=$cityid&pagesize=5&order=addtime desc&target=_blank&template=null");}-->
+   {loop $tags $k $t}
+                                                    <li>
+                                <a href="{$t[linkurl]}" target="_blank" title="{$t[alt]}"><img  src="{imgurl($t[thumb])}" title="{$t[alt]}" alt="{$t[alt]}" ></a>
+                                <span><a href="{$t[linkurl]}"   class="blue" target="_blank" title="{$t[alt]}">{$t[title]}</a></span>
+                                   {if $t[room]}{$t[room]}室{/if}{if $t[hall]}{$t[hall]}厅{/if}{if $t[toilet]}{$t[toilet]}卫{/if}{$t[houseearm]}平米<br>
+                                <span class="red">{if $t[price]}{$t[price]}{if $t[paytype]==2}元/平米·月{else} {if $t[paytype]==1}元/平米·天{elseif $t[paytype]==3}元/月{/if}{/if}{elseif $t[zongjia]}{$t[zongjia]}万{else}面议{/if}</span>
+                            </li>
+                                              {/loop}
+                                            </ul>
+                			</div>
+		</div>
+	</div>
+	
+<script type="text/javascript" src="https://api.map.baidu.com/api?v=3.0&ak={$AJ[map_key]}&s=1"></script>
+<script>
+seajs.use(["snail-baiduaround","highcharts","alert","config","alertlist","useryuyue","share","autab"],function(snail,hc,alertM,config,al,uyy){
+	/*PPT*/
+	var $dtl_pul = $("#dtl_pul").on("click","img",function(){
+			$dtl_pul.find(".on").removeClass("on")
+			$bigp.attr("src",$(this).addClass("on").attr("data-bigurl"))
+		}),
+		$bigp = $("#bigp"),
+		pul=Math.ceil($dtl_pul.find("img").length/4),
+		pui=0;
+		$("#gor").on("click",function(){
+			pui++;
+			if(pui==pul)
+				pui=0;
+			$dtl_pul.animate({
+				left:1-pui*385
+			})
+		})
+		$("#gol").on("click",function(){
+			pui--;
+			if(pui<0)
+				pui=pul-1;
+			$dtl_pul.animate({
+				left:1-pui*385
+			})
+		})
+	$dtl_pul.find("img").eq(0).trigger("click");
+	
+	/*发送到手机*/
+	$("#sendinfo").click(function(){
+		al.sendHouse({
+				name:"",
+				info:"{area_pos($areaid, ' ')},{$address},{if $room}{$room}室{/if}{if $hall}{$hall}厅{/if}{if $toilet}{$toilet}卫{/if},{$danjia}元/平米,{$houseearm}平米,{$toward},电话：{$telephone}",
+				hid:"{$itemid}",
+				checkurl:"{$MODULE[2][linkurl]}sms.php",
+				murl:"{$MODULE[2][linkurl]}sms.php"
+		});
+	})
+	
+	/*分享*/
+	$("#share_hide").on("mouseleave",function(){
+		$("#share_hide").hide()
+	}).find("ul").share({text:""})
+	$("#shareBtn").on("mouseenter",function(){
+		$("#share_hide").show();
+	})
+	
+	/*导航锚点*/
+	var $hs=$("#dtl_info,#dtl_area,#dtl_map,#dtl_pic").on("click","a",function(e){
+		var $h=$($(this).data("href"));
+		$('html,body').animate({
+			scrollTop: $h.offset().top
+		},function(){
+			$hs.removeClass("on")
+			$h.addClass("on")
+		})
+		e.preventDefault()
+	})
+	$("#dtl_t_map").on("click",function(e){
+		var $h=$($(this).data("href"));
+		$('html,body').animate({
+			scrollTop: $h.offset().top
+		},function(){
+			$hs.removeClass("on")
+			$h.addClass("on")
+		})
+		e.preventDefault()
+	})
+	
+	/*收藏*/
+	$("#goFav").on("click",function(){
+	// al.favorite("{$MODULE[3][linkurl]}shortcut.php?hid={$itemid}",{hid:"{$itemid}",type:"1",identity:'1',url:"{$MODULE[6][linkurl]}house.php?action=favorite"});
+	
+	});
+	/*留言*/
+	$("#l_message").on("click",function(){
+		al.leaveMessage({
+			uid:"{$userid}",
+			uname:"{$truename}",
+			truename:"{$_truename}",
+			contact:"{$telephone}",
+			url:"{$MODULE[2][linkurl]}message.php?action=send&touser={$username}"
+		})
+	});
+	
+			/*预约看房*/
+		uyy({
+			elm:"#alm1",
+			type:"esf",
+			sendurl:"",
+			url:"{$MODULE[1][linkurl]}api/house.php?action=yuyue",
+			fromuser:"{$_username}",
+			truename:"{$_truename}",
+			mobile:"{$_mobile}"
+		})
+				/*小区地图*/
+		var laticoor = {$y};
+	var longcoor = {$x};
+			if(laticoor > 0 && longcoor > 0){
+				snail.setURL("{$MOD[linkurl]}");
+				snail.drawMap(parseFloat(longcoor),parseFloat(laticoor),"{$housename}","map");
+				snail.getMaps();
+			}
+			var $ps=$('#map_control a').on("click",function(){
+				snail.setKEY($(this).data("key"));
+				if($(this).data("key") == 'house'){
+					snail.setKEY("小区");
+					snail.setH(true);
+				}else{
+					snail.setH(false);
+				}
+				$ps.removeClass("on");
+				$(this).addClass("on");
+				snail.getMaps();
+			})
+				
+		
+		/*各个价格走势*/
+		hc('hc1',"{$housename}",[{get_linedate($houseid)}],[{get_lineprice($houseid)}],'元/平米');
+		
+		setTimeout(function(){
+			$("#ptab1").autab("h4 span","div.dtl_aphc").find("span").eq(0).trigger("mouseenter");
+		},999);
+	});
+</script>
+
+{if $video}<script type="text/javascript" src="{AJ_STATIC}file/script/player.js?v={if AJ_DEBUG}{AJ_TIME}{else}{AJ_REFRESH}{/if}"></script>{/if}
+{if $content}<script type="text/javascript" src="{AJ_STATIC}file/script/content.js?v={if AJ_DEBUG}{AJ_TIME}{else}{AJ_REFRESH}{/if}"></script>{/if}
+<script type="text/javascript" src="{AJ_STATIC}file/script/album.js?v={if AJ_DEBUG}{AJ_TIME}{else}{AJ_REFRESH}{/if}"></script>
+{template 'footer'}

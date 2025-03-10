@@ -1,0 +1,428 @@
+
+<!DOCTYPE HTML>
+<html lang="">
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" /> 
+		        
+		<title>{if $seo_title}{$seo_title}{else}{if $head_title}{$head_title}{$AJ[seo_delimiter]}{/if}{if $city_sitename}{$city_sitename}{else}{$site_name}{/if}{/if}</title>
+{if $head_keywords}
+<meta name="keywords" content="{$head_keywords}"/>
+{/if}
+{if $head_description}
+<meta name="description" content="{$head_description}"/>
+{/if}
+		        <meta name="author" content="aijia" />
+        <meta name="format-detection" content="telephone=no">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0,user-scalable=no,minimal-ui">
+        <meta name="apple-mobile-web-app-capable" content="yes">
+        <meta name="apple-mobile-web-app-status-bar-style" content="black">
+	
+     <link rel="stylesheet" href="{AJ_MOB}static2019/css/info-mb.css">
+	  <link rel="stylesheet" href="{AJ_MOB}static2019/css/info-base.css">
+		<link rel="stylesheet" href="{AJ_MOB}static2019/css/weui.css">
+    <link rel="stylesheet" href="{AJ_MOB}static2019/css/custom.css">
+<link rel="stylesheet" href="{AJ_MOB}static2019/css/info-mb.css">
+	<link rel="stylesheet" href="{AJ_MOB}static2019/css/hm.css" />
+<link rel="stylesheet" href="{AJ_MOB}static2019/css/hs.css" />
+
+ <link rel="stylesheet" href="{AJ_MOB}static2019/css/aijia.css">
+
+	<link rel="stylesheet" href="{AJ_MOB}static2019/css/nav.css"> 
+<script type="text/javascript" src="{AJ_MOB}static/lib/jquery/jquery-2.1.1.min.js"></script>
+<script type="text/javascript">
+$(document).bind("mobileinit", function() {
+　　{if $EXT[mobile_ajax]}
+	$.mobile.defaultPageTransition = 'slide';
+	{else}
+	$.mobile.ajaxEnabled = false;
+	{/if}
+});
+var Dbrowser = '{$AJ_MOB[browser]}',AJPath = '{AJ_MOB}ajax.php',DTPath = '{AJ_PATH}',DTMob = '{AJ_MOB}';
+{if !AJ_DEBUG}
+//if(!('ontouchend' in document) && window.location.href.indexOf('device.php') == -1) window.location='{AJ_MOB}api/device.php?uri={urlencode($head_pc)}';
+{/if}
+</script>
+<script type="text/javascript" src="{AJ_MOB}static/lib/jquery/jquery.mobile.custom.min.js"></script>
+<script type="text/javascript" src="{AJ_MOB}static/js/common.js"></script>
+{if $JS}
+{loop $JS $js}
+<script type="text/javascript" src="{AJ_MOB}static/js/{$js}.js"></script>
+{/loop}
+{/if}
+<script type="text/javascript" src="{AJ_MOB}static/js/fix.js"></script>
+<style>
+.weui-dialog__btn, .weui-navbar__item.weui_bar__item_on, .color-strong, .chip-row .toutiao, .weui-cells_checkbox .weui-check:checked+.weui-icon-checked:before, .weui-vcode-btn, .weui-dialog__btn_primary, .weui-cells_radio .weui-check:checked+.weui-icon-checked:before, .weui-icon-checked:before, .weui-agree__checkbox:checked:before, .weui-icon-success-circle, .weui-icon-success-no-circle, .weui-search-bar__cancel-btn, .weui-tabbar__item.weui-bar__item_on .weui-tabbar__icon, .weui-tabbar__item.weui-bar__item_on .weui-tabbar__icon>i, .weui-tabbar__item.weui-bar__item_on .weui-tabbar__label,.main_color,.weui-tabbar__item.weui-bar__item--on .weui-tabbar__label,.picker-button,.weui-form-preview__btn_primary {color:#00c07b!important}
+.weui_bar__item_on span:after,.weui-btn_primary, .weui-btn_primary:not(.weui-btn_disabled):active,.weui-btn_mini,.x_header, .main_bg,.position li.current, .position1 li.current,.post-tags .tag-on.weui-btn_default,.is-green, .weui-slider__track,.tsbtn_m{background-color:#00c07b!important}
+.cy_header{width:100%;height:45px;line-height:45px;text-align:center;color:#18B4ED;font-size:18px;overflow:hidden;background:#F4F4F4;position: fixed;top: 0;left: 0;z-index: 501;}
+.cy_header_fix{position: relative;clear:both;width:100vw;height:42px}
+.cy_header img{display:block!important;height:22px;padding:10px 15px}
+.cy_header a{display:block;height:42px;line-height:42px;margin:0;padding:0 15px;color:#18B4ED;text-align:center;overflow:hidden;position: absolute}
+.cy_header i{font-size:20px;vertical-align:middle}
+.cy_header .sidectrl{right:0;font-size:14px}
+.foot_link{color:#aaa; font-size:12px; margin:0 0; padding:10px 10px;}
+.foot_link .link {color:#ccc; font-size:14px;}
+.foot_link a {color:#666;}
+.bianhao{display:block; padding:0 10px; height:25px;line-height:25px;color:#fff;font-size:12px;text-align:center;border-top-right-radius:50px;border-bottom-right-radius:50px;position:absolute;top:25px;left:0;z-index:9;background-color:rgba(0,0,0,.6)}
+.swipe-wrap img{height: 280px;}
+</style>
+</head>
+<body>
+<style>
+
+.txt img {
+	  width:100%;
+    height:100%;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+.m-text1-qm{
+margin-bottom:0px;
+}
+.ul-pictxt1-hlg h3 a{
+font-size:16px;
+}
+.m-text1-qm h1{
+font-size:25px;
+line-height:32px;
+color:#343434;
+}
+.m-text1-qm .txt{
+	color:#000;
+	line-height:29px;
+	font-size:17px;
+	margin-bottom:10px;
+	text-align:justify;
+	word-break:break-word
+
+}
+.m-text1-qm .txt p{
+text-indent:0;
+line-height:29px;
+margin-bottom:10px;
+}
+
+.global-tag {
+	display:inline-block;
+	padding:0 3px;
+	line-height:14px;
+	font-size:12px;
+	color:#999;
+	border-radius:2px;
+	border:1px solid #E5E5E5
+}
+.global-tag-red {
+	color:#fff;
+	border:1px solid #e43;
+	background-color:#e43
+}
+.global-tag-green {
+	color:#fff;
+	border:1px solid #6b3;
+	background-color:#6b3
+}
+.global-tag-green-hollow {
+	color:#6b3;
+	border:1px solid #ad9
+}
+.global-tag-blue {
+	color:#fff;
+	border:1px solid #49e;
+	background-color:#49e
+}
+.global-tag-grey {
+	color:#fff;
+	border:1px solid #bbb;
+	background-color:#bbb
+}
+.flex {
+	display:-webkit-box!important;
+	display:-webkit-flex!important;
+	display:-ms-flexbox!important;
+	display:flex!important;
+	-webkit-flex-wrap:wrap;
+	-ms-flex-wrap:wrap;
+	flex-wrap:wrap
+}
+.flex>.cell {
+	-webkit-box-flex:1;
+	-webkit-flex:1;
+	-ms-flex:1;
+	flex:1;
+	width:0;
+	-webkit-flex-basis:0;
+	-ms-flex-preferred-size:0;
+	flex-basis:0;
+	max-width:100%;
+	display:block;
+	padding:0!important;
+	position:relative
+}
+.page__bd .zixun-detail-loupan {
+	margin-top:10px;
+	background:#fff;
+	padding:0;
+	border-top:1px solid #fff;
+	border-radius:8px;
+}
+.page__bd .zixun-detail-loupan .lp-info-top {
+	padding-left:10px;
+	padding-right:10px
+}
+.page__bd .zixun-detail-loupan .lp-info-top .lp-title {
+	margin:13px 0 14px
+}
+.page__bd .zixun-detail-loupan .lp-info-top .lp-title .lp-title-link {
+	vertical-align:middle;
+	font-weight:700;
+	line-height:24px;
+	font-size:18px;
+	padding-right:4px;
+	color:#333
+}
+.page__bd .zixun-detail-loupan .lp-info-top .lp-title .sale-status-label {
+	display:inline-block;
+	padding:0 3px;
+	line-height:14px
+}
+.page__bd .zixun-detail-loupan .lp-img .img-box {
+	display:block;
+	position:relative;
+	width:0;
+	padding:35% 50%
+}
+.page__bd .zixun-detail-loupan .lp-img .img-box .mask-xgt {
+	position:absolute;
+	top:0;
+	left:0;
+	display:block;
+	width:37px;
+	height:15px;
+	text-align:center;
+	line-height:15px;
+	font-size:11px;
+	color:#eee;
+	background:rgba(0,0,0,.6);
+	font-family:PingFangSC-Regular
+}
+.page__bd .zixun-detail-loupan .lp-img .img-box img {
+	position:absolute;
+	left:0;
+	top:0;
+	width:100%;
+	height:100%
+}
+.page__bd .zixun-detail-loupan .lp-info {
+	line-height:34px;
+	font-size:14px
+}
+.page__bd .zixun-detail-loupan .lp-info.first {
+	margin-top:6px
+}
+.page__bd .zixun-detail-loupan .lp-info label {
+	margin-right:15px;
+	width:70px;
+	text-align-last:justify;
+	color:#999
+}
+.page__bd .zixun-detail-loupan .lp-info span {
+	color:#333
+}
+.page__bd .zixun-detail-loupan .lp-info .price {
+	color:#e43
+}
+.page__bd .zixun-detail-loupan .lp-info.map {
+	padding-bottom:12px;
+	line-height:28px
+}
+.page__bd .zixun-detail-loupan .lp-info.map a {
+	display:inline-block;
+	vertical-align:bottom;
+	font-size:14px;
+	color:#999;
+	text-overflow:ellipsis;
+	overflow:hidden
+}
+.page__bd .zixun-detail-loupan .lp-info.map a span {
+	color:#999
+}
+
+.page__bd .zixun-detail-loupan .lp-info-footer .kft-wrapper {
+	position:relative;
+	padding-top:11px;
+	height:63px;
+	box-sizing:border-box;
+	border-top:1px solid #eee;
+	border-bottom:1px solid #eee
+}
+.page__bd .zixun-detail-loupan .lp-info-footer .kft-wrapper .kft-info-1 {
+	margin-left:50px;
+	margin-right:25px;
+	height:16px;
+	line-height:16px;
+	font-size:16px;
+	color:#333;
+	overflow:hidden;
+	text-overflow:ellipsis;
+	white-space:nowrap
+}
+.page__bd .zixun-detail-loupan .lp-info-footer .kft-wrapper .kft-info-2 {
+	margin-top:10px;
+	margin-left:50px;
+	margin-right:25px;
+	height:14px;
+	line-height:14px;
+	font-size:14px;
+	color:#999;
+	overflow:hidden;
+	text-overflow:ellipsis;
+	white-space:nowrap
+}
+.page__bd .zixun-detail-loupan .lp-info-footer .kft-wrapper .kft-logo {
+	display:inline-block;
+	position:absolute;
+	left:10px;
+	top:10px;
+	width:30px;
+	height:30px;
+	background-image:url(images/icon-bus.png);
+	background-size:30px 30px
+}
+.page__bd .zixun-detail-loupan .lp-info-footer .kft-wrapper .kft-go {
+	display:inline-block;
+	position:absolute;
+	right:0;
+	top:0;
+	width:22px;
+	height:63px;
+	background-image:url(images/icon-arrow.png?1540890382910);
+	background-size:12px 12px;
+	background-repeat:no-repeat;
+	background-position:0 25px
+}
+.page__bd .zixun-detail-loupan .lp-info-footer .loupan-tel-wrapper {
+	position:relative;
+	height:55px;
+	box-sizing:border-box;
+	border-bottom:none;
+}
+.page__bd .zixun-detail-loupan .lp-info-footer .loupan-tel-wrapper .loupan-tel-l {
+	position:absolute;
+	left:0;
+	top:0;
+	display:inline-block;
+	height:55px;
+	line-height:55px;
+	width:50%;
+	text-align:center
+}
+.page__bd .zixun-detail-loupan .lp-info-footer .loupan-tel-wrapper .loupan-tel-r {
+	position:absolute;
+	right:0;
+	top:0;
+	display:inline-block;
+	height:55px;
+	line-height:55px;
+	width:50%;
+	text-align:center
+}
+.page__bd .zixun-detail-loupan .lp-info-footer .loupan-tel-wrapper .line {
+	position:absolute;
+	left:50%;
+	top:12px;
+	width:1px;
+	height:30px;
+	background-color:#e5e5e5
+}
+.page__bd .zixun-detail-loupan .lp-info-footer .loupan-tel-wrapper .loupan-tel {
+	display:inline-block;
+	height:30px;
+	line-height:28px;
+	box-sizing:border-box;
+	padding-left:37px;
+	padding-right:17px;
+	font-size:14px;
+	color:#e43;
+	background-image:url(images/icon-tel.png?1540890382910);
+	background-size:16px 16px;
+	background-position:15px 6px;
+	background-repeat:no-repeat;
+	border:1px solid #e43;
+	border-radius:4px
+}
+.page__bd .zixun-detail-loupan .lp-info-footer .loupan-tel-wrapper .loupan-more {
+	display:inline-block;
+	height:30px;
+	line-height:28px;
+	box-sizing:border-box;
+	padding-left:31px;
+	padding-right:7px;
+	font-size:14px;
+	color:#e43;
+	background-image:url(images/icon-loupan.png?1540890382910);
+	background-size:16px 16px;
+	background-position:8px 6px;
+	background-repeat:no-repeat;
+	border:1px solid #e43;
+	border-radius:4px
+}
+</style>
+    </head>
+
+<link rel="stylesheet" type="text/css" href="{AJ_MOB}static/style.css"/>
+<body>
+<!--aijia容器开始-->	
+<!--aijiatop开始-->
+<header class="ui-header ui-header-positive ui-border-b">
+<i class="ui-icon-return" onClick="history.back()"></i>
+    <h1>{if $city_sitename}{$city_sitename}{else}{$site_name}{/if}资讯</h1><div class="ui-youbian"><!--header区域 导航栏 区域  开始-->
+						<span class="ui-avatar-tiled" style="margin-top:6px;" onClick="location.href= '{AJ_MOB}';"> <span style="background-image:url({AJ_MOB}static2019/images/noavatar_small.gif)"></span></span>
+			</div></header>
+            <body>
+<div class="page__bd">
+<div class="hm_view_nav">
+<a href="{$MODULE[2][mobile]}award.php?mid={$moduleid}&itemid={$itemid}" class="sec_newewm hbzd">打赏<em class="iconfont icon-jinrujiantou f12"></em></a>
+</div>
+
+<div class="x_header_fix" ></div>
+    <div class="none view_tools_mask"></div>
+   
+
+<div class="m-text1-qm" style="background-color:#fafafa;border-bottom:none;">
+        <div class="wp" style="background-color:#fafafa;padding:15px 15px;">
+            <h1 id="chrtitle">{$title}</h1>
+            <div class="info">
+                <div class="g-info-qm">
+                    {if $MOD[hits]}<span id="hits"><i></i>{$hits}</span>{/if}
+                    <a href="javascript:;" class="more we_share"></a>
+                </div>
+					<div class="left">
+						<!--<span class="tag type0">转载</span>-->
+						<span class="pub-date">{$editdate}</span>
+												<span class="pub-from">	{if $copyfrom}来源：{if $fromurl}<a href="{$fromurl}" target="_blank">{/if}{$copyfrom}{if $fromurl}</a>{/if}&nbsp;&nbsp;&nbsp;&nbsp;{/if}</span>
+												
+					</div>
+            </div>
+            <div class="txt" id="cycontent">
+			{template 'content', 'chip'}		</div> 
+		
+
+
+
+
+<!-- 评论区域 end--> 
+
+ 
+  <!--微信分享提示开始-->  
+
+ <!--tffooter开始--> 
+
+{template 'comment', 'chip'}
+
+ <!--tffooter结束-->   
+
+</div>
+{template 'foottj'}
+		
+</body>
+</html>

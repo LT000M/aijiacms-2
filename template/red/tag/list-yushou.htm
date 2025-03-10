@@ -1,0 +1,29 @@
+   <div class="presale_data">
+        <div class="presale_data_tit">新房预售许可数据统计</div>
+        <div class="presale_data_li table_bg">
+            <p style="width: 15%;">时间</p>
+            <p style="width: 15%;">区域</p>
+            <p style="width: 35%;">许可证号</p>
+            <p style="width: 35%;">项目名称</p>
+            <p style="width: 20%;">公司名称</p>
+            <p style="width: 10%;">住宅/非住宅</p>
+              <p style="width: 10%;">总建面</p>
+        </div>  {loop $tags $k $t} 
+                <div class="presale_data_li table_text">
+            <a href="{$MODULE[6][linkurl]}{$t[houseid]}/" target="_blank" title="{$t[title]}">
+                <p style="width: 15%;">{timetodate($t[addtime], 3)}</p>
+                <p style="width: 15%;">{area_pos($t[areaid], '')}</p>
+                <p style="width: 35%;">{$t[title]}</p>
+                <p style="width: 35%;">{$t[project]}</p>
+                <p style="width: 20%;">{$t[kfs]}</p>
+                <p style="width: 10%;">{$t[residence]}/{$t[noneresidence]}</p>
+                 <p style="width: 10%;">{$t[acreage]}</p>
+                
+            </a>
+        </div>
+         {/loop}
+         
+            </div>
+	{if $showpage && $pages}		
+  <div class="page presale_page">
+        <ul class="pagination">{$pages}</ul>    </div>{/if}

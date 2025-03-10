@@ -1,0 +1,89 @@
+{template 'header', 'member'}
+<link rel="stylesheet" type="text/css" href="image/index.css?v={if AJ_DEBUG}{AJ_TIME}{else}{AJ_REFRESH}{/if}"/>
+<div class="icount ibiz">
+<table cellpadding="0" cellspacing="0">
+<tr>
+<td onclick="Go('message.php');"><div>新消息</div><span>{$_message}</span></td>
+{if $AJ[im_web]}
+<td onclick="Go('im.php');"><div>新交谈</div><span>{$_chat}</span></td>
+{/if}
+{if $AJ[sms] && $MG[sms]}
+<td onclick="Go('sms.php');"><div>短信余额</div><span>{$_sms}</span></td>
+{/if}
+<td onclick="Go('deposit.php');"><div>保证金</div><span>{$deposit}</span></td>
+<td onclick="Go('{$AJ[file_my]}');"><img src="image/icon_add.png" width="32" height="32"/><br/><span>发布信息</span></td>
+<td onclick="Go('trade.php');"><img src="image/icon_order.png" width="32" height="32"/><br/><span>订单管理</span></td>
+<td onclick="Go('home.php');"><img src="image/icon_home.png" width="32" height="32"/><br/><span>商铺管理</span></td>
+</tr>
+</table>
+</div>
+<form action="?">
+<div class="tt">
+<select name="year">
+<option value="0">选择年</option>
+<?php for($i = date("Y", $AJ_TIME); $i >= 2000; $i--) { ?>
+<option value="<?php echo $i;?>"<?php echo $i == $year ? ' selected' : ''?>><?php echo $i;?>年</option>
+<?php } ?>
+</select>&nbsp;
+<select name="month">
+<option value="0">选择月</option>
+<?php for($i = 1; $i < 13; $i++) { ?>
+<option value="<?php echo $i;?>"<?php echo $i == $month ? ' selected' : ''?>><?php echo $i;?>月</option>
+<?php } ?>
+</select>&nbsp;
+<input type="submit" value="生成报表" class="btn"/>&nbsp;
+<input type="button" value="重 置" class="btn" onclick="Go('?action=index');"/>
+</div>
+</form>
+<div>
+<script type="text/javascript" src="{AJ_STATIC}file/script/echarts.min.js?v={if AJ_DEBUG}{AJ_TIME}{else}{AJ_REFRESH}{/if}"></script>
+<div id="chart" style="width:90%;height:500px;margin:16px;"></div>
+<script type="text/javascript">
+var chart = echarts.init(Dd('chart'));
+var option = {
+    title: {
+        text: '{$title}',
+		subtext: '交易成功({$t0}{$AJ[money_unit]})   买家退款({$t1}{$AJ[money_unit]})'
+    },
+    tooltip: {
+        trigger: 'axis'
+    },
+    legend: {
+        data: ['交易成功', '买家退款']
+    },
+    grid: {
+        left: '3%',
+        right: '4%',
+        bottom: '3%',
+        containLabel: true
+    },
+    toolbox: {
+        feature: {
+            saveAsImage: {}
+        }
+    },
+    xAxis: {
+        type: 'category',
+        boundaryGap: false,
+        data: [{$xd}]
+    },
+    yAxis: {
+        type: 'value'
+    },
+    series: [
+        {
+            name: '交易成功',
+            type: 'line',
+            data: [{$y0}]
+        },
+        {
+            name: '买家退款',
+            type: 'line',
+            data: [{$y1}]
+        }
+    ]
+};
+chart.setOption(option);
+</script>
+</div>
+{template 'footer', 'member'}
